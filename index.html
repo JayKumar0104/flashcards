@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1739">
+  <title>Flashcards</title>
+  <style>
+    :root {
+      --ink: #13213c;
+      --muted: #66708a;
+      --navy: #0b1739;
+      --navy-2: #142b60;
+      --paper: #f7f5ef;
+      --card: #ffffff;
+      --line: #dfe3ec;
+      --gold: #f7ba45;
+      --gold-soft: #fff3d5;
+      --blue-soft: #eaf0ff;
+      --green: #18794e;
+      --green-soft: #e9f7ef;
+      --red: #b42318;
+      --red-soft: #fff0ee;
+      --shadow: 0 18px 45px rgba(18, 33, 67, .10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 6%, rgba(247, 186, 69, .22), transparent 23rem),
+        linear-gradient(180deg, #f9f8f4 0%, #f3f5f9 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid rgba(35, 92, 214, .35);
+      outline-offset: 3px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(247, 245, 239, .90);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(11, 23, 57, .08);
+    }
+    .topbar {
+      min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--navy); color: var(--gold); font-weight: 900; letter-spacing: -.04em;
+      box-shadow: 0 8px 20px rgba(11, 23, 57, .2);
+    }
+    .brand-text strong { display: block; font-size: 15px; letter-spacing: .01em; }
+    .brand-text span { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+    nav { display: flex; gap: 6px; align-items: center; }
+    .nav-btn {
+      border: 0; background: transparent; color: #536079; padding: 10px 13px; border-radius: 12px; font-weight: 750;
+    }
+    .nav-btn:hover { background: rgba(11, 23, 57, .06); color: var(--ink); }
+    .nav-btn.active { background: var(--navy); color: white; }
+
+    main { padding: 34px 0 64px; }
+    .view { display: none; animation: rise .28s ease both; }
+    .view.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+    .eyebrow {
+      color: #8a5a00; background: var(--gold-soft); border: 1px solid #f1d389;
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border-radius: 999px;
+      font-size: 12px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(38px, 6vw, 68px); line-height: .98; letter-spacing: -.055em; margin: 18px 0; max-width: 780px; }
+    h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -.035em; line-height: 1.05; margin-bottom: 10px; }
+    h3 { letter-spacing: -.018em; }
+    .lede { color: var(--muted); line-height: 1.7; font-size: 17px; max-width: 700px; }
+
+    .hero {
+      position: relative; overflow: hidden; padding: clamp(28px, 5vw, 58px);
+      color: white; background: linear-gradient(135deg, var(--navy) 0%, #173777 100%);
+      border-radius: 30px; box-shadow: var(--shadow); min-height: 410px;
+      display: grid; grid-template-columns: 1.35fr .65fr; gap: 36px; align-items: center;
+    }
+    .hero::after {
+      content: "Aa"; position: absolute; right: -18px; bottom: -90px; font-weight: 900;
+      font-family: Georgia, serif; font-size: 260px; color: rgba(255,255,255,.045); pointer-events: none;
+    }
+    .hero .lede { color: #cbd5ee; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-side { position: relative; z-index: 1; display: grid; gap: 12px; }
+    .mini-stat {
+      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.15); border-radius: 18px;
+      padding: 16px 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    }
+    .mini-stat strong { font-size: 29px; color: var(--gold); }
+    .mini-stat span { color: #cbd5ee; font-size: 13px; }
+
+    .btn {
+      border: 1px solid transparent; border-radius: 13px; padding: 12px 17px; font-weight: 850;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--gold); color: #2b210d; box-shadow: 0 8px 22px rgba(247, 186, 69, .22); }
+    .btn-primary:hover { background: #ffc65d; }
+    .btn-dark { background: var(--navy); color: white; }
+    .btn-light { background: white; color: var(--navy); border-color: var(--line); }
+    .btn-ghost { background: rgba(255,255,255,.09); color: white; border-color: rgba(255,255,255,.24); }
+    .btn-small { padding: 9px 12px; font-size: 13px; }
+    .btn-danger { color: var(--red); background: var(--red-soft); border-color: #fac7c1; }
+    .btn:disabled { opacity: .48; cursor: not-allowed; transform: none; }
+
+    .section { margin-top: 34px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+    .section-head p { color: var(--muted); margin-bottom: 0; }
+    .mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .mode-card, .panel {
+      background: var(--card); border: 1px solid rgba(21, 40, 80, .09); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(18,33,67,.06);
+    }
+    .mode-card { padding: 22px; text-align: left; position: relative; overflow: hidden; }
+    .mode-card::before { content: ""; position: absolute; width: 88px; height: 88px; border-radius: 50%; right: -28px; top: -30px; background: var(--blue-soft); }
+    .mode-card:nth-child(2)::before { background: var(--gold-soft); }
+    .mode-card:nth-child(3)::before { background: var(--green-soft); }
+    .mode-icon { width: 42px; height: 42px; border-radius: 13px; background: var(--navy); color: white; display: grid; place-items: center; font-weight: 900; margin-bottom: 22px; }
+    .mode-card h3 { margin-bottom: 7px; font-size: 19px; }
+    .mode-card p { color: var(--muted); line-height: 1.55; font-size: 14px; min-height: 44px; }
+    .mode-link { color: #244da2; font-size: 13px; font-weight: 850; }
+
+    .progress-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .panel { padding: 24px; }
+    .progress-track { height: 12px; border-radius: 999px; background: #edf0f5; overflow: hidden; margin: 14px 0 10px; }
+    .progress-fill { width: 0%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--gold), #ffcf6e); transition: width .35s ease; }
+    .progress-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat-box { background: #f5f7fb; border-radius: 14px; padding: 14px; }
+    .stat-box strong { display: block; font-size: 23px; }
+    .stat-box span { color: var(--muted); font-size: 12px; }
+
+    .page-intro { margin-bottom: 26px; }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .chip {
+      border: 1px solid var(--line); background: white; color: var(--ink); border-radius: 999px; padding: 9px 13px; font-size: 13px; font-weight: 800;
+    }
+    .chip.active { background: var(--navy); border-color: var(--navy); color: white; }
+
+    .flash-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; align-items: stretch; }
+    .flash-stage { min-height: 430px; perspective: 1200px; }
+    .flashcard {
+      height: 100%; min-height: 430px; position: relative; transform-style: preserve-3d; transition: transform .52s cubic-bezier(.2,.75,.2,1);
+      cursor: pointer;
+    }
+    .flashcard.flipped { transform: rotateY(180deg); }
+    .flash-face {
+      position: absolute; inset: 0; backface-visibility: hidden; border-radius: 26px; padding: clamp(28px, 5vw, 52px);
+      display: flex; flex-direction: column; justify-content: space-between; overflow: auto;
+      box-shadow: var(--shadow); border: 1px solid rgba(21,40,80,.1);
+    }
+    .flash-front { background: linear-gradient(145deg, #ffffff, #f5f7fc); }
+    .flash-back { transform: rotateY(180deg); background: linear-gradient(145deg, var(--navy), #15346f); color: white; }
+    .flash-index { color: var(--muted); font-size: 13px; font-weight: 800; }
+    .flash-back .flash-index { color: #b9c8ea; }
+    .flash-word { font-family: Georgia, serif; font-size: clamp(40px, 7vw, 74px); letter-spacing: -.04em; margin: 18px 0 10px; }
+    .part { color: #7f5a10; background: var(--gold-soft); padding: 6px 10px; border-radius: 9px; display: inline-block; font-size: 12px; font-weight: 850; }
+    .flip-hint { color: var(--muted); font-size: 13px; }
+    .flash-definition { font-size: clamp(21px, 3vw, 29px); line-height: 1.35; margin: 18px 0; }
+    .flash-example { color: #cbd5ee; line-height: 1.65; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.16); }
+    .flash-forms { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .form-pill { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); padding: 7px 9px; border-radius: 9px; font-size: 12px; }
+    .form-pill.core { background: rgba(247,186,69,.18); border-color: rgba(247,186,69,.55); color: #ffe2a0; }
+    .flash-controls { display: grid; gap: 10px; }
+    .flash-controls .panel { padding: 18px; }
+    .control-stack { display: grid; gap: 9px; }
+    .key-help { color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    .bank-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+    .word-row { padding: 18px; display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; }
+    .word-row h3 { font-family: Georgia, serif; margin-bottom: 5px; font-size: 23px; }
+    .word-row p { margin-bottom: 8px; color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .mastery-dot { width: 12px; height: 12px; margin-top: 8px; border-radius: 50%; background: #d8dde7; box-shadow: 0 0 0 4px #f2f4f8; }
+    .mastery-dot.done { background: var(--green); box-shadow: 0 0 0 4px var(--green-soft); }
+    .form-list { color: #264c9b; font-size: 12px; font-weight: 750; }
+
+    .quiz-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 18px; align-items: start; }
+    .quiz-card { min-height: 480px; padding: clamp(24px, 5vw, 42px); }
+    .quiz-top { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 30px; }
+    .quiz-count { font-weight: 850; font-size: 13px; }
+    .quiz-score { color: var(--muted); font-size: 13px; }
+    .question-type { color: #7b560e; text-transform: uppercase; letter-spacing: .09em; font-weight: 900; font-size: 11px; }
+    .question { font-size: clamp(24px, 4vw, 35px); line-height: 1.25; letter-spacing: -.026em; margin: 12px 0 26px; }
+    .answer-input {
+      width: 100%; border: 2px solid #d9deea; background: #fbfcff; border-radius: 14px; padding: 15px 16px; color: var(--ink);
+    }
+    .answer-input:focus { border-color: #4267b2; outline: 3px solid rgba(66,103,178,.13); }
+    .choice-grid { display: grid; gap: 10px; }
+    .choice {
+      text-align: left; border: 1px solid #dce1eb; background: #fbfcff; padding: 14px 16px; border-radius: 14px; color: var(--ink); font-weight: 730;
+    }
+    .choice:hover:not(:disabled) { border-color: #9fb0d2; background: var(--blue-soft); }
+    .choice.selected { border-color: var(--navy); background: var(--blue-soft); }
+    .choice.correct { border-color: var(--green); background: var(--green-soft); color: #0b5f3b; }
+    .choice.wrong { border-color: var(--red); background: var(--red-soft); color: #8f1c13; }
+    .quiz-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 22px; }
+    .feedback { margin-top: 18px; padding: 16px 18px; border-radius: 14px; line-height: 1.55; }
+    .feedback.good { background: var(--green-soft); color: #0b5f3b; border: 1px solid #a6ddbf; }
+    .feedback.bad { background: var(--red-soft); color: #8f1c13; border: 1px solid #f2b8b1; }
+    .quiz-side { display: grid; gap: 12px; }
+    .quiz-side .panel { padding: 18px; }
+    .setup-grid { display: grid; gap: 14px; max-width: 690px; }
+    .setup-row { display: grid; gap: 8px; }
+    .setup-row label { font-weight: 850; }
+    .segmented { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toggle-option input { position: absolute; opacity: 0; pointer-events: none; }
+    .toggle-option span { display: inline-block; padding: 10px 13px; border: 1px solid var(--line); border-radius: 11px; background: white; font-size: 13px; font-weight: 800; }
+    .toggle-option input:checked + span { background: var(--navy); border-color: var(--navy); color: white; }
+
+    .lab-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 18px; }
+    .word-picker { display: grid; gap: 8px; }
+    .pick-word { text-align: left; border: 1px solid var(--line); background: white; padding: 11px 13px; border-radius: 11px; font-weight: 780; }
+    .pick-word.active { background: var(--navy); border-color: var(--navy); color: white; }
+    .lab-card { padding: clamp(24px, 5vw, 38px); }
+    .lab-target { font-family: Georgia, serif; font-size: clamp(34px, 5vw, 54px); margin: 8px 0; }
+    textarea { width: 100%; min-height: 150px; resize: vertical; border: 2px solid #d9deea; border-radius: 14px; padding: 15px; line-height: 1.6; color: var(--ink); background: #fbfcff; }
+    .checks { display: grid; gap: 8px; margin: 16px 0; }
+    .check { color: var(--muted); font-size: 13px; display: flex; align-items: center; gap: 8px; }
+    .check::before { content: "○"; font-size: 17px; }
+    .check.pass { color: var(--green); }
+    .check.pass::before { content: "●"; }
+    .model-answer { margin-top: 18px; padding: 17px; background: var(--gold-soft); border: 1px solid #edd28e; border-radius: 14px; line-height: 1.6; }
+
+    .empty { padding: 38px; text-align: center; color: var(--muted); }
+    .summary { text-align: center; padding: 28px 0 8px; }
+    .summary-score { font-size: clamp(60px, 11vw, 100px); line-height: 1; font-weight: 950; letter-spacing: -.07em; color: var(--navy); }
+    .summary p { color: var(--muted); }
+    .missed-list { display: grid; gap: 9px; margin: 22px 0; text-align: left; }
+    .missed-item { padding: 13px 15px; background: var(--red-soft); border-radius: 12px; display: flex; justify-content: space-between; gap: 12px; }
+    .missed-item span { color: var(--muted); font-size: 13px; }
+
+    .footer-note { margin-top: 32px; text-align: center; color: var(--muted); font-size: 12px; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-side { grid-template-columns: repeat(3, 1fr); }
+      .mini-stat { display: block; }
+      .mini-stat span { display: block; margin-top: 4px; }
+      .flash-wrap, .quiz-layout, .lab-layout, .progress-grid { grid-template-columns: 1fr; }
+      .flash-controls { grid-template-columns: 1fr 1fr; }
+      .mode-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 22px, 1160px); }
+      .topbar { min-height: 66px; }
+      .brand-text { display: none; }
+      nav { overflow-x: auto; justify-content: flex-end; }
+      .nav-btn { font-size: 12px; padding: 9px 10px; white-space: nowrap; }
+      main { padding-top: 20px; }
+      .hero { border-radius: 22px; padding: 25px; }
+      .hero-side { grid-template-columns: 1fr; }
+      .bank-grid { grid-template-columns: 1fr; }
+      .flash-controls { grid-template-columns: 1fr; }
+      .flash-stage, .flashcard { min-height: 470px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell topbar">
+      <div class="brand" aria-label="Flashcards — AP Lang Set 1">
+        <div class="brand-mark">FC</div>
+        <div class="brand-text"><strong>Flashcards</strong><span>AP Lang · Set 1</span></div>
+      </div>
+      <nav aria-label="Main navigation">
+        <button class="nav-btn active" data-view="home">Home</button>
+        <button class="nav-btn" data-view="learn">Learn</button>
+        <button class="nav-btn" data-view="quiz">Quiz</button>
+        <button class="nav-btn" data-view="lab">Sentence Lab</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="home" class="view active" aria-labelledby="home-title">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">AP Lang · Set 1 · focused practice</span>
+          <h1 id="home-title">Make every word feel familiar.</h1>
+          <p class="lede">Study ten words about language, practice their related forms, and test whether each word actually makes sense in context.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-go="learn">Start flashcards</button>
+            <button class="btn btn-ghost" data-go="quiz">Take a mixed quiz</button>
+          </div>
+        </div>
+        <div class="hero-side" aria-label="Study statistics">
+          <div class="mini-stat"><strong>10</strong><span>target words</span></div>
+          <div class="mini-stat"><strong>31</strong><span>word-family forms</span></div>
+          <div class="mini-stat"><strong id="heroMastered">0</strong><span>mastered</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><div><h2>Choose your practice</h2><p>Move from recognition to accurate use.</p></div></div>
+        <div class="mode-grid">
+          <button class="mode-card" data-go="learn">
+            <span class="mode-icon">Aa</span><h3>Flashcards</h3><p>Learn definitions, parts of speech, derivatives, and fresh examples.</p><span class="mode-link">Begin review →</span>
+          </button>
+          <button class="mode-card" data-go="quiz">
+            <span class="mode-icon">✓</span><h3>Mixed quiz</h3><p>Combine definitions, context clues, word forms, and usage true/false.</p><span class="mode-link">Configure quiz →</span>
+          </button>
+          <button class="mode-card" data-go="lab">
+            <span class="mode-icon">✎</span><h3>Sentence lab</h3><p>Write an original sentence, run a quick structure check, then compare.</p><span class="mode-link">Practice using words →</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="section progress-grid">
+        <div class="panel">
+          <h3>Your mastery</h3>
+          <div class="progress-track" aria-hidden="true"><div id="masteryFill" class="progress-fill"></div></div>
+          <div class="progress-meta"><span id="masteryText">0 of 10 words mastered</span><span id="masteryPercent">0%</span></div>
+        </div>
+        <div class="panel">
+          <div class="stat-row">
+            <div class="stat-box"><strong id="totalAnswered">0</strong><span>answered</span></div>
+            <div class="stat-box"><strong id="accuracy">—</strong><span>accuracy</span></div>
+            <div class="stat-box"><strong id="bestStreak">0</strong><span>best streak</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learn" class="view" aria-labelledby="learn-title">
+      <div class="page-intro">
+        <span class="eyebrow">Recognize + recall</span>
+        <h2 id="learn-title">Learn the word set</h2>
+        <p class="lede">Flip each card, then mark whether you need another look. Packet-listed forms are labeled “high-yield”; verified extensions complete each practical word family.</p>
+      </div>
+      <div class="flash-wrap">
+        <div class="flash-stage">
+          <div id="flashcard" class="flashcard" tabindex="0" role="button" aria-label="Flashcard. Press Enter to flip.">
+            <div class="flash-face flash-front">
+              <span id="flashIndex" class="flash-index"></span>
+              <div><span id="flashPart" class="part"></span><div id="flashWord" class="flash-word"></div></div>
+              <span class="flip-hint">Tap or press Space to reveal the definition</span>
+            </div>
+            <div class="flash-face flash-back">
+              <span class="flash-index">Definition & use</span>
+              <div><div id="flashDefinition" class="flash-definition"></div><div id="flashForms" class="flash-forms"></div></div>
+              <div id="flashExample" class="flash-example"></div>
+            </div>
+          </div>
+        </div>
+        <aside class="flash-controls" aria-label="Flashcard controls">
+          <div class="panel control-stack">
+            <button id="flipBtn" class="btn btn-dark">Flip card</button>
+            <button id="againBtn" class="btn btn-light">Again</button>
+            <button id="gotItBtn" class="btn btn-primary">Got it</button>
+            <button id="shuffleBtn" class="btn btn-light btn-small">Shuffle deck</button>
+          </div>
+          <div class="panel">
+            <strong>Keyboard</strong>
+            <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><div><h2>Word bank</h2><p>Mastery appears after three successful reviews or quiz answers for a word.</p></div></div>
+        <div id="wordBank" class="bank-grid"></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="view" aria-labelledby="quiz-title">
+      <div class="page-intro">
+        <span class="eyebrow">Active recall</span>
+        <h2 id="quiz-title">Build a quiz</h2>
+        <p class="lede">No passage comprehension here—only vocabulary meaning, forms, and sensible use in sentences.</p>
+      </div>
+      <div id="quizSetup" class="panel" style="padding: clamp(24px, 5vw, 38px);">
+        <div class="setup-grid">
+          <div class="setup-row">
+            <label>Question types</label>
+            <div class="segmented">
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="definition" checked><span>Definitions</span></label>
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="context" checked><span>Context</span></label>
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="usage" checked><span>Usage T/F</span></label>
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="forms" checked><span>Word forms</span></label>
+            </div>
+          </div>
+          <div class="setup-row">
+            <label>Length</label>
+            <div class="segmented">
+              <label class="toggle-option"><input type="radio" name="qlength" value="10" checked><span>10 questions</span></label>
+              <label class="toggle-option"><input type="radio" name="qlength" value="20"><span>20 questions</span></label>
+              <label class="toggle-option"><input type="radio" name="qlength" value="all"><span>Full bank</span></label>
+            </div>
+          </div>
+          <div class="toolbar">
+            <button id="startQuizBtn" class="btn btn-primary">Start mixed quiz</button>
+            <button id="missedQuizBtn" class="btn btn-light">Practice missed words</button>
+          </div>
+          <p id="setupMessage" class="key-help" aria-live="polite"></p>
+        </div>
+      </div>
+      <div id="quizPlay" class="quiz-layout" hidden>
+        <div id="quizCard" class="panel quiz-card"></div>
+        <aside class="quiz-side">
+          <div class="panel"><strong>Quiz progress</strong><div class="progress-track"><div id="quizProgress" class="progress-fill"></div></div><div id="quizSideText" class="key-help"></div></div>
+          <div class="panel control-stack"><button id="quitQuizBtn" class="btn btn-light btn-small">End quiz</button></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="lab" class="view" aria-labelledby="lab-title">
+      <div class="page-intro">
+        <span class="eyebrow">Create + compare</span>
+        <h2 id="lab-title">Sentence lab</h2>
+        <p class="lede">Write a sentence that proves you understand the word. The app checks structure—not meaning—so use the comparison sentence thoughtfully.</p>
+      </div>
+      <div class="lab-layout">
+        <aside class="panel" style="padding: 16px;"><div id="wordPicker" class="word-picker"></div></aside>
+        <div class="panel lab-card">
+          <span class="question-type">Your target word</span>
+          <div id="labWord" class="lab-target"></div>
+          <p id="labDefinition" class="lede"></p>
+          <label for="sentenceInput" class="sr-only">Write an original sentence</label>
+          <textarea id="sentenceInput" placeholder="Write one complete sentence using the target word or an appropriate related form..."></textarea>
+          <div class="checks" aria-live="polite">
+            <div id="checkWord" class="check">Uses the target word or a related form</div>
+            <div id="checkLength" class="check">Includes enough context to show meaning</div>
+            <div id="checkEnd" class="check">Ends with sentence punctuation</div>
+          </div>
+          <div class="toolbar">
+            <button id="evaluateBtn" class="btn btn-dark">Check structure</button>
+            <button id="revealModelBtn" class="btn btn-light">Reveal comparison</button>
+            <button id="clearSentenceBtn" class="btn btn-light btn-small">Clear</button>
+          </div>
+          <div id="modelAnswer" class="model-answer" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">Progress is stored only in this browser. The app works without accounts, analytics, or external services.</p>
+  </main>
+
+  <script>
+    const WORDS = [
+      {
+        word: "annotation", part: "noun",
+        definition: "A note added to a text to explain, evaluate, or clarify something.",
+        forms: [
+          {word:"annotate", part:"verb", level:"packet"},
+          {word:"annotator", part:"noun", level:"extended"},
+          {word:"annotative", part:"adjective", level:"extended"},
+          {word:"annotatable", part:"adjective", level:"extended"},
+          {word:"annotatory", part:"adjective", level:"rare"}
+        ],
+        example: "The student added an annotation beside the unfamiliar historical reference.",
+        cloze: "The editor added an ___ to clarify the outdated expression.",
+        answer: ["annotation"],
+        options: ["annotation", "appellation", "parlance", "neologism"]
+      },
+      {
+        word: "appellation", part: "noun",
+        definition: "A name, title, or descriptive designation.",
+        forms: [
+          {word:"appellative", part:"adjective or noun", level:"extended"},
+          {word:"appellatively", part:"adverb", level:"extended"}
+        ],
+        example: "The Big Apple is a familiar appellation for New York City.",
+        cloze: "The nickname soon became an informal ___ for the team.",
+        answer: ["appellation"], options: ["appellation", "eponym", "patois", "annotation"]
+      },
+      {
+        word: "eponym", part: "noun",
+        definition: "A person whose name becomes, or is believed to become, the name of something else.",
+        forms: [
+          {word:"eponymous", part:"adjective", level:"packet"},
+          {word:"eponymic", part:"adjective", level:"extended"},
+          {word:"eponymy", part:"noun", level:"extended"},
+          {word:"eponymously", part:"adverb", level:"extended"}
+        ],
+        example: "The Earl of Sandwich is the eponym of the sandwich.",
+        cloze: "The inventor became the ___ of the device named in her honor.",
+        answer: ["eponym"], options: ["eponym", "polyglot", "linguist", "appellation"]
+      },
+      {
+        word: "linguistics", part: "noun (singular)",
+        definition: "The systematic study of the nature, structure, and variation of language.",
+        forms: [
+          {word:"linguistic", part:"adjective", level:"packet"},
+          {word:"linguist", part:"noun", level:"packet"},
+          {word:"linguistically", part:"adverb", level:"extended"}
+        ],
+        example: "In linguistics, researchers examine grammar, speech sounds, and language change.",
+        cloze: "The scientific study of syntax belongs to the field of ___.",
+        answer: ["linguistics"], options: ["linguistics", "parlance", "patois", "annotation"]
+      },
+      {
+        word: "malapropism", part: "noun",
+        definition: "A humorous or ridiculous word error caused by substituting a similar-sounding word.",
+        forms: [{word:"malaprop", part:"noun; alternate form", level:"packet"}],
+        example: "Calling electoral votes ‘electrical votes’ would be a malapropism.",
+        cloze: "Her accidental substitution of a similar-sounding word was a ___.",
+        answer: ["malapropism"], options: ["malapropism", "neologism", "annotation", "patois"]
+      },
+      {
+        word: "neologism", part: "noun",
+        definition: "A newly created word, expression, or use of a word.",
+        forms: [
+          {word:"neologistic", part:"adjective", level:"extended"},
+          {word:"neologist", part:"noun", level:"extended"},
+          {word:"neologize", part:"verb", level:"extended"},
+          {word:"neology", part:"noun", level:"extended"},
+          {word:"neological", part:"adjective", level:"extended"}
+        ],
+        example: "The term ‘doomscrolling’ began as a neologism before becoming widely recognized.",
+        cloze: "The writer coined a ___ for the new kind of online behavior.",
+        answer: ["neologism"], options: ["neologism", "malapropism", "appellation", "parlance"]
+      },
+      {
+        word: "parlance", part: "noun",
+        definition: "The characteristic vocabulary or manner of speaking used by a group or field.", forms: [],
+        example: "In computer-hardware parlance, RAM is a system’s short-term working memory.",
+        cloze: "In legal ___, the phrase has a precise technical meaning.",
+        answer: ["parlance"], options: ["parlance", "patois", "linguistics", "vulgarity"]
+      },
+      {
+        word: "patois", part: "noun",
+        definition: "A regional dialect, especially a nonstandard variety with a mainly spoken tradition.", forms: [],
+        example: "The novel’s dialogue reflects the region’s local patois.",
+        cloze: "Visitors gradually learned expressions from the island’s local ___.",
+        answer: ["patois"], options: ["patois", "parlance", "annotation", "eponym"]
+      },
+      {
+        word: "polyglot", part: "adjective or noun",
+        definition: "Using several languages; also, a person who speaks several languages.",
+        forms: [
+          {word:"polyglottal", part:"adjective", level:"extended"},
+          {word:"polyglottic", part:"adjective", level:"extended"},
+          {word:"polyglotism", part:"noun", level:"extended"},
+          {word:"polyglottous", part:"adjective", level:"rare"}
+        ],
+        example: "The polyglot guide switched smoothly among four languages.",
+        cloze: "Because she spoke six languages, the interpreter was a true ___.",
+        answer: ["polyglot"], options: ["polyglot", "linguist", "eponym", "malaprop"]
+      },
+      {
+        word: "vulgar", part: "adjective",
+        definition: "Common or popular in language; crude or indecent; or offensively showy and excessive.",
+        forms: [
+          {word:"vulgarity", part:"noun", level:"packet"},
+          {word:"vulgarly", part:"adverb", level:"extended"},
+          {word:"vulgarize", part:"verb", level:"extended"},
+          {word:"vulgarization", part:"noun", level:"extended"},
+          {word:"vulgarizer", part:"noun", level:"extended"},
+          {word:"vulgarism", part:"noun", level:"extended"},
+          {word:"vulgarian", part:"noun", level:"extended"}
+        ],
+        example: "The reviewer criticized the mansion’s vulgar display of wealth.",
+        cloze: "Critics called the gold-covered hallway a ___ display of wealth.",
+        answer: ["vulgar"], options: ["vulgar", "eponymous", "polyglot", "linguistic"]
+      }
+    ];
+
+    const USAGE = [
+      {word:"annotation", statement:"A footnote explaining an unfamiliar term is a type of annotation.", answer:true, why:"An annotation is an explanatory or critical note."},
+      {word:"annotation", statement:"The mayor received the annotation ‘city leader’ after the election.", answer:false, why:"A title is an appellation, not an annotation."},
+      {word:"appellation", statement:"‘The Windy City’ is an appellation for Chicago.", answer:true, why:"An appellation can be a name or title."},
+      {word:"appellation", statement:"She wrote an appellation in the margin to define a difficult phrase.", answer:false, why:"A note added to text is an annotation."},
+      {word:"eponym", statement:"A person after whom a discovery is named can be its eponym.", answer:true, why:"An eponym is the person whose name supplies another name."},
+      {word:"eponym", statement:"The newly invented expression itself must always be an eponym.", answer:false, why:"A newly invented expression is a neologism unless it specifically comes from a person’s name."},
+      {word:"linguistics", statement:"Studying how grammar changes over time is part of linguistics.", answer:true, why:"Linguistics examines the structure and variation of language."},
+      {word:"linguistics", statement:"Linguistics is the name for any regional, nonstandard dialect.", answer:false, why:"That describes a patois; linguistics is the study of language."},
+      {word:"malapropism", statement:"Accidentally saying ‘dance a flamingo’ instead of ‘dance a flamenco’ is a malapropism.", answer:true, why:"The error substitutes a similar-sounding word and creates an absurd result."},
+      {word:"malapropism", statement:"A carefully invented term for a new technology is automatically a malapropism.", answer:false, why:"A deliberately created new term is a neologism."},
+      {word:"neologism", statement:"A recently coined expression can be called a neologism.", answer:true, why:"A neologism is a new word, expression, or usage."},
+      {word:"neologism", statement:"A neologism must be an accidental misuse of a similar-sounding word.", answer:false, why:"That is a malapropism."},
+      {word:"parlance", statement:"‘Bandwidth’ has a specialized meaning in networking parlance.", answer:true, why:"Parlance is the vocabulary or manner of speaking in a group or field."},
+      {word:"parlance", statement:"Parlance refers only to dialects that have no written tradition.", answer:false, why:"That description fits patois more closely."},
+      {word:"patois", statement:"A mainly spoken regional dialect may be described as a patois.", answer:true, why:"Patois refers to a regional, often nonstandard dialect with a mainly spoken tradition."},
+      {word:"patois", statement:"A scientific field’s technical vocabulary is necessarily a patois.", answer:false, why:"Technical vocabulary is better described as that field’s parlance."},
+      {word:"polyglot", statement:"A speaker fluent in several languages may be called a polyglot.", answer:true, why:"Polyglot can be a noun for a multilingual person."},
+      {word:"polyglot", statement:"Polyglot means able to speak only one regional dialect.", answer:false, why:"Polyglot refers to using or speaking several languages."},
+      {word:"vulgar", statement:"A tastelessly showy display of wealth can be called vulgar.", answer:true, why:"One sense of vulgar is offensively excessive or showy."},
+      {word:"vulgar", statement:"Vulgar can only mean grammatically incorrect.", answer:false, why:"Its senses include common-language, crude, and offensively showy; it does not simply mean ungrammatical."}
+    ];
+
+    const FORM_QUESTIONS = [
+      {word:"annotation", tier:"core", prompt:"Choose the verb: The researcher will ___ the transcript with brief explanations.", options:["annotation","annotate","annotator","annotative"], correct:"annotate", why:"Annotate is the high-yield verb related to annotation."},
+      {word:"annotation", tier:"extended", prompt:"Choose the person: The project hired an ___ to add labels to the training data.", options:["annotation","annotative","annotator","annotate"], correct:"annotator", why:"An annotator is a person who annotates."},
+      {word:"annotation", tier:"extended", prompt:"Which adjective means ‘having the function of adding notes or comments’?", options:["annotative","annotator","annotate","annotation"], correct:"annotative", why:"Annotative is the adjective in the annotation word family."},
+      {word:"annotation", tier:"extended", prompt:"Choose the adjective: A digital document that permits added notes is ___.", options:["annotatable","annotator","annotation","annotatedly"], correct:"annotatable", why:"Annotatable means capable of being annotated."},
+      {word:"annotation", tier:"rare", prompt:"Which rare adjective also belongs to the annotation word family?", options:["annotatory","annotarious","annotationalize","annotatement"], correct:"annotatory", why:"Annotatory is an attested but rare adjective related to annotation."},
+      {word:"appellation", tier:"extended", prompt:"Which adjective-or-noun belongs to the appellation word family?", options:["appellative","appellated","appellator","appellationary"], correct:"appellative", why:"Appellative is the established related form; the other choices are not the target derivative."},
+      {word:"appellation", tier:"extended", prompt:"Choose the adverb in the appellation word family.", options:["appellatively","appellationally","appellativelyness","appellatingly"], correct:"appellatively", why:"Appellatively is the established adverb related to appellative."},
+      {word:"eponym", tier:"core", prompt:"Choose the adjective: The award and its ___ scholarship share the founder’s name.", options:["eponym","eponymous","eponymy","eponymously"], correct:"eponymous", why:"Eponymous is the high-yield adjective meaning ‘being an eponym’ or ‘named after.’"},
+      {word:"eponym", tier:"extended", prompt:"Choose the noun for the practice or relationship of naming something after a person.", options:["eponymy","eponymic","eponymously","eponymous"], correct:"eponymy", why:"Eponymy is the noun for eponym-based naming or the state of being eponymous."},
+      {word:"eponym", tier:"extended", prompt:"Which word is an alternate adjective in the eponym family?", options:["eponymic","eponymy","eponymist","eponymize"], correct:"eponymic", why:"Eponymic is an established adjective related to eponym."},
+      {word:"eponym", tier:"extended", prompt:"Choose the adverb: The company was ___ named after its founder.", options:["eponymy","eponymic","eponymously","eponym"], correct:"eponymously", why:"Eponymously is the adverb form."},
+      {word:"linguistics", tier:"core", prompt:"Choose the person: The ___ studies patterns in how languages change.", options:["linguistic","linguistics","linguist","linguistically"], correct:"linguist", why:"A linguist is a person who studies language."},
+      {word:"linguistics", tier:"core", prompt:"Choose the adjective: The two dialects share several ___ features.", options:["linguist","linguistics","linguistic","linguistically"], correct:"linguistic", why:"Linguistic is the adjective related to language or linguistics."},
+      {word:"linguistics", tier:"extended", prompt:"Choose the adverb: The two communities are ___ diverse.", options:["linguist","linguistics","linguistic","linguistically"], correct:"linguistically", why:"Linguistically is the adverb meaning ‘with respect to language.’"},
+      {word:"malapropism", tier:"core", prompt:"Which word is an alternate noun for malapropism?", options:["malaprop","malapropic","malapropous","malaparlance"], correct:"malaprop", why:"Malaprop is an alternate noun with the same meaning."},
+      {word:"neologism", tier:"extended", prompt:"Choose the adjective: The author’s ___ style includes several newly coined expressions.", options:["neologist","neologistic","neology","neologize"], correct:"neologistic", why:"Neologistic is the adjective related to neologism."},
+      {word:"neologism", tier:"extended", prompt:"Choose the person: A habitual coiner or user of new words may be called a ___.", options:["neology","neologist","neologistic","neologize"], correct:"neologist", why:"A neologist is a person who introduces or uses new words."},
+      {word:"neologism", tier:"extended", prompt:"Choose the verb meaning ‘to create or use new words.’", options:["neology","neologist","neologistic","neologize"], correct:"neologize", why:"Neologize is the verb in this word family."},
+      {word:"neologism", tier:"extended", prompt:"Choose the noun for the practice of introducing or using new expressions.", options:["neology","neological","neologist","neologize"], correct:"neology", why:"Neology can name the use or introduction of new expressions."},
+      {word:"neologism", tier:"extended", prompt:"Which is another adjective in the neologism word family?", options:["neological","neology","neologist","neologize"], correct:"neological", why:"Neological is an adjective related to neology and neologism."},
+      {word:"polyglot", tier:"core", prompt:"In ‘a polyglot neighborhood,’ what part of speech is polyglot?", options:["noun","verb","adjective","adverb"], correct:"adjective", why:"It modifies neighborhood, so polyglot is functioning as an adjective."},
+      {word:"polyglot", tier:"core", prompt:"In ‘The translator is a polyglot,’ what part of speech is polyglot?", options:["noun","verb","adjective","adverb"], correct:"noun", why:"It names a multilingual person, so polyglot is a noun."},
+      {word:"polyglot", tier:"extended", prompt:"Which two words are less-common adjectives meaning polyglot?", options:["polyglottal and polyglottic","polyglotism and polyglottal","polyglotian and polyglotly","polyglotism and polyglottic"], correct:"polyglottal and polyglottic", why:"Polyglottal and polyglottic are established adjective variants; polyglotism is a noun."},
+      {word:"polyglot", tier:"extended", prompt:"Choose the noun naming polyglot character, knowledge, or usage.", options:["polyglottal","polyglottic","polyglotism","polyglotly"], correct:"polyglotism", why:"Polyglotism is the derived noun."},
+      {word:"polyglot", tier:"rare", prompt:"Which rare adjective is also an established variant of polyglot?", options:["polyglottous","polyglotly","polyglotian","polyglottery"], correct:"polyglottous", why:"Polyglottous is an attested but rare adjective variant."},
+      {word:"vulgar", tier:"core", prompt:"Choose the noun: The audience objected to the unnecessary ___ of the remark.", options:["vulgar","vulgarity","vulgarly","vulgarize"], correct:"vulgarity", why:"Vulgarity is the high-yield noun related to vulgar."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the adverb: The wealth was displayed so ___ that it distracted from the design.", options:["vulgarity","vulgarian","vulgarly","vulgarize"], correct:"vulgarly", why:"Vulgarly is the adverb form of vulgar."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the verb meaning ‘to make vulgar or common.’", options:["vulgarism","vulgarize","vulgarity","vulgarian"], correct:"vulgarize", why:"Vulgarize is the verb in this word family."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the noun for the process or result of making something vulgar.", options:["vulgarization","vulgarian","vulgarly","vulgarize"], correct:"vulgarization", why:"Vulgarization names the process or result of vulgarizing."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the noun for a person or thing that vulgarizes.", options:["vulgarizer","vulgarism","vulgarian","vulgarity"], correct:"vulgarizer", why:"A vulgarizer is one that vulgarizes."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the noun for a vulgar word or expression.", options:["vulgarism","vulgarian","vulgarity","vulgarly"], correct:"vulgarism", why:"A vulgarism is a vulgar word, expression, or usage."},
+      {word:"vulgar", tier:"extended", prompt:"Choose the noun that can describe a coarse or unrefined person.", options:["vulgarian","vulgarism","vulgarity","vulgarly"], correct:"vulgarian", why:"Vulgarian is a noun for a person regarded as coarse or lacking refinement."}
+    ];
+
+    const STORAGE_KEY = "flashcards-ap-lang-set-1-progress-v1";
+    const defaultStats = () => ({total:0, correct:0, bestStreak:0, wordStats:{}, missed:[]});
+    let stats = loadStats();
+    let deck = WORDS.map((_, i) => i);
+    let flashPos = 0;
+    let labIndex = 0;
+    let currentQuiz = [];
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizStreak = 0;
+    let quizMisses = [];
+    let submitted = false;
+    let selectedChoice = null;
+
+    function loadStats() {
+      try { return {...defaultStats(), ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}")}; }
+      catch { return defaultStats(); }
+    }
+    function saveStats() { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); renderStats(); }
+    function normalize(value) { return value.toLowerCase().trim().replace(/[’']/g, "'").replace(/[^a-z'\s-]/g, "").replace(/\s+/g, " "); }
+    function shuffle(items) {
+      const arr = [...items];
+      for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
+      return arr;
+    }
+    function wordByName(name) { return WORDS.find(w => w.word === name); }
+    function pluralize(form) {
+      if (form.endsWith("s")) return form;
+      if (/[^aeiou]y$/.test(form)) return form.slice(0, -1) + "ies";
+      return form + "s";
+    }
+    function allForms(w) {
+      const accepted = new Set([w.word, pluralize(w.word)]);
+      w.forms.forEach(f => {
+        accepted.add(f.word);
+        if (f.part.includes("noun")) accepted.add(pluralize(f.word));
+        if (f.part.includes("verb")) {
+          accepted.add(f.word + "s");
+          if (f.word.endsWith("e")) {
+            accepted.add(f.word + "d");
+            accepted.add(f.word.slice(0, -1) + "ing");
+          } else {
+            accepted.add(f.word + "ed");
+            accepted.add(f.word + "ing");
+          }
+        }
+      });
+      return [...accepted];
+    }
+    function isMastered(word) { return (stats.wordStats[word]?.correct || 0) >= 3; }
+
+    function showView(id) {
+      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === id));
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.view === id));
+      if (id === "learn") { renderFlashcard(); renderWordBank(); }
+      if (id === "lab") renderLab();
+      if (id === "quiz" && document.getElementById("quizPlay").hidden) document.getElementById("quizSetup").hidden = false;
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    document.querySelectorAll("[data-view]").forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.view)));
+    document.querySelectorAll("[data-go]").forEach(btn => btn.addEventListener("click", () => showView(btn.dataset.go)));
+
+    function renderStats() {
+      const mastered = WORDS.filter(w => isMastered(w.word)).length;
+      const pct = Math.round(mastered / WORDS.length * 100);
+      document.getElementById("heroMastered").textContent = mastered;
+      document.getElementById("masteryFill").style.width = pct + "%";
+      document.getElementById("masteryText").textContent = `${mastered} of ${WORDS.length} words mastered`;
+      document.getElementById("masteryPercent").textContent = pct + "%";
+      document.getElementById("totalAnswered").textContent = stats.total;
+      document.getElementById("accuracy").textContent = stats.total ? Math.round(stats.correct / stats.total * 100) + "%" : "—";
+      document.getElementById("bestStreak").textContent = stats.bestStreak;
+      if (document.getElementById("wordBank").children.length) renderWordBank();
+    }
+
+    function renderFlashcard() {
+      const w = WORDS[deck[flashPos]];
+      document.getElementById("flashcard").classList.remove("flipped");
+      document.getElementById("flashIndex").textContent = `Card ${flashPos + 1} of ${deck.length}`;
+      document.getElementById("flashPart").textContent = w.part;
+      document.getElementById("flashWord").textContent = w.word;
+      document.getElementById("flashDefinition").textContent = w.definition;
+      document.getElementById("flashExample").textContent = w.example;
+      document.getElementById("flashForms").innerHTML = w.forms.length
+        ? w.forms.map(f => `<span class="form-pill ${f.level === "packet" ? "core" : ""}">${f.word} · ${f.part} · ${f.level === "packet" ? "high-yield" : f.level === "rare" ? "rare" : "extended"}</span>`).join("")
+        : `<span class="form-pill">No standard derivative in the practical word family</span>`;
+    }
+    function flipCard() { document.getElementById("flashcard").classList.toggle("flipped"); }
+    function moveCard(delta) { flashPos = (flashPos + delta + deck.length) % deck.length; renderFlashcard(); }
+    function rateCard(gotIt) {
+      const w = WORDS[deck[flashPos]].word;
+      stats.wordStats[w] ||= {correct:0, wrong:0};
+      stats.wordStats[w][gotIt ? "correct" : "wrong"]++;
+      saveStats(); moveCard(1);
+    }
+    document.getElementById("flashcard").addEventListener("click", flipCard);
+    document.getElementById("flipBtn").addEventListener("click", flipCard);
+    document.getElementById("againBtn").addEventListener("click", () => rateCard(false));
+    document.getElementById("gotItBtn").addEventListener("click", () => rateCard(true));
+    document.getElementById("shuffleBtn").addEventListener("click", () => { deck = shuffle(deck); flashPos = 0; renderFlashcard(); });
+    document.getElementById("flashcard").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); flipCard(); }});
+    document.addEventListener("keydown", e => {
+      if (!document.getElementById("learn").classList.contains("active") || ["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName)) return;
+      if (e.key === "ArrowLeft") moveCard(-1);
+      if (e.key === "ArrowRight") moveCard(1);
+      if (e.key === "1") rateCard(false);
+      if (e.key === "2") rateCard(true);
+      if (e.key === " ") { e.preventDefault(); flipCard(); }
+    });
+
+    function renderWordBank() {
+      document.getElementById("wordBank").innerHTML = WORDS.map(w => `
+        <article class="panel word-row">
+          <div><h3>${w.word}</h3><p>${w.definition}</p><div class="form-list">${w.forms.length ? w.forms.map(f => `${f.word} (${f.part}; ${f.level === "packet" ? "high-yield" : f.level === "rare" ? "rare" : "extended"})`).join(" · ") : "No standard derivative; regular inflections are still accepted"}</div></div>
+          <span class="mastery-dot ${isMastered(w.word) ? "done" : ""}" title="${isMastered(w.word) ? "Mastered" : "Still practicing"}"></span>
+        </article>`).join("");
+    }
+
+    function buildQuestionBank(types, restrictWords = null) {
+      const allowed = w => !restrictWords || restrictWords.includes(w.word);
+      const bank = [];
+      if (types.includes("definition")) {
+        WORDS.filter(allowed).forEach(w => bank.push({
+          type:"definition", word:w.word, label:"Definition → word", prompt:w.definition,
+          response:"text", answers:[w.word], why:`The answer is ${w.word}. ${w.definition}`
+        }));
+      }
+      if (types.includes("context")) {
+        WORDS.filter(allowed).forEach(w => bank.push({
+          type:"context", word:w.word, label:"Context clue", prompt:w.cloze,
+          response:"choice", options:shuffle(w.options), answers:w.answer, why:`${w.word}: ${w.definition}`
+        }));
+      }
+      if (types.includes("usage")) {
+        USAGE.filter(q => !restrictWords || restrictWords.includes(q.word)).forEach(q => bank.push({
+          type:"usage", word:q.word, label:"Usage: true or false?", prompt:q.statement,
+          response:"boolean", options:["True","False"], answers:[q.answer ? "true" : "false"], why:q.why
+        }));
+      }
+      if (types.includes("forms")) {
+        FORM_QUESTIONS.filter(q => !restrictWords || restrictWords.includes(q.word)).forEach(q => bank.push({
+          type:"forms", word:q.word, label:"Related form", prompt:q.prompt,
+          response:"choice", options:shuffle(q.options), answers:[q.correct], why:q.why
+        }));
+      }
+      return bank;
+    }
+
+    function startQuiz(missedOnly = false) {
+      const types = [...document.querySelectorAll('input[name="qtype"]:checked')].map(i => i.value);
+      const message = document.getElementById("setupMessage");
+      if (!types.length) { message.textContent = "Choose at least one question type."; return; }
+      let restricted = null;
+      if (missedOnly) {
+        restricted = [...new Set(stats.missed)];
+        if (!restricted.length) { message.textContent = "No missed words yet. Take a mixed quiz first."; return; }
+      }
+      const bank = shuffle(buildQuestionBank(types, restricted));
+      const lengthVal = document.querySelector('input[name="qlength"]:checked').value;
+      const count = lengthVal === "all" ? bank.length : Math.min(Number(lengthVal), bank.length);
+      currentQuiz = bank.slice(0, count);
+      quizIndex = 0; quizScore = 0; quizStreak = 0; quizMisses = []; submitted = false; selectedChoice = null;
+      document.getElementById("quizSetup").hidden = true;
+      document.getElementById("quizPlay").hidden = false;
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      submitted = false; selectedChoice = null;
+      const q = currentQuiz[quizIndex];
+      const progress = Math.round(quizIndex / currentQuiz.length * 100);
+      document.getElementById("quizProgress").style.width = progress + "%";
+      document.getElementById("quizSideText").textContent = `${quizIndex} complete · ${quizScore} correct`;
+      let input = "";
+      if (q.response === "text") {
+        input = `<label class="sr-only" for="quizAnswer">Type your answer</label><input id="quizAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type the vocabulary word…">`;
+      } else {
+        input = `<div class="choice-grid">${q.options.map(o => `<button class="choice" data-answer="${o}">${o}</button>`).join("")}</div>`;
+      }
+      document.getElementById("quizCard").innerHTML = `
+        <div class="quiz-top"><span class="quiz-count">Question ${quizIndex + 1} of ${currentQuiz.length}</span><span class="quiz-score">Score ${quizScore}</span></div>
+        <span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3>
+        <div id="answerArea">${input}</div><div id="feedback" aria-live="polite"></div>
+        <div class="quiz-actions"><span></span><button id="submitAnswer" class="btn btn-dark">Check answer</button></div>`;
+      document.querySelectorAll(".choice").forEach(btn => btn.addEventListener("click", () => {
+        if (submitted) return;
+        selectedChoice = btn.dataset.answer;
+        document.querySelectorAll(".choice").forEach(b => b.classList.toggle("selected", b === btn));
+      }));
+      document.getElementById("submitAnswer").addEventListener("click", submitAnswer);
+      const inputEl = document.getElementById("quizAnswer");
+      if (inputEl) { inputEl.focus(); inputEl.addEventListener("keydown", e => { if (e.key === "Enter") submitAnswer(); }); }
+    }
+
+    function submitAnswer() {
+      if (submitted) { nextQuestion(); return; }
+      const q = currentQuiz[quizIndex];
+      const raw = q.response === "text" ? document.getElementById("quizAnswer").value : selectedChoice;
+      if (!raw) { document.getElementById("feedback").innerHTML = `<div class="feedback bad">Choose or enter an answer first.</div>`; return; }
+      const value = normalize(raw);
+      const correct = q.answers.some(a => normalize(a) === value);
+      submitted = true;
+      stats.total++;
+      stats.wordStats[q.word] ||= {correct:0, wrong:0};
+      if (correct) {
+        quizScore++; quizStreak++; stats.correct++; stats.wordStats[q.word].correct++;
+        stats.bestStreak = Math.max(stats.bestStreak, quizStreak);
+        stats.missed = stats.missed.filter(w => w !== q.word);
+      } else {
+        quizStreak = 0; stats.wordStats[q.word].wrong++; quizMisses.push(q.word);
+        if (!stats.missed.includes(q.word)) stats.missed.push(q.word);
+      }
+      saveStats();
+      if (q.response !== "text") {
+        document.querySelectorAll(".choice").forEach(btn => {
+          btn.disabled = true;
+          if (q.answers.some(a => normalize(a) === normalize(btn.dataset.answer))) btn.classList.add("correct");
+          else if (btn.dataset.answer === raw) btn.classList.add("wrong");
+        });
+      } else {
+        document.getElementById("quizAnswer").disabled = true;
+      }
+      document.getElementById("feedback").innerHTML = `<div class="feedback ${correct ? "good" : "bad"}"><strong>${correct ? "Correct." : `Not quite — ${q.answers[0]}.`}</strong> ${q.why}</div>`;
+      const submit = document.getElementById("submitAnswer");
+      submit.textContent = quizIndex === currentQuiz.length - 1 ? "See results" : "Next question";
+      submit.className = "btn btn-primary";
+      document.getElementById("quizSideText").textContent = `${quizIndex + 1} complete · ${quizScore} correct`;
+      document.getElementById("quizProgress").style.width = Math.round((quizIndex + 1) / currentQuiz.length * 100) + "%";
+    }
+
+    function nextQuestion() {
+      quizIndex++;
+      if (quizIndex >= currentQuiz.length) renderSummary(); else renderQuestion();
+    }
+
+    function renderSummary() {
+      const pct = Math.round(quizScore / currentQuiz.length * 100);
+      const missed = [...new Set(quizMisses)];
+      document.getElementById("quizCard").innerHTML = `
+        <div class="summary"><span class="question-type">Quiz complete</span><div class="summary-score">${pct}%</div><h3>${quizScore} of ${currentQuiz.length} correct</h3>
+        <p>${pct >= 90 ? "Strong command of the set." : pct >= 70 ? "Good progress—review the missed words once more." : "Use the missed-word round to strengthen recall."}</p>
+        ${missed.length ? `<div class="missed-list">${missed.map(name => `<div class="missed-item"><strong>${name}</strong><span>${wordByName(name).definition}</span></div>`).join("")}</div>` : ""}
+        <div class="toolbar" style="justify-content:center"><button id="retryBtn" class="btn btn-primary">New quiz</button>${missed.length ? `<button id="reviewMissedBtn" class="btn btn-light">Review missed</button>` : ""}</div></div>`;
+      document.getElementById("quizProgress").style.width = "100%";
+      document.getElementById("quizSideText").textContent = `Complete · ${quizScore} correct`;
+      document.getElementById("retryBtn").addEventListener("click", endQuiz);
+      document.getElementById("reviewMissedBtn")?.addEventListener("click", () => {
+        stats.missed = [...new Set([...stats.missed, ...missed])]; saveStats(); endQuiz(); startQuiz(true);
+      });
+    }
+
+    function endQuiz() {
+      document.getElementById("quizPlay").hidden = true;
+      document.getElementById("quizSetup").hidden = false;
+      document.getElementById("setupMessage").textContent = "";
+    }
+    document.getElementById("startQuizBtn").addEventListener("click", () => startQuiz(false));
+    document.getElementById("missedQuizBtn").addEventListener("click", () => startQuiz(true));
+    document.getElementById("quitQuizBtn").addEventListener("click", endQuiz);
+
+    function renderLab() {
+      document.getElementById("wordPicker").innerHTML = WORDS.map((w, i) => `<button class="pick-word ${i === labIndex ? "active" : ""}" data-index="${i}">${w.word}</button>`).join("");
+      document.querySelectorAll(".pick-word").forEach(btn => btn.addEventListener("click", () => {
+        labIndex = Number(btn.dataset.index); document.getElementById("sentenceInput").value = ""; resetLabChecks(); renderLab();
+      }));
+      const w = WORDS[labIndex];
+      document.getElementById("labWord").textContent = w.word;
+      document.getElementById("labDefinition").textContent = w.definition;
+      document.getElementById("modelAnswer").hidden = true;
+    }
+    function resetLabChecks() { ["checkWord","checkLength","checkEnd"].forEach(id => document.getElementById(id).classList.remove("pass")); document.getElementById("modelAnswer").hidden = true; }
+    function evaluateSentence() {
+      const text = document.getElementById("sentenceInput").value.trim();
+      const w = WORDS[labIndex];
+      const tokens = normalize(text).split(" ");
+      const usesWord = allForms(w).some(form => tokens.includes(normalize(form)));
+      document.getElementById("checkWord").classList.toggle("pass", usesWord);
+      document.getElementById("checkLength").classList.toggle("pass", tokens.filter(Boolean).length >= 8);
+      document.getElementById("checkEnd").classList.toggle("pass", /[.!?][\”\"]?$/.test(text));
+    }
+    document.getElementById("evaluateBtn").addEventListener("click", evaluateSentence);
+    document.getElementById("revealModelBtn").addEventListener("click", () => {
+      const w = WORDS[labIndex];
+      const box = document.getElementById("modelAnswer"); box.innerHTML = `<strong>Comparison sentence</strong><br>${w.example}`; box.hidden = false;
+    });
+    document.getElementById("clearSentenceBtn").addEventListener("click", () => { document.getElementById("sentenceInput").value = ""; resetLabChecks(); });
+    document.getElementById("sentenceInput").addEventListener("input", resetLabChecks);
+
+    renderStats(); renderFlashcard(); renderWordBank(); renderLab();
+  </script>
+</body>
+</html>
