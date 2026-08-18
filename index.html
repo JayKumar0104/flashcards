@@ -270,6 +270,27 @@
     .manual-grade { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 14px; }
     .retry-note { display: inline-block; margin-top: 9px; color: #8a5a00; font-size: 12px; font-weight: 800; }
 
+    .test-part-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
+    .test-part-card { border: 1px solid var(--line); border-radius: 16px; background: #fbfcff; padding: 18px; text-align: left; color: var(--ink); }
+    .test-part-card:hover { border-color: #9fb0d2; background: var(--blue-soft); }
+    .test-part-card strong { display: block; margin: 6px 0; font-size: 18px; }
+    .test-part-card p { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 0; }
+    .part-number { color: #845800; font-size: 10px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .audio-panel { display: grid; place-items: center; gap: 12px; padding: 24px; margin-bottom: 18px; border-radius: 16px; background: var(--blue-soft); border: 1px solid #cdd8f0; text-align: center; }
+    .audio-icon { width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: white; font-size: 25px; }
+    .audio-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .match-list { display: grid; gap: 10px; margin-top: 18px; }
+    .match-row { display: grid; grid-template-columns: minmax(120px,.65fr) minmax(0,1.35fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 13px; background: #fbfcff; }
+    .match-row strong { font-family: Georgia, serif; font-size: 18px; }
+    .match-row select { width: 100%; min-width: 0; border: 1px solid #cfd6e4; background: white; color: var(--ink); padding: 11px; border-radius: 10px; }
+    .definition-key { display: grid; gap: 8px; margin: 16px 0 22px; }
+    .definition-key div { display: grid; grid-template-columns: 28px 1fr; gap: 8px; color: var(--muted); line-height: 1.45; font-size: 13px; }
+    .definition-key strong { color: var(--navy); }
+    .part-divider { margin: 28px 0 18px; padding-top: 22px; border-top: 2px solid var(--line); }
+    .pair-targets { display: flex; flex-wrap: wrap; gap: 9px; margin: 12px 0 18px; }
+    .pair-word { font-family: Georgia, serif; font-size: clamp(28px,4vw,44px); background: var(--gold-soft); border: 1px solid #ecd18b; border-radius: 13px; padding: 8px 13px; }
+    .small-note { color: var(--muted); font-size: 12px; line-height: 1.5; }
+
     .review-hero { display: flex; justify-content: space-between; align-items: center; gap: 28px; padding: clamp(24px, 5vw, 42px); background: linear-gradient(135deg, #fff, #f3f6ff); }
     .review-hero strong { display: block; font-size: clamp(62px, 9vw, 94px); letter-spacing: -.07em; line-height: .95; color: var(--navy); }
     .review-hero p { color: var(--muted); margin: 10px 0 0; }
@@ -324,6 +345,7 @@
       .flash-controls { grid-template-columns: 1fr 1fr; }
       .mode-grid { grid-template-columns: 1fr; }
       .tool-grid { grid-template-columns: repeat(2, 1fr); }
+      .test-part-grid { grid-template-columns: 1fr; }
       .progress-overview { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 680px) {
@@ -344,6 +366,7 @@
       .review-actions { min-width: 0; }
       .rating-grid { grid-template-columns: repeat(2, 1fr); }
       .category-row { grid-template-columns: 88px 1fr 78px; }
+      .match-row { grid-template-columns: 1fr; }
       .section-head { align-items: start; flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -375,7 +398,7 @@
         <div>
           <span class="eyebrow">AP Lang · Set 1 · focused practice</span>
           <h1 id="home-title">Make every word feel familiar.</h1>
-          <p class="lede">Study ten words and 31 word-family forms, prepare for the current test, then keep the vocabulary active for future reading and the SAT.</p>
+          <p class="lede">Prepare for the expected format: spell every word from dictation, match all ten definitions once, judge usage, supply the correct derivative, and write complete sentences with paired words.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" data-cram-start="sprint">Start 5-minute sprint</button>
             <button class="btn btn-ghost" data-go="review">Review due words</button>
@@ -395,10 +418,10 @@
             <span class="mode-icon">Aa</span><h3>Flashcards</h3><p>Learn definitions, parts of speech, derivatives, and fresh examples.</p><span class="mode-link">Begin review →</span>
           </button>
           <button class="mode-card" data-go="practice">
-            <span class="mode-icon">✓</span><h3>Practice</h3><p>Mix definitions, context clues, word forms, usage judgments, and sentences.</p><span class="mode-link">Build a practice set →</span>
+            <span class="mode-icon">✓</span><h3>Practice</h3><p>Drill each confirmed test section separately or build a mixed set.</p><span class="mode-link">Choose a test part →</span>
           </button>
           <button class="mode-card" data-go="cram">
-            <span class="mode-icon">⚡</span><h3>Cram</h3><p>Diagnose quickly, focus weak words, and run a draft-format mock exam.</p><span class="mode-link">Open exam prep →</span>
+            <span class="mode-icon">⚡</span><h3>Cram</h3><p>Diagnose quickly, focus weak skills, and run a test-format mock exam.</p><span class="mode-link">Open exam prep →</span>
           </button>
           <button class="mode-card" data-go="review">
             <span class="mode-icon">↻</span><h3>Retain</h3><p>Review words when due with expanding intervals and varied prompts.</p><span class="mode-link">Review due words →</span>
@@ -465,19 +488,25 @@
 
     <section id="practice" class="view" aria-labelledby="practice-title">
       <div class="page-intro">
-        <span class="eyebrow">Flexible active recall</span>
-        <h2 id="practice-title">Practice the skills</h2>
-        <p class="lede">Build a mixed set now; the same question engine powers the exam-focused and long-term review tools.</p>
+        <span class="eyebrow">Test-aligned structure</span>
+        <h2 id="practice-title">Practice by test part</h2>
+        <p class="lede">Train the response the test actually requires. Dictation and derivatives are typed, definitions are matched one-to-one, usage is judged true or false, and short answers use two words in complete sentences.</p>
       </div>
       <div id="quizSetup" class="panel" style="padding: clamp(24px, 5vw, 38px);">
+        <div class="test-part-grid" aria-label="Test-part drills">
+          <button class="test-part-card" data-part-start="spelling"><span class="part-number">Part 1</span><strong>Dictation & spelling</strong><p>Hear each of the ten words and type the exact spelling.</p></button>
+          <button class="test-part-card" data-part-start="matching"><span class="part-number">Part 2</span><strong>Definition matching</strong><p>Match all ten words to a shuffled definition bank; each definition can be used once.</p></button>
+          <button class="test-part-card" data-part-start="part3"><span class="part-number">Part 3</span><strong>Application set</strong><p>Usage true/false, typed derivatives, and a paired-word short answer.</p></button>
+        </div>
         <div class="setup-grid">
           <div class="setup-row">
-            <label>Question types</label>
+            <label>Custom mixed practice</label>
             <div class="segmented">
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="spelling" checked><span>Spelling</span></label>
               <label class="toggle-option"><input type="checkbox" name="qtype" value="definition" checked><span>Definitions</span></label>
-              <label class="toggle-option"><input type="checkbox" name="qtype" value="context" checked><span>Context</span></label>
               <label class="toggle-option"><input type="checkbox" name="qtype" value="usage" checked><span>Usage T/F</span></label>
-              <label class="toggle-option"><input type="checkbox" name="qtype" value="forms" checked><span>Derivatives</span></label>
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="derivative" checked><span>Derivative blanks</span></label>
+              <label class="toggle-option"><input type="checkbox" name="qtype" value="shortanswer"><span>Two-word response</span></label>
             </div>
           </div>
           <div class="setup-row">
@@ -489,7 +518,7 @@
             </div>
           </div>
           <div class="toolbar">
-            <button id="startQuizBtn" class="btn btn-primary">Start mixed quiz</button>
+            <button id="startQuizBtn" class="btn btn-primary">Start mixed practice</button>
             <button id="missedQuizBtn" class="btn btn-light">Practice missed words</button>
           </div>
           <p id="setupMessage" class="key-help" aria-live="polite"></p>
@@ -507,18 +536,18 @@
       <div class="page-intro">
         <span class="eyebrow">Create + compare</span>
         <h2 id="lab-title">Sentence lab</h2>
-        <p class="lede">Write a sentence that proves you understand the word. The app checks structure—not meaning—so use the comparison sentence thoughtfully.</p>
+        <p class="lede">Practice the short-answer format by using both assigned words in one or more complete sentences. Structural checks cannot confirm meaning, so compare honestly with the rubric and model.</p>
       </div>
       <div class="lab-layout">
         <aside class="panel" style="padding: 16px;"><div id="wordPicker" class="word-picker"></div></aside>
         <div class="panel lab-card">
-          <span class="question-type">Your target word</span>
+          <span class="question-type">Your assigned pair</span>
           <div id="labWord" class="lab-target"></div>
           <p id="labDefinition" class="lede"></p>
           <label for="sentenceInput" class="sr-only">Write an original sentence</label>
-          <textarea id="sentenceInput" placeholder="Write one complete sentence using the target word or an appropriate related form..."></textarea>
+          <textarea id="sentenceInput" placeholder="Write one or more complete sentences using both words or appropriate derivatives..."></textarea>
           <div class="checks" aria-live="polite">
-            <div id="checkWord" class="check">Uses the target word or a related form</div>
+            <div id="checkWord" class="check">Uses both target words or appropriate derivatives</div>
             <div id="checkLength" class="check">Includes enough context to show meaning</div>
             <div id="checkEnd" class="check">Ends with sentence punctuation</div>
           </div>
@@ -537,27 +566,27 @@
       <div class="page-intro">
         <span class="eyebrow">Exam mode · intensive retrieval</span>
         <h2 id="cram-title">Cram for the current test</h2>
-        <p class="lede">Attempt first, reveal second, correct immediately, and see missed material again after intervening questions. The draft preset can be adjusted once the teacher confirms the exact format.</p>
+        <p class="lede">Attempt first, reveal second, correct immediately, and see missed material again after intervening questions. The full mock follows the provided three-part structure; its Part 3 weighting remains easy to adjust.</p>
       </div>
 
       <div id="cramSetup">
         <div class="tool-grid">
           <button class="tool-card panel" data-cram-start="sprint"><span class="tool-kicker">Fast diagnostic</span><strong>5-minute sprint</strong><p>Mixed written retrieval with rapid correction and automatic retries.</p><span>About 12 prompts →</span></button>
           <button class="tool-card panel" data-cram-start="weak"><span class="tool-kicker">Adaptive focus</span><strong>Weak words</strong><p>Prioritizes previous misses and your lowest-performing categories.</p><span>Target trouble spots →</span></button>
-          <button class="tool-card panel" data-cram-start="mock"><span class="tool-kicker">Closed book</span><strong>Full mock exam</strong><p>Uses the draft test mix and delays feedback until the end.</p><span>Run the simulation →</span></button>
-          <button class="tool-card panel" data-cram-start="confusion"><span class="tool-kicker">Precision</span><strong>Confusion pairs</strong><p>Separates easily mixed terms such as parlance/patois and eponym/appellation.</p><span>Sharpen distinctions →</span></button>
+          <button class="tool-card panel" data-cram-start="mock"><span class="tool-kicker">Closed book</span><strong>Full mock exam</strong><p>Runs 10 spellings, 10 definition matches, then Part 3 application questions.</p><span>Run the simulation →</span></button>
+          <button class="tool-card panel" data-cram-start="confusion"><span class="tool-kicker">Precision</span><strong>Usage traps</strong><p>Separates easily confused meanings before true/false and derivative questions.</p><span>Sharpen distinctions →</span></button>
         </div>
 
         <div class="panel format-panel">
-          <div class="section-head"><div><h3>Draft exam mix</h3><p>Keep or remove response families without changing the engine.</p></div><span class="status-badge">Format awaiting confirmation</span></div>
+          <div class="section-head"><div><h3>Target response families</h3><p>Use these controls for sprints and weak-skill rounds; the full mock always includes every known part.</p></div><span class="status-badge">Test-aligned</span></div>
           <div class="segmented">
-            <label class="toggle-option"><input type="checkbox" name="cramtype" value="definition" checked><span>Write definitions</span></label>
+            <label class="toggle-option"><input type="checkbox" name="cramtype" value="spelling" checked><span>Dictation spelling</span></label>
+            <label class="toggle-option"><input type="checkbox" name="cramtype" value="definition" checked><span>Definitions</span></label>
             <label class="toggle-option"><input type="checkbox" name="cramtype" value="derivative" checked><span>Write derivatives</span></label>
-            <label class="toggle-option"><input type="checkbox" name="cramtype" value="context" checked><span>Fill blanks</span></label>
-            <label class="toggle-option"><input type="checkbox" name="cramtype" value="sentence" checked><span>Write sentences</span></label>
             <label class="toggle-option"><input type="checkbox" name="cramtype" value="usage" checked><span>Usage T/F</span></label>
+            <label class="toggle-option"><input type="checkbox" name="cramtype" value="shortanswer" checked><span>Two-word response</span></label>
           </div>
-          <div class="toolbar" style="margin-top:16px"><button id="printMockBtn" class="btn btn-light btn-small">Print draft mock</button><span id="cramSetupMessage" class="key-help" aria-live="polite"></span></div>
+          <div class="toolbar" style="margin-top:16px"><button id="printMockBtn" class="btn btn-light btn-small">Print test-format mock</button><span id="cramSetupMessage" class="key-help" aria-live="polite"></span></div>
         </div>
       </div>
 
@@ -600,7 +629,7 @@
       <div class="page-intro">
         <span class="eyebrow">Evidence, not vibes</span>
         <h2 id="progress-title">See what needs work</h2>
-        <p class="lede">Accuracy is separated by skill so a strong definition score cannot hide weak derivative or sentence performance.</p>
+        <p class="lede">Accuracy is separated by test skill so strong definition recognition cannot hide weak spelling, derivative, usage, or short-answer performance.</p>
       </div>
       <div class="stat-row progress-overview">
         <div class="stat-box panel"><strong id="progressAnswered">0</strong><span>responses</span></div>
@@ -1095,9 +1124,9 @@
     */
   </script>
   <script>
-    const APP_STORAGE_KEY = "flashcards-ap-lang-set-1-progress-v2";
-    const LEGACY_STORAGE_KEY = "flashcards-ap-lang-set-1-progress-v1";
-    const CATEGORY_LABELS = {definition:"Definitions", derivative:"Derivatives", context:"Context", sentence:"Sentences", usage:"Usage T/F"};
+    const APP_STORAGE_KEY = "flashcards-ap-lang-set-1-progress-v3";
+    const LEGACY_STORAGE_KEYS = ["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"];
+    const CATEGORY_LABELS = {spelling:"Spelling",definition:"Definition matching",usage:"Usage T/F",derivative:"Derivative blanks",shortanswer:"Short answers"};
     const REVIEW_INTERVALS = [0, 1, 3, 7, 14, 30, 60, 90];
 
     const TRANSFER_CONTEXTS = [
@@ -1124,12 +1153,67 @@
       {word:"vulgar", category:"usage", prompt:"Can vulgar describe both crude language and an offensively showy display?", options:["Yes","No"], answers:["Yes"], why:"Both are included senses of vulgar in this set."}
     ];
 
+    const DERIVATIVE_FILLINS = [
+      {word:"annotation",tier:"core",prompt:"The researcher will ___ the interview transcript with short explanatory notes.",answers:["annotate"],why:"Annotate is the verb meaning to add explanatory or critical notes."},
+      {word:"annotation",tier:"core",prompt:"The editor added an ___ beside the obscure historical reference.",answers:["annotation"],why:"Annotation is the noun for an explanatory or critical note."},
+      {word:"annotation",tier:"extended",prompt:"The project hired an ___ to label and explain the archived documents.",answers:["annotator"],why:"An annotator is a person who annotates."},
+      {word:"annotation",tier:"extended",prompt:"Because the digital text permits readers to add notes, it is ___.",answers:["annotatable"],why:"Annotatable means capable of being annotated."},
+      {word:"annotation",tier:"extended",prompt:"The scholar’s ___ comments explain the sources without interrupting the main argument.",answers:["annotative"],why:"Annotative is an adjective for material that adds notes or commentary."},
+      {word:"annotation",tier:"rare",prompt:"The editor described the note-adding material in the margin as ___.",answers:["annotatory"],why:"Annotatory is a rare adjective related to annotation."},
+      {word:"appellation",tier:"core",prompt:"The nickname gradually became a familiar ___ for the neighborhood.",answers:["appellation"],why:"An appellation is a name, title, or designation."},
+      {word:"appellation",tier:"extended",prompt:"In the phrase “the Bard,” the word Bard functions as an ___ naming Shakespeare.",answers:["appellative"],why:"Appellative can be a noun for a name or descriptive title."},
+      {word:"appellation",tier:"extended",prompt:"The title was used ___ rather than as a description of the person’s behavior.",answers:["appellatively"],why:"Appellatively is the adverb related to appellative."},
+      {word:"eponym",tier:"core",prompt:"The scientist became the ___ of the scale that bears her surname.",answers:["eponym"],why:"The source person whose name is given to something is its eponym."},
+      {word:"eponym",tier:"core",prompt:"The novel and its ___ film adaptation share the same title.",answers:["eponymous"],why:"Eponymous means giving a name to, or having the same name as, something else."},
+      {word:"eponym",tier:"extended",prompt:"The company was ___ named after its founder.",answers:["eponymously"],why:"Eponymously is the adverb in the eponym word family."},
+      {word:"eponym",tier:"extended",prompt:"The naming relationship between the scientist and the scale is an example of ___.",answers:["eponymy"],why:"Eponymy is the practice or relationship of naming something after a person."},
+      {word:"eponym",tier:"extended",prompt:"The historian traced the ___ connection between the inventor and the device bearing his name.",answers:["eponymic"],why:"Eponymic is an adjective relating to an eponym."},
+      {word:"linguistics",tier:"core",prompt:"The ___ studies how sentence patterns change across generations.",answers:["linguist"],why:"A linguist is a person who studies language."},
+      {word:"linguistics",tier:"core",prompt:"The two dialects share several ___ features.",answers:["linguistic"],why:"Linguistic is the adjective relating to language."},
+      {word:"linguistics",tier:"extended",prompt:"The region is ___ diverse because several languages are spoken there.",answers:["linguistically"],why:"Linguistically is the adverb meaning with respect to language."},
+      {word:"linguistics",tier:"core",prompt:"The systematic study of language structure and variation is called ___.",answers:["linguistics"],why:"Linguistics is the field that systematically studies language."},
+      {word:"malapropism",tier:"core",prompt:"Calling an electoral vote an “electrical vote” is a ___.",answers:["malapropism","malaprop"],why:"A malapropism, also called a malaprop, substitutes a similar-sounding word incorrectly."},
+      {word:"neologism",tier:"core",prompt:"The newly coined expression began as a ___ before becoming common.",answers:["neologism"],why:"A neologism is a newly created word, expression, or usage."},
+      {word:"neologism",tier:"extended",prompt:"The author’s ___ style relies heavily on newly coined expressions.",answers:["neologistic","neological"],why:"Neologistic and neological are adjectives in this word family."},
+      {word:"neologism",tier:"extended",prompt:"A habitual coiner of new words may be called a ___.",answers:["neologist"],why:"A neologist introduces or uses new words."},
+      {word:"neologism",tier:"extended",prompt:"Writers sometimes ___ when existing vocabulary cannot express a new idea.",answers:["neologize"],why:"Neologize is the verb meaning to create or use new words."},
+      {word:"neologism",tier:"extended",prompt:"The critic studied the author’s ___, especially her habit of inventing expressions.",answers:["neology"],why:"Neology can name the use or introduction of new expressions."},
+      {word:"parlance",tier:"core",prompt:"In computer-hardware ___, RAM is short-term working memory.",answers:["parlance"],why:"Parlance is the characteristic vocabulary or manner of speaking of a group or field."},
+      {word:"patois",tier:"core",prompt:"The dialogue preserves several expressions from the region’s spoken ___.",answers:["patois"],why:"Patois is a regional, often nonstandard dialect with a mainly spoken tradition."},
+      {word:"polyglot",tier:"core",prompt:"Because the guide speaks six languages, she is a ___.",answers:["polyglot"],why:"As a noun, polyglot means a person who speaks several languages."},
+      {word:"polyglot",tier:"core",prompt:"The port city has a ___ population that communicates in many languages.",answers:["polyglot"],why:"As an adjective, polyglot means using or composed of several languages."},
+      {word:"polyglot",tier:"extended",prompt:"His knowledge and regular use of several languages demonstrated remarkable ___.",answers:["polyglotism"],why:"Polyglotism is the noun for polyglot character, knowledge, or usage."},
+      {word:"polyglot",tier:"extended",prompt:"The archive’s ___ collection contains documents in many languages.",answers:["polyglottal","polyglottic"],why:"Polyglottal and polyglottic are less-common adjectives meaning polyglot."},
+      {word:"polyglot",tier:"rare",prompt:"The rare adjective ___ can describe something expressed in several languages.",answers:["polyglottous"],why:"Polyglottous is an attested but rare adjective in the polyglot family."},
+      {word:"vulgar",tier:"core",prompt:"The audience objected to the unnecessary ___ of the insult.",answers:["vulgarity"],why:"Vulgarity is the high-yield noun related to vulgar."},
+      {word:"vulgar",tier:"core",prompt:"The reviewer called the gold-plated room a ___ display of wealth.",answers:["vulgar"],why:"Vulgar can mean offensively showy or excessive."},
+      {word:"vulgar",tier:"extended",prompt:"The decorations were displayed so ___ that they overwhelmed the room.",answers:["vulgarly"],why:"Vulgarly is the adverb form of vulgar."},
+      {word:"vulgar",tier:"extended",prompt:"A careless adaptation can ___ a complex work by making it coarse or oversimplified.",answers:["vulgarize"],why:"Vulgarize is the verb meaning to make vulgar or common."},
+      {word:"vulgar",tier:"extended",prompt:"The critic objected to the ___ of the complex argument into a crude slogan.",answers:["vulgarization"],why:"Vulgarization names the process or result of vulgarizing."},
+      {word:"vulgar",tier:"extended",prompt:"The reviewer accused the careless adapter of being a ___ of serious literature.",answers:["vulgarizer"],why:"A vulgarizer is a person or thing that vulgarizes."},
+      {word:"vulgar",tier:"extended",prompt:"The snobbish narrator dismisses the loud, unrefined guest as a ___.",answers:["vulgarian"],why:"Vulgarian is a noun for a person regarded as coarse or lacking refinement."},
+      {word:"vulgar",tier:"extended",prompt:"The editor removed the ___ because the coarse expression did not fit the formal article.",answers:["vulgarism"],why:"A vulgarism is a vulgar word, expression, or usage."}
+    ];
+
+    const SHORT_ANSWER_PAIRS = [
+      {words:["annotation","neologism"],prompt:"Create one or more complete sentences using both annotation and neologism, or appropriate derivatives.",model:"The editor annotated the article to explain why its newest neologism had become popular online."},
+      {words:["appellation","eponym"],prompt:"Create one or more complete sentences using both appellation and eponym, or appropriate derivatives.",model:"Although the product’s informal appellation came from customers, its official eponym was the engineer whose surname it carried."},
+      {words:["linguistics","patois"],prompt:"Create one or more complete sentences using both linguistics and patois, or appropriate derivatives.",model:"The linguist recorded the mountain community’s patois for a study in regional linguistics."},
+      {words:["malapropism","parlance"],prompt:"Create one or more complete sentences using both malapropism and parlance, or appropriate derivatives.",model:"In medical parlance the terms have precise meanings, so confusing them with a similar-sounding word would be a malapropism."},
+      {words:["polyglot","vulgar"],prompt:"Create one or more complete sentences using both polyglot and vulgar, or appropriate derivatives.",model:"The polyglot diplomat avoided vulgar expressions in every language she spoke."},
+      {words:["annotation","appellation"],prompt:"Create one or more complete sentences using both annotation and appellation, or appropriate derivatives.",model:"An annotation explained how the newspaper’s old appellation for the city originated."},
+      {words:["eponym","neologism"],prompt:"Create one or more complete sentences using both eponym and neologism, or appropriate derivatives.",model:"The inventor became the eponym of the device, while a separate neologism described the behavior it enabled."},
+      {words:["parlance","patois"],prompt:"Create one or more complete sentences using both parlance and patois, or appropriate derivatives.",model:"The lawyer’s professional parlance differed sharply from the rural patois spoken at home."},
+      {words:["linguistics","polyglot"],prompt:"Create one or more complete sentences using both linguistics and polyglot, or appropriate derivatives.",model:"The polyglot student became a linguist after years of studying linguistics."},
+      {words:["malapropism","vulgar"],prompt:"Create one or more complete sentences using both malapropism and vulgar, or appropriate derivatives.",model:"His vulgar joke included a malapropism that made the sentence even more ridiculous."}
+    ];
+
     const freshCategories = () => Object.fromEntries(Object.keys(CATEGORY_LABELS).map(k => [k,{total:0,correct:0,timeMs:0}]));
     const defaultStatsV2 = () => ({total:0,correct:0,bestStreak:0,wordStats:{},missed:[],categories:freshCategories(),review:{},cramHistory:[],lastStudy:null});
 
     function loadAppStats() {
       let raw = {};
-      try { raw = JSON.parse(localStorage.getItem(APP_STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY) || "{}"); } catch {}
+      try { raw = JSON.parse(localStorage.getItem(APP_STORAGE_KEY) || LEGACY_STORAGE_KEYS.map(k=>localStorage.getItem(k)).find(Boolean) || "{}"); } catch {}
       const base = defaultStatsV2();
       return {
         ...base, ...raw,
@@ -1140,8 +1224,8 @@
 
     let appStats = loadAppStats();
     let deckOrder = WORDS.map((_,i)=>i), flashIndex = 0, labWordIndex = 0;
-    let practiceQueue = [], practiceIndex = 0, practiceScore = 0, practiceStreak = 0, practiceMisses = [], practiceSubmitted = false, practiceChoice = null;
-    let cramQueue = [], cramIndex = 0, cramMode = "", cramScore = 0, cramGraded = 0, cramResponses = [], cramSubmitted = false, cramChoice = null, cramQuestionStarted = 0, cramStarted = 0, cramTimerId = null, mockManual = [], mockManualIndex = 0;
+    let practiceQueue = [], practiceIndex = 0, practiceScore = 0, practiceStreak = 0, practiceMisses = [], practiceSubmitted = false, practiceChoice = null, practiceQuestionStarted = 0, practiceSelfPending = false, activeDefinitionBank = [];
+    let cramQueue = [], cramIndex = 0, cramMode = "", cramScore = 0, cramGraded = 0, cramResponses = [], cramSubmitted = false, cramChoice = null, cramQuestionStarted = 0, cramStarted = 0, cramTimerId = null, mockManual = [], mockManualIndex = 0, mockDefinitionChoices = new Set();
     let reviewQueue = [], reviewInitial = 0, reviewCompleted = 0, reviewRevealed = false, reviewPrompt = null, reviewStartedAt = 0;
 
     function saveAppStats() {
@@ -1178,6 +1262,22 @@
     }
     function correctFor(q, value) { return q.answers.some(a=>normalizeAnswer(a)===normalizeAnswer(value)); }
     function pct(correct,total) { return total ? Math.round(correct/total*100) : 0; }
+    function speakWord(word,slow=false) {
+      if(!("speechSynthesis" in window)) return false;
+      speechSynthesis.cancel();
+      const utterance=new SpeechSynthesisUtterance(word);
+      utterance.rate=slow ? 0.55 : 0.82;utterance.pitch=1;utterance.lang="en-US";
+      speechSynthesis.speak(utterance);return true;
+    }
+    function audioMarkup() {
+      return `<div class="audio-panel"><div class="audio-icon" aria-hidden="true">♪</div><strong>Listen to the word, then type its spelling.</strong><div class="audio-actions"><button class="btn btn-dark btn-small" data-speak="normal">Play word</button><button class="btn btn-light btn-small" data-speak="slow">Play slowly</button></div><span class="small-note">Capitalization is ignored; spelling is not.</span></div>`;
+    }
+    function bindAudio(word) {
+      document.querySelectorAll("[data-speak]").forEach(b=>b.addEventListener("click",()=>speakWord(word,b.dataset.speak==="slow")));
+      setTimeout(()=>speakWord(word,false),180);
+    }
+    function shortAnswerRubric(words){return [`Uses ${words[0]} or an appropriate derivative correctly`,`Uses ${words[1]} or an appropriate derivative correctly`,`Provides enough context to prove both meanings`,`Uses one or more complete sentences`];}
+    function definitionDistractors(word,count=3){return shuffleList(WORDS.filter(w=>w.word!==word).map(w=>w.definition)).slice(0,count);}
     function escapeHtml(s) { return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 
     function defaultReviewState() { return {stage:0,interval:0,due:0,reps:0,lapses:0,last:0}; }
@@ -1241,80 +1341,135 @@
       document.getElementById("wordBank").innerHTML=WORDS.map(w=>`<article class="panel word-row"><div><h3>${w.word}</h3><p>${w.definition}</p><div class="form-list">${w.forms.length?w.forms.map(f=>`${f.word} (${f.part}; ${f.level==="packet"?"high-yield":f.level==="rare"?"rare":"extended"})`).join(" · "):"No standard derivative; regular inflections are accepted"}</div></div><span class="mastery-dot ${mastered(w.word)?"done":""}" title="${mastered(w.word)?"Mastered":"Still practicing"}"></span></article>`).join("");
     }
 
-    function buildPracticeBank(types, restrict=null) {
-      const allowed=name=>!restrict||restrict.includes(name), bank=[];
-      if(types.includes("definition")) WORDS.filter(w=>allowed(w.word)).forEach(w=>bank.push({category:"definition",word:w.word,label:"Definition → word",prompt:w.definition,response:"text",answers:[w.word],why:`${w.word}: ${w.definition}`}));
-      if(types.includes("context")) WORDS.filter(w=>allowed(w.word)).forEach(w=>bank.push({category:"context",word:w.word,label:"Context clue",prompt:w.cloze,response:"choice",options:shuffleList(w.options),answers:w.answer,why:`${w.word}: ${w.definition}`}));
-      if(types.includes("usage")) USAGE.filter(q=>allowed(q.word)).forEach(q=>bank.push({category:"usage",word:q.word,label:"Usage: true or false?",prompt:q.statement,response:"choice",options:["True","False"],answers:[q.answer?"True":"False"],why:q.why}));
-      if(types.includes("forms")) FORM_QUESTIONS.filter(q=>allowed(q.word)).forEach(q=>bank.push({category:"derivative",word:q.word,label:"Word family",prompt:q.prompt,response:"choice",options:shuffleList(q.options),answers:[q.correct],why:q.why}));
-      return bank;
+    function spellingQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why:`Correct spelling: ${w.word}.`}));}
+    function definitionQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"definition",word:w.word,label:"Part 2 · Choose the definition",prompt:w.word,response:"choice",options:shuffleList([w.definition,...definitionDistractors(w.word)]),answers:[w.definition],why:w.definition}));}
+    function usageQuestions(restrict=null){return USAGE.filter(q=>!restrict||restrict.includes(q.word)).map(q=>({category:"usage",word:q.word,label:"Part 3 · Correct or incorrect?",prompt:q.statement,response:"choice",options:["True","False"],answers:[q.answer?"True":"False"],why:q.why}));}
+    function derivativeQuestions(restrict=null,coreOnly=false){return DERIVATIVE_FILLINS.filter(q=>(!restrict||restrict.includes(q.word))&&(!coreOnly||q.tier==="core")).map(q=>({category:"derivative",word:q.word,label:`Part 3 · Write the derivative${q.tier==="core"?" · high-yield":" · extended"}`,prompt:q.prompt,response:"text",answers:q.answers,why:q.why}));}
+    function shortAnswerQuestions(restrict=null){return SHORT_ANSWER_PAIRS.filter(p=>!restrict||p.words.some(w=>restrict.includes(w))).map(p=>({category:"shortanswer",word:p.words[0],words:p.words,label:"Part 3 · Short answer",prompt:p.prompt,response:"self",answers:[p.model],model:p.model,rubric:shortAnswerRubric(p.words)}));}
+    function buildPracticeBank(types,restrict=null){
+      return [
+        ...(types.includes("spelling")?spellingQuestions(restrict):[]),
+        ...(types.includes("definition")?definitionQuestions(restrict):[]),
+        ...(types.includes("usage")?usageQuestions(restrict):[]),
+        ...(types.includes("derivative")?derivativeQuestions(restrict):[]),
+        ...(types.includes("shortanswer")?shortAnswerQuestions(restrict):[])
+      ];
     }
-    function startPractice(missedOnly=false) {
-      const types=[...document.querySelectorAll('input[name="qtype"]:checked')].map(i=>i.value), msg=document.getElementById("setupMessage");
+    function beginPracticeQueue(queue){
+      practiceQueue=queue;practiceIndex=0;practiceScore=0;practiceStreak=0;practiceMisses=[];practiceSubmitted=false;practiceChoice=null;practiceSelfPending=false;
+      document.getElementById("quizSetup").hidden=true;document.getElementById("quizPlay").hidden=false;renderPracticeQuestion();
+    }
+    function startPractice(missedOnly=false){
+      const types=[...document.querySelectorAll('input[name="qtype"]:checked')].map(i=>i.value),msg=document.getElementById("setupMessage");
       if(!types.length){msg.textContent="Choose at least one question type.";return;}
       const restrict=missedOnly?[...new Set(appStats.missed)]:null;
       if(missedOnly&&!restrict.length){msg.textContent="No missed words yet. Start a mixed set first.";return;}
-      const bank=shuffleList(buildPracticeBank(types,restrict)), length=document.querySelector('input[name="qlength"]:checked').value;
-      practiceQueue=bank.slice(0,length==="all"?bank.length:Math.min(Number(length),bank.length));
-      practiceIndex=0;practiceScore=0;practiceStreak=0;practiceMisses=[];practiceSubmitted=false;practiceChoice=null;
-      document.getElementById("quizSetup").hidden=true;document.getElementById("quizPlay").hidden=false;renderPracticeQuestion();
+      const bank=shuffleList(buildPracticeBank(types,restrict)),length=document.querySelector('input[name="qlength"]:checked').value;
+      beginPracticeQueue(bank.slice(0,length==="all"?bank.length:Math.min(Number(length),bank.length)));
     }
-    function renderPracticeQuestion() {
-      const q=practiceQueue[practiceIndex]; practiceSubmitted=false;practiceChoice=null;
+    function startTestPart(part){
+      if(part==="matching"){startDefinitionMatching();return;}
+      if(part==="spelling"){beginPracticeQueue(shuffleList(spellingQuestions()));return;}
+      const usage=shuffleList(usageQuestions()).slice(0,5),derivatives=shuffleList(derivativeQuestions(null,true)).slice(0,3),shortAnswer=shuffleList(shortAnswerQuestions()).slice(0,1);
+      beginPracticeQueue([...usage,...derivatives,...shortAnswer]);
+    }
+    document.querySelectorAll("[data-part-start]").forEach(b=>b.addEventListener("click",()=>startTestPart(b.dataset.partStart)));
+    function practiceInput(q){
+      if(q.response==="audio")return `${audioMarkup()}<input id="quizAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type the word you heard…">`;
+      if(q.response==="text")return `<input id="quizAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type the correct form…">`;
+      if(q.response==="self")return `<textarea id="quizAnswer" placeholder="Write one or more complete sentences using both assigned words…"></textarea>`;
+      return `<div class="choice-grid">${q.options.map(o=>`<button class="choice" data-answer="${escapeHtml(o)}">${o}</button>`).join("")}</div>`;
+    }
+    function renderPracticeQuestion(){
+      const q=practiceQueue[practiceIndex];practiceSubmitted=false;practiceChoice=null;practiceSelfPending=false;practiceQuestionStarted=Date.now();
       document.getElementById("quizProgress").style.width=pct(practiceIndex,practiceQueue.length)+"%";
       document.getElementById("quizSideText").textContent=`${practiceIndex} complete · ${practiceScore} correct`;
-      const input=q.response==="text"?`<input id="quizAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type the vocabulary word…">`:`<div class="choice-grid">${q.options.map(o=>`<button class="choice" data-answer="${escapeHtml(o)}">${o}</button>`).join("")}</div>`;
-      document.getElementById("quizCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">Question ${practiceIndex+1} of ${practiceQueue.length}</span><span class="quiz-score">Score ${practiceScore}</span></div><span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3>${input}<div id="feedback" aria-live="polite"></div><div class="quiz-actions"><span></span><button id="submitAnswer" class="btn btn-dark">Check answer</button></div>`;
+      const partBreak=practiceIndex>0&&q.label.startsWith("Part 3")&&!practiceQueue[practiceIndex-1].label.startsWith("Part 3")?'<div class="part-divider"><strong>Part 3 · Application</strong></div>':"";
+      document.getElementById("quizCard").innerHTML=`${partBreak}<div class="quiz-top"><span class="quiz-count">Question ${practiceIndex+1} of ${practiceQueue.length}</span><span class="quiz-score">Score ${practiceScore}</span></div><span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3>${practiceInput(q)}<div id="feedback" aria-live="polite"></div><div class="quiz-actions"><span></span><button id="submitAnswer" class="btn btn-dark">${q.response==="self"?"Reveal rubric":"Check answer"}</button></div>`;
       document.querySelectorAll("#quizCard .choice").forEach(b=>b.addEventListener("click",()=>{if(practiceSubmitted)return;practiceChoice=b.dataset.answer;document.querySelectorAll("#quizCard .choice").forEach(x=>x.classList.toggle("selected",x===b));}));
       document.getElementById("submitAnswer").addEventListener("click",submitPractice);
-      document.getElementById("quizAnswer")?.addEventListener("keydown",e=>{if(e.key==="Enter")submitPractice();}); document.getElementById("quizAnswer")?.focus();
+      document.getElementById("quizAnswer")?.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName!=="TEXTAREA")submitPractice();});document.getElementById("quizAnswer")?.focus();
+      if(q.response==="audio")bindAudio(q.word);
     }
-    function submitPractice() {
+    function recordPracticeOutcome(q,ok,elapsed){
+      if(ok){practiceScore++;practiceStreak++;appStats.bestStreak=Math.max(appStats.bestStreak,practiceStreak);}else{practiceStreak=0;(q.words||[q.word]).forEach(w=>practiceMisses.push(w));}
+      recordResult(q.word,q.category,ok,elapsed);
+      (q.words||[]).slice(1).forEach(w=>{const ws=wordStats(w);ws[ok?"correct":"wrong"]++;if(!ok&&!appStats.missed.includes(w))appStats.missed.push(w);});
+      if(q.words?.length>1)saveAppStats();
+    }
+    function submitPractice(){
       if(practiceSubmitted){practiceIndex++;if(practiceIndex>=practiceQueue.length)finishPractice();else renderPracticeQuestion();return;}
-      const q=practiceQueue[practiceIndex], raw=q.response==="text"?document.getElementById("quizAnswer").value:practiceChoice;
+      const q=practiceQueue[practiceIndex],raw=q.response==="choice"?practiceChoice:document.getElementById("quizAnswer")?.value.trim();
       if(!raw){document.getElementById("feedback").innerHTML='<div class="feedback bad">Enter or choose an answer first.</div>';return;}
-      const ok=correctFor(q,raw);practiceSubmitted=true;
-      if(ok){practiceScore++;practiceStreak++;appStats.bestStreak=Math.max(appStats.bestStreak,practiceStreak);}else{practiceStreak=0;practiceMisses.push(q.word);}
-      recordResult(q.word,q.category,ok,0);
+      if(q.response==="self"){
+        practiceSelfPending=true;document.getElementById("quizAnswer").disabled=true;document.getElementById("submitAnswer").hidden=true;
+        document.getElementById("feedback").innerHTML=`<div class="model-answer"><strong>Reference example</strong><br>${q.model}</div><div class="self-rubric">${q.rubric.map(x=>`<span class="rubric-line">${x}</span>`).join("")}</div><div class="manual-grade"><button class="btn btn-light" data-practice-grade="false">Needs another try</button><button class="btn btn-primary" data-practice-grade="true">Meets all criteria</button></div>`;
+        document.querySelectorAll("[data-practice-grade]").forEach(b=>b.addEventListener("click",()=>gradePracticeSelf(b.dataset.practiceGrade==="true")));return;
+      }
+      const ok=correctFor(q,raw);practiceSubmitted=true;recordPracticeOutcome(q,ok,Date.now()-practiceQuestionStarted);
       document.querySelectorAll("#quizCard .choice").forEach(b=>{b.disabled=true;if(correctFor(q,b.dataset.answer))b.classList.add("correct");else if(b.dataset.answer===raw)b.classList.add("wrong");});
       if(document.getElementById("quizAnswer"))document.getElementById("quizAnswer").disabled=true;
-      document.getElementById("feedback").innerHTML=`<div class="feedback ${ok?"good":"bad"}"><strong>${ok?"Correct.":`Not quite — ${q.answers[0]}.`}</strong> ${q.why}</div>`;
-      const btn=document.getElementById("submitAnswer");btn.textContent=practiceIndex===practiceQueue.length-1?"See results":"Next question";btn.className="btn btn-primary";
+      document.getElementById("feedback").innerHTML=`<div class="feedback ${ok?"good":"bad"}"><strong>${ok?"Correct.":`Not quite — ${q.answers[0]}.`}</strong> ${q.why}</div>`;advancePracticeButton();
     }
-    function finishPractice() {
-      const p=pct(practiceScore,practiceQueue.length), missed=[...new Set(practiceMisses)];
-      document.getElementById("quizCard").innerHTML=`<div class="summary"><span class="question-type">Practice complete</span><div class="summary-score">${p}%</div><h3>${practiceScore} of ${practiceQueue.length} correct</h3><p>${p>=90?"Strong command of this mix.":"Use the missed-word option for a focused follow-up."}</p>${missed.length?`<div class="missed-list">${missed.map(n=>`<div class="missed-item"><strong>${n}</strong><span>${getWord(n).definition}</span></div>`).join("")}</div>`:""}<button id="newPracticeBtn" class="btn btn-primary">New practice set</button></div>`;
+    function gradePracticeSelf(ok){
+      if(!practiceSelfPending)return;practiceSelfPending=false;practiceSubmitted=true;recordPracticeOutcome(practiceQueue[practiceIndex],ok,Date.now()-practiceQuestionStarted);
+      document.querySelectorAll("[data-practice-grade]").forEach(b=>b.disabled=true);document.getElementById("feedback").insertAdjacentHTML("beforeend",`<div class="feedback ${ok?"good":"bad"}"><strong>${ok?"Counted as correct.":"Marked for another try."}</strong></div>`);
+      document.getElementById("submitAnswer").hidden=false;advancePracticeButton();
+    }
+    function advancePracticeButton(){const btn=document.getElementById("submitAnswer");btn.textContent=practiceIndex===practiceQueue.length-1?"See results":"Next question";btn.className="btn btn-primary";}
+    function startDefinitionMatching(){
+      activeDefinitionBank=shuffleList(WORDS.map(w=>({word:w.word,definition:w.definition})));practiceQueue=WORDS.map(w=>({word:w.word}));practiceScore=0;practiceMisses=[];
+      document.getElementById("quizSetup").hidden=true;document.getElementById("quizPlay").hidden=false;document.getElementById("quizProgress").style.width="0%";document.getElementById("quizSideText").textContent="10 words · each definition once";
+      const letters=activeDefinitionBank.map((_,i)=>String.fromCharCode(65+i));
+      document.getElementById("quizCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">Part 2 · 10 matches</span><span class="quiz-score">Each letter once</span></div><span class="question-type">Definition matching</span><h3 class="question">Match every word to the correct definition.</h3><div class="definition-key">${activeDefinitionBank.map((d,i)=>`<div><strong>${letters[i]}.</strong><span>${d.definition}</span></div>`).join("")}</div><div class="match-list">${WORDS.map(w=>`<label class="match-row"><strong>${w.word}</strong><select data-match-word="${w.word}"><option value="">Choose a definition</option>${letters.map(l=>`<option value="${l}">${l}</option>`).join("")}</select></label>`).join("")}</div><div id="feedback" aria-live="polite"></div><div class="quiz-actions"><span></span><button id="gradeMatchingBtn" class="btn btn-dark">Grade all 10</button></div>`;
+      document.getElementById("gradeMatchingBtn").addEventListener("click",gradeDefinitionMatching);
+    }
+    function gradeDefinitionMatching(){
+      const selects=[...document.querySelectorAll("[data-match-word]")],values=selects.map(s=>s.value),feedback=document.getElementById("feedback");
+      if(values.some(v=>!v)){feedback.innerHTML='<div class="feedback bad">Match every word before grading.</div>';return;}
+      if(new Set(values).size!==values.length){feedback.innerHTML='<div class="feedback bad">Each definition may be used only once. Remove duplicate letters.</div>';return;}
+      practiceScore=0;practiceMisses=[];
+      selects.forEach(s=>{const chosen=activeDefinitionBank[s.value.charCodeAt(0)-65],ok=chosen.word===s.dataset.matchWord;recordResult(s.dataset.matchWord,"definition",ok,0);if(ok)practiceScore++;else practiceMisses.push(s.dataset.matchWord);s.disabled=true;s.style.borderColor=ok?"var(--green)":"var(--red)";});
+      document.getElementById("quizProgress").style.width="100%";document.getElementById("quizSideText").textContent=`Complete · ${practiceScore} correct`;
+      feedback.innerHTML=`<div class="feedback ${practiceScore===10?"good":"bad"}"><strong>${practiceScore} of 10 correct.</strong> ${practiceScore===10?"Every definition was matched once.":"Review the red selections, then retry this section."}</div>`;
+      const btn=document.getElementById("gradeMatchingBtn");btn.textContent="Back to practice";btn.className="btn btn-primary";btn.replaceWith(btn.cloneNode(true));document.getElementById("gradeMatchingBtn").addEventListener("click",endPractice);
+    }
+    function finishPractice(){
+      const p=pct(practiceScore,practiceQueue.length),missed=[...new Set(practiceMisses)];
+      document.getElementById("quizCard").innerHTML=`<div class="summary"><span class="question-type">Practice complete</span><div class="summary-score">${p}%</div><h3>${practiceScore} of ${practiceQueue.length} correct</h3><p>${p>=90?"Strong command of this test mix.":"Use the missed-word option for a focused follow-up."}</p>${missed.length?`<div class="missed-list">${missed.map(n=>`<div class="missed-item"><strong>${n}</strong><span>${getWord(n).definition}</span></div>`).join("")}</div>`:""}<button id="newPracticeBtn" class="btn btn-primary">New practice set</button></div>`;
       document.getElementById("quizProgress").style.width="100%";document.getElementById("newPracticeBtn").addEventListener("click",endPractice);
     }
-    function endPractice(){document.getElementById("quizPlay").hidden=true;document.getElementById("quizSetup").hidden=false;document.getElementById("setupMessage").textContent="";}
+    function endPractice(){if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("quizPlay").hidden=true;document.getElementById("quizSetup").hidden=false;document.getElementById("setupMessage").textContent="";}
     document.getElementById("startQuizBtn").addEventListener("click",()=>startPractice(false));
     document.getElementById("missedQuizBtn").addEventListener("click",()=>startPractice(true));
     document.getElementById("quitQuizBtn").addEventListener("click",endPractice);
 
     function renderSentenceLab() {
-      document.getElementById("wordPicker").innerHTML=WORDS.map((w,i)=>`<button class="pick-word ${i===labWordIndex?"active":""}" data-index="${i}">${w.word}</button>`).join("");
+      document.getElementById("wordPicker").innerHTML=SHORT_ANSWER_PAIRS.map((p,i)=>`<button class="pick-word ${i===labWordIndex?"active":""}" data-index="${i}">${p.words.join(" + ")}</button>`).join("");
       document.querySelectorAll(".pick-word").forEach(b=>b.addEventListener("click",()=>{labWordIndex=Number(b.dataset.index);document.getElementById("sentenceInput").value="";resetSentenceChecks();renderSentenceLab();}));
-      const w=WORDS[labWordIndex];document.getElementById("labWord").textContent=w.word;document.getElementById("labDefinition").textContent=w.definition;document.getElementById("modelAnswer").hidden=true;
+      const p=SHORT_ANSWER_PAIRS[labWordIndex],defs=p.words.map(w=>`${w}: ${getWord(w).definition}`).join("  •  ");document.getElementById("labWord").innerHTML=`<div class="pair-targets">${p.words.map(w=>`<span class="pair-word">${w}</span>`).join("")}</div>`;document.getElementById("labDefinition").textContent=defs;document.getElementById("modelAnswer").hidden=true;
     }
     function resetSentenceChecks(){["checkWord","checkLength","checkEnd"].forEach(id=>document.getElementById(id).classList.remove("pass"));document.getElementById("modelAnswer").hidden=true;}
-    function evaluateSentence(){const text=document.getElementById("sentenceInput").value.trim(),tokens=normalizeAnswer(text).split(" "),w=WORDS[labWordIndex];document.getElementById("checkWord").classList.toggle("pass",acceptedForms(w).some(f=>tokens.includes(normalizeAnswer(f))));document.getElementById("checkLength").classList.toggle("pass",tokens.filter(Boolean).length>=8);document.getElementById("checkEnd").classList.toggle("pass",/[.!?][”"]?$/.test(text));}
+    function evaluateSentence(){const text=document.getElementById("sentenceInput").value.trim(),tokens=normalizeAnswer(text).split(" "),p=SHORT_ANSWER_PAIRS[labWordIndex],usesBoth=p.words.every(name=>acceptedForms(getWord(name)).some(f=>tokens.includes(normalizeAnswer(f))));document.getElementById("checkWord").classList.toggle("pass",usesBoth);document.getElementById("checkLength").classList.toggle("pass",tokens.filter(Boolean).length>=10);document.getElementById("checkEnd").classList.toggle("pass",/[.!?][”"]?$/.test(text));}
     document.getElementById("evaluateBtn").addEventListener("click",evaluateSentence);
-    document.getElementById("revealModelBtn").addEventListener("click",()=>{const w=WORDS[labWordIndex],box=document.getElementById("modelAnswer");box.innerHTML=`<strong>Comparison sentence</strong><br>${w.example}`;box.hidden=false;});
+    document.getElementById("revealModelBtn").addEventListener("click",()=>{const p=SHORT_ANSWER_PAIRS[labWordIndex],box=document.getElementById("modelAnswer");box.innerHTML=`<strong>Comparison sentence</strong><br>${p.model}<div class="self-rubric">${shortAnswerRubric(p.words).map(x=>`<span class="rubric-line">${x}</span>`).join("")}</div>`;box.hidden=false;});
     document.getElementById("clearSentenceBtn").addEventListener("click",()=>{document.getElementById("sentenceInput").value="";resetSentenceChecks();});
     document.getElementById("sentenceInput").addEventListener("input",resetSentenceChecks);
 
     function selectedCramTypes(){return [...document.querySelectorAll('input[name="cramtype"]:checked')].map(x=>x.value);}
     function buildCramBank(types,restrict=null) {
-      const allowed=n=>!restrict||restrict.includes(n),bank=[];
-      if(types.includes("definition")) WORDS.filter(w=>allowed(w.word)).forEach(w=>bank.push({category:"definition",word:w.word,label:"Write the definition",prompt:`Write a concise definition of “${w.word}.”`,response:"self",answers:[w.definition],model:w.definition,rubric:["States the central meaning","Does not merely repeat the word","Is specific enough to distinguish it from nearby terms"]}));
-      if(types.includes("derivative")) FORM_QUESTIONS.filter(q=>q.tier==="core"&&allowed(q.word)).forEach(q=>bank.push({category:"derivative",word:q.word,label:"Write the derivative",prompt:q.prompt.replace(/^Choose/,"Write"),response:"text",answers:[q.correct],why:q.why}));
-      if(types.includes("context")) {
-        WORDS.filter(w=>allowed(w.word)).forEach(w=>bank.push({category:"context",word:w.word,label:"Fill in the blank",prompt:w.cloze,response:"text",answers:w.answer,why:`${w.word}: ${w.definition}`}));
-        TRANSFER_CONTEXTS.filter(q=>allowed(q.word)).forEach(q=>bank.push({category:"context",word:q.word,label:"Novel context",prompt:q.prompt,response:"text",answers:[q.answer],why:`${q.answer}: ${getWord(q.answer).definition}`}));
-      }
-      if(types.includes("sentence")) WORDS.filter(w=>allowed(w.word)).forEach(w=>bank.push({category:"sentence",word:w.word,label:"Write an original sentence",prompt:`Write a sentence using “${w.word}” that makes its meaning clear through context.`,response:"self",answers:[w.example],model:w.example,rubric:["Uses the word or an appropriate derivative grammatically","Provides enough context to demonstrate the meaning","Forms a complete, sensible sentence"]}));
-      if(types.includes("usage")) USAGE.filter(q=>allowed(q.word)).forEach(q=>bank.push({category:"usage",word:q.word,label:"Usage: true or false?",prompt:q.statement,response:"choice",options:["True","False"],answers:[q.answer?"True":"False"],why:q.why}));
-      return bank;
+      return [
+        ...(types.includes("spelling")?spellingQuestions(restrict):[]),
+        ...(types.includes("definition")?definitionQuestions(restrict):[]),
+        ...(types.includes("derivative")?derivativeQuestions(restrict):[]),
+        ...(types.includes("usage")?usageQuestions(restrict):[]),
+        ...(types.includes("shortanswer")?shortAnswerQuestions(restrict):[])
+      ];
+    }
+    function buildMockExam(){
+      const definitions=shuffleList(WORDS.map(w=>w.definition));
+      const matching=shuffleList(WORDS).map(w=>({category:"definition",word:w.word,label:"Part 2 · Definition matching · use each once",prompt:w.word,response:"choice",options:[...definitions],answers:[w.definition],why:w.definition,mockMatching:true}));
+      return [...shuffleList(spellingQuestions()),...matching,...shuffleList(usageQuestions()).slice(0,5),...shuffleList(derivativeQuestions(null,true)).slice(0,3),...shuffleList(shortAnswerQuestions()).slice(0,1)];
     }
     function weakWords(){
       const named=[...new Set(appStats.missed)];
@@ -1329,19 +1484,21 @@
     }
     function startCram(mode){
       const types=selectedCramTypes(),msg=document.getElementById("cramSetupMessage");showView("cram");
-      if(!types.length&&mode!=="confusion"){msg.textContent="Choose at least one response family.";return;}
+      if(!types.length&&!['confusion','mock'].includes(mode)){msg.textContent="Choose at least one response family.";return;}
       let bank,limit;
-      if(mode==="confusion"){bank=shuffleList(CONFUSION_QUESTIONS.map(q=>({...q,label:"Confusion pair",response:"choice"})));limit=bank.length;}
-      else {const restrict=mode==="weak"?weakWords():null;bank=buildCramBank(types,restrict);limit=mode==="mock"?20:mode==="weak"?15:12;}
-      cramQueue=balancedSession(bank,limit);cramIndex=0;cramMode=mode;cramScore=0;cramGraded=0;cramResponses=[];cramSubmitted=false;cramChoice=null;mockManual=[];mockManualIndex=0;cramStarted=Date.now();
+      if(mode==="mock"){cramQueue=buildMockExam();}
+      else if(mode==="confusion"){bank=shuffleList(CONFUSION_QUESTIONS.map(q=>({...q,category:q.category==="usage"?"usage":"definition",label:"Usage trap",response:"choice"})));limit=bank.length;cramQueue=bank;}
+      else {const restrict=mode==="weak"?weakWords():null;bank=buildCramBank(types,restrict);limit=mode==="weak"?15:12;cramQueue=balancedSession(bank,limit);}
+      cramIndex=0;cramMode=mode;cramScore=0;cramGraded=0;cramResponses=[];cramSubmitted=false;cramChoice=null;mockManual=[];mockManualIndex=0;mockDefinitionChoices=new Set();cramStarted=Date.now();
       document.getElementById("cramSetup").hidden=true;document.getElementById("cramPlay").hidden=false;
-      document.getElementById("cramModeLabel").textContent={sprint:"5-minute sprint",weak:"Weak words",mock:"Full mock exam",confusion:"Confusion pairs"}[mode];
+      document.getElementById("cramModeLabel").textContent={sprint:"5-minute sprint",weak:"Weak words",mock:"Full mock exam",confusion:"Usage traps"}[mode];
       clearInterval(cramTimerId);cramTimerId=setInterval(updateCramTimer,1000);updateCramTimer();renderCramQuestion();
     }
     document.querySelectorAll("[data-cram-start]").forEach(b=>b.addEventListener("click",()=>startCram(b.dataset.cramStart)));
     function updateCramTimer(){const sec=Math.floor((Date.now()-cramStarted)/1000);document.getElementById("cramTimer").textContent=`${String(Math.floor(sec/60)).padStart(2,"0")}:${String(sec%60).padStart(2,"0")}`;document.getElementById("cramTimerNote").textContent=cramMode==="sprint"&&sec>=300?"Five-minute mark reached. Finish the current prompt or end the session.":"Work accurately; speed is secondary.";}
     function cramInput(q){
-      if(q.response==="choice")return `<div class="choice-grid">${q.options.map(o=>`<button class="choice" data-answer="${escapeHtml(o)}">${o}</button>`).join("")}</div>`;
+      if(q.response==="audio")return `${audioMarkup()}<input id="cramAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type the word you heard…">`;
+      if(q.response==="choice"){const options=q.mockMatching?q.options.filter(o=>!mockDefinitionChoices.has(o)):q.options;return `<div class="choice-grid">${options.map(o=>`<button class="choice" data-answer="${escapeHtml(o)}">${o}</button>`).join("")}</div>`;}
       if(q.response==="self")return `<textarea id="cramAnswer" placeholder="Write your response before revealing the key…"></textarea>`;
       return `<input id="cramAnswer" class="answer-input" autocomplete="off" spellcheck="false" placeholder="Type your answer…">`;
     }
@@ -1350,10 +1507,11 @@
       const q=cramQueue[cramIndex];cramSubmitted=false;cramChoice=null;cramQuestionStarted=Date.now();
       document.getElementById("cramProgress").style.width=pct(cramIndex,cramQueue.length)+"%";
       document.getElementById("cramSideText").textContent=`${cramIndex} complete · ${cramScore} correct${cramMode==="mock"?" · feedback held":""}`;
-      document.getElementById("cramCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">Prompt ${cramIndex+1} of ${cramQueue.length}</span><span class="quiz-score">${q._retry?"Retry after a miss":"Draft exam mix"}</span></div><span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3>${cramInput(q)}<div id="cramFeedback" aria-live="polite"></div><div class="quiz-actions"><span></span><button id="cramSubmitBtn" class="btn btn-dark">${cramMode==="mock"?"Save response":"Check response"}</button></div>`;
+      document.getElementById("cramCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">Prompt ${cramIndex+1} of ${cramQueue.length}</span><span class="quiz-score">${q._retry?"Retry after a miss":cramMode==="mock"?"Feedback held":"Test-aligned mix"}</span></div><span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3>${cramInput(q)}<div id="cramFeedback" aria-live="polite"></div><div class="quiz-actions"><span></span><button id="cramSubmitBtn" class="btn btn-dark">${cramMode==="mock"?"Save response":"Check response"}</button></div>`;
       document.querySelectorAll("#cramCard .choice").forEach(b=>b.addEventListener("click",()=>{if(cramSubmitted)return;cramChoice=b.dataset.answer;document.querySelectorAll("#cramCard .choice").forEach(x=>x.classList.toggle("selected",x===b));}));
       document.getElementById("cramSubmitBtn").addEventListener("click",submitCram);
       document.getElementById("cramAnswer")?.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName!=="TEXTAREA")submitCram();});document.getElementById("cramAnswer")?.focus();
+      if(q.response==="audio")bindAudio(q.word);
     }
     function submitCram(){
       if(cramSubmitted&&document.getElementById("cramSubmitBtn")?.dataset.next){cramIndex++;renderCramQuestion();return;}
@@ -1361,6 +1519,7 @@
       if(!raw){document.getElementById("cramFeedback").innerHTML='<div class="feedback bad">Attempt the prompt before continuing.</div>';return;}
       const elapsed=Date.now()-cramQuestionStarted;
       if(cramMode==="mock"){
+        if(q.mockMatching)mockDefinitionChoices.add(raw);
         cramResponses.push({q,raw,elapsed,correct:q.response==="self"?null:correctFor(q,raw)});cramIndex++;renderCramQuestion();return;
       }
       cramSubmitted=true;
@@ -1372,8 +1531,13 @@
         gradeImmediateCram(correctFor(q,raw),elapsed,raw);
       }
     }
+    function recordCramOutcome(q,ok,elapsed){
+      recordResult(q.word,q.category,ok,elapsed);
+      (q.words||[]).slice(1).forEach(w=>{const ws=wordStats(w);ws[ok?"correct":"wrong"]++;if(!ok&&!appStats.missed.includes(w))appStats.missed.push(w);});
+      if(q.words?.length>1)saveAppStats();
+    }
     function gradeImmediateCram(ok,elapsed,raw=""){
-      const q=cramQueue[cramIndex];recordResult(q.word,q.category,ok,elapsed);cramGraded++;if(ok)cramScore++;
+      const q=cramQueue[cramIndex];recordCramOutcome(q,ok,elapsed);cramGraded++;if(ok)cramScore++;
       if(!ok&&!q._retry&&cramMode!=="confusion"){const retry={...q,_retry:true};cramQueue.splice(Math.min(cramIndex+4,cramQueue.length),0,retry);}
       if(q.response!=="self"){
         document.querySelectorAll("#cramCard .choice").forEach(b=>{b.disabled=true;if(correctFor(q,b.dataset.answer))b.classList.add("correct");else if(b.dataset.answer===raw)b.classList.add("wrong");});
@@ -1383,7 +1547,7 @@
       const btn=document.getElementById("cramSubmitBtn");btn.textContent=cramIndex===cramQueue.length-1?"See results":"Next prompt";btn.className="btn btn-primary";btn.dataset.next="1";
     }
     function beginMockReview(){
-      cramResponses.filter(r=>r.correct!==null).forEach(r=>{recordResult(r.q.word,r.q.category,r.correct,r.elapsed);cramGraded++;if(r.correct)cramScore++;});
+      cramResponses.filter(r=>r.correct!==null).forEach(r=>{recordCramOutcome(r.q,r.correct,r.elapsed);cramGraded++;if(r.correct)cramScore++;});
       mockManual=cramResponses.filter(r=>r.correct===null);mockManualIndex=0;
       if(!mockManual.length){finishCram();return;} renderMockManual();
     }
@@ -1391,23 +1555,21 @@
       if(mockManualIndex>=mockManual.length){finishCram();return;}
       const r=mockManual[mockManualIndex],q=r.q;
       document.getElementById("cramCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">Self-check ${mockManualIndex+1} of ${mockManual.length}</span><span class="quiz-score">Feedback phase</span></div><span class="question-type">${q.label}</span><h3 class="question">${q.prompt}</h3><div class="model-answer"><strong>Your response</strong><br>${escapeHtml(r.raw)}</div><div class="feedback good"><strong>Reference</strong><br>${q.model}</div><div class="self-rubric">${q.rubric.map(x=>`<span class="rubric-line">${x}</span>`).join("")}</div><div class="manual-grade"><button class="btn btn-light" data-mock-grade="false">Count as missed</button><button class="btn btn-primary" data-mock-grade="true">Count as correct</button></div>`;
-      document.querySelectorAll("[data-mock-grade]").forEach(b=>b.addEventListener("click",()=>{const ok=b.dataset.mockGrade==="true";recordResult(q.word,q.category,ok,r.elapsed);cramGraded++;if(ok)cramScore++;mockManualIndex++;renderMockManual();}));
+      document.querySelectorAll("[data-mock-grade]").forEach(b=>b.addEventListener("click",()=>{const ok=b.dataset.mockGrade==="true";recordCramOutcome(q,ok,r.elapsed);cramGraded++;if(ok)cramScore++;mockManualIndex++;renderMockManual();}));
     }
     function finishCram(){
       clearInterval(cramTimerId);const duration=Date.now()-cramStarted,total=cramGraded||1,score=cramScore;
       appStats.cramHistory.unshift({mode:cramMode,date:Date.now(),score,total,duration});appStats.cramHistory=appStats.cramHistory.slice(0,8);saveAppStats();
       document.getElementById("cramProgress").style.width="100%";
-      document.getElementById("cramCard").innerHTML=`<div class="summary"><span class="question-type">Session complete</span><div class="summary-score">${pct(score,total)}%</div><h3>${score} of ${total} graded responses</h3><p>${cramMode==="mock"?"The draft format is ready for minor weighting changes once the test is confirmed.":"Misses were corrected and reintroduced after intervening prompts."}</p><div class="toolbar" style="justify-content:center"><button id="newCramBtn" class="btn btn-primary">Choose another cram tool</button><button class="btn btn-light" data-go-now="progress">View breakdown</button></div></div>`;
+      document.getElementById("cramCard").innerHTML=`<div class="summary"><span class="question-type">Session complete</span><div class="summary-score">${pct(score,total)}%</div><h3>${score} of ${total} graded responses</h3><p>${cramMode==="mock"?"You completed the targeted sequence: dictation spelling, one-use definition matching, and Part 3 application.":"Misses were corrected and reintroduced after intervening prompts."}</p><div class="toolbar" style="justify-content:center"><button id="newCramBtn" class="btn btn-primary">Choose another cram tool</button><button class="btn btn-light" data-go-now="progress">View breakdown</button></div></div>`;
       document.getElementById("newCramBtn").addEventListener("click",endCram);document.querySelector("[data-go-now='progress']").addEventListener("click",()=>{endCram();showView("progress");});
     }
-    function endCram(){clearInterval(cramTimerId);document.getElementById("cramPlay").hidden=true;document.getElementById("cramSetup").hidden=false;}
+    function endCram(){clearInterval(cramTimerId);if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("cramPlay").hidden=true;document.getElementById("cramSetup").hidden=false;}
     document.getElementById("endCramBtn").addEventListener("click",()=>{if(cramGraded||cramResponses.length)finishCram();else endCram();});
 
     function makePrintMock(){
-      const types=selectedCramTypes();if(!types.length){document.getElementById("cramSetupMessage").textContent="Choose at least one response family.";return;}
-      const questions=balancedSession(buildCramBank(types),20),sheet=document.getElementById("printSheet");
-      const answer=q=>q.response==="self"?q.model:q.answers.join(" / ");
-      sheet.innerHTML=`<h1>AP Lang Vocabulary · Set 1</h1><p>Name: ______________________________ &nbsp;&nbsp; Date: ______________</p><p>Draft mock exam — format subject to confirmation</p>${questions.map((q,i)=>`<div class="print-question"><strong>${i+1}. ${q.label}</strong><p>${q.prompt}</p><span class="print-line"></span>${q.response==="self"?'<span class="print-line"></span><span class="print-line"></span>':""}</div>`).join("")}<div class="print-answer-key"><h2>Answer key / self-check guide</h2>${questions.map((q,i)=>`<p><strong>${i+1}.</strong> ${answer(q)}</p>`).join("")}</div>`;
+      const sheet=document.getElementById("printSheet"),spellings=shuffleList(WORDS),definitions=shuffleList(WORDS),usage=shuffleList(USAGE).slice(0,5),derivatives=shuffleList(DERIVATIVE_FILLINS.filter(q=>q.tier==="core")).slice(0,3),pair=shuffleList(SHORT_ANSWER_PAIRS)[0],letters=definitions.map((_,i)=>String.fromCharCode(65+i));
+      sheet.innerHTML=`<h1>AP Lang Vocabulary · Set 1</h1><p>Name: ______________________________ &nbsp;&nbsp; Date: ______________</p><h2>Part 1 · Dictation and spelling</h2><p>A partner or proctor reads the numbered words from the answer key. Write each word exactly.</p>${spellings.map((_,i)=>`<div class="print-question"><strong>${i+1}.</strong><span class="print-line"></span></div>`).join("")}<h2>Part 2 · Definition matching</h2><p>Write the letter of the correct definition. Use each definition only once.</p>${definitions.map((w,i)=>`<p><strong>${letters[i]}.</strong> ${w.definition}</p>`).join("")}${WORDS.map((w,i)=>`<div class="print-question"><strong>${i+1}. ${w.word}</strong><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Correct or incorrect</h2><p>Mark True if the vocabulary word is used correctly and False if it is not.</p>${usage.map((q,i)=>`<div class="print-question"><strong>${i+1}. True / False</strong><p>${q.statement}</p></div>`).join("")}<h2>Part 3 · Write the derivative</h2><p>Write the correct form of the appropriate vocabulary word.</p>${derivatives.map((q,i)=>`<div class="print-question"><strong>${i+1}.</strong><p>${q.prompt}</p><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Short answer</h2><p>${pair.prompt}</p><span class="print-line"></span><span class="print-line"></span><span class="print-line"></span><div class="print-answer-key"><h2>Proctor list and answer key</h2><h3>Part 1</h3>${spellings.map((w,i)=>`<p><strong>${i+1}.</strong> ${w.word}</p>`).join("")}<h3>Part 2</h3>${WORDS.map((w,i)=>`<p><strong>${i+1}. ${w.word}</strong> — ${letters[definitions.findIndex(d=>d.word===w.word)]}</p>`).join("")}<h3>Part 3</h3>${usage.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answer?"True":"False"} — ${q.why}</p>`).join("")}${derivatives.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answers.join(" / ")}</p>`).join("")}<p><strong>Short-answer model:</strong> ${pair.model}</p></div>`;
       sheet.hidden=false;document.body.classList.add("printing");window.addEventListener("afterprint",()=>{document.body.classList.remove("printing");sheet.hidden=true;},{once:true});window.print();
     }
     document.getElementById("printMockBtn").addEventListener("click",makePrintMock);
@@ -1426,12 +1588,17 @@
     document.getElementById("cumulativeReviewBtn").addEventListener("click",()=>startReview(true));
     function renderReviewCard(){
       if(!reviewQueue.length){finishReview();return;}
-      const name=reviewQueue[0],w=getWord(name),state=reviewState(name),variant=(state.reps+reviewCompleted)%3;reviewRevealed=false;reviewStartedAt=Date.now();
-      reviewPrompt=variant===0?{category:"definition",label:"Recall the meaning",prompt:w.word,hint:"Say or write the definition before revealing.",answer:`<h3>${w.definition}</h3><p>${w.example}</p>`}:variant===1?{category:"definition",label:"Recall the word",prompt:w.definition,hint:"Name the vocabulary word before revealing.",answer:`<h3>${w.word}</h3><p>${w.example}</p>`}:{category:"context",label:"Transfer to context",prompt:TRANSFER_CONTEXTS.find(x=>x.word===name).prompt,hint:"Supply the word before revealing.",answer:`<h3>${w.word}</h3><p>${w.definition}</p>`};
+      const name=reviewQueue[0],w=getWord(name),state=reviewState(name),variant=(state.reps+reviewCompleted)%5,derivative=DERIVATIVE_FILLINS.find(q=>q.word===name&&q.tier==="core")||DERIVATIVE_FILLINS.find(q=>q.word===name),usage=USAGE.find(q=>q.word===name);reviewRevealed=false;reviewStartedAt=Date.now();
+      if(variant===0)reviewPrompt={category:"spelling",label:"Dictation spelling",prompt:audioMarkup(),hint:"Write the spelling before revealing.",answer:`<h3>${w.word}</h3><p>${w.definition}</p>`,audioWord:name};
+      if(variant===1)reviewPrompt={category:"definition",label:"Recall the definition",prompt:w.word,hint:"State the precise definition before revealing.",answer:`<h3>${w.definition}</h3><p>${w.example}</p>`};
+      if(variant===2)reviewPrompt={category:"definition",label:"Recall the word",prompt:w.definition,hint:"Name the matching vocabulary word before revealing.",answer:`<h3>${w.word}</h3><p>${w.example}</p>`};
+      if(variant===3)reviewPrompt={category:"derivative",label:"Supply the correct form",prompt:derivative.prompt,hint:"Write the exact form that makes the sentence grammatical.",answer:`<h3>${derivative.answers.join(" / ")}</h3><p>${derivative.why}</p>`};
+      if(variant===4)reviewPrompt={category:"usage",label:"Correct or incorrect?",prompt:usage.statement,hint:"Decide True or False before revealing.",answer:`<h3>${usage.answer?"True":"False"}</h3><p>${usage.why}</p>`};
       document.getElementById("reviewProgress").style.width=pct(reviewCompleted,Math.max(reviewInitial,reviewCompleted+reviewQueue.length))+"%";
       document.getElementById("reviewSideText").textContent=`${reviewQueue.length} in queue · ${reviewCompleted} completed`;
       document.getElementById("reviewCard").innerHTML=`<div class="quiz-top"><span class="quiz-count">${stageLabel(state.stage)} card</span><span class="quiz-score">Current interval: ${state.interval?state.interval+"d":"new"}</span></div><span class="question-type">${reviewPrompt.label}</span><div class="review-prompt-word">${reviewPrompt.prompt}</div><p class="lede">${reviewPrompt.hint}</p><button id="revealReviewBtn" class="btn btn-dark">Reveal answer</button><div id="reviewAnswer" class="review-answer" hidden>${reviewPrompt.answer}<div class="rating-grid"><button class="rating-btn again" data-rating="again">Again<small>same session</small></button><button class="rating-btn" data-rating="hard">Hard<small>about 1 day</small></button><button class="rating-btn good" data-rating="good">Good<small>next interval</small></button><button class="rating-btn" data-rating="easy">Easy<small>skip ahead</small></button></div></div>`;
       document.getElementById("revealReviewBtn").addEventListener("click",()=>{reviewRevealed=true;document.getElementById("revealReviewBtn").hidden=true;document.getElementById("reviewAnswer").hidden=false;document.querySelectorAll("[data-rating]").forEach(b=>b.addEventListener("click",()=>rateReview(b.dataset.rating)));});
+      if(reviewPrompt.audioWord)bindAudio(reviewPrompt.audioWord);
     }
     function rateReview(rating){
       if(!reviewRevealed)return;const name=reviewQueue.shift(),old=reviewState(name),s={...old},now=Date.now();s.reps++;
@@ -1442,17 +1609,17 @@
       s.last=now;appStats.review[name]=s;recordResult(name,reviewPrompt.category,rating!=="again",Date.now()-reviewStartedAt);reviewCompleted++;renderReviewCard();
     }
     function finishReview(){document.getElementById("reviewProgress").style.width="100%";document.getElementById("reviewCard").innerHTML=`<div class="summary"><span class="question-type">Review complete</span><div class="summary-score">${reviewCompleted}</div><h3>retrievals completed</h3><p>Your next due dates have been updated. Words rated Again were repeated after intervening cards.</p><button id="reviewDoneBtn" class="btn btn-primary">Back to review schedule</button></div>`;document.getElementById("reviewDoneBtn").addEventListener("click",endReview);}
-    function endReview(){document.getElementById("reviewPlay").hidden=true;document.getElementById("reviewSetup").hidden=false;renderReviewSetup();}
+    function endReview(){if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("reviewPlay").hidden=true;document.getElementById("reviewSetup").hidden=false;renderReviewSetup();}
     document.getElementById("endReviewBtn").addEventListener("click",endReview);
 
     function renderProgress(){
       if(!document.getElementById("progressAnswered"))return;const due=dueWordNames().length,longTerm=WORDS.filter(w=>reviewState(w.word).interval>=30).length;
       document.getElementById("progressAnswered").textContent=appStats.total;document.getElementById("progressAccuracy").textContent=appStats.total?pct(appStats.correct,appStats.total)+"%":"—";document.getElementById("progressDue").textContent=due;document.getElementById("progressLongTerm").textContent=longTerm;
       document.getElementById("categoryProgress").innerHTML=Object.entries(CATEGORY_LABELS).map(([key,label])=>{const s=appStats.categories[key],p=pct(s.correct,s.total),avg=s.timeMs&&s.total?` · ${(s.timeMs/s.total/1000).toFixed(1)}s`:"";return `<div class="category-row"><strong>${label}</strong><div class="progress-track"><div class="progress-fill" style="width:${p}%"></div></div><span>${s.total?p+"%"+avg:"—"}</span></div>`;}).join("");
-      document.getElementById("cramHistory").innerHTML=appStats.cramHistory.length?appStats.cramHistory.map(h=>`<div class="history-item"><strong>${{sprint:"Sprint",weak:"Weak words",mock:"Mock exam",confusion:"Confusion pairs"}[h.mode]||h.mode}</strong><span>${pct(h.score,h.total)}% · ${Math.max(1,Math.round(h.duration/60000))}m · ${new Date(h.date).toLocaleDateString()}</span></div>`).join(""):'<p class="key-help">No cram sessions recorded yet.</p>';
+      document.getElementById("cramHistory").innerHTML=appStats.cramHistory.length?appStats.cramHistory.map(h=>`<div class="history-item"><strong>${{sprint:"Sprint",weak:"Weak words",mock:"Mock exam",confusion:"Usage traps"}[h.mode]||h.mode}</strong><span>${pct(h.score,h.total)}% · ${Math.max(1,Math.round(h.duration/60000))}m · ${new Date(h.date).toLocaleDateString()}</span></div>`).join(""):'<p class="key-help">No cram sessions recorded yet.</p>';
       document.getElementById("scheduleRows").innerHTML=WORDS.map(w=>{const s=reviewState(w.word);return `<tr><td>${w.word}</td><td>${stageLabel(s.stage)}</td><td>${s.interval?s.interval+" days":"—"}</td><td>${nextDueLabel(s.due)}</td><td>${s.lapses}</td></tr>`;}).join("");
     }
-    document.getElementById("resetProgressBtn").addEventListener("click",()=>{if(!confirm("Reset all AP Lang Set 1 progress and review dates?"))return;appStats=defaultStatsV2();localStorage.removeItem(APP_STORAGE_KEY);localStorage.removeItem(LEGACY_STORAGE_KEY);saveAppStats();renderFlashcardV2();});
+    document.getElementById("resetProgressBtn").addEventListener("click",()=>{if(!confirm("Reset all AP Lang Set 1 progress and review dates?"))return;appStats=defaultStatsV2();localStorage.removeItem(APP_STORAGE_KEY);LEGACY_STORAGE_KEYS.forEach(k=>localStorage.removeItem(k));saveAppStats();renderFlashcardV2();});
 
     renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();
   </script>
