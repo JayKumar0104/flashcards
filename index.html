@@ -328,6 +328,58 @@
     .print-question { margin: 0 0 22px; break-inside: avoid; }
     .print-line { display: block; border-bottom: 1px solid #777; height: 26px; margin-top: 8px; }
 
+
+
+    /* Multi-course shell */
+    .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:900px; margin:0 auto; }
+    .course-card { min-height:132px; padding:24px; border:1px solid rgba(21,40,80,.11); border-radius:var(--radius); background:var(--card); box-shadow:0 10px 30px rgba(18,33,67,.06); color:var(--ink); display:grid; place-items:center; text-align:center; gap:8px; }
+    .course-card:not(:disabled):hover { transform:translateY(-2px); border-color:#aebbd3; }
+    .course-card:disabled { cursor:not-allowed; opacity:.68; }
+    .course-card h2 { margin:0; font-size:26px; }
+    .course-soon { color:#7b560e; background:var(--gold-soft); border:1px solid #ecd18b; border-radius:999px; padding:5px 9px; font-size:11px; font-weight:850; }
+    .course-back { margin-bottom:18px; }
+
+    .physics-hero { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; }
+    .physics-stat { min-width:170px; text-align:center; padding:18px; }
+    .physics-stat strong { display:block; font-size:38px; color:var(--navy); }
+    .physics-stat span { color:var(--muted); font-size:12px; }
+    .physics-flash-wrap { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:18px; align-items:stretch; }
+    .physics-stage { min-height:470px; perspective:1200px; }
+    .physics-card { min-height:470px; height:100%; position:relative; transform-style:preserve-3d; transition:transform .52s cubic-bezier(.2,.75,.2,1); cursor:pointer; }
+    .physics-card.flipped { transform:rotateY(180deg); }
+    .physics-face { position:absolute; inset:0; backface-visibility:hidden; border-radius:26px; padding:clamp(28px,5vw,52px); display:flex; flex-direction:column; justify-content:space-between; overflow:auto; box-shadow:var(--shadow); border:1px solid rgba(21,40,80,.1); }
+    .physics-front { background:linear-gradient(145deg,#ffffff,#f5f7fc); }
+    .physics-back { transform:rotateY(180deg); background:linear-gradient(145deg,var(--navy),#15346f); color:white; }
+    .physics-label { color:#7f5a10; background:var(--gold-soft); padding:6px 10px; border-radius:9px; display:inline-block; width:max-content; font-size:12px; font-weight:850; }
+    .physics-back .physics-label { color:#ffe2a0; background:rgba(247,186,69,.14); border:1px solid rgba(247,186,69,.35); }
+    .physics-question { font-size:clamp(25px,4vw,38px); line-height:1.32; letter-spacing:-.025em; margin:24px 0; }
+    .physics-answer { font-size:clamp(23px,3.5vw,34px); line-height:1.45; margin:24px 0; }
+    .physics-hint { color:var(--muted); font-size:13px; }
+    .physics-back .physics-hint { color:#cbd5ee; }
+    .physics-controls { display:grid; gap:10px; }
+    .physics-controls .panel { padding:18px; }
+    .physics-math { display:inline-flex; align-items:center; gap:.12em; font-family:"Cambria Math","Times New Roman",serif; white-space:nowrap; font-size:1.04em; }
+    .physics-math .frac { display:inline-grid; grid-template-rows:auto auto; text-align:center; vertical-align:middle; line-height:1.02; margin:0 .08em; }
+    .physics-math .frac > span:first-child { border-bottom:1px solid currentColor; padding:0 .12em .05em; }
+    .physics-math .frac > span:last-child { padding:.05em .12em 0; }
+    .physics-math sub, .physics-math sup { font-size:.72em; line-height:0; }
+    .physics-progress-row { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; margin-top:24px; }
+    .physics-progress-row .progress-track { margin:0; }
+    .physics-card-index { color:var(--muted); font-size:13px; font-weight:800; }
+    .physics-back .physics-card-index { color:#b9c8ea; }
+
+    @media (max-width:880px) {
+      .course-grid { grid-template-columns:1fr; }
+      .physics-flash-wrap { grid-template-columns:1fr; }
+      .physics-controls { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:680px) {
+      .physics-hero { grid-template-columns:1fr; align-items:start; }
+      .physics-stat { text-align:left; min-width:0; }
+      .physics-controls { grid-template-columns:1fr; }
+      .physics-stage,.physics-card { min-height:500px; }
+    }
+
     @media print {
       body.printing > *:not(main), body.printing main > *:not(#printSheet) { display: none !important; }
       body.printing { background: white; }
@@ -377,26 +429,44 @@
 <body>
   <header>
     <div class="shell topbar">
-      <div class="brand" aria-label="Flashcards — AP Lang Set 1">
+      <div class="brand" aria-label="Flashcards — AP English Language and Composition · Set 1">
         <div class="brand-mark">FC</div>
-        <div class="brand-text"><strong>Flashcards</strong><span>AP Lang · Set 1</span></div>
+        <div class="brand-text"><strong>Flashcards</strong><span id="brandCourse">Classes</span></div>
       </div>
       <nav aria-label="Main navigation">
-        <button class="nav-btn active" data-view="home">Home</button>
-        <button class="nav-btn" data-view="learn">Learn</button>
-        <button class="nav-btn" data-view="practice">Practice</button>
-        <button class="nav-btn" data-view="cram">Cram</button>
-        <button class="nav-btn" data-view="review">Review</button>
-        <button class="nav-btn" data-view="progress">Progress</button>
+        <button class="nav-btn active" data-view="classes">Classes</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="home" hidden>Home</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Learn</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="practice" hidden>Practice</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="cram" hidden>Cram</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="review" hidden>Review</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
+        <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
       </nav>
     </div>
   </header>
 
   <main class="shell">
-    <section id="home" class="view active" aria-labelledby="home-title">
+
+    <section id="classes" class="view active" aria-label="Classes">
+      <div class="course-grid">
+        <button class="course-card" data-class-open="lang">
+          <h2>AP English Language and Composition</h2>
+        </button>
+        <button class="course-card" data-class-open="physics2">
+          <h2>AP Physics 2: Algebra-Based</h2>
+        </button>
+        <button class="course-card" disabled aria-disabled="true">
+          <h2>AP United States History</h2>
+          <span class="course-soon">Coming soon</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="home" class="view" aria-labelledby="home-title">
       <div class="hero">
         <div>
-          <span class="eyebrow">AP Lang · Set 1 · focused practice</span>
+          <span class="eyebrow">AP English Language and Composition · Set 1 · focused practice</span>
           <h1 id="home-title">Make every word feel familiar.</h1>
           <p class="lede">Prepare for the expected format: spell every word from dictation, match all ten definitions once, judge usage, supply the correct derivative, and write complete sentences with paired words.</p>
           <div class="hero-actions">
@@ -644,6 +714,56 @@
       <div class="section panel">
         <div class="section-head"><div><h3>Retention schedule</h3><p>Every word’s next due date and current interval.</p></div><button id="resetProgressBtn" class="btn btn-danger btn-small">Reset all progress</button></div>
         <div class="table-wrap"><table><thead><tr><th>Word</th><th>Stage</th><th>Interval</th><th>Next review</th><th>Lapses</th></tr></thead><tbody id="scheduleRows"></tbody></table></div>
+      </div>
+    </section>
+
+
+    <section id="physics2" class="view" aria-labelledby="physics2-title">
+      <button class="btn btn-light btn-small course-back" data-view="classes">← Classes</button>
+      <div class="physics-hero page-intro">
+        <div>
+          <span class="eyebrow">AP Physics 2: Algebra-Based · flashcards</span>
+          <h2 id="physics2-title">Thermodynamics & kinetic theory</h2>
+          <p class="lede">47 front/back cards from your uploaded deck. Attempt the answer before flipping, then rate the retrieval.</p>
+        </div>
+        <div class="panel physics-stat"><strong id="physicsMastered">0</strong><span>cards mastered</span></div>
+      </div>
+
+      <div class="physics-flash-wrap">
+        <div class="physics-stage">
+          <div id="physicsCard" class="physics-card" tabindex="0" role="button" aria-label="AP Physics 2: Algebra-Based flashcard. Press Space or Enter to flip.">
+            <div class="physics-face physics-front">
+              <span id="physicsIndex" class="physics-card-index"></span>
+              <div><span class="physics-label">Question</span><div id="physicsQuestion" class="physics-question"></div></div>
+              <span class="physics-hint">Attempt from memory, then tap or press Space to reveal the answer.</span>
+            </div>
+            <div class="physics-face physics-back">
+              <span class="physics-card-index">AP Physics 2: Algebra-Based · answer</span>
+              <div><span class="physics-label">Answer</span><div id="physicsAnswer" class="physics-answer"></div></div>
+              <span class="physics-hint">Rate the retrieval, not whether the answer looks familiar after seeing it.</span>
+            </div>
+          </div>
+        </div>
+        <aside class="physics-controls" aria-label="AP Physics 2: Algebra-Based flashcard controls">
+          <div class="panel control-stack">
+            <button id="physicsFlipBtn" class="btn btn-dark">Flip card</button>
+            <button id="physicsAgainBtn" class="btn btn-light">Again</button>
+            <button id="physicsGotItBtn" class="btn btn-primary">Got it</button>
+            <button id="physicsShuffleBtn" class="btn btn-light btn-small">Shuffle deck</button>
+          </div>
+          <div class="panel">
+            <strong>Keyboard</strong>
+            <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
+          </div>
+          <div class="panel">
+            <strong id="physicsAccuracy">—</strong>
+            <p class="key-help">retrieval accuracy</p>
+          </div>
+        </aside>
+      </div>
+      <div class="physics-progress-row">
+        <div class="progress-track" aria-hidden="true"><div id="physicsProgressFill" class="progress-fill"></div></div>
+        <span id="physicsProgressText" class="key-help">0 of 47 mastered</span>
       </div>
     </section>
 
@@ -1289,15 +1409,26 @@
     }
     function stageLabel(s) { return ["New","1-day","3-day","7-day","14-day","30-day","60-day","90-day"][Math.min(s,7)]; }
 
+    function updateCourseNav(course) {
+      document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
+      const brand=document.getElementById("brandCourse");
+      if(brand) brand.textContent=course==="lang"?"AP English Language and Composition · Set 1":course==="physics2"?"AP Physics 2: Algebra-Based":"Classes";
+    }
     function showView(id) {
+      const langViews=["home","learn","practice","cram","review","progress"];
+      const course=langViews.includes(id)?"lang":id==="physics2"?"physics2":null;
+      updateCourseNav(course);
+      if(course) localStorage.setItem("flashcards-last-course",course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
       document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
       if(id==="learn"){renderFlashcardV2();renderWordBankV2();}
       if(id==="practice") renderSentenceLab();
       if(id==="review") renderReviewSetup();
       if(id==="progress") renderProgress();
+      if(id==="physics2") renderPhysicsCard();
       window.scrollTo({top:0,behavior:"smooth"});
     }
+    function openCourse(course){ showView(course==="lang"?"home":"physics2"); }
     document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
     document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 
@@ -1569,7 +1700,7 @@
 
     function makePrintMock(){
       const sheet=document.getElementById("printSheet"),spellings=shuffleList(WORDS),definitions=shuffleList(WORDS),usage=shuffleList(USAGE).slice(0,5),derivatives=shuffleList(DERIVATIVE_FILLINS.filter(q=>q.tier==="core")).slice(0,3),pair=shuffleList(SHORT_ANSWER_PAIRS)[0],letters=definitions.map((_,i)=>String.fromCharCode(65+i));
-      sheet.innerHTML=`<h1>AP Lang Vocabulary · Set 1</h1><p>Name: ______________________________ &nbsp;&nbsp; Date: ______________</p><h2>Part 1 · Dictation and spelling</h2><p>A partner or proctor reads the numbered words from the answer key. Write each word exactly.</p>${spellings.map((_,i)=>`<div class="print-question"><strong>${i+1}.</strong><span class="print-line"></span></div>`).join("")}<h2>Part 2 · Definition matching</h2><p>Write the letter of the correct definition. Use each definition only once.</p>${definitions.map((w,i)=>`<p><strong>${letters[i]}.</strong> ${w.definition}</p>`).join("")}${WORDS.map((w,i)=>`<div class="print-question"><strong>${i+1}. ${w.word}</strong><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Correct or incorrect</h2><p>Mark True if the vocabulary word is used correctly and False if it is not.</p>${usage.map((q,i)=>`<div class="print-question"><strong>${i+1}. True / False</strong><p>${q.statement}</p></div>`).join("")}<h2>Part 3 · Write the derivative</h2><p>Write the correct form of the appropriate vocabulary word.</p>${derivatives.map((q,i)=>`<div class="print-question"><strong>${i+1}.</strong><p>${q.prompt}</p><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Short answer</h2><p>${pair.prompt}</p><span class="print-line"></span><span class="print-line"></span><span class="print-line"></span><div class="print-answer-key"><h2>Proctor list and answer key</h2><h3>Part 1</h3>${spellings.map((w,i)=>`<p><strong>${i+1}.</strong> ${w.word}</p>`).join("")}<h3>Part 2</h3>${WORDS.map((w,i)=>`<p><strong>${i+1}. ${w.word}</strong> — ${letters[definitions.findIndex(d=>d.word===w.word)]}</p>`).join("")}<h3>Part 3</h3>${usage.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answer?"True":"False"} — ${q.why}</p>`).join("")}${derivatives.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answers.join(" / ")}</p>`).join("")}<p><strong>Short-answer model:</strong> ${pair.model}</p></div>`;
+      sheet.innerHTML=`<h1>AP English Language and Composition Vocabulary · Set 1</h1><p>Name: ______________________________ &nbsp;&nbsp; Date: ______________</p><h2>Part 1 · Dictation and spelling</h2><p>A partner or proctor reads the numbered words from the answer key. Write each word exactly.</p>${spellings.map((_,i)=>`<div class="print-question"><strong>${i+1}.</strong><span class="print-line"></span></div>`).join("")}<h2>Part 2 · Definition matching</h2><p>Write the letter of the correct definition. Use each definition only once.</p>${definitions.map((w,i)=>`<p><strong>${letters[i]}.</strong> ${w.definition}</p>`).join("")}${WORDS.map((w,i)=>`<div class="print-question"><strong>${i+1}. ${w.word}</strong><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Correct or incorrect</h2><p>Mark True if the vocabulary word is used correctly and False if it is not.</p>${usage.map((q,i)=>`<div class="print-question"><strong>${i+1}. True / False</strong><p>${q.statement}</p></div>`).join("")}<h2>Part 3 · Write the derivative</h2><p>Write the correct form of the appropriate vocabulary word.</p>${derivatives.map((q,i)=>`<div class="print-question"><strong>${i+1}.</strong><p>${q.prompt}</p><span class="print-line"></span></div>`).join("")}<h2>Part 3 · Short answer</h2><p>${pair.prompt}</p><span class="print-line"></span><span class="print-line"></span><span class="print-line"></span><div class="print-answer-key"><h2>Proctor list and answer key</h2><h3>Part 1</h3>${spellings.map((w,i)=>`<p><strong>${i+1}.</strong> ${w.word}</p>`).join("")}<h3>Part 2</h3>${WORDS.map((w,i)=>`<p><strong>${i+1}. ${w.word}</strong> — ${letters[definitions.findIndex(d=>d.word===w.word)]}</p>`).join("")}<h3>Part 3</h3>${usage.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answer?"True":"False"} — ${q.why}</p>`).join("")}${derivatives.map((q,i)=>`<p><strong>${i+1}.</strong> ${q.answers.join(" / ")}</p>`).join("")}<p><strong>Short-answer model:</strong> ${pair.model}</p></div>`;
       sheet.hidden=false;document.body.classList.add("printing");window.addEventListener("afterprint",()=>{document.body.classList.remove("printing");sheet.hidden=true;},{once:true});window.print();
     }
     document.getElementById("printMockBtn").addEventListener("click",makePrintMock);
@@ -1619,9 +1750,74 @@
       document.getElementById("cramHistory").innerHTML=appStats.cramHistory.length?appStats.cramHistory.map(h=>`<div class="history-item"><strong>${{sprint:"Sprint",weak:"Weak words",mock:"Mock exam",confusion:"Usage traps"}[h.mode]||h.mode}</strong><span>${pct(h.score,h.total)}% · ${Math.max(1,Math.round(h.duration/60000))}m · ${new Date(h.date).toLocaleDateString()}</span></div>`).join(""):'<p class="key-help">No cram sessions recorded yet.</p>';
       document.getElementById("scheduleRows").innerHTML=WORDS.map(w=>{const s=reviewState(w.word);return `<tr><td>${w.word}</td><td>${stageLabel(s.stage)}</td><td>${s.interval?s.interval+" days":"—"}</td><td>${nextDueLabel(s.due)}</td><td>${s.lapses}</td></tr>`;}).join("");
     }
-    document.getElementById("resetProgressBtn").addEventListener("click",()=>{if(!confirm("Reset all AP Lang Set 1 progress and review dates?"))return;appStats=defaultStatsV2();localStorage.removeItem(APP_STORAGE_KEY);LEGACY_STORAGE_KEYS.forEach(k=>localStorage.removeItem(k));saveAppStats();renderFlashcardV2();});
+    document.getElementById("resetProgressBtn").addEventListener("click",()=>{if(!confirm("Reset all AP English Language and Composition Set 1 progress and review dates?"))return;appStats=defaultStatsV2();localStorage.removeItem(APP_STORAGE_KEY);LEGACY_STORAGE_KEYS.forEach(k=>localStorage.removeItem(k));saveAppStats();renderFlashcardV2();});
 
-    renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();
+
+
+    // AP Physics 2: Algebra-Based: isolated flashcard deck and progress. Card text is preserved from the uploaded CSV.
+    const PHYSICS2_CARDS = [{"front": "What does temperature measure on a microscopic level in an ideal gas?", "back": "The average translational kinetic energy of the molecules."}, {"front": "Formula: Average translational kinetic energy per molecule", "back": "$K_{avg} = \\frac{3}{2} k_B T$"}, {"front": "In the equation $K_{avg} = \\frac{3}{2} k_B T$, what are the required units for temperature ($T$)?", "back": "Kelvin ($K$)."}, {"front": "What occurs at absolute zero ($0\\ K$) in terms of particle motion?", "back": "The particles completely stop all translational motion."}, {"front": "How does the peak of a Maxwell-Boltzmann distribution graph change when the gas temperature increases?", "back": "The peak shifts to the right and flattens out."}, {"front": "How does the molar mass of a gas affect its peak on a Maxwell-Boltzmann distribution at a fixed temperature?", "back": "Gases with smaller molar masses have peaks shifted further to the right (higher speeds)."}, {"front": "Equation: The Ideal Gas Law using moles ($n$)", "back": "$PV = nRT$"}, {"front": "Equation: The Ideal Gas Law using total number of molecules ($N$)", "back": "$PV = N k_B T$"}, {"front": "What is the microscopic cause of pressure ($P$) in a gas container?", "back": "Gas molecules continuously colliding with the walls of the container."}, {"front": "According to the Ideal Gas Law, what happens to pressure if temperature increases while volume remains constant?", "back": "The pressure increases due to molecules hitting the walls harder and more frequently."}, {"front": "Why does the AP curriculum prefer the terms 'heating' and 'cooling' over 'heat'?", "back": "To emphasize that heat is a process of transferring energy, not a substance an object contains."}, {"front": "When is thermal equilibrium reached between two objects in physical contact?", "back": "When both objects reach the same temperature and the net energy transfer is zero."}, {"front": "Equation: Rate of thermal energy transfer via conduction", "back": "$\\frac{Q}{\\Delta t} = \\frac{k A \\Delta T}{L}$"}, {"front": "In the conduction equation, what does a low thermal conductivity ($k$) indicate about a material?", "back": "The material is an insulator."}, {"front": "Equation: The First Law of Thermodynamics", "back": "$\\Delta U = Q + W$"}, {"front": "In the First Law of Thermodynamics, what does $W$ specifically represent?", "back": "The work done ON the gas system."}, {"front": "What is the relationship between internal energy ($U$) and temperature ($T$) in an ideal gas?", "back": "Internal energy is directly proportional to absolute temperature ($U \\propto T$)."}, {"front": "Under what condition is the work done ON a gas positive ($+W$)?", "back": "When the gas is compressed (volume decreases)."}, {"front": "What does the area under the curve on a Pressure-Volume (PV) diagram represent?", "back": "The magnitude of the work done during the process."}, {"front": "What defines an 'isochoric' (isovolumetric) process on a PV diagram?", "back": "A process occurring at constant volume, appearing as a vertical line."}, {"front": "Why is work done ($W$) equal to zero in an isochoric process?", "back": "There is no change in volume ($W = -P \\Delta V$ and $\\Delta V = 0$)."}, {"front": "What defines an 'isothermal' process?", "back": "A process occurring at a constant temperature ($\\Delta T = 0$)."}, {"front": "In an isothermal process, what is the value of the change in internal energy ($\\Delta U$)?", "back": "Zero."}, {"front": "What defines an 'adiabatic' process?", "back": "A process where no thermal energy is transferred into or out of the system ($Q = 0$)."}, {"front": "State the Second Law of Thermodynamics in terms of heat flow.", "back": "Heat naturally flows from a high-temperature object to a low-temperature object and never spontaneously in reverse."}, {"front": "Term: Entropy ($S$)", "back": "Definition: A measure of microscopic disorder or the number of possible microstates in a system."}, {"front": "What happens to the total entropy of an isolated system during any natural process?", "back": "It always increases."}, {"front": "How does an adiabatic expansion affect the temperature of a gas?", "back": "The temperature drops because the gas uses its own internal energy to do work ($Q=0$)."}, {"front": "How does the slope of an adiabatic curve compare to an isothermal curve on a PV diagram?", "back": "The adiabatic curve is always steeper."}, {"front": "What is the value of the 'adiabatic index' ($\\gamma$) for a monatomic ideal gas?", "back": "Approximately $1.67$."}, {"front": "Calculate the work done on a gas if its volume is halved and its temperature is doubled at constant pressure.", "back": "$W = -P \\Delta V$, so $W = -P (0.5V - V) = 0.5 PV$."}, {"front": "Why is $W = -P \\Delta V$ insufficient for calculating adiabatic work?", "back": "The pressure changes continuously throughout the process rather than remaining constant."}, {"front": "Equation: Shortcut for adiabatic work ($W$) for a monatomic ideal gas", "back": "$W = \\frac{3}{2} (P_f V_f - P_i V_i)$"}, {"front": "Misconception: Is internal energy a state function or a path function?", "back": "It is a state function (it depends only on the current state, not how it got there)."}, {"front": "Misconception: Are heat ($Q$) and work ($W$) state functions or path functions?", "back": "They are path functions (they depend on the specific journey between states)."}, {"front": "What is the net change in internal energy ($\\Delta U$) for any complete thermodynamic cycle?", "back": "Exactly zero."}, {"front": "On a PV diagram, what does the area inside a closed loop represent?", "back": "The net work done during the cycle."}, {"front": "If a thermodynamic cycle moves clockwise on a PV diagram, what is the sign of the net work done ON the gas?", "back": "Negative ($W_{net} < 0$)."}, {"front": "What characterizes a 'Heat Engine' cycle on a PV diagram?", "back": "A clockwise cycle where net heat is absorbed and net work is done by the gas."}, {"front": "What characterizes a 'Refrigerator' cycle on a PV diagram?", "back": "A counter-clockwise cycle where work is done on the gas to exhaust heat."}, {"front": "Why is pressure never included as a vector on a free-body diagram (FBD)?", "back": "Pressure is a scalar quantity; only the force ($F = PA$) belongs on an FBD."}, {"front": "When analyzing a piston in an open system, what downward force besides gravity must be included?", "back": "The downward force of atmospheric pressure ($F_{atm} = P_{atm} A$)."}, {"front": "Equation: Root-mean-square speed ($v_{rms}$) related to temperature", "back": "$v_{rms} = \\sqrt{\\frac{3 k_B T}{m}}$"}, {"front": "What is the value of the Universal Gas Constant ($R$)?", "back": "$8.31\\ J/(mol \\cdot K)$."}, {"front": "What is the value of the Boltzmann constant ($k_B$)?", "back": "$1.38 \\times 10^{-23}\\ J/K$."}, {"front": "What defines 'static equilibrium' for a piston in a cylinder?", "back": "The net force on the piston equals zero ($F_{net} = 0$)."}, {"front": "According to the Second Law, why can't the efficiency of a heat engine be $100\\%$?", "back": "Some energy must always be exhausted to a lower-temperature reservoir to increase total entropy."}];
+    const PHYSICS2_STORAGE_KEY = "flashcards-ap-physics2-v1";
+    let physicsOrder = PHYSICS2_CARDS.map((_,i)=>i), physicsPos = 0;
+    let physicsStats = (()=>{
+      try { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0,...JSON.parse(localStorage.getItem(PHYSICS2_STORAGE_KEY)||"{}")}; }
+      catch { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0}; }
+    })();
+    function savePhysicsStats(){ localStorage.setItem(PHYSICS2_STORAGE_KEY,JSON.stringify(physicsStats)); renderPhysicsStats(); }
+    function physicsMastered(i){ return (physicsStats.ratings[i]?.good||0)>=3; }
+    function physicsEscape(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+    function physicsTex(expr){
+      let s=physicsEscape(expr.trim());
+      s=s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g,'<span class="frac"><span>$1</span><span>$2</span></span>');
+      s=s.replace(/\\Delta/g,'Δ').replace(/\\gamma/g,'γ').replace(/\\propto/g,'∝').replace(/\\cdot/g,'·').replace(/\\times/g,'×').replace(/\\%/g,'%');
+      s=s.replace(/\\sqrt\{([^{}]+)\}/g,'√($1)');
+      s=s.replace(/([A-Za-z0-9)])_\{([^{}]+)\}/g,'$1<sub>$2</sub>').replace(/([A-Za-z0-9)])_([A-Za-z0-9]+)/g,'$1<sub>$2</sub>');
+      s=s.replace(/([A-Za-z0-9)])\^\{([^{}]+)\}/g,'$1<sup>$2</sup>').replace(/([A-Za-z0-9)])\^([A-Za-z0-9+-]+)/g,'$1<sup>$2</sup>');
+      s=s.replace(/\\ /g,' ');
+      return s;
+    }
+    function physicsMarkup(text){
+      const pieces=String(text).split('$');
+      return pieces.map((p,i)=>i%2?`<span class="physics-math">${physicsTex(p)}</span>`:physicsEscape(p)).join('');
+    }
+    function renderPhysicsStats(){
+      const mastered=PHYSICS2_CARDS.filter((_,i)=>physicsMastered(i)).length,p=Math.round(mastered/PHYSICS2_CARDS.length*100);
+      const m=document.getElementById("physicsMastered"); if(!m)return;
+      m.textContent=mastered;
+      document.getElementById("physicsAccuracy").textContent=physicsStats.total?Math.round(physicsStats.correct/physicsStats.total*100)+"%":"—";
+      document.getElementById("physicsProgressFill").style.width=p+"%";
+      document.getElementById("physicsProgressText").textContent=`${mastered} of ${PHYSICS2_CARDS.length} mastered`;
+    }
+    function renderPhysicsCard(){
+      const cardEl=document.getElementById("physicsCard"); if(!cardEl)return;
+      const i=physicsOrder[physicsPos],card=PHYSICS2_CARDS[i]; cardEl.classList.remove("flipped");
+      document.getElementById("physicsIndex").textContent=`Card ${physicsPos+1} of ${physicsOrder.length}`;
+      document.getElementById("physicsQuestion").innerHTML=physicsMarkup(card.front);
+      document.getElementById("physicsAnswer").innerHTML=physicsMarkup(card.back);
+      renderPhysicsStats();
+    }
+    function flipPhysics(){ document.getElementById("physicsCard")?.classList.toggle("flipped"); }
+    function movePhysics(d){ physicsPos=(physicsPos+d+physicsOrder.length)%physicsOrder.length; renderPhysicsCard(); }
+    function ratePhysics(ok){
+      const i=physicsOrder[physicsPos],r=physicsStats.ratings[i]||{good:0,again:0};
+      physicsStats.total++; if(ok){physicsStats.correct++;physicsStats.streak++;physicsStats.bestStreak=Math.max(physicsStats.bestStreak,physicsStats.streak);r.good++;}else{physicsStats.streak=0;r.again++;}
+      physicsStats.ratings[i]=r; savePhysicsStats(); movePhysics(1);
+    }
+    document.getElementById("physicsCard")?.addEventListener("click",flipPhysics);
+    document.getElementById("physicsCard")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();flipPhysics();}});
+    document.getElementById("physicsFlipBtn")?.addEventListener("click",flipPhysics);
+    document.getElementById("physicsAgainBtn")?.addEventListener("click",()=>ratePhysics(false));
+    document.getElementById("physicsGotItBtn")?.addEventListener("click",()=>ratePhysics(true));
+    document.getElementById("physicsShuffleBtn")?.addEventListener("click",()=>{physicsOrder=shuffleList(physicsOrder);physicsPos=0;renderPhysicsCard();});
+    document.addEventListener("keydown",e=>{
+      if(!document.getElementById("physics2")?.classList.contains("active")||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;
+      if(e.key==="ArrowLeft")movePhysics(-1); if(e.key==="ArrowRight")movePhysics(1); if(e.key==="1")ratePhysics(false); if(e.key==="2")ratePhysics(true); if(e.key===" "){e.preventDefault();flipPhysics();}
+    });
+    document.querySelectorAll("[data-class-open]").forEach(b=>b.addEventListener("click",()=>openCourse(b.dataset.classOpen)));
+
+        renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();
+    renderPhysicsCard();
+    const lastCourse=localStorage.getItem("flashcards-last-course");
+    if(lastCourse==="lang"||lastCourse==="physics2") openCourse(lastCourse); else updateCourseNav(null);
   </script>
 </body>
 </html>
