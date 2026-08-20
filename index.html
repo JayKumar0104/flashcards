@@ -26,6 +26,7 @@
     }
 
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -424,6 +425,102 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
+
+    /* Mobile usability pass */
+    button, .choice, .course-card, .flashcard, .physics-card { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+    .control-wide { grid-column: 1 / -1; }
+    .apush-term { font-family: Georgia, serif; }
+    .apush-definition { font-size: clamp(18px,2.25vw,25px); line-height:1.58; }
+    .apush-back { background: linear-gradient(145deg, var(--navy), #15346f); }
+
+    @media (max-width: 680px) {
+      body { padding-bottom: env(safe-area-inset-bottom); }
+      .shell { width: min(100% - 20px, 1160px); }
+      header { backdrop-filter: blur(20px); }
+      .topbar { min-height:0; padding:8px 0 7px; flex-wrap:wrap; gap:7px 10px; }
+      .brand { min-width:0; flex:1 1 auto; gap:8px; }
+      .brand-mark { width:36px; height:36px; border-radius:11px; flex:0 0 auto; }
+      .brand-text { display:block; min-width:0; }
+      .brand-text strong { font-size:13px; }
+      .brand-text span { max-width:58vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:10px; }
+      nav { order:2; width:100%; justify-content:flex-start; overflow-x:auto; scrollbar-width:none; gap:5px; padding:1px 0 2px; scroll-snap-type:x proximity; }
+      nav::-webkit-scrollbar { display:none; }
+      .nav-btn { min-height:40px; padding:9px 12px; font-size:12px; flex:0 0 auto; scroll-snap-align:start; }
+      main { padding:14px 0 42px; }
+
+      .course-grid { gap:10px; }
+      .course-card { min-height:86px; padding:17px 14px; border-radius:18px; }
+      .course-card h2 { font-size:clamp(19px,5.6vw,24px); line-height:1.13; }
+      .course-back { margin-bottom:12px; min-height:44px; }
+
+      .hero { padding:22px 18px; border-radius:20px; min-height:0; }
+      h1 { font-size:clamp(36px,11vw,52px); }
+      h2 { font-size:clamp(27px,8vw,36px); }
+      .lede { font-size:15px; line-height:1.6; }
+      .panel { padding:18px; border-radius:18px; }
+      .mode-card, .tool-card { padding:18px; }
+      .mode-card p, .tool-card p { min-height:0; }
+      .section { margin-top:24px; }
+
+      .flash-wrap, .physics-flash-wrap { gap:10px; }
+      .flash-stage, .flashcard, .physics-stage, .physics-card { min-height:0; height:clamp(390px,58svh,530px); }
+      .flash-face, .physics-face { padding:21px 18px; border-radius:20px; -webkit-overflow-scrolling:touch; }
+      .flash-word { font-size:clamp(38px,12vw,58px); overflow-wrap:anywhere; }
+      .flash-definition { font-size:clamp(19px,5.7vw,25px); }
+      .flash-example { font-size:14px; }
+      .physics-question { font-size:clamp(21px,6.5vw,29px); line-height:1.32; margin:17px 0; overflow-wrap:anywhere; }
+      .physics-answer { font-size:clamp(19px,5.8vw,27px); line-height:1.48; margin:17px 0; overflow-wrap:anywhere; }
+      .apush-term { font-size:clamp(25px,7.4vw,36px); }
+      .apush-definition { font-size:clamp(16px,4.5vw,20px); line-height:1.52; }
+      .physics-hint, .flip-hint { font-size:11px; line-height:1.45; }
+      .physics-math { display:inline-block; max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+
+      .flash-controls, .physics-controls { grid-template-columns:1fr; gap:8px; }
+      .flash-controls .panel:first-child, .physics-controls .panel:first-child { position:sticky; bottom:calc(8px + env(safe-area-inset-bottom)); z-index:20; padding:9px; background:rgba(255,255,255,.96); backdrop-filter:blur(18px); box-shadow:0 12px 36px rgba(18,33,67,.18); }
+      .flash-controls .panel:first-child.control-stack, .physics-controls .panel:first-child.control-stack { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+      .flash-controls .btn, .physics-controls .btn { min-height:48px; padding:11px 10px; }
+      .desktop-help, .flash-controls .panel:nth-child(2) { display:none; }
+      .physics-progress-row { grid-template-columns:1fr; gap:7px; margin-top:14px; }
+      .physics-progress-row > span { text-align:center; }
+      .physics-stat { padding:11px 14px; width:100%; display:flex; align-items:baseline; justify-content:space-between; gap:12px; text-align:left; }
+      .physics-stat strong { display:inline; font-size:28px; }
+      .physics-hero { gap:10px; margin-bottom:14px; }
+
+      .quiz-card { min-height:0; padding:20px 16px; }
+      .quiz-top { margin-bottom:18px; align-items:flex-start; }
+      .question { font-size:clamp(21px,6.3vw,28px); margin:10px 0 20px; }
+      .answer-input, textarea, select { font-size:16px; }
+      .answer-input { min-height:52px; padding:13px 14px; }
+      .choice { min-height:52px; padding:13px 14px; }
+      .quiz-actions { position:sticky; bottom:calc(8px + env(safe-area-inset-bottom)); z-index:15; padding:8px; margin:16px -8px -8px; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); border:1px solid rgba(21,40,80,.08); border-radius:14px; }
+      .quiz-actions .btn { flex:1 1 0; min-height:46px; }
+      .audio-panel { padding:18px 12px; }
+      .audio-actions .btn { min-height:44px; }
+      .match-row { padding:10px; }
+      .match-row select { min-height:48px; }
+      .test-part-card { min-height:92px; padding:15px; }
+      .segmented { gap:6px; }
+      .toggle-option span { min-height:44px; display:flex; align-items:center; padding:9px 11px; }
+      .pair-word { font-size:clamp(24px,7vw,34px); }
+      .lab-layout, .lab-layout > *, .word-picker { min-width:0; max-width:100%; }
+      .word-picker { display:flex; gap:7px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; scroll-snap-type:x proximity; }
+      .word-picker::-webkit-scrollbar { display:none; }
+      .pick-word { flex:0 0 auto; white-space:nowrap; scroll-snap-align:start; }
+      textarea { min-height:130px; }
+      .table-wrap { margin-left:-8px; margin-right:-8px; padding:0 8px; -webkit-overflow-scrolling:touch; }
+      table { min-width:560px; }
+      .footer-note { margin-top:24px; padding:0 8px; }
+    }
+
+    @media (max-width: 390px) {
+      .shell { width:min(100% - 14px,1160px); }
+      .flash-stage, .flashcard, .physics-stage, .physics-card { height:clamp(360px,56svh,470px); }
+      .flash-face, .physics-face { padding:18px 15px; }
+      .physics-question { font-size:20px; }
+      .physics-answer { font-size:18px; }
+      .apush-definition { font-size:15px; }
+    }
+
   </style>
 </head>
 <body>
@@ -442,6 +539,7 @@
         <button class="nav-btn" data-course-nav="lang" data-view="review" hidden>Review</button>
         <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
         <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
+        <button class="nav-btn" data-course-nav="apush" data-view="apush" hidden>Flashcards</button>
       </nav>
     </div>
   </header>
@@ -456,9 +554,8 @@
         <button class="course-card" data-class-open="physics2">
           <h2>AP Physics 2: Algebra-Based</h2>
         </button>
-        <button class="course-card" disabled aria-disabled="true">
+        <button class="course-card" data-class-open="apush">
           <h2>AP United States History</h2>
-          <span class="course-soon">Coming soon</span>
         </button>
       </div>
     </section>
@@ -724,7 +821,6 @@
         <div>
           <span class="eyebrow">AP Physics 2: Algebra-Based · flashcards</span>
           <h2 id="physics2-title">Thermodynamics & kinetic theory</h2>
-          <p class="lede">47 front/back cards from your uploaded deck. Attempt the answer before flipping, then rate the retrieval.</p>
         </div>
         <div class="panel physics-stat"><strong id="physicsMastered">0</strong><span>cards mastered</span></div>
       </div>
@@ -746,12 +842,14 @@
         </div>
         <aside class="physics-controls" aria-label="AP Physics 2: Algebra-Based flashcard controls">
           <div class="panel control-stack">
-            <button id="physicsFlipBtn" class="btn btn-dark">Flip card</button>
+            <button id="physicsFlipBtn" class="btn btn-dark control-wide">Flip card</button>
             <button id="physicsAgainBtn" class="btn btn-light">Again</button>
             <button id="physicsGotItBtn" class="btn btn-primary">Got it</button>
-            <button id="physicsShuffleBtn" class="btn btn-light btn-small">Shuffle deck</button>
+            <button id="physicsPrevBtn" class="btn btn-light btn-small">← Previous</button>
+            <button id="physicsNextBtn" class="btn btn-light btn-small">Next →</button>
+            <button id="physicsShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle deck</button>
           </div>
-          <div class="panel">
+          <div class="panel desktop-help">
             <strong>Keyboard</strong>
             <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
           </div>
@@ -767,6 +865,57 @@
       </div>
     </section>
 
+
+    <section id="apush" class="view" aria-labelledby="apush-title">
+      <button class="btn btn-light btn-small course-back" data-view="classes">← Classes</button>
+      <div class="physics-hero page-intro">
+        <div>
+          <span class="eyebrow">AP United States History · EPTLs 1–50</span>
+          <h2 id="apush-title">EPTLs 1–50</h2>
+        </div>
+        <div class="panel physics-stat"><strong id="apushMastered">0</strong><span>terms mastered</span></div>
+      </div>
+
+      <div class="physics-flash-wrap apush-flash-wrap">
+        <div class="physics-stage apush-stage">
+          <div id="apushCard" class="physics-card apush-card" tabindex="0" role="button" aria-label="AP United States History EPTL flashcard. Press Space or Enter to flip.">
+            <div class="physics-face physics-front apush-front">
+              <span id="apushIndex" class="physics-card-index"></span>
+              <div><span class="physics-label">EPTL</span><div id="apushTerm" class="physics-question apush-term"></div></div>
+              <span class="physics-hint">Recall the definition, then tap to reveal it.</span>
+            </div>
+            <div class="physics-face physics-back apush-back">
+              <span class="physics-card-index">AP United States History · definition</span>
+              <div><span class="physics-label">Definition</span><div id="apushDefinition" class="physics-answer apush-definition"></div></div>
+              <span class="physics-hint">Rate whether you could recall the definition before revealing it.</span>
+            </div>
+          </div>
+        </div>
+        <aside class="physics-controls apush-controls" aria-label="AP United States History flashcard controls">
+          <div class="panel control-stack">
+            <button id="apushFlipBtn" class="btn btn-dark control-wide">Flip card</button>
+            <button id="apushAgainBtn" class="btn btn-light">Again</button>
+            <button id="apushGotItBtn" class="btn btn-primary">Got it</button>
+            <button id="apushPrevBtn" class="btn btn-light btn-small">← Previous</button>
+            <button id="apushNextBtn" class="btn btn-light btn-small">Next →</button>
+            <button id="apushShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle deck</button>
+          </div>
+          <div class="panel desktop-help">
+            <strong>Keyboard</strong>
+            <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
+          </div>
+          <div class="panel">
+            <strong id="apushAccuracy">—</strong>
+            <p class="key-help">retrieval accuracy</p>
+          </div>
+        </aside>
+      </div>
+      <div class="physics-progress-row">
+        <div class="progress-track" aria-hidden="true"><div id="apushProgressFill" class="progress-fill"></div></div>
+        <span id="apushProgressText" class="key-help">0 of 50 mastered</span>
+      </div>
+    </section>
+
     <section id="printSheet" class="print-sheet" hidden aria-label="Printable mock exam"></section>
 
     <p class="footer-note">Progress is stored only in this browser. The app works without accounts, analytics, or external services.</p>
@@ -778,11 +927,9 @@
         word: "annotation", part: "noun",
         definition: "A note added to a text to explain, evaluate, or clarify something.",
         forms: [
+          {word:"annotations", part:"noun · plural", level:"packet"},
           {word:"annotate", part:"verb", level:"packet"},
-          {word:"annotator", part:"noun", level:"extended"},
-          {word:"annotative", part:"adjective", level:"extended"},
-          {word:"annotatable", part:"adjective", level:"extended"},
-          {word:"annotatory", part:"adjective", level:"rare"}
+          {word:"annotated", part:"past participle/adjective", level:"packet"}
         ],
         example: "The student added an annotation beside the unfamiliar historical reference.",
         cloze: "The editor added an ___ to clarify the outdated expression.",
@@ -793,8 +940,7 @@
         word: "appellation", part: "noun",
         definition: "A name, title, or descriptive designation.",
         forms: [
-          {word:"appellative", part:"adjective or noun", level:"extended"},
-          {word:"appellatively", part:"adverb", level:"extended"}
+          {word:"appellations", part:"noun · plural", level:"packet"}
         ],
         example: "The Big Apple is a familiar appellation for New York City.",
         cloze: "The nickname soon became an informal ___ for the team.",
@@ -805,9 +951,7 @@
         definition: "A person whose name becomes, or is believed to become, the name of something else.",
         forms: [
           {word:"eponymous", part:"adjective", level:"packet"},
-          {word:"eponymic", part:"adjective", level:"extended"},
-          {word:"eponymy", part:"noun", level:"extended"},
-          {word:"eponymously", part:"adverb", level:"extended"}
+          {word:"eponyms", part:"noun · plural", level:"extended"}
         ],
         example: "The Earl of Sandwich is the eponym of the sandwich.",
         cloze: "The inventor became the ___ of the device named in her honor.",
@@ -819,6 +963,7 @@
         forms: [
           {word:"linguistic", part:"adjective", level:"packet"},
           {word:"linguist", part:"noun", level:"packet"},
+          {word:"linguists", part:"noun · plural", level:"packet"},
           {word:"linguistically", part:"adverb", level:"extended"}
         ],
         example: "In linguistics, researchers examine grammar, speech sounds, and language change.",
@@ -828,7 +973,10 @@
       {
         word: "malapropism", part: "noun",
         definition: "A humorous or ridiculous word error caused by substituting a similar-sounding word.",
-        forms: [{word:"malaprop", part:"noun; alternate form", level:"packet"}],
+        forms: [
+          {word:"malapropisms", part:"noun · plural", level:"packet"},
+          {word:"malaprop", part:"noun · alternate form", level:"extended"}
+        ],
         example: "Calling electoral votes ‘electrical votes’ would be a malapropism.",
         cloze: "Her accidental substitution of a similar-sounding word was a ___.",
         answer: ["malapropism"], options: ["malapropism", "neologism", "annotation", "patois"]
@@ -837,11 +985,7 @@
         word: "neologism", part: "noun",
         definition: "A newly created word, expression, or use of a word.",
         forms: [
-          {word:"neologistic", part:"adjective", level:"extended"},
-          {word:"neologist", part:"noun", level:"extended"},
-          {word:"neologize", part:"verb", level:"extended"},
-          {word:"neology", part:"noun", level:"extended"},
-          {word:"neological", part:"adjective", level:"extended"}
+          {word:"neologisms", part:"noun · plural", level:"packet"}
         ],
         example: "The term ‘doomscrolling’ began as a neologism before becoming widely recognized.",
         cloze: "The writer coined a ___ for the new kind of online behavior.",
@@ -865,10 +1009,7 @@
         word: "polyglot", part: "adjective or noun",
         definition: "Using several languages; also, a person who speaks several languages.",
         forms: [
-          {word:"polyglottal", part:"adjective", level:"extended"},
-          {word:"polyglottic", part:"adjective", level:"extended"},
-          {word:"polyglotism", part:"noun", level:"extended"},
-          {word:"polyglottous", part:"adjective", level:"rare"}
+          {word:"polyglots", part:"noun · plural", level:"packet"}
         ],
         example: "The polyglot guide switched smoothly among four languages.",
         cloze: "Because she spoke six languages, the interpreter was a true ___.",
@@ -878,13 +1019,7 @@
         word: "vulgar", part: "adjective",
         definition: "Common or popular in language; crude or indecent; or offensively showy and excessive.",
         forms: [
-          {word:"vulgarity", part:"noun", level:"packet"},
-          {word:"vulgarly", part:"adverb", level:"extended"},
-          {word:"vulgarize", part:"verb", level:"extended"},
-          {word:"vulgarization", part:"noun", level:"extended"},
-          {word:"vulgarizer", part:"noun", level:"extended"},
-          {word:"vulgarism", part:"noun", level:"extended"},
-          {word:"vulgarian", part:"noun", level:"extended"}
+          {word:"vulgarity", part:"noun", level:"packet"}
         ],
         example: "The reviewer criticized the mansion’s vulgar display of wealth.",
         cloze: "Critics called the gold-covered hallway a ___ display of wealth.",
@@ -893,6 +1028,12 @@
     ];
 
     const USAGE = [
+
+      {word:"annotation", statement:"The star pitcher was known by the annotation ‘Ace’ throughout the league.", answer:false, why:"A nickname or title is an appellation; an annotation is a note added to a text."},
+      {word:"vulgar", statement:"An older dictionary might label an ordinary street expression vulgar because it belongs to common speech.", answer:true, why:"One packet sense of vulgar concerns common or popular language, not only indecency."},
+      {word:"appellation", statement:"The comedian committed several appellations by repeatedly substituting ridiculous similar-sounding words.", answer:false, why:"Those errors are malapropisms; appellations are names or titles."},
+      {word:"linguistics", statement:"A student interested in speech and language would study eponyms as the academic field devoted to language.", answer:false, why:"The academic study of language is linguistics; an eponym is a naming relationship."},
+      {word:"malapropism", statement:"Children sometimes produce malapropisms when unfamiliar place names sound like words they already know.", answer:true, why:"A malapropism results from confusing a word with a similar-sounding one."},
       {word:"annotation", statement:"A footnote explaining an unfamiliar term is a type of annotation.", answer:true, why:"An annotation is an explanatory or critical note."},
       {word:"annotation", statement:"The mayor received the annotation ‘city leader’ after the election.", answer:false, why:"A title is an appellation, not an annotation."},
       {word:"appellation", statement:"‘The Windy City’ is an appellation for Chicago.", answer:true, why:"An appellation can be a name or title."},
@@ -907,6 +1048,7 @@
       {word:"neologism", statement:"A neologism must be an accidental misuse of a similar-sounding word.", answer:false, why:"That is a malapropism."},
       {word:"parlance", statement:"‘Bandwidth’ has a specialized meaning in networking parlance.", answer:true, why:"Parlance is the vocabulary or manner of speaking in a group or field."},
       {word:"parlance", statement:"Parlance refers only to dialects that have no written tradition.", answer:false, why:"That description fits patois more closely."},
+      {word:"parlance", statement:"A child who substitutes a similar-sounding word for a state name has committed a parlance.", answer:false, why:"That kind of word-confusion error is a malapropism; parlance is a manner or vocabulary of speaking."},
       {word:"patois", statement:"A mainly spoken regional dialect may be described as a patois.", answer:true, why:"Patois refers to a regional, often nonstandard dialect with a mainly spoken tradition."},
       {word:"patois", statement:"A scientific field’s technical vocabulary is necessarily a patois.", answer:false, why:"Technical vocabulary is better described as that field’s parlance."},
       {word:"polyglot", statement:"A speaker fluent in several languages may be called a polyglot.", answer:true, why:"Polyglot can be a noun for a multilingual person."},
@@ -916,38 +1058,17 @@
     ];
 
     const FORM_QUESTIONS = [
-      {word:"annotation", tier:"core", prompt:"Choose the verb: The researcher will ___ the transcript with brief explanations.", options:["annotation","annotate","annotator","annotative"], correct:"annotate", why:"Annotate is the high-yield verb related to annotation."},
-      {word:"annotation", tier:"extended", prompt:"Choose the person: The project hired an ___ to add labels to the training data.", options:["annotation","annotative","annotator","annotate"], correct:"annotator", why:"An annotator is a person who annotates."},
-      {word:"annotation", tier:"extended", prompt:"Which adjective means ‘having the function of adding notes or comments’?", options:["annotative","annotator","annotate","annotation"], correct:"annotative", why:"Annotative is the adjective in the annotation word family."},
-      {word:"annotation", tier:"extended", prompt:"Choose the adjective: A digital document that permits added notes is ___.", options:["annotatable","annotator","annotation","annotatedly"], correct:"annotatable", why:"Annotatable means capable of being annotated."},
-      {word:"annotation", tier:"rare", prompt:"Which rare adjective also belongs to the annotation word family?", options:["annotatory","annotarious","annotationalize","annotatement"], correct:"annotatory", why:"Annotatory is an attested but rare adjective related to annotation."},
-      {word:"appellation", tier:"extended", prompt:"Which adjective-or-noun belongs to the appellation word family?", options:["appellative","appellated","appellator","appellationary"], correct:"appellative", why:"Appellative is the established related form; the other choices are not the target derivative."},
-      {word:"appellation", tier:"extended", prompt:"Choose the adverb in the appellation word family.", options:["appellatively","appellationally","appellativelyness","appellatingly"], correct:"appellatively", why:"Appellatively is the established adverb related to appellative."},
-      {word:"eponym", tier:"core", prompt:"Choose the adjective: The award and its ___ scholarship share the founder’s name.", options:["eponym","eponymous","eponymy","eponymously"], correct:"eponymous", why:"Eponymous is the high-yield adjective meaning ‘being an eponym’ or ‘named after.’"},
-      {word:"eponym", tier:"extended", prompt:"Choose the noun for the practice or relationship of naming something after a person.", options:["eponymy","eponymic","eponymously","eponymous"], correct:"eponymy", why:"Eponymy is the noun for eponym-based naming or the state of being eponymous."},
-      {word:"eponym", tier:"extended", prompt:"Which word is an alternate adjective in the eponym family?", options:["eponymic","eponymy","eponymist","eponymize"], correct:"eponymic", why:"Eponymic is an established adjective related to eponym."},
-      {word:"eponym", tier:"extended", prompt:"Choose the adverb: The company was ___ named after its founder.", options:["eponymy","eponymic","eponymously","eponym"], correct:"eponymously", why:"Eponymously is the adverb form."},
-      {word:"linguistics", tier:"core", prompt:"Choose the person: The ___ studies patterns in how languages change.", options:["linguistic","linguistics","linguist","linguistically"], correct:"linguist", why:"A linguist is a person who studies language."},
-      {word:"linguistics", tier:"core", prompt:"Choose the adjective: The two dialects share several ___ features.", options:["linguist","linguistics","linguistic","linguistically"], correct:"linguistic", why:"Linguistic is the adjective related to language or linguistics."},
-      {word:"linguistics", tier:"extended", prompt:"Choose the adverb: The two communities are ___ diverse.", options:["linguist","linguistics","linguistic","linguistically"], correct:"linguistically", why:"Linguistically is the adverb meaning ‘with respect to language.’"},
-      {word:"malapropism", tier:"core", prompt:"Which word is an alternate noun for malapropism?", options:["malaprop","malapropic","malapropous","malaparlance"], correct:"malaprop", why:"Malaprop is an alternate noun with the same meaning."},
-      {word:"neologism", tier:"extended", prompt:"Choose the adjective: The author’s ___ style includes several newly coined expressions.", options:["neologist","neologistic","neology","neologize"], correct:"neologistic", why:"Neologistic is the adjective related to neologism."},
-      {word:"neologism", tier:"extended", prompt:"Choose the person: A habitual coiner or user of new words may be called a ___.", options:["neology","neologist","neologistic","neologize"], correct:"neologist", why:"A neologist is a person who introduces or uses new words."},
-      {word:"neologism", tier:"extended", prompt:"Choose the verb meaning ‘to create or use new words.’", options:["neology","neologist","neologistic","neologize"], correct:"neologize", why:"Neologize is the verb in this word family."},
-      {word:"neologism", tier:"extended", prompt:"Choose the noun for the practice of introducing or using new expressions.", options:["neology","neological","neologist","neologize"], correct:"neology", why:"Neology can name the use or introduction of new expressions."},
-      {word:"neologism", tier:"extended", prompt:"Which is another adjective in the neologism word family?", options:["neological","neology","neologist","neologize"], correct:"neological", why:"Neological is an adjective related to neology and neologism."},
+      {word:"annotation", tier:"core", prompt:"Choose the verb: The researcher will ___ the transcript with brief explanations.", options:["annotation","annotate","appellation","parlance"], correct:"annotate", why:"Annotate is the packet-emphasized verb related to annotation."},
+      {word:"annotation", tier:"core", prompt:"Choose the form: The previous owner ___ the book with explanatory notes.", options:["annotated","annotation","annotate","annotations"], correct:"annotated", why:"Annotated is the natural past-tense/participial form of annotate."},
+      {word:"appellation", tier:"core", prompt:"Choose the plural: The city has several unofficial ___.", options:["appellation","appellations","annotations","eponyms"], correct:"appellations", why:"Appellations is the ordinary plural form."},
+      {word:"eponym", tier:"core", prompt:"Choose the adjective: The novel and its ___ hero share the same name.", options:["eponym","eponymous","linguistic","polyglot"], correct:"eponymous", why:"Eponymous is the packet-emphasized adjective related to eponym."},
+      {word:"linguistics", tier:"core", prompt:"Choose the adjective: The two dialects share several ___ features.", options:["linguist","linguistics","linguistic","polyglot"], correct:"linguistic", why:"Linguistic is the packet-emphasized adjective related to language."},
+      {word:"linguistics", tier:"core", prompt:"Choose the person: The ___ studies language change.", options:["linguist","linguistics","linguistic","polyglot"], correct:"linguist", why:"A linguist is a person who studies language."},
+      {word:"malapropism", tier:"core", prompt:"Choose the plural: His repeated word errors were ___.", options:["malapropisms","neologisms","parlances","patois"], correct:"malapropisms", why:"Malapropisms is the ordinary plural form."},
+      {word:"neologism", tier:"core", prompt:"Choose the plural: New technologies often create ___.", options:["neologisms","malapropisms","annotations","appellations"], correct:"neologisms", why:"Neologisms is the ordinary plural form."},
       {word:"polyglot", tier:"core", prompt:"In ‘a polyglot neighborhood,’ what part of speech is polyglot?", options:["noun","verb","adjective","adverb"], correct:"adjective", why:"It modifies neighborhood, so polyglot is functioning as an adjective."},
       {word:"polyglot", tier:"core", prompt:"In ‘The translator is a polyglot,’ what part of speech is polyglot?", options:["noun","verb","adjective","adverb"], correct:"noun", why:"It names a multilingual person, so polyglot is a noun."},
-      {word:"polyglot", tier:"extended", prompt:"Which two words are less-common adjectives meaning polyglot?", options:["polyglottal and polyglottic","polyglotism and polyglottal","polyglotian and polyglotly","polyglotism and polyglottic"], correct:"polyglottal and polyglottic", why:"Polyglottal and polyglottic are established adjective variants; polyglotism is a noun."},
-      {word:"polyglot", tier:"extended", prompt:"Choose the noun naming polyglot character, knowledge, or usage.", options:["polyglottal","polyglottic","polyglotism","polyglotly"], correct:"polyglotism", why:"Polyglotism is the derived noun."},
-      {word:"polyglot", tier:"rare", prompt:"Which rare adjective is also an established variant of polyglot?", options:["polyglottous","polyglotly","polyglotian","polyglottery"], correct:"polyglottous", why:"Polyglottous is an attested but rare adjective variant."},
-      {word:"vulgar", tier:"core", prompt:"Choose the noun: The audience objected to the unnecessary ___ of the remark.", options:["vulgar","vulgarity","vulgarly","vulgarize"], correct:"vulgarity", why:"Vulgarity is the high-yield noun related to vulgar."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the adverb: The wealth was displayed so ___ that it distracted from the design.", options:["vulgarity","vulgarian","vulgarly","vulgarize"], correct:"vulgarly", why:"Vulgarly is the adverb form of vulgar."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the verb meaning ‘to make vulgar or common.’", options:["vulgarism","vulgarize","vulgarity","vulgarian"], correct:"vulgarize", why:"Vulgarize is the verb in this word family."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the noun for the process or result of making something vulgar.", options:["vulgarization","vulgarian","vulgarly","vulgarize"], correct:"vulgarization", why:"Vulgarization names the process or result of vulgarizing."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the noun for a person or thing that vulgarizes.", options:["vulgarizer","vulgarism","vulgarian","vulgarity"], correct:"vulgarizer", why:"A vulgarizer is one that vulgarizes."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the noun for a vulgar word or expression.", options:["vulgarism","vulgarian","vulgarity","vulgarly"], correct:"vulgarism", why:"A vulgarism is a vulgar word, expression, or usage."},
-      {word:"vulgar", tier:"extended", prompt:"Choose the noun that can describe a coarse or unrefined person.", options:["vulgarian","vulgarism","vulgarity","vulgarly"], correct:"vulgarian", why:"Vulgarian is a noun for a person regarded as coarse or lacking refinement."}
+      {word:"vulgar", tier:"core", prompt:"Choose the noun: The ___ of the remark shocked the audience.", options:["vulgar","vulgarity","parlance","patois"], correct:"vulgarity", why:"Vulgarity is the packet-emphasized noun related to vulgar."}
     ];
 
     /* Legacy v1 interaction engine retained for data migration reference.
@@ -1274,48 +1395,34 @@
     ];
 
     const DERIVATIVE_FILLINS = [
-      {word:"annotation",tier:"core",prompt:"The researcher will ___ the interview transcript with short explanatory notes.",answers:["annotate"],why:"Annotate is the verb meaning to add explanatory or critical notes."},
-      {word:"annotation",tier:"core",prompt:"The editor added an ___ beside the obscure historical reference.",answers:["annotation"],why:"Annotation is the noun for an explanatory or critical note."},
-      {word:"annotation",tier:"extended",prompt:"The project hired an ___ to label and explain the archived documents.",answers:["annotator"],why:"An annotator is a person who annotates."},
-      {word:"annotation",tier:"extended",prompt:"Because the digital text permits readers to add notes, it is ___.",answers:["annotatable"],why:"Annotatable means capable of being annotated."},
-      {word:"annotation",tier:"extended",prompt:"The scholar’s ___ comments explain the sources without interrupting the main argument.",answers:["annotative"],why:"Annotative is an adjective for material that adds notes or commentary."},
-      {word:"annotation",tier:"rare",prompt:"The editor described the note-adding material in the margin as ___.",answers:["annotatory"],why:"Annotatory is a rare adjective related to annotation."},
-      {word:"appellation",tier:"core",prompt:"The nickname gradually became a familiar ___ for the neighborhood.",answers:["appellation"],why:"An appellation is a name, title, or designation."},
-      {word:"appellation",tier:"extended",prompt:"In the phrase “the Bard,” the word Bard functions as an ___ naming Shakespeare.",answers:["appellative"],why:"Appellative can be a noun for a name or descriptive title."},
-      {word:"appellation",tier:"extended",prompt:"The title was used ___ rather than as a description of the person’s behavior.",answers:["appellatively"],why:"Appellatively is the adverb related to appellative."},
-      {word:"eponym",tier:"core",prompt:"The scientist became the ___ of the scale that bears her surname.",answers:["eponym"],why:"The source person whose name is given to something is its eponym."},
-      {word:"eponym",tier:"core",prompt:"The novel and its ___ film adaptation share the same title.",answers:["eponymous"],why:"Eponymous means giving a name to, or having the same name as, something else."},
-      {word:"eponym",tier:"extended",prompt:"The company was ___ named after its founder.",answers:["eponymously"],why:"Eponymously is the adverb in the eponym word family."},
-      {word:"eponym",tier:"extended",prompt:"The naming relationship between the scientist and the scale is an example of ___.",answers:["eponymy"],why:"Eponymy is the practice or relationship of naming something after a person."},
-      {word:"eponym",tier:"extended",prompt:"The historian traced the ___ connection between the inventor and the device bearing his name.",answers:["eponymic"],why:"Eponymic is an adjective relating to an eponym."},
-      {word:"linguistics",tier:"core",prompt:"The ___ studies how sentence patterns change across generations.",answers:["linguist"],why:"A linguist is a person who studies language."},
-      {word:"linguistics",tier:"core",prompt:"The two dialects share several ___ features.",answers:["linguistic"],why:"Linguistic is the adjective relating to language."},
-      {word:"linguistics",tier:"extended",prompt:"The region is ___ diverse because several languages are spoken there.",answers:["linguistically"],why:"Linguistically is the adverb meaning with respect to language."},
-      {word:"linguistics",tier:"core",prompt:"The systematic study of language structure and variation is called ___.",answers:["linguistics"],why:"Linguistics is the field that systematically studies language."},
-      {word:"malapropism",tier:"core",prompt:"Calling an electoral vote an “electrical vote” is a ___.",answers:["malapropism","malaprop"],why:"A malapropism, also called a malaprop, substitutes a similar-sounding word incorrectly."},
-      {word:"neologism",tier:"core",prompt:"The newly coined expression began as a ___ before becoming common.",answers:["neologism"],why:"A neologism is a newly created word, expression, or usage."},
-      {word:"neologism",tier:"extended",prompt:"The author’s ___ style relies heavily on newly coined expressions.",answers:["neologistic","neological"],why:"Neologistic and neological are adjectives in this word family."},
-      {word:"neologism",tier:"extended",prompt:"A habitual coiner of new words may be called a ___.",answers:["neologist"],why:"A neologist introduces or uses new words."},
-      {word:"neologism",tier:"extended",prompt:"Writers sometimes ___ when existing vocabulary cannot express a new idea.",answers:["neologize"],why:"Neologize is the verb meaning to create or use new words."},
-      {word:"neologism",tier:"extended",prompt:"The critic studied the author’s ___, especially her habit of inventing expressions.",answers:["neology"],why:"Neology can name the use or introduction of new expressions."},
-      {word:"parlance",tier:"core",prompt:"In computer-hardware ___, RAM is short-term working memory.",answers:["parlance"],why:"Parlance is the characteristic vocabulary or manner of speaking of a group or field."},
-      {word:"patois",tier:"core",prompt:"The dialogue preserves several expressions from the region’s spoken ___.",answers:["patois"],why:"Patois is a regional, often nonstandard dialect with a mainly spoken tradition."},
-      {word:"polyglot",tier:"core",prompt:"Because the guide speaks six languages, she is a ___.",answers:["polyglot"],why:"As a noun, polyglot means a person who speaks several languages."},
-      {word:"polyglot",tier:"core",prompt:"The port city has a ___ population that communicates in many languages.",answers:["polyglot"],why:"As an adjective, polyglot means using or composed of several languages."},
-      {word:"polyglot",tier:"extended",prompt:"His knowledge and regular use of several languages demonstrated remarkable ___.",answers:["polyglotism"],why:"Polyglotism is the noun for polyglot character, knowledge, or usage."},
-      {word:"polyglot",tier:"extended",prompt:"The archive’s ___ collection contains documents in many languages.",answers:["polyglottal","polyglottic"],why:"Polyglottal and polyglottic are less-common adjectives meaning polyglot."},
-      {word:"polyglot",tier:"rare",prompt:"The rare adjective ___ can describe something expressed in several languages.",answers:["polyglottous"],why:"Polyglottous is an attested but rare adjective in the polyglot family."},
-      {word:"vulgar",tier:"core",prompt:"The audience objected to the unnecessary ___ of the insult.",answers:["vulgarity"],why:"Vulgarity is the high-yield noun related to vulgar."},
-      {word:"vulgar",tier:"core",prompt:"The reviewer called the gold-plated room a ___ display of wealth.",answers:["vulgar"],why:"Vulgar can mean offensively showy or excessive."},
-      {word:"vulgar",tier:"extended",prompt:"The decorations were displayed so ___ that they overwhelmed the room.",answers:["vulgarly"],why:"Vulgarly is the adverb form of vulgar."},
-      {word:"vulgar",tier:"extended",prompt:"A careless adaptation can ___ a complex work by making it coarse or oversimplified.",answers:["vulgarize"],why:"Vulgarize is the verb meaning to make vulgar or common."},
-      {word:"vulgar",tier:"extended",prompt:"The critic objected to the ___ of the complex argument into a crude slogan.",answers:["vulgarization"],why:"Vulgarization names the process or result of vulgarizing."},
-      {word:"vulgar",tier:"extended",prompt:"The reviewer accused the careless adapter of being a ___ of serious literature.",answers:["vulgarizer"],why:"A vulgarizer is a person or thing that vulgarizes."},
-      {word:"vulgar",tier:"extended",prompt:"The snobbish narrator dismisses the loud, unrefined guest as a ___.",answers:["vulgarian"],why:"Vulgarian is a noun for a person regarded as coarse or lacking refinement."},
-      {word:"vulgar",tier:"extended",prompt:"The editor removed the ___ because the coarse expression did not fit the formal article.",answers:["vulgarism"],why:"A vulgarism is a vulgar word, expression, or usage."}
+      {word:"annotation",tier:"core",prompt:"The margins contained several ___ explaining difficult historical references.",answers:["annotations"],why:"Annotations are explanatory or critical notes added to a text."},
+      {word:"annotation",tier:"core",prompt:"The editor will ___ the passage with notes explaining the archaic expressions.",answers:["annotate"],why:"Annotate is the verb meaning to add explanatory or critical notes."},
+      {word:"annotation",tier:"core",prompt:"The previous owner ___ the novel with comments about its literary devices.",answers:["annotated"],why:"Annotated is the natural past-tense/participial form of annotate."},
+      {word:"annotation",tier:"core",prompt:"A brief ___ beside the paragraph explained the historical reference.",answers:["annotation"],why:"An annotation is an explanatory or critical note."},
+      {word:"appellation",tier:"core",prompt:"The city has acquired several unofficial ___ over the years.",answers:["appellations"],why:"Appellations are names, titles, or designations."},
+      {word:"appellation",tier:"core",prompt:"The nickname became a familiar ___ for the neighborhood.",answers:["appellation"],why:"An appellation is a name, title, or designation."},
+      {word:"eponym",tier:"core",prompt:"William Penn is the ___ of Pennsylvania.",answers:["eponym"],why:"An eponym is the person whose name becomes the source of another name."},
+      {word:"eponym",tier:"core",prompt:"The novel and its ___ protagonist share the same name.",answers:["eponymous"],why:"Eponymous is the packet-emphasized adjective related to eponym."},
+      {word:"eponym",tier:"core",prompt:"Several scientific units have ___ whose surnames became the units’ names.",answers:["eponyms"],why:"Eponyms is the ordinary plural of eponym."},
+      {word:"linguistics",tier:"core",prompt:"The systematic study of language structure and variation is called ___.",answers:["linguistics"],why:"Linguistics is the field that studies language."},
+      {word:"linguistics",tier:"core",prompt:"The researcher compared the ___ patterns of the two dialects.",answers:["linguistic"],why:"Linguistic is the adjective meaning related to language."},
+      {word:"linguistics",tier:"core",prompt:"The ___ recorded how the community’s speech had changed over time.",answers:["linguist"],why:"A linguist is a person who studies language."},
+      {word:"linguistics",tier:"core",prompt:"Several ___ compared how regional accents changed across centuries.",answers:["linguists"],why:"Linguists is the plural form for people who study language."},
+      {word:"malapropism",tier:"core",prompt:"Calling an electoral vote an “electrical vote” is a ___.",answers:["malapropism"],why:"A malapropism is a ridiculous misuse of a word through confusion with a similar-sounding word."},
+      {word:"malapropism",tier:"core",prompt:"Grandpa’s repeated ___ during the toast made everyone laugh.",answers:["malapropisms"],why:"Malapropisms is the ordinary plural of malapropism."},
+      {word:"neologism",tier:"core",prompt:"The newly coined expression began as a ___ before becoming widely used.",answers:["neologism"],why:"A neologism is a newly created word, expression, or usage."},
+      {word:"neologism",tier:"core",prompt:"Social media has produced many ___ that later entered everyday speech.",answers:["neologisms"],why:"Neologisms is the ordinary plural of neologism."},
+      {word:"parlance",tier:"core",prompt:"In legal ___, the word “consideration” has a specialized meaning.",answers:["parlance"],why:"Parlance is a particular manner or vocabulary of speaking."},
+      {word:"patois",tier:"core",prompt:"The novel preserves expressions from the region’s local ___.",answers:["patois"],why:"Patois is a regional, especially nonstandard, dialect."},
+      {word:"polyglot",tier:"core",prompt:"Because she speaks six languages fluently, the interpreter is a ___.",answers:["polyglot"],why:"As a noun, polyglot means a person who speaks several languages."},
+      {word:"polyglot",tier:"core",prompt:"The port city was ___, with several languages heard in its markets.",answers:["polyglot"],why:"Polyglot can also function as an adjective meaning using or involving several languages."},
+      {word:"polyglot",tier:"core",prompt:"The conference brought together ___ who could move easily among several languages.",answers:["polyglots"],why:"Polyglots is the ordinary plural noun form."},
+      {word:"vulgar",tier:"core",prompt:"The ___ of the remarks surprised the normally reserved audience.",answers:["vulgarity"],why:"Vulgarity is the packet-emphasized noun related to vulgar."},
+      {word:"vulgar",tier:"core",prompt:"The reviewer called the gold-covered room a ___ display of wealth.",answers:["vulgar"],why:"Vulgar can mean offensively excessive or showy."}
     ];
 
     const SHORT_ANSWER_PAIRS = [
+      {words:["annotation","parlance"],prompt:"Create one or more complete sentences using both annotation and parlance, or appropriate derivatives.",model:"The professor annotated the contract to explain why an ordinary word carried a specialized meaning in legal parlance."},
       {words:["annotation","neologism"],prompt:"Create one or more complete sentences using both annotation and neologism, or appropriate derivatives.",model:"The editor annotated the article to explain why its newest neologism had become popular online."},
       {words:["appellation","eponym"],prompt:"Create one or more complete sentences using both appellation and eponym, or appropriate derivatives.",model:"Although the product’s informal appellation came from customers, its official eponym was the engineer whose surname it carried."},
       {words:["linguistics","patois"],prompt:"Create one or more complete sentences using both linguistics and patois, or appropriate derivatives.",model:"The linguist recorded the mountain community’s patois for a study in regional linguistics."},
@@ -1358,7 +1465,8 @@
     function getWord(name) { return WORDS.find(w=>w.word===name); }
     function pluralForm(form) { if(form.endsWith("s")) return form; if(/[^aeiou]y$/.test(form)) return form.slice(0,-1)+"ies"; return form+"s"; }
     function acceptedForms(w) {
-      const set=new Set([w.word,pluralForm(w.word)]);
+      const set=new Set([w.word]);
+      if(w.part.includes("noun")) set.add(pluralForm(w.word));
       w.forms.forEach(f=>{
         set.add(f.word);
         if(f.part.includes("noun")) set.add(pluralForm(f.word));
@@ -1412,11 +1520,11 @@
     function updateCourseNav(course) {
       document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
       const brand=document.getElementById("brandCourse");
-      if(brand) brand.textContent=course==="lang"?"AP English Language and Composition · Set 1":course==="physics2"?"AP Physics 2: Algebra-Based":"Classes";
+      if(brand) brand.textContent=course==="lang"?"AP English Language and Composition · Set 1":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?"AP United States History · EPTLs 1–50":"Classes";
     }
     function showView(id) {
       const langViews=["home","learn","practice","cram","review","progress"];
-      const course=langViews.includes(id)?"lang":id==="physics2"?"physics2":null;
+      const course=langViews.includes(id)?"lang":id==="physics2"?"physics2":id==="apush"?"apush":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
@@ -1426,9 +1534,10 @@
       if(id==="review") renderReviewSetup();
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
+      if(id==="apush") renderApushCard();
       window.scrollTo({top:0,behavior:"smooth"});
     }
-    function openCourse(course){ showView(course==="lang"?"home":"physics2"); }
+    function openCourse(course){ showView(course==="lang"?"home":course==="physics2"?"physics2":"apush"); }
     document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
     document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 
@@ -1756,6 +1865,49 @@
 
     // AP Physics 2: Algebra-Based: isolated flashcard deck and progress. Card text is preserved from the uploaded CSV.
     const PHYSICS2_CARDS = [{"front": "What does temperature measure on a microscopic level in an ideal gas?", "back": "The average translational kinetic energy of the molecules."}, {"front": "Formula: Average translational kinetic energy per molecule", "back": "$K_{avg} = \\frac{3}{2} k_B T$"}, {"front": "In the equation $K_{avg} = \\frac{3}{2} k_B T$, what are the required units for temperature ($T$)?", "back": "Kelvin ($K$)."}, {"front": "What occurs at absolute zero ($0\\ K$) in terms of particle motion?", "back": "The particles completely stop all translational motion."}, {"front": "How does the peak of a Maxwell-Boltzmann distribution graph change when the gas temperature increases?", "back": "The peak shifts to the right and flattens out."}, {"front": "How does the molar mass of a gas affect its peak on a Maxwell-Boltzmann distribution at a fixed temperature?", "back": "Gases with smaller molar masses have peaks shifted further to the right (higher speeds)."}, {"front": "Equation: The Ideal Gas Law using moles ($n$)", "back": "$PV = nRT$"}, {"front": "Equation: The Ideal Gas Law using total number of molecules ($N$)", "back": "$PV = N k_B T$"}, {"front": "What is the microscopic cause of pressure ($P$) in a gas container?", "back": "Gas molecules continuously colliding with the walls of the container."}, {"front": "According to the Ideal Gas Law, what happens to pressure if temperature increases while volume remains constant?", "back": "The pressure increases due to molecules hitting the walls harder and more frequently."}, {"front": "Why does the AP curriculum prefer the terms 'heating' and 'cooling' over 'heat'?", "back": "To emphasize that heat is a process of transferring energy, not a substance an object contains."}, {"front": "When is thermal equilibrium reached between two objects in physical contact?", "back": "When both objects reach the same temperature and the net energy transfer is zero."}, {"front": "Equation: Rate of thermal energy transfer via conduction", "back": "$\\frac{Q}{\\Delta t} = \\frac{k A \\Delta T}{L}$"}, {"front": "In the conduction equation, what does a low thermal conductivity ($k$) indicate about a material?", "back": "The material is an insulator."}, {"front": "Equation: The First Law of Thermodynamics", "back": "$\\Delta U = Q + W$"}, {"front": "In the First Law of Thermodynamics, what does $W$ specifically represent?", "back": "The work done ON the gas system."}, {"front": "What is the relationship between internal energy ($U$) and temperature ($T$) in an ideal gas?", "back": "Internal energy is directly proportional to absolute temperature ($U \\propto T$)."}, {"front": "Under what condition is the work done ON a gas positive ($+W$)?", "back": "When the gas is compressed (volume decreases)."}, {"front": "What does the area under the curve on a Pressure-Volume (PV) diagram represent?", "back": "The magnitude of the work done during the process."}, {"front": "What defines an 'isochoric' (isovolumetric) process on a PV diagram?", "back": "A process occurring at constant volume, appearing as a vertical line."}, {"front": "Why is work done ($W$) equal to zero in an isochoric process?", "back": "There is no change in volume ($W = -P \\Delta V$ and $\\Delta V = 0$)."}, {"front": "What defines an 'isothermal' process?", "back": "A process occurring at a constant temperature ($\\Delta T = 0$)."}, {"front": "In an isothermal process, what is the value of the change in internal energy ($\\Delta U$)?", "back": "Zero."}, {"front": "What defines an 'adiabatic' process?", "back": "A process where no thermal energy is transferred into or out of the system ($Q = 0$)."}, {"front": "State the Second Law of Thermodynamics in terms of heat flow.", "back": "Heat naturally flows from a high-temperature object to a low-temperature object and never spontaneously in reverse."}, {"front": "Term: Entropy ($S$)", "back": "Definition: A measure of microscopic disorder or the number of possible microstates in a system."}, {"front": "What happens to the total entropy of an isolated system during any natural process?", "back": "It always increases."}, {"front": "How does an adiabatic expansion affect the temperature of a gas?", "back": "The temperature drops because the gas uses its own internal energy to do work ($Q=0$)."}, {"front": "How does the slope of an adiabatic curve compare to an isothermal curve on a PV diagram?", "back": "The adiabatic curve is always steeper."}, {"front": "What is the value of the 'adiabatic index' ($\\gamma$) for a monatomic ideal gas?", "back": "Approximately $1.67$."}, {"front": "Calculate the work done on a gas if its volume is halved and its temperature is doubled at constant pressure.", "back": "$W = -P \\Delta V$, so $W = -P (0.5V - V) = 0.5 PV$."}, {"front": "Why is $W = -P \\Delta V$ insufficient for calculating adiabatic work?", "back": "The pressure changes continuously throughout the process rather than remaining constant."}, {"front": "Equation: Shortcut for adiabatic work ($W$) for a monatomic ideal gas", "back": "$W = \\frac{3}{2} (P_f V_f - P_i V_i)$"}, {"front": "Misconception: Is internal energy a state function or a path function?", "back": "It is a state function (it depends only on the current state, not how it got there)."}, {"front": "Misconception: Are heat ($Q$) and work ($W$) state functions or path functions?", "back": "They are path functions (they depend on the specific journey between states)."}, {"front": "What is the net change in internal energy ($\\Delta U$) for any complete thermodynamic cycle?", "back": "Exactly zero."}, {"front": "On a PV diagram, what does the area inside a closed loop represent?", "back": "The net work done during the cycle."}, {"front": "If a thermodynamic cycle moves clockwise on a PV diagram, what is the sign of the net work done ON the gas?", "back": "Negative ($W_{net} < 0$)."}, {"front": "What characterizes a 'Heat Engine' cycle on a PV diagram?", "back": "A clockwise cycle where net heat is absorbed and net work is done by the gas."}, {"front": "What characterizes a 'Refrigerator' cycle on a PV diagram?", "back": "A counter-clockwise cycle where work is done on the gas to exhaust heat."}, {"front": "Why is pressure never included as a vector on a free-body diagram (FBD)?", "back": "Pressure is a scalar quantity; only the force ($F = PA$) belongs on an FBD."}, {"front": "When analyzing a piston in an open system, what downward force besides gravity must be included?", "back": "The downward force of atmospheric pressure ($F_{atm} = P_{atm} A$)."}, {"front": "Equation: Root-mean-square speed ($v_{rms}$) related to temperature", "back": "$v_{rms} = \\sqrt{\\frac{3 k_B T}{m}}$"}, {"front": "What is the value of the Universal Gas Constant ($R$)?", "back": "$8.31\\ J/(mol \\cdot K)$."}, {"front": "What is the value of the Boltzmann constant ($k_B$)?", "back": "$1.38 \\times 10^{-23}\\ J/K$."}, {"front": "What defines 'static equilibrium' for a piston in a cylinder?", "back": "The net force on the piston equals zero ($F_{net} = 0$)."}, {"front": "According to the Second Law, why can't the efficiency of a heat engine be $100\\%$?", "back": "Some energy must always be exhausted to a lower-temperature reservoir to increase total entropy."}];
+
+
+    const APUSH_EPTL_CARDS = [{"number":1,"term":"Mayflower Compact","definition":"1620 agreement signed by 41 men aboard the Mayflower that established a system of self-government for Plymouth Colony."},{"number":2,"term":"William Bradford","definition":"Pilgrim who served as Plymouth Colony’s second governor from 1621 to 1657. He promoted private land ownership, helped reduce the colony’s debt, and guided Plymouth through droughts, crop failures, and Indian attacks."},{"number":3,"term":"Pilgrims and Puritans contrasted","definition":"Pilgrims were separatists who believed the Church of England could not be reformed, so they left England and settled at Plymouth. Puritans were non-separatists who wanted to reform and purify the Church of England and received permission to settle the Massachusetts Bay area."},{"number":4,"term":"Massachusetts Bay Colony","definition":"In 1629 King Charles granted the Puritans the right to settle and govern in the Massachusetts Bay area. The colony developed representative government and political freedom."},{"number":5,"term":"Cambridge Agreement","definition":"1629 agreement in which Puritan stockholders of the Massachusetts Bay Company agreed to move to New England only if they would control the colony’s government."},{"number":6,"term":"Puritan migration","definition":"Large numbers of Puritans moved from England to America during the 1630s and 1640s, causing the Massachusetts Bay Colony’s population to grow to about ten times its earlier size."},{"number":7,"term":"Church of England (Anglican Church)","definition":"England’s national church, established by King Henry VIII, combining elements associated with both Roman Catholicism and Protestantism."},{"number":8,"term":"John Winthrop (1588-1649), his beliefs","definition":"First governor of Massachusetts Bay, beginning in 1630 and serving through 1649. A strongly religious Puritan, he opposed complete democracy and favored rule by a small group of capable leaders; he also helped organize the New England Confederation in 1643 and became its first president."},{"number":9,"term":"Separatists, non-separatists","definition":"Non-separatists, including the Puritans, believed the Church of England could be purified through reform. Separatists, including the Pilgrims, believed it could not be reformed and therefore formed separate congregations."},{"number":10,"term":"Calvinism","definition":"Protestant movement founded by John Calvin that emphasized strict morality and predestination—the belief that a person’s salvation was decided by God from birth. The source also associates Calvinists with constitutional representative government and separation of church and state."},{"number":11,"term":"Congregational Church, Cambridge Platform","definition":"The Congregational Church was formed by separatists who believed the Church of England retained too many Roman Catholic practices; the Pilgrims belonged to it. The Cambridge Platform emphasized morality more than church dogma."},{"number":12,"term":"Contrast Puritan colonies with others","definition":"Puritan towns were largely self-governing and expected residents to follow strict Puritan beliefs. Voting and officeholding were limited to full church members who had achieved grace—the “elect” or “saints”—while other colonies used different governments and were more open to differing beliefs."},{"number":13,"term":"Anne Hutchinson, Antinomianism","definition":"Anne Hutchinson taught that God could communicate directly with individuals rather than only through church elders. She was expelled from Massachusetts in 1637; the source states that her Antinomian followers founded New Hampshire in 1639."},{"number":14,"term":"Roger Williams, Rhode Island","definition":"In 1635 Roger Williams left Massachusetts, bought land from a neighboring Indian tribe, and founded Rhode Island. The source describes Rhode Island as the only colony at that time offering complete religious freedom."},{"number":15,"term":"Covenant theology","definition":"Puritan teaching centered on biblical covenants, including God’s covenants with Adam and Noah and the covenant of grace between God and humanity through Christ."},{"number":16,"term":"Voting granted to church members - 1631","definition":"In 1631 the Massachusetts General Court restricted voting rights to church members."},{"number":17,"term":"Half-way Covenant","definition":"Applied to children of Puritan church members who had not personally achieved grace. It allowed them to take part in some church affairs without full membership."},{"number":18,"term":"Brattle Street Church","definition":"Founded by Thomas Brattle in 1698. Unlike stricter Puritan churches, it did not require people to prove they had achieved grace before becoming full church members."},{"number":19,"term":"Thomas Hooker","definition":"Clergyman and founder of Hartford, Connecticut. Called the “father of American democracy” in the source because he argued that people had the right to choose their magistrates."},{"number":20,"term":"Fundamental Orders of Connecticut","definition":"Created a unified government for Windsor, Hartford, and Wethersfield in Connecticut. The source identifies it as the first written constitution in America."},{"number":21,"term":"Saybrook Platform","definition":"Organized Connecticut town churches into county associations, which sent delegates to an annual assembly that governed the colony."},{"number":22,"term":"Massachusetts School Law","definition":"First public-education legislation in America according to the source. Towns with at least 50 families had to employ a schoolmaster, while towns with more than 100 families had to establish a grammar school."},{"number":23,"term":"Harvard founded","definition":"Harvard was founded in 1636 through a grant from the Massachusetts General Court and followed Puritan beliefs."},{"number":24,"term":"New England Confederation","definition":"Created in 1643 to coordinate defense among four New England colonies and to serve as a court for disputes between colonies."},{"number":25,"term":"King Philip’s War","definition":"1675 conflict in New England between colonists and the Wampanoag and allied tribes led by Metacomet, or King Philip. The source says it began after Massachusetts tried to impose court jurisdiction over local Indians; the colonists ultimately won with Mohawk assistance."},{"number":26,"term":"Dominion of New England","definition":"In 1686 Britain combined Massachusetts, Rhode Island, New Hampshire, and Connecticut into one province under royal governor Andros. The Dominion ended in 1692 after colonists revolted and removed him."},{"number":27,"term":"Sir Edmond Andros","definition":"Royal governor of the Dominion of New England from 1686 until 1692, when colonial rebellion forced him to return to England."},{"number":28,"term":"Joint stock company","definition":"Business owned by a group of shareholders who each invest money and receive a share of the company’s profits and debts."},{"number":29,"term":"Virginia: purpose, problems, failures, successes","definition":"The Virginia Company created Virginia as a profit-making venture, but starvation killed about 90% of the colonists in the first year and the colony struggled to retain and attract settlers. Private land ownership was offered as an incentive; the company eventually failed and the colony became royal, while tobacco production and export later made Virginia economically successful."},{"number":30,"term":"Headright system","definition":"System of roughly 50-acre land grants given to colonists who brought indentured servants to America. The Virginia Company used headrights to attract more settlers."},{"number":31,"term":"John Smith","definition":"Leader who helped found and govern Jamestown. His strict discipline and leadership helped the Virginia colony survive its difficult first winter."},{"number":32,"term":"John Rolfe, tobacco","definition":"Jamestown settler who married Pocahontas and developed a successful way to grow and cure tobacco for export. Tobacco helped make Virginia economically successful."},{"number":33,"term":"Slavery begins","definition":"1619—the source identifies this as the year the first African slaves arrived in the Virginia colony."},{"number":34,"term":"House of Burgesses","definition":"Formed in Virginia in 1619 as the first legislative body in colonial America. Other colonies later adopted similar houses of burgesses."},{"number":35,"term":"Bacon’s Rebellion","definition":"1676 uprising led by Nathaniel Bacon and western Virginia settlers angry with Governor Berkley’s response to Doeg Indian attacks. Bacon’s force fought the Indians, marched on Jamestown, and burned the city; the rebellion ended abruptly when Bacon died of illness."},{"number":36,"term":"Culpeper’s Rebellion (1677-79)","definition":"John Culpeper led northern Carolina farmers against the Lords Proprietor over enforcement of the Navigation Acts and the end of a tax exemption. The rebellion was suppressed, but Culpeper was acquitted."},{"number":37,"term":"Georgia: reasons, successes","definition":"Founded in 1733 as a buffer between the Carolinas and Spanish Florida and as an intended haven for debtors. It was planned around small farms with no more than ten indentured servants, and the source says the colony prospered after restrictions on land, liquor, and slavery were removed."},{"number":38,"term":"James Oglethorpe","definition":"Founder and governor of Georgia who ran the colony with strict, military-style discipline. He prohibited slavery, alcohol, and Catholicism; colonists’ resentment of his rule and the ban on slaveholding contributed to the colony’s difficulties and to his loss of office."},{"number":39,"term":"Carolinas","definition":"Granted by Charles II in 1665 to supporters as payment of a debt. Headrights and representative government were used to attract settlers; the southern area became wealthy through ties to the sugar islands, while the poorer north was dominated by farmers, and regional conflict eventually split the colony into North and South Carolina."},{"number":40,"term":"Charleston","definition":"Established in 1690 as the first permanent settlement in the Carolinas and named for King Charles II. A large portion of its population consisted of Huguenot, or French Protestant, refugees."},{"number":41,"term":"Staple crops in the South","definition":"Tobacco was important in Virginia, Maryland, and North Carolina; rice in South Carolina and Georgia; and indigo in South Carolina."},{"number":42,"term":"Pennsylvania, William Penn","definition":"In 1681 William Penn received a land grant from King Charles II and created Pennsylvania as a refuge for Quakers. The colony permitted religious freedom."},{"number":43,"term":"Liberal land laws in Pennsylvania","definition":"William Penn allowed broad immigration to Pennsylvania in order to make the colony a refuge for people facing religious persecution."},{"number":44,"term":"Holy experiment","definition":"William Penn’s name for Pennsylvania’s system of government, intended to serve everyone and protect freedom for all."},{"number":45,"term":"Charter of Liberties","definition":"1701 document establishing Pennsylvania’s government, including representative government. The source also says it allowed counties to form their own colonies."},{"number":46,"term":"New York: Dutch, 1664 English","definition":"New York was originally Dutch, but Charles II granted it to his brother, the Duke of York, in 1664. The Dutch quickly surrendered when the British arrived because they disliked Governor Stuyvesant; they retook the colony in 1673, but Britain regained it in 1674."},{"number":47,"term":"Peter Stuyvesant","definition":"Governor of Dutch New Amsterdam who was unpopular with colonists. They surrendered the colony to the English on September 8, 1664."},{"number":48,"term":"Five Nations","definition":"Federation in northern New York consisting of the Mohawk, Oneida, Seneca, Onondaga, and Cayuga, also called the Iroquois or League of Five Nations. The Tuscarora joined around 1720 as a sixth member; the source describes the federation as the most powerful and efficient North American Indian organization of the 1700s and says some constitutional ideas influenced the U.S. Constitution."},{"number":49,"term":"Crops in the Middle Colonies","definition":"The Middle Colonies produced staple crops, especially grain and corn."},{"number":50,"term":"New York and Philadelphia as urban centers","definition":"New York grew into a major trade center because of its harbor and rivers. Philadelphia became a center for trade, crafts, and immigration, reached about 10,000 people by 1720, served as Pennsylvania’s capital from 1683 to 1799, and—like New York—played an important role in American Independence."}];
+    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-50-v1";
+    let apushOrder = APUSH_EPTL_CARDS.map((_,i)=>i), apushPos = 0;
+    let apushStats = (()=>{
+      try { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0,...JSON.parse(localStorage.getItem(APUSH_STORAGE_KEY)||"{}")}; }
+      catch { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0}; }
+    })();
+    function saveApushStats(){ localStorage.setItem(APUSH_STORAGE_KEY,JSON.stringify(apushStats)); renderApushStats(); }
+    function apushMastered(i){ return (apushStats.ratings[i]?.good||0)>=3; }
+    function renderApushStats(){
+      const mastered=APUSH_EPTL_CARDS.filter((_,i)=>apushMastered(i)).length,p=Math.round(mastered/APUSH_EPTL_CARDS.length*100);
+      const m=document.getElementById("apushMastered"); if(!m)return;
+      m.textContent=mastered;
+      document.getElementById("apushAccuracy").textContent=apushStats.total?Math.round(apushStats.correct/apushStats.total*100)+"%":"—";
+      document.getElementById("apushProgressFill").style.width=p+"%";
+      document.getElementById("apushProgressText").textContent=`${mastered} of ${APUSH_EPTL_CARDS.length} mastered`;
+    }
+    function renderApushCard(){
+      const cardEl=document.getElementById("apushCard"); if(!cardEl)return;
+      const i=apushOrder[apushPos],card=APUSH_EPTL_CARDS[i]; cardEl.classList.remove("flipped");
+      document.getElementById("apushIndex").textContent=`EPTL ${card.number} · ${apushPos+1} of ${apushOrder.length}`;
+      document.getElementById("apushTerm").textContent=card.term;
+      document.getElementById("apushDefinition").textContent=card.definition;
+      renderApushStats();
+    }
+    function flipApush(){ document.getElementById("apushCard")?.classList.toggle("flipped"); }
+    function moveApush(d){ apushPos=(apushPos+d+apushOrder.length)%apushOrder.length; renderApushCard(); }
+    function rateApush(ok){
+      const i=apushOrder[apushPos],r=apushStats.ratings[i]||{good:0,again:0};
+      apushStats.total++; if(ok){apushStats.correct++;apushStats.streak++;apushStats.bestStreak=Math.max(apushStats.bestStreak,apushStats.streak);r.good++;}else{apushStats.streak=0;r.again++;}
+      apushStats.ratings[i]=r; saveApushStats(); moveApush(1);
+    }
+    document.getElementById("apushCard")?.addEventListener("click",flipApush);
+    document.getElementById("apushCard")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();flipApush();}});
+    document.getElementById("apushFlipBtn")?.addEventListener("click",flipApush);
+    document.getElementById("apushAgainBtn")?.addEventListener("click",()=>rateApush(false));
+    document.getElementById("apushGotItBtn")?.addEventListener("click",()=>rateApush(true));
+    document.getElementById("apushPrevBtn")?.addEventListener("click",()=>moveApush(-1));
+    document.getElementById("apushNextBtn")?.addEventListener("click",()=>moveApush(1));
+    document.getElementById("apushShuffleBtn")?.addEventListener("click",()=>{apushOrder=shuffleList(apushOrder);apushPos=0;renderApushCard();});
+
     const PHYSICS2_STORAGE_KEY = "flashcards-ap-physics2-v1";
     let physicsOrder = PHYSICS2_CARDS.map((_,i)=>i), physicsPos = 0;
     let physicsStats = (()=>{
@@ -1802,13 +1954,31 @@
       physicsStats.total++; if(ok){physicsStats.correct++;physicsStats.streak++;physicsStats.bestStreak=Math.max(physicsStats.bestStreak,physicsStats.streak);r.good++;}else{physicsStats.streak=0;r.again++;}
       physicsStats.ratings[i]=r; savePhysicsStats(); movePhysics(1);
     }
+
+    function bindHorizontalSwipe(el, onLeft, onRight){
+      if(!el) return;
+      let x0=0,y0=0,tracking=false;
+      el.addEventListener("touchstart",e=>{const t=e.changedTouches[0];x0=t.clientX;y0=t.clientY;tracking=true;},{passive:true});
+      el.addEventListener("touchend",e=>{if(!tracking)return;tracking=false;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){dx<0?onLeft():onRight();}},{passive:true});
+    }
+
     document.getElementById("physicsCard")?.addEventListener("click",flipPhysics);
     document.getElementById("physicsCard")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();flipPhysics();}});
     document.getElementById("physicsFlipBtn")?.addEventListener("click",flipPhysics);
     document.getElementById("physicsAgainBtn")?.addEventListener("click",()=>ratePhysics(false));
     document.getElementById("physicsGotItBtn")?.addEventListener("click",()=>ratePhysics(true));
+    document.getElementById("physicsPrevBtn")?.addEventListener("click",()=>movePhysics(-1));
+    document.getElementById("physicsNextBtn")?.addEventListener("click",()=>movePhysics(1));
     document.getElementById("physicsShuffleBtn")?.addEventListener("click",()=>{physicsOrder=shuffleList(physicsOrder);physicsPos=0;renderPhysicsCard();});
+    bindHorizontalSwipe(document.getElementById("flashcard"), ()=>{flashIndex=(flashIndex+1)%deckOrder.length;renderFlashcardV2();}, ()=>{flashIndex=(flashIndex-1+deckOrder.length)%deckOrder.length;renderFlashcardV2();});
+    bindHorizontalSwipe(document.getElementById("physicsCard"), ()=>movePhysics(1), ()=>movePhysics(-1));
+    bindHorizontalSwipe(document.getElementById("apushCard"), ()=>moveApush(1), ()=>moveApush(-1));
+
     document.addEventListener("keydown",e=>{
+      if(document.getElementById("apush")?.classList.contains("active")&&!(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))){
+        if(e.key==="ArrowLeft")moveApush(-1); if(e.key==="ArrowRight")moveApush(1); if(e.key==="1")rateApush(false); if(e.key==="2")rateApush(true); if(e.key===" "){e.preventDefault();flipApush();}
+        return;
+      }
       if(!document.getElementById("physics2")?.classList.contains("active")||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;
       if(e.key==="ArrowLeft")movePhysics(-1); if(e.key==="ArrowRight")movePhysics(1); if(e.key==="1")ratePhysics(false); if(e.key==="2")ratePhysics(true); if(e.key===" "){e.preventDefault();flipPhysics();}
     });
@@ -1816,8 +1986,9 @@
 
         renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();
     renderPhysicsCard();
+    renderApushCard();
     const lastCourse=localStorage.getItem("flashcards-last-course");
-    if(lastCourse==="lang"||lastCourse==="physics2") openCourse(lastCourse); else updateCourseNav(null);
+    if(["lang","physics2","apush"].includes(lastCourse)) openCourse(lastCourse); else updateCourseNav(null);
   </script>
 </body>
 </html>
