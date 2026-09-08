@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1739">
-  <title>Flashcards</title>
+  <title>Music Theory</title>
   <style>
     :root {
       --ink: #13213c;
@@ -332,7 +332,7 @@
 
 
     /* Multi-course shell */
-    .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:900px; margin:0 auto; }
+    .course-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; max-width:960px; margin:0 auto; }
     .course-card { min-height:132px; padding:24px; border:1px solid rgba(21,40,80,.11); border-radius:var(--radius); background:var(--card); box-shadow:0 10px 30px rgba(18,33,67,.06); color:var(--ink); display:grid; place-items:center; text-align:center; gap:8px; }
     .course-card:not(:disabled):hover { transform:translateY(-2px); border-color:#aebbd3; }
     .course-card:disabled { cursor:not-allowed; opacity:.68; }
@@ -352,7 +352,7 @@
     .physics-face { position:absolute; inset:0; backface-visibility:hidden; border-radius:26px; padding:clamp(28px,5vw,52px); display:flex; flex-direction:column; justify-content:space-between; overflow:auto; box-shadow:var(--shadow); border:1px solid rgba(21,40,80,.1); }
     .physics-front { background:linear-gradient(145deg,#ffffff,#f5f7fc); }
     .physics-back { transform:rotateY(180deg); background:linear-gradient(145deg,var(--navy),#15346f); color:white; }
-    .physics-label { color:#7f5a10; background:var(--gold-soft); padding:6px 10px; border-radius:9px; display:inline-block; width:max-content; font-size:12px; font-weight:850; }
+    .physics-label { color:#7f5a10; background:var(--gold-soft); padding:6px 10px; border-radius:999px; display:inline-block; width:max-content; font-size:12px; font-weight:850; }
     .physics-back .physics-label { color:#ffe2a0; background:rgba(247,186,69,.14); border:1px solid rgba(247,186,69,.35); }
     .physics-question { font-size:clamp(25px,4vw,38px); line-height:1.32; letter-spacing:-.025em; margin:24px 0; }
     .physics-answer { font-size:clamp(23px,3.5vw,34px); line-height:1.45; margin:24px 0; }
@@ -369,6 +369,19 @@
     .physics-progress-row .progress-track { margin:0; }
     .physics-card-index { color:var(--muted); font-size:13px; font-weight:800; }
     .physics-back .physics-card-index { color:#b9c8ea; }
+
+    /* Music Theory Styles */
+    .music-category-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+    .music-cat-chip { border:1px solid var(--line); background:white; color:var(--ink); border-radius:999px; padding:7px 14px; font-size:13px; font-weight:800; cursor:pointer; transition:all .16s ease; }
+    .music-cat-chip:hover { border-color:#9fb0d2; background:var(--blue-soft); }
+    .music-cat-chip.active { background:var(--navy); border-color:var(--navy); color:white; }
+    .music-question { font-size:clamp(22px,3.8vw,34px); line-height:1.35; letter-spacing:-.02em; margin:20px 0; overflow-wrap:anywhere; }
+    .music-answer { font-size:clamp(21px,3.3vw,30px); line-height:1.45; margin:20px 0; overflow-wrap:anywhere; }
+    .music-sub { font-size:0.75em; color:var(--muted); margin-top:8px; font-weight:normal; }
+    .physics-back .music-sub { color:#cbd5ee; }
+    .triad-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:8px; font-size:0.82em; margin-top:10px; }
+    .triad-grid span { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:8px; padding:6px 10px; text-align:center; }
+    .flash-card-header { display:flex; justify-content:space-between; align-items:center; gap:10px; }
 
     @media (max-width:880px) {
       .course-grid { grid-template-columns:1fr; }
@@ -533,6 +546,7 @@
       </div>
       <nav aria-label="Main navigation">
         <button class="nav-btn active" data-view="classes">Classes</button>
+        <button class="nav-btn" data-course-nav="music" data-view="music" hidden>Flashcards</button>
         <button class="nav-btn" data-course-nav="lang" data-view="home" hidden>Home</button>
         <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Learn</button>
         <button class="nav-btn" data-course-nav="lang" data-view="practice" hidden>Practice</button>
@@ -549,6 +563,9 @@
 
     <section id="classes" class="view active" aria-label="Classes">
       <div class="course-grid">
+        <button class="course-card" data-class-open="music">
+          <h2>Music Theory</h2>
+        </button>
         <button class="course-card" data-class-open="lang">
           <h2>AP English Language and Composition</h2>
         </button>
@@ -932,6 +949,80 @@
       <div class="physics-progress-row">
         <div class="progress-track" aria-hidden="true"><div id="apushProgressFill" class="progress-fill"></div></div>
         <span id="apushProgressText" class="key-help">0 of 50 mastered</span>
+      </div>
+    </section>
+
+    <section id="music" class="view" aria-labelledby="music-title">
+      <button class="btn btn-light btn-small course-back" data-view="classes">← Classes</button>
+      <div class="physics-hero page-intro">
+        <div>
+          <span class="eyebrow">Music Theory · flashcards</span>
+          <h2 id="music-title">Music Theory</h2>
+        </div>
+        <div class="panel physics-stat"><strong id="musicMastered">0</strong><span>cards mastered</span></div>
+      </div>
+
+      <div class="music-category-chips" id="musicCategoryChips" role="tablist" aria-label="Filter by topic">
+        <button class="music-cat-chip active" data-music-cat="all">All (61)</button>
+        <button class="music-cat-chip" data-music-cat="clefs">Clefs (6)</button>
+        <button class="music-cat-chip" data-music-cat="rhythm">Rhythm (5)</button>
+        <button class="music-cat-chip" data-music-cat="keys">Key Signatures (17)</button>
+        <button class="music-cat-chip" data-music-cat="scale-degrees">Scale Degrees (3)</button>
+        <button class="music-cat-chip" data-music-cat="intervals">Intervals (4)</button>
+        <button class="music-cat-chip" data-music-cat="minor-scales">Minor Scales (12)</button>
+        <button class="music-cat-chip" data-music-cat="chords">Chords (6)</button>
+        <button class="music-cat-chip" data-music-cat="exact-keys">Section 7 &amp; 8 Keys (8)</button>
+      </div>
+
+      <div class="physics-flash-wrap">
+        <div class="physics-stage">
+          <div id="musicCard" class="physics-card" tabindex="0" role="button" aria-label="Music Theory flashcard. Press Space or Enter to flip.">
+            <div class="physics-face physics-front">
+              <div class="flash-card-header">
+                <span id="musicIndex" class="physics-card-index"></span>
+                <span id="musicCategoryBadge" class="physics-label"></span>
+              </div>
+              <div>
+                <span class="physics-label">Question</span>
+                <div id="musicQuestion" class="physics-question music-question"></div>
+              </div>
+              <span class="physics-hint">Attempt from memory, then tap or press Space to reveal the answer.</span>
+            </div>
+            <div class="physics-face physics-back">
+              <div class="flash-card-header">
+                <span class="physics-card-index">Music Theory · answer</span>
+                <span id="musicCategoryBadgeBack" class="physics-label"></span>
+              </div>
+              <div>
+                <span class="physics-label">Answer</span>
+                <div id="musicAnswer" class="physics-answer music-answer"></div>
+              </div>
+              <span class="physics-hint">Rate whether you recalled this accurately before revealing.</span>
+            </div>
+          </div>
+        </div>
+        <aside class="physics-controls" aria-label="Music Theory flashcard controls">
+          <div class="panel control-stack">
+            <button id="musicFlipBtn" class="btn btn-dark control-wide">Flip card</button>
+            <button id="musicAgainBtn" class="btn btn-light">Again</button>
+            <button id="musicGotItBtn" class="btn btn-primary">Got it</button>
+            <button id="musicPrevBtn" class="btn btn-light btn-small">← Previous</button>
+            <button id="musicNextBtn" class="btn btn-light btn-small">Next →</button>
+            <button id="musicShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle deck</button>
+          </div>
+          <div class="panel desktop-help">
+            <strong>Keyboard</strong>
+            <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
+          </div>
+          <div class="panel">
+            <strong id="musicAccuracy">—</strong>
+            <p class="key-help">retrieval accuracy</p>
+          </div>
+        </aside>
+      </div>
+      <div class="physics-progress-row">
+        <div class="progress-track" aria-hidden="true"><div id="musicProgressFill" class="progress-fill"></div></div>
+        <span id="musicProgressText" class="key-help">0 of 61 mastered</span>
       </div>
     </section>
 
@@ -1698,11 +1789,11 @@
     function updateCourseNav(course) {
       document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
       const brand=document.getElementById("brandCourse");
-      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
+      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":course==="music"?"Music Theory":"Classes";
     }
     function showView(id) {
       const langViews=["home","learn","practice","cram","review","progress"];
-      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
+      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":id==="music"?"music":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course==="langsets"?"lang":course==="apushsets"?"apush":course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
@@ -1713,9 +1804,10 @@
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
       if(id==="apush") renderApushCard();
+      if(id==="music") renderMusicCard();
       window.scrollTo({top:0,behavior:"smooth"});
     }
-    function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":"apushsets"); }
+    function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":course==="music"?"music":"apushsets"); }
     function setActiveLangSet(setNumber){
       const next=LANG_SETS[Number(setNumber)]; if(!next)return;
       activeLangSet=Number(setNumber); localStorage.setItem("flashcards-ap-lang-last-set",String(activeLangSet));
@@ -2227,7 +2319,188 @@
     bindHorizontalSwipe(document.getElementById("physicsCard"), ()=>movePhysics(1), ()=>movePhysics(-1));
     bindHorizontalSwipe(document.getElementById("apushCard"), ()=>moveApush(1), ()=>moveApush(-1));
 
+    // Music Theory: flashcards deck and progress
+    const MUSIC_THEORY_CARDS = [
+      // Clefs
+      { cat: "clefs", categoryName: "Clefs", front: "Bass clef lines, bottom → top", back: "<strong>G B D F A</strong>" },
+      { cat: "clefs", categoryName: "Clefs", front: "Bass clef spaces, bottom → top", back: "<strong>A C E G</strong>" },
+      { cat: "clefs", categoryName: "Clefs", front: "Alto clef lines, bottom → top", back: "<strong>F A C E G</strong>" },
+      { cat: "clefs", categoryName: "Clefs", front: "Alto clef spaces, bottom → top", back: "<strong>G B D F</strong>" },
+      { cat: "clefs", categoryName: "Clefs", front: "Treble → bass shortcut", back: "Move forward 2 letters" },
+      { cat: "clefs", categoryName: "Clefs", front: "Treble → alto shortcut", back: "Move forward 1 letter" },
+
+      // Rhythm
+      { cat: "rhythm", categoryName: "Rhythm", front: "Eighth-note counting", back: "<strong>1 + 2 + 3 + 4 +</strong>" },
+      { cat: "rhythm", categoryName: "Rhythm", front: "Sixteenth-note counting", back: "<strong>1 e + a 2 e + a 3 e + a 4 e + a</strong>" },
+      { cat: "rhythm", categoryName: "Rhythm", front: "Four sixteenths on beat 3", back: "<strong>3 e + a</strong>" },
+      { cat: "rhythm", categoryName: "Rhythm", front: "Two eighths on beat 2", back: "<strong>2 +</strong>" },
+      { cat: "rhythm", categoryName: "Rhythm", front: "Rests", back: "Still count the beat/subdivision normally." },
+
+      // Key signatures
+      { cat: "keys", categoryName: "Key Signatures", front: "Order of sharps", back: "<strong>F C G D A E B</strong><div class=\"music-sub\">“Father Charles Goes Down And Ends Battle”</div>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "Order of flats", back: "<strong>B E A D G C F</strong><div class=\"music-sub\">“Battle Ends And Down Goes Charles’ Father”</div>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "Major key from sharps", back: "Last sharp + half step" },
+      { cat: "keys", categoryName: "Key Signatures", front: "Major key from flats", back: "Second-to-last flat" },
+      { cat: "keys", categoryName: "Key Signatures", front: "1 flat", back: "<strong>F major</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "No sharps/flats", back: "<strong>C major</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "Minor key signature shortcut", back: "Use its relative major" },
+      { cat: "keys", categoryName: "Key Signatures", front: "E♭ major / C minor", back: "<strong>B♭ E♭ A♭</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "F major / D minor", back: "<strong>B♭</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "G major / E minor", back: "<strong>F♯</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "A major / F♯ minor", back: "<strong>F♯ C♯ G♯</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "B♭ major / G minor", back: "<strong>B♭ E♭</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "C major / A minor", back: "<strong>none</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "D major / B minor", back: "<strong>F♯ C♯</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "E major / C♯ minor", back: "<strong>F♯ C♯ G♯ D♯</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "B♭ minor", back: "Relative major D♭ → <strong>B♭ E♭ A♭ D♭ G♭</strong>" },
+      { cat: "keys", categoryName: "Key Signatures", front: "G♯ minor", back: "Relative major B → <strong>F♯ C♯ G♯ D♯ A♯</strong>" },
+
+      // Scale degrees
+      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "Scale degrees", back: "First note of the scale = 1, then 2 3 4 5 6 7" },
+      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "F major scale degrees", back: "<strong>F1 G2 A3 B♭4 C5 D6 E7</strong>" },
+      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "D major scale degrees", back: "<strong>D1 E2 F♯3 G4 A5 B6 C♯7</strong>" },
+
+      // Intervals
+      { cat: "intervals", categoryName: "Intervals", front: "Interval list<div class=\"music-sub\">Choices given on exam</div>", back: "<strong>P1 M2 M3 P4 P5 M6 M7 P8</strong>" },
+      { cat: "intervals", categoryName: "Intervals", front: "Perfect interval numbers", back: "<strong>1, 4, 5, 8</strong>" },
+      { cat: "intervals", categoryName: "Intervals", front: "Major interval numbers", back: "<strong>2, 3, 6, 7</strong>" },
+      { cat: "intervals", categoryName: "Intervals", front: "How to find the interval number", back: "Count both notes:<br><strong>C→E = C-D-E = 3</strong>" },
+
+      // Minor scales — memorize these rules
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "Natural minor", back: "Use normal minor scale." },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "Harmonic minor", back: "Raise 7 ascending AND descending" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "Melodic minor ascending", back: "Raise 6 and 7" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "Melodic minor descending", back: "Natural minor" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "C natural minor", back: "<strong>C D E♭ F G A♭ B♭ C</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "C harmonic minor ascending", back: "<strong>C D E♭ F G A♭ B C</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "C harmonic minor descending", back: "<strong>C B A♭ G F E♭ D C</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "A natural minor", back: "<strong>A B C D E F G A</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "A melodic minor ascending", back: "<strong>A B C D E F♯ G♯ A</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "A melodic minor descending", back: "<strong>A G F E D C B A</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "B natural minor ascending", back: "<strong>B C♯ D E F♯ G A B</strong>" },
+      { cat: "minor-scales", categoryName: "Minor Scales", front: "B natural minor descending", back: "<strong>B A G F♯ E D C♯ B</strong>" },
+
+      // Chords
+      { cat: "chords", categoryName: "Chords", front: "How to build a triad", back: "<strong>Take, skip, take, skip, take</strong>" },
+      { cat: "chords", categoryName: "Chords", front: "Major-key Roman numerals", back: "<strong>I ii iii IV V vi vii°</strong>" },
+      { cat: "chords", categoryName: "Chords", front: "Minor-key Roman numerals shown on exam", back: "<strong>i ii° III iv V VI vii°</strong>" },
+      { cat: "chords", categoryName: "Chords", front: "Capital Roman numeral", back: "<strong>Major</strong>" },
+      { cat: "chords", categoryName: "Chords", front: "Lowercase Roman numeral", back: "<strong>Minor</strong>" },
+      { cat: "chords", categoryName: "Chords", front: "°", back: "<strong>Diminished</strong>" },
+
+      // Section 7 exact keys
+      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "F major accidentals", back: "<strong>Every B is B♭</strong>" },
+      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "F major triads", back: "<div class=\"triad-grid\"><span>I = F A C</span><span>ii = G B♭ D</span><span>iii = A C E</span><span>IV = B♭ D F</span><span>V = C E G</span><span>vi = D F A</span><span>vii° = E G B♭</span></div>" },
+      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "B♭ major accidentals", back: "<strong>Every B = B♭<br>Every E = E♭</strong>" },
+      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "B♭ major triads", back: "<div class=\"triad-grid\"><span>I = B♭ D F</span><span>ii = C E♭ G</span><span>iii = D F A</span><span>IV = E♭ G B♭</span><span>V = F A C</span><span>vi = G B♭ D</span><span>vii° = A C E♭</span></div>" },
+
+      // Section 8 exact keys
+      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "G major scale degrees", back: "<strong>G1 A2 B3 C4 D5 E6 F♯7</strong>" },
+      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "G major Roman numerals", back: "<strong>I ii iii IV V vi vii°</strong>" },
+      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "D minor scale degrees", back: "<strong>D1 E2 F3 G4 A5 B♭6 C7</strong>" },
+      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "D minor Roman numerals used on exam", back: "<strong>i ii° III iv V VI vii°</strong>" }
+    ];
+
+    const MUSIC_STORAGE_KEY = "flashcards-music-theory-v1";
+    let musicActiveCategory = "all";
+    function getFilteredMusicIndices(){
+      if(musicActiveCategory === "all") return MUSIC_THEORY_CARDS.map((_,i)=>i);
+      return MUSIC_THEORY_CARDS.map((c,i)=>c.cat===musicActiveCategory?i:-1).filter(i=>i!==-1);
+    }
+    let musicOrder = getFilteredMusicIndices(), musicPos = 0;
+    let musicStats = (()=>{
+      try { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0,...JSON.parse(localStorage.getItem(MUSIC_STORAGE_KEY)||"{}")}; }
+      catch { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0}; }
+    })();
+    function saveMusicStats(){ localStorage.setItem(MUSIC_STORAGE_KEY,JSON.stringify(musicStats)); renderMusicStats(); }
+    function musicMastered(i){ return (musicStats.ratings[i]?.good||0)>=3; }
+    function renderMusicStats(){
+      const indices = getFilteredMusicIndices();
+      const catMastered = indices.filter(i=>musicMastered(i)).length;
+      const totalMastered = MUSIC_THEORY_CARDS.filter((_,i)=>musicMastered(i)).length;
+      const p = indices.length ? Math.round(catMastered/indices.length*100) : 0;
+      const m = document.getElementById("musicMastered"); if(!m) return;
+      m.textContent = totalMastered;
+      document.getElementById("musicAccuracy").textContent = musicStats.total ? Math.round(musicStats.correct/musicStats.total*100)+"%" : "—";
+      document.getElementById("musicProgressFill").style.width = p+"%";
+      document.getElementById("musicProgressText").textContent = musicActiveCategory==="all"
+        ? `${totalMastered} of ${MUSIC_THEORY_CARDS.length} mastered`
+        : `${catMastered} of ${indices.length} in topic mastered (${totalMastered}/${MUSIC_THEORY_CARDS.length} total)`;
+    }
+    function renderMusicCard(){
+      const cardEl=document.getElementById("musicCard"); if(!cardEl)return;
+      if(!musicOrder.length){
+        document.getElementById("musicIndex").textContent="0 cards";
+        document.getElementById("musicQuestion").textContent="No cards in this topic.";
+        document.getElementById("musicAnswer").textContent="";
+        return;
+      }
+      if(musicPos >= musicOrder.length) musicPos = 0;
+      cardEl.classList.remove("flipped");
+      const i=musicOrder[musicPos], card=MUSIC_THEORY_CARDS[i];
+      document.getElementById("musicIndex").textContent=`Card ${musicPos+1} of ${musicOrder.length}`;
+      const bFront = document.getElementById("musicCategoryBadge");
+      const bBack = document.getElementById("musicCategoryBadgeBack");
+      if(bFront) bFront.textContent = card.categoryName;
+      if(bBack) bBack.textContent = card.categoryName;
+      document.getElementById("musicQuestion").innerHTML = card.front;
+      document.getElementById("musicAnswer").innerHTML = card.back;
+      renderMusicStats();
+    }
+    function flipMusic(){ document.getElementById("musicCard")?.classList.toggle("flipped"); }
+    function moveMusic(d){
+      if(!musicOrder.length) return;
+      musicPos = (musicPos + d + musicOrder.length) % musicOrder.length;
+      renderMusicCard();
+    }
+    function rateMusic(ok){
+      if(!musicOrder.length) return;
+      const i=musicOrder[musicPos], r=musicStats.ratings[i]||{good:0,again:0};
+      musicStats.total++;
+      if(ok){
+        musicStats.correct++;
+        musicStats.streak++;
+        musicStats.bestStreak=Math.max(musicStats.bestStreak,musicStats.streak);
+        r.good++;
+      } else {
+        musicStats.streak=0;
+        r.again++;
+      }
+      musicStats.ratings[i]=r;
+      saveMusicStats();
+      moveMusic(1);
+    }
+    function setMusicCategory(catId){
+      musicActiveCategory = catId;
+      document.querySelectorAll(".music-cat-chip").forEach(c => {
+        c.classList.toggle("active", c.dataset.musicCat === catId);
+      });
+      musicOrder = getFilteredMusicIndices();
+      musicPos = 0;
+      renderMusicCard();
+    }
+    document.querySelectorAll(".music-cat-chip").forEach(b => {
+      b.addEventListener("click", () => setMusicCategory(b.dataset.musicCat));
+    });
+    document.getElementById("musicCard")?.addEventListener("click",flipMusic);
+    document.getElementById("musicCard")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();flipMusic();}});
+    document.getElementById("musicFlipBtn")?.addEventListener("click",flipMusic);
+    document.getElementById("musicAgainBtn")?.addEventListener("click",()=>rateMusic(false));
+    document.getElementById("musicGotItBtn")?.addEventListener("click",()=>rateMusic(true));
+    document.getElementById("musicPrevBtn")?.addEventListener("click",()=>moveMusic(-1));
+    document.getElementById("musicNextBtn")?.addEventListener("click",()=>moveMusic(1));
+    document.getElementById("musicShuffleBtn")?.addEventListener("click",()=>{
+      musicOrder=shuffleList(musicOrder);
+      musicPos=0;
+      renderMusicCard();
+    });
+    bindHorizontalSwipe(document.getElementById("musicCard"), ()=>moveMusic(1), ()=>moveMusic(-1));
+
     document.addEventListener("keydown",e=>{
+      if(document.getElementById("music")?.classList.contains("active")&&!(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))){
+        if(e.key==="ArrowLeft")moveMusic(-1); if(e.key==="ArrowRight")moveMusic(1); if(e.key==="1")rateMusic(false); if(e.key==="2")rateMusic(true); if(e.key===" "){e.preventDefault();flipMusic();}
+        return;
+      }
       if(document.getElementById("apush")?.classList.contains("active")&&!(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))){
         if(e.key==="ArrowLeft")moveApush(-1); if(e.key==="ArrowRight")moveApush(1); if(e.key==="1")rateApush(false); if(e.key==="2")rateApush(true); if(e.key===" "){e.preventDefault();flipApush();}
         return;
@@ -2242,8 +2515,10 @@
     setActiveLangSet(activeLangSet);
     renderPhysicsCard();
     renderApushCard();
-    const lastCourse=localStorage.getItem("flashcards-last-course");
-    if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
+    renderMusicCard();
+    const lastCourse=localStorage.getItem("flashcards-last-course") || "music";
+    if(lastCourse==="music") openCourse("music");
+    else if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
     else if(lastCourse==="apush"){setActiveApushSet(activeApushSet);showView("apush");}
     else if(lastCourse==="physics2") openCourse(lastCourse); else updateCourseNav(null);
   </script>
