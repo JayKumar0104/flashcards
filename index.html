@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1739">
-  <title>Music Theory</title>
+  <title>Flashcards</title>
   <style>
     :root {
       --ink: #13213c;
@@ -337,7 +337,7 @@
     .course-card:not(:disabled):hover { transform:translateY(-2px); border-color:#aebbd3; }
     .course-card:disabled { cursor:not-allowed; opacity:.68; }
     .course-card h2 { margin:0; font-size:26px; }
-    .lang-set-grid { grid-template-columns:repeat(3,1fr); max-width:900px; }
+    .lang-set-grid { grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); max-width:960px; }
     .course-soon { color:#7b560e; background:var(--gold-soft); border:1px solid #ecd18b; border-radius:999px; padding:5px 9px; font-size:11px; font-weight:850; }
     .course-back { margin-bottom:18px; }
 
@@ -370,17 +370,6 @@
     .physics-card-index { color:var(--muted); font-size:13px; font-weight:800; }
     .physics-back .physics-card-index { color:#b9c8ea; }
 
-    /* Music Theory Styles */
-    .music-category-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-    .music-cat-chip { border:1px solid var(--line); background:white; color:var(--ink); border-radius:999px; padding:7px 14px; font-size:13px; font-weight:800; cursor:pointer; transition:all .16s ease; }
-    .music-cat-chip:hover { border-color:#9fb0d2; background:var(--blue-soft); }
-    .music-cat-chip.active { background:var(--navy); border-color:var(--navy); color:white; }
-    .music-question { font-size:clamp(22px,3.8vw,34px); line-height:1.35; letter-spacing:-.02em; margin:20px 0; overflow-wrap:anywhere; }
-    .music-answer { font-size:clamp(21px,3.3vw,30px); line-height:1.45; margin:20px 0; overflow-wrap:anywhere; }
-    .music-sub { font-size:0.75em; color:var(--muted); margin-top:8px; font-weight:normal; }
-    .physics-back .music-sub { color:#cbd5ee; }
-    .triad-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:8px; font-size:0.82em; margin-top:10px; }
-    .triad-grid span { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:8px; padding:6px 10px; text-align:center; }
     .flash-card-header { display:flex; justify-content:space-between; align-items:center; gap:10px; }
 
     @media (max-width:880px) {
@@ -546,7 +535,6 @@
       </div>
       <nav aria-label="Main navigation">
         <button class="nav-btn active" data-view="classes">Classes</button>
-        <button class="nav-btn" data-course-nav="music" data-view="music" hidden>Flashcards</button>
         <button class="nav-btn" data-course-nav="lang" data-view="home" hidden>Home</button>
         <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Learn</button>
         <button class="nav-btn" data-course-nav="lang" data-view="practice" hidden>Practice</button>
@@ -563,9 +551,6 @@
 
     <section id="classes" class="view active" aria-label="Classes">
       <div class="course-grid">
-        <button class="course-card" data-class-open="music">
-          <h2>Music Theory</h2>
-        </button>
         <button class="course-card" data-class-open="lang">
           <h2>AP English Language and Composition</h2>
         </button>
@@ -584,6 +569,7 @@
         <button class="course-card" data-lang-set="1"><h2>Set 1</h2></button>
         <button class="course-card" data-lang-set="2"><h2>Set 2</h2></button>
         <button class="course-card" data-lang-set="3"><h2>Set 3</h2></button>
+        <button class="course-card" data-lang-set="4"><h2>Set 4</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Excellence</p></button>
       </div>
     </section>
 
@@ -952,80 +938,7 @@
       </div>
     </section>
 
-    <section id="music" class="view" aria-labelledby="music-title">
-      <button class="btn btn-light btn-small course-back" data-view="classes">← Classes</button>
-      <div class="physics-hero page-intro">
-        <div>
-          <span class="eyebrow">Music Theory · flashcards</span>
-          <h2 id="music-title">Music Theory</h2>
-        </div>
-        <div class="panel physics-stat"><strong id="musicMastered">0</strong><span>cards mastered</span></div>
-      </div>
-
-      <div class="music-category-chips" id="musicCategoryChips" role="tablist" aria-label="Filter by topic">
-        <button class="music-cat-chip active" data-music-cat="all">All (61)</button>
-        <button class="music-cat-chip" data-music-cat="clefs">Clefs (6)</button>
-        <button class="music-cat-chip" data-music-cat="rhythm">Rhythm (5)</button>
-        <button class="music-cat-chip" data-music-cat="keys">Key Signatures (17)</button>
-        <button class="music-cat-chip" data-music-cat="scale-degrees">Scale Degrees (3)</button>
-        <button class="music-cat-chip" data-music-cat="intervals">Intervals (4)</button>
-        <button class="music-cat-chip" data-music-cat="minor-scales">Minor Scales (12)</button>
-        <button class="music-cat-chip" data-music-cat="chords">Chords (6)</button>
-        <button class="music-cat-chip" data-music-cat="exact-keys">Section 7 &amp; 8 Keys (8)</button>
-      </div>
-
-      <div class="physics-flash-wrap">
-        <div class="physics-stage">
-          <div id="musicCard" class="physics-card" tabindex="0" role="button" aria-label="Music Theory flashcard. Press Space or Enter to flip.">
-            <div class="physics-face physics-front">
-              <div class="flash-card-header">
-                <span id="musicIndex" class="physics-card-index"></span>
-                <span id="musicCategoryBadge" class="physics-label"></span>
-              </div>
-              <div>
-                <span class="physics-label">Question</span>
-                <div id="musicQuestion" class="physics-question music-question"></div>
-              </div>
-              <span class="physics-hint">Attempt from memory, then tap or press Space to reveal the answer.</span>
-            </div>
-            <div class="physics-face physics-back">
-              <div class="flash-card-header">
-                <span class="physics-card-index">Music Theory · answer</span>
-                <span id="musicCategoryBadgeBack" class="physics-label"></span>
-              </div>
-              <div>
-                <span class="physics-label">Answer</span>
-                <div id="musicAnswer" class="physics-answer music-answer"></div>
-              </div>
-              <span class="physics-hint">Rate whether you recalled this accurately before revealing.</span>
-            </div>
-          </div>
-        </div>
-        <aside class="physics-controls" aria-label="Music Theory flashcard controls">
-          <div class="panel control-stack">
-            <button id="musicFlipBtn" class="btn btn-dark control-wide">Flip card</button>
-            <button id="musicAgainBtn" class="btn btn-light">Again</button>
-            <button id="musicGotItBtn" class="btn btn-primary">Got it</button>
-            <button id="musicPrevBtn" class="btn btn-light btn-small">← Previous</button>
-            <button id="musicNextBtn" class="btn btn-light btn-small">Next →</button>
-            <button id="musicShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle deck</button>
-          </div>
-          <div class="panel desktop-help">
-            <strong>Keyboard</strong>
-            <p class="key-help">Space: flip<br>← / →: move<br>1: again · 2: got it</p>
-          </div>
-          <div class="panel">
-            <strong id="musicAccuracy">—</strong>
-            <p class="key-help">retrieval accuracy</p>
-          </div>
-        </aside>
-      </div>
-      <div class="physics-progress-row">
-        <div class="progress-track" aria-hidden="true"><div id="musicProgressFill" class="progress-fill"></div></div>
-        <span id="musicProgressText" class="key-help">0 of 61 mastered</span>
-      </div>
-    </section>
-
+    
     <section id="printSheet" class="print-sheet" hidden aria-label="Printable mock exam"></section>
 
     <p class="footer-note">Progress is stored only in this browser. The app works without accounts, analytics, or external services.</p>
@@ -1687,10 +1600,281 @@
       {words:["postulate","plausible"],prompt:"Create one or more complete sentences using both postulate and plausible, or appropriate derivatives.",model:"The physicist postulated a hidden force, then designed an experiment to determine whether that plausible explanation matched the evidence."}
     ];
 
+
+    const LANG_SET4_WORDS = [
+      {
+        word: "culminate", part: "verb",
+        definition: "To reach the highest point or come to completion.",
+        forms: [
+          {word:"culminate", part:"verb", level:"packet"},
+          {word:"culminates", part:"verb · present tense", level:"packet"},
+          {word:"culminated", part:"verb · past tense", level:"packet"},
+          {word:"culminating", part:"verb · gerund/participle", level:"packet"},
+          {word:"culmination", part:"noun", level:"packet"}
+        ],
+        example: "Months of preparation culminated in the team's final presentation; her season culminated with a state championship.",
+        cloze: "Years of dedicated scientific research will ___ in the publication of a landmark paper.",
+        answer: ["culminate"],
+        options: ["culminate", "eclipse", "zenith", "optimum"]
+      },
+      {
+        word: "eclipse", part: "verb",
+        definition: "To exceed/surpass or obscure.",
+        forms: [
+          {word:"eclipse", part:"verb", level:"packet"},
+          {word:"eclipses", part:"verb · present tense", level:"packet"},
+          {word:"eclipsed", part:"verb · past tense", level:"packet"},
+          {word:"eclipsing", part:"verb · gerund/participle", level:"packet"}
+        ],
+        example: "The rookie eclipsed the school's previous scoring record; thick clouds also eclipsed our view of the mountains.",
+        cloze: "The rookie's breakout season ___ all previous scoring records in the conference.",
+        answer: ["eclipsed"],
+        options: ["eclipse", "culminate", "epitomize", "sublime"]
+      },
+      {
+        word: "epitome", part: "noun",
+        definition: "A perfect representative or defining example.",
+        forms: [
+          {word:"epitome", part:"noun", level:"packet"},
+          {word:"epitomize", part:"verb", level:"packet"},
+          {word:"epitomizes", part:"verb · present tense", level:"packet"},
+          {word:"epitomized", part:"verb · past tense", level:"packet"},
+          {word:"epitomizing", part:"verb · gerund/participle", level:"packet"}
+        ],
+        example: "Her calm response under intense pressure was the epitome of professionalism.",
+        cloze: "Her steady poise during the crisis was the ___ of grace and leadership under pressure.",
+        answer: ["epitome"],
+        options: ["epitome", "quintessence", "zenith", "optimum"]
+      },
+      {
+        word: "impeccable", part: "adjective",
+        definition: "Flawless; perfect.",
+        forms: [
+          {word:"impeccable", part:"adjective", level:"packet"},
+          {word:"impeccably", part:"adverb", level:"packet"}
+        ],
+        example: "His presentation was impeccable: every statistic was sourced and every slide was polished.",
+        cloze: "The pianist gave an ___ performance without a single missed note or awkward phrasing.",
+        answer: ["impeccable"],
+        options: ["impeccable", "inimitable", "peerless", "sublime"]
+      },
+      {
+        word: "inimitable", part: "adjective",
+        definition: "Impossible to imitate or copy.",
+        forms: [
+          {word:"inimitable", part:"adjective", level:"packet"}
+        ],
+        example: "The guitarist developed an inimitable style that other musicians could admire but never reproduce exactly.",
+        cloze: "The comedian captivated audiences with an ___ storytelling delivery that rival performers could never replicate.",
+        answer: ["inimitable"],
+        options: ["inimitable", "peerless", "impeccable", "sublime"]
+      },
+      {
+        word: "optimum", part: "adjective or noun",
+        definition: "Most favorable; best.",
+        forms: [
+          {word:"optimum", part:"adjective / noun", level:"packet"},
+          {word:"optimize", part:"verb", level:"packet"},
+          {word:"optimizes", part:"verb · present tense", level:"packet"},
+          {word:"optimized", part:"verb · past tense", level:"packet"},
+          {word:"optimizing", part:"verb · gerund/participle", level:"packet"},
+          {word:"optima", part:"noun · plural", level:"packet"},
+          {word:"optimums", part:"noun · plural", level:"packet"}
+        ],
+        example: "The experiment was conducted under optimum temperature conditions; the engine reaches its optimum at cruising speed.",
+        cloze: "To maximize seedling growth in the greenhouse, technicians maintained an ___ balance of heat and humidity.",
+        answer: ["optimum"],
+        options: ["optimum", "zenith", "culmination", "impeccable"]
+      },
+      {
+        word: "peerless", part: "adjective",
+        definition: "Having no match; incomparable.",
+        forms: [
+          {word:"peerless", part:"adjective", level:"packet"}
+        ],
+        example: "Her command of the violin was considered peerless; no other performer in the competition approached her level.",
+        cloze: "With twenty consecutive championship victories, the gymnast established a ___ record that no rival could equal.",
+        answer: ["peerless"],
+        options: ["peerless", "inimitable", "impeccable", "optimum"]
+      },
+      {
+        word: "quintessence", part: "noun",
+        definition: "The purest essence or most typical example.",
+        forms: [
+          {word:"quintessence", part:"noun", level:"packet"},
+          {word:"quintessential", part:"adjective", level:"packet"},
+          {word:"quintessentially", part:"adverb", level:"extended"}
+        ],
+        example: "The small café was the quintessence of a traditional neighborhood restaurant.",
+        cloze: "The historic cobblestone lane with gaslit streetlamps seemed the ___ of old-world charm.",
+        answer: ["quintessence"],
+        options: ["quintessence", "epitome", "zenith", "culmination"]
+      },
+      {
+        word: "sublime", part: "adjective or noun",
+        definition: "Awe-inspiring; impressive; supreme.",
+        forms: [
+          {word:"sublime", part:"adjective / noun", level:"packet"},
+          {word:"sublimely", part:"adverb", level:"packet"}
+        ],
+        example: "The orchestra's final performance was sublime and left the audience silent for several seconds before the applause began.",
+        cloze: "Standing before the majestic mountain canyon at daybreak was a ___ experience that moved travelers to silence.",
+        answer: ["sublime"],
+        options: ["sublime", "impeccable", "peerless", "inimitable"]
+      },
+      {
+        word: "zenith", part: "noun",
+        definition: "The peak; highest point.",
+        forms: [
+          {word:"zenith", part:"noun", level:"packet"}
+        ],
+        example: "The scientist reached the zenith of her career when she received the field's highest award.",
+        cloze: "The astronomer calculated that the bright star would reach its ___ directly overhead around midnight.",
+        answer: ["zenith"],
+        options: ["zenith", "culmination", "optimum", "epitome"]
+      }
+    ];
+
+    const LANG_SET4_USAGE = [
+      {word:"culminate",statement:"Receiving the championship trophy was the culmination of years of training.",answer:true,why:"Culmination refers to the completion or crowning final result of an extended process."},
+      {word:"culminate",statement:"Months of preparation culminated in a polished final presentation.",answer:true,why:"Culminate means to reach completion or a high point."},
+      {word:"culminate",statement:"The climber stood at the culmination of the mountain peak to admire the horizon.",answer:false,why:"The physical highest point or summit is a zenith; culmination refers to the final outcome of a process."},
+      {word:"culminate",statement:"Graduation served as the culmination of four years of dedicated high school study.",answer:true,why:"Graduation is a classic culmination of senior year."},
+      {word:"culminate",statement:"Her season culminated with a state championship title.",answer:true,why:"Culminate can mean to reach a high point or degree."},
+      {word:"eclipse",statement:"The new champion eclipsed the previous school scoring record by ten points.",answer:true,why:"Eclipse means to exceed, surpass, or go beyond."},
+      {word:"eclipse",statement:"Thick storm clouds eclipsed our view of the mountains during the hike.",answer:true,why:"Eclipse also means to obscure, overshadow, or darken."},
+      {word:"eclipse",statement:"The coach eclipsed his practice schedule by reorganizing drills to make them more efficient.",answer:false,why:"Making a routine more efficient is optimizing it; eclipse means surpassing or obscuring."},
+      {word:"eclipse",statement:"A political leader whose influence was eclipsed by a rising rival would likely feel angry or diminished.",answer:true,why:"To be eclipsed means to be diminished in fame, influence, or prominence."},
+      {word:"epitome",statement:"Her graceful performance under intense pressure was the epitome of elegance.",answer:true,why:"Epitome refers to a perfect representative or defining example of a quality."},
+      {word:"epitome",statement:"The athlete epitomized perseverance by returning to competition after years of rehabilitation.",answer:true,why:"Epitomized is the verb meaning represented as a supreme embodiment."},
+      {word:"epitome",statement:"Engineers epitomized the microprocessor to reduce battery power consumption.",answer:false,why:"Modifying hardware to make it more effective or efficient is optimizing; epitomize means to serve as a perfect example."},
+      {word:"epitome",statement:"The open sea is often cited as an image that epitomizes immense strength and untamed power.",answer:true,why:"Epitomize means to represent as a defining embodiment of a type."},
+      {word:"impeccable",statement:"The editor submitted an impeccable final draft with no detectable typos or formatting errors.",answer:true,why:"Impeccable means flawless and without defect."},
+      {word:"impeccable",statement:"The laboratory was impeccably organized so every chemical could be located immediately.",answer:true,why:"Impeccably is the adverb meaning flawlessly or perfectly."},
+      {word:"impeccable",statement:"The machine operated at an impeccable temperature of 80 degrees Celsius.",answer:false,why:"The most favorable or advantageous operating temperature is described as optimum, not impeccable."},
+      {word:"impeccable",statement:"An impeccable housekeeper would naturally be distressed by dust and clutter.",answer:true,why:"Impeccable implies flawless standards and intolerance of imperfections."},
+      {word:"inimitable",statement:"The artist's inimitable brushwork was immediately recognizable and nearly impossible for imitators to reproduce.",answer:true,why:"Inimitable means impossible to imitate or copy."},
+      {word:"inimitable",statement:"The runner was inimitable because no other athlete in the state could run a faster mile.",answer:false,why:"Having no equal in speed makes an athlete peerless; inimitable specifically means impossible to imitate or copy."},
+      {word:"inimitable",statement:"The comedian's delivery was inimitable because amateur performers easily duplicated every joke and gesture.",answer:false,why:"If something is easily duplicated or copied, it is not inimitable."},
+      {word:"inimitable",statement:"Her inimitable vocal timbre set her apart from every other recording artist of the decade.",answer:true,why:"Inimitable highlights an uncopyable, unique quality."},
+      {word:"optimum",statement:"The experiment was conducted under optimum temperature conditions to promote crystal growth.",answer:true,why:"Optimum means most favorable or advantageous; best."},
+      {word:"optimum",statement:"The engine reaches its optimum when operated between two and three thousand revolutions per minute.",answer:true,why:"Optimum functions here as a noun referring to the point or condition at which something is most favorable."},
+      {word:"optimum",statement:"She optimized the research report by correcting five misspelled words on the title page.",answer:false,why:"Proofreading produces an impeccable paper; optimizing means making conditions or performance as favorable as possible."},
+      {word:"optimum",statement:"Consistent daily study is widely considered an effective way to optimize academic performance.",answer:true,why:"Optimize means to improve toward the most favorable result."},
+      {word:"peerless",statement:"Her command of the violin was considered peerless; no other performer in the competition approached her level.",answer:true,why:"Peerless means having no match or equal; incomparable."},
+      {word:"peerless",statement:"The diamond was deemed peerless because four other gems of equal size and clarity were found.",answer:false,why:"Peerless means having no peer or equal; identical counterparts contradict peerless."},
+      {word:"peerless",statement:"Something that is peerless will never be equaled by its competitors.",answer:true,why:"Peerless signifies being unmatched and without equal."},
+      {word:"peerless",statement:"The 1927 Yankees were described as peerless because no contemporary team matched their dominance.",answer:true,why:"Peerless describes dominance that has no match."},
+      {word:"quintessence",statement:"The small family-owned café was the quintessence of a traditional neighborhood restaurant.",answer:true,why:"Quintessence refers to the purest essence or most characteristic embodiment of a type."},
+      {word:"quintessence",statement:"The red double-decker bus has become a quintessential image of London.",answer:true,why:"Quintessential is the adjective denoting the most typical or characteristic example."},
+      {word:"quintessence",statement:"Clever deductive reasoning is widely seen as the quintessential characteristic of a legendary detective.",answer:true,why:"Quintessential captures the pure, defining essence of a concept."},
+      {word:"quintessence",statement:"The politician reached the quintessence of his public career when he won the national election.",answer:false,why:"The highest point of a career is its zenith; quintessence is the purest essence or typical example."},
+      {word:"sublime",statement:"The audience gave a prolonged standing ovation after the orchestra's sublime performance.",answer:true,why:"Sublime means awe-inspiring, supreme, or extraordinarily impressive."},
+      {word:"sublime",statement:"The concert was sublime because it was an ordinary, routine rehearsal that finished on time.",answer:false,why:"Sublime implies something extraordinarily impressive or awe-inspiring, not merely ordinary or routine."},
+      {word:"sublime",statement:"The soloist sang sublimely, captivating every listener in the cathedral.",answer:true,why:"Sublimely is the adverb form describing an awe-inspiring delivery."},
+      {word:"sublime",statement:"A standing ovation is a natural and expected reaction to a truly sublime artistic performance.",answer:true,why:"Sublime experiences evoke deep admiration and awe."},
+      {word:"zenith",statement:"The scientist reached the zenith of her career when she received the Nobel Prize.",answer:true,why:"Zenith denotes the peak or highest point of achievement."},
+      {word:"zenith",statement:"At high noon during the summer solstice, the sun ascends to its zenith directly overhead.",answer:true,why:"Zenith is the astronomical high point directly overhead."},
+      {word:"zenith",statement:"A mountain climber is someone whose physical journey literally leads to a geographic zenith.",answer:true,why:"Zenith signifies the literal or metaphorical peak."},
+      {word:"zenith",statement:"The conference reached its zenith when attendees packed their bags and departed the hotel.",answer:false,why:"The final outcome or end of an event is its culmination, not its zenith."}
+    ];
+
+    const LANG_SET4_FORM_QUESTIONS = [
+      {word:"culminate",tier:"core",prompt:"Choose the noun: The final field day marked the ___ of our summer camp.",options:["culmination","culminate","zenith","optimum"],correct:"culmination",why:"Culmination is the noun naming the completion or highest point of a process."},
+      {word:"culminate",tier:"core",prompt:"Choose the past-tense verb: Months of hard work ___ in a first-place award.",options:["culminated","culmination","culminating","eclipsed"],correct:"culminated",why:"Culminated is the past-tense verb form of culminate."},
+      {word:"eclipse",tier:"core",prompt:"Choose the present-tense verb: Each year an exceptional athlete ___ a previously established record.",options:["eclipses","eclipse","eclipsed","eclipsing"],correct:"eclipses",why:"Eclipses is the third-person singular present-tense verb."},
+      {word:"eclipse",tier:"core",prompt:"In 'A new achievement will eclipse past records,' what part of speech is eclipse?",options:["verb","noun","adjective","adverb"],correct:"verb",why:"In Lesson 17, eclipse functions primarily as a verb meaning to surpass or obscure."},
+      {word:"epitome",tier:"core",prompt:"Choose the past-tense verb: The team captain ___ dedication throughout the championship run.",options:["epitomized","epitome","optimized","epitomizing"],correct:"epitomized",why:"Epitomized is the past-tense verb meaning represented as a perfect example."},
+      {word:"epitome",tier:"core",prompt:"Choose the present-tense verb: Her steady composure ___ the qualities of an experienced leader.",options:["epitomizes","epitome","optimizes","epitomized"],correct:"epitomizes",why:"Epitomizes is the third-person singular present-tense verb."},
+      {word:"impeccable",tier:"core",prompt:"Choose the adverb: The travel itinerary was ___ organized, leaving nothing to chance.",options:["impeccably","impeccable","optimally","sublimely"],correct:"impeccably",why:"Impeccably is the adverb derived from impeccable."},
+      {word:"inimitable",tier:"core",prompt:"Does the packet derivative exercise require a derivative suffix for inimitable, or does the word remain unchanged?",options:["Remains unchanged as inimitable","Changes to inimitably","Changes to inimitability","Changes to inimitableness"],correct:"Remains unchanged as inimitable",why:"In the packet derivative exercise, inimitable is left unchanged."},
+      {word:"optimum",tier:"core",prompt:"Choose the verb: The team assigned specific duties to ___ everyone's skills.",options:["optimize","optimum","optima","epitomize"],correct:"optimize",why:"Optimize is the verb meaning to make as effective or favorable as possible."},
+      {word:"optimum",tier:"core",prompt:"Choose the plural noun: Under laboratory conditions, researchers recorded multiple temperature ___.",options:["optima","optimizes","optimumly","impeccables"],correct:"optima",why:"The packet notes that optima and optimums are accepted plural noun forms."},
+      {word:"optimum",tier:"core",prompt:"In 'The engine runs at its optimum,' what part of speech is optimum?",options:["noun","adjective","verb","adverb"],correct:"noun",why:"Here optimum functions as a noun referring to the most favorable point or condition."},
+      {word:"optimum",tier:"core",prompt:"In 'We planned the launch under optimum conditions,' what part of speech is optimum?",options:["adjective","noun","verb","adverb"],correct:"adjective",why:"Here optimum functions as an adjective modifying conditions."},
+      {word:"peerless",tier:"core",prompt:"Does the word peerless require an altered derivative suffix in the packet exercise, or does it remain unchanged?",options:["Remains unchanged as peerless","Changes to peerlessly","Changes to peerlessness","Changes to unpeerless"],correct:"Remains unchanged as peerless",why:"The packet derivative exercise uses peerless unchanged."},
+      {word:"quintessence",tier:"core",prompt:"Choose the adjective: An explorer who embodies courage and determination is a ___ explorer.",options:["quintessential","quintessence","quintessentially","peerless"],correct:"quintessential",why:"Quintessential is the adjective form of quintessence."},
+      {word:"sublime",tier:"core",prompt:"Choose the adverb: The nightingale sang ___, captivating the entire royal court.",options:["sublimely","sublime","sublimeness","impeccably"],correct:"sublimely",why:"Sublimely is the adverb form explicitly required by the packet derivative exercise."},
+      {word:"sublime",tier:"core",prompt:"In 'The view from the mountain ridge was sublime,' what part of speech is sublime?",options:["adjective","noun","verb","adverb"],correct:"adjective",why:"Sublime is an adjective describing something awe-inspiring or supremely impressive."},
+      {word:"zenith",tier:"core",prompt:"Does the word zenith require an altered derivative suffix in the packet exercise, or does it remain unchanged?",options:["Remains unchanged as zenith","Changes to zenithal","Changes to zenithly","Changes to zenithed"],correct:"Remains unchanged as zenith",why:"Zenith is used unchanged in the packet's derivative exercise."}
+    ];
+
+    const LANG_SET4_TRANSFER_CONTEXTS = [
+      {word:"culminate",prompt:"Years of scientific research will ___ in the publication of a landmark paper.",answer:"culminate"},
+      {word:"eclipse",prompt:"The young athlete's historic jump ___ the state record that had stood for decades.",answer:"eclipsed"},
+      {word:"epitome",prompt:"Her calm leadership during the crisis was the ___ of professionalism.",answer:"epitome"},
+      {word:"impeccable",prompt:"The editor delivered an ___ manuscript without a single typographical error.",answer:"impeccable"},
+      {word:"inimitable",prompt:"The comedian's ___ storytelling style was impossible for imitators to reproduce.",answer:"inimitable"},
+      {word:"optimum",prompt:"The plants require ___ moisture and temperature conditions to produce abundant fruit.",answer:"optimum"},
+      {word:"peerless",prompt:"Her command of the violin was considered ___; no other performer approached her level.",answer:"peerless"},
+      {word:"quintessence",prompt:"The cozy café with warm lighting was the ___ of a traditional neighborhood bistro.",answer:"quintessence"},
+      {word:"sublime",prompt:"The orchestra delivered a ___ performance that left the audience awestruck in silence.",answer:"sublime"},
+      {word:"zenith",prompt:"The astronomer tracked the comet as it reached its ___ high in the night sky.",answer:"zenith"}
+    ];
+
+    const LANG_SET4_CONFUSION_QUESTIONS = [
+      {word:"culminate",category:"context",prompt:"A ceremony represents the crowning final result of years of preparation. Is this the culmination or the zenith of the process?",options:["culmination","zenith"],answers:["culmination"],why:"Culmination emphasizes the final result or completion of a process; zenith refers to the highest point or peak."},
+      {word:"zenith",category:"context",prompt:"A mountain climber reaches the highest geographic peak of the range. Does the climber reach the zenith or the culmination?",options:["zenith","culmination"],answers:["zenith"],why:"Zenith is the actual peak or highest point; culmination emphasizes the conclusion of a process."},
+      {word:"epitome",category:"context",prompt:"An individual person serves as a perfect representative example of a character type. Is this person the epitome or the quintessence?",options:["epitome","quintessence"],answers:["epitome"],why:"Epitome is a perfect representative or defining example; quintessence is the purest essence or typical embodiment."},
+      {word:"quintessence",category:"context",prompt:"A picturesque village embodies the purest essence and most characteristic qualities of countryside life. Is this the quintessence or the epitome?",options:["quintessence","epitome"],answers:["quintessence"],why:"Quintessence refers to the purest essence or core embodiment of a concept."},
+      {word:"peerless",category:"context",prompt:"A sprinter is faster than every competitor, with no rival able to match her times. Is she peerless or inimitable?",options:["peerless","inimitable"],answers:["peerless"],why:"Peerless means having no match or equal; inimitable means impossible to imitate or copy."},
+      {word:"inimitable",category:"context",prompt:"An artist's unique brush technique cannot be duplicated by any copyist. Is the technique inimitable or peerless?",options:["inimitable","peerless"],answers:["inimitable"],why:"Inimitable means impossible to imitate or copy."},
+      {word:"impeccable",category:"context",prompt:"A laboratory report has zero mathematical or typographical errors. Is the report impeccable or optimum?",options:["impeccable","optimum"],answers:["impeccable"],why:"Impeccable means flawless and without error; optimum means most favorable or best conditions."},
+      {word:"optimum",category:"context",prompt:"A machine operates under conditions that yield the most favorable fuel efficiency. Are these conditions optimum or impeccable?",options:["optimum","impeccable"],answers:["optimum"],why:"Optimum means most favorable or advantageous."},
+      {word:"epitome",category:"usage",prompt:"Engineers modified the code to maximize processing efficiency. Did they epitomize or optimize the program?",options:["optimize","epitomize"],answers:["optimize"],why:"Optimize means improve or make as effective as possible; epitomize means represent as a prime example."},
+      {word:"optimum",category:"usage",prompt:"A leader's steady courage during hardship perfectly represents virtue. Did the leader optimize or epitomize that virtue?",options:["epitomize","optimize"],answers:["epitomize"],why:"Epitomize means serve as a defining representative or example."},
+      {word:"eclipse",category:"context",prompt:"A new runner runs faster and surpasses a long-standing school record. Did the runner eclipse or optimize the record?",options:["eclipse","optimize"],answers:["eclipse"],why:"Eclipse means to exceed, surpass, or go beyond."},
+      {word:"sublime",category:"context",prompt:"A musical performance is awe-inspiring and moves the entire hall to breathless silence. Is it sublime or merely impeccable?",options:["sublime","impeccable"],answers:["sublime"],why:"Sublime means awe-inspiring and supreme; impeccable means technically flawless."},
+      {word:"sublime",category:"usage",prompt:"Can a routine, mediocre task that is simply completed on time be described as sublime?",options:["No","Yes"],answers:["No"],why:"Sublime requires extraordinary, awe-inspiring excellence, not merely routine adequacy."},
+      {word:"eclipse",category:"usage",prompt:"Can eclipse function as a verb meaning both to surpass someone and to obscure a view?",options:["Yes","No"],answers:["Yes"],why:"Lesson 17 specifically emphasizes both senses of the verb eclipse."}
+    ];
+
+    const LANG_SET4_DERIVATIVE_FILLINS = [
+      {word:"sublime",tier:"core",prompt:"A nightingale sings ___ and captivates an emperor.",answers:["sublimely"],why:"Sublimely is the adverb form describing singing in an awe-inspiring manner."},
+      {word:"zenith",tier:"core",prompt:"The sun reached its ___ shortly after noon.",answers:["zenith"],why:"Zenith is the noun for the highest point in the sky."},
+      {word:"inimitable",tier:"core",prompt:"A choreographer is known for her ___, unusual style.",answers:["inimitable"],why:"Inimitable remains unchanged and means impossible to imitate or copy."},
+      {word:"peerless",tier:"core",prompt:"For years, the ___ Yankees dominated professional baseball.",answers:["peerless"],why:"Peerless remains unchanged and means having no match or equal."},
+      {word:"culminate",tier:"core",prompt:"The ___ of summer camp was its final field day.",answers:["culmination"],why:"Culmination is the noun naming the crowning completion of the camp."},
+      {word:"optimum",tier:"core",prompt:"The group assigned jobs to ___ everyone's skills.",answers:["optimize"],why:"Optimize is the verb meaning to make as effective as possible."},
+      {word:"impeccable",tier:"core",prompt:"Even the most ___ organized travel agent cannot control the weather.",answers:["impeccably"],why:"Impeccably is the adverb derived from impeccable."},
+      {word:"epitome",tier:"core",prompt:"The Beatles ___ rock music for an entire generation.",answers:["epitomized"],why:"Epitomized is the past-tense verb meaning represented as a defining model."},
+      {word:"quintessence",tier:"core",prompt:"An explorer who perfectly represents courage and determination could be called a ___ explorer.",answers:["quintessential"],why:"Quintessential is the adjective form of quintessence."},
+      {word:"eclipse",tier:"core",prompt:"Each year an athlete ___ a previously established record.",answers:["eclipses"],why:"Eclipses is the present-tense verb meaning surpasses."},
+      {word:"optimum",tier:"core",prompt:"The company's redesign helped ___ battery life without increasing the device's weight.",answers:["optimize"],why:"Optimize is the verb meaning to make as effective or favorable as possible."},
+      {word:"epitome",tier:"core",prompt:"Her ability to remain calm and precise under pressure ___ the qualities expected of an experienced surgeon.",answers:["epitomized","epitomizes"],why:"Epitomized/epitomizes is the verb meaning served as the perfect example of."},
+      {word:"culminate",tier:"core",prompt:"The discovery represented the ___ of nearly twenty years of research.",answers:["culmination"],why:"Culmination is the noun for the final result or completion of an extended process."},
+      {word:"sublime",tier:"core",prompt:"The violinist performed the final movement ___, leaving the audience stunned.",answers:["sublimely"],why:"Sublimely is the adverb meaning in an awe-inspiring, supreme manner."},
+      {word:"impeccable",tier:"core",prompt:"His ___ attention to detail resulted in a report without a single formatting error.",answers:["impeccable"],why:"Impeccable is the adjective meaning flawless or perfect."},
+      {word:"inimitable",tier:"core",prompt:"The chef was celebrated for an ___ seasoning technique that competitors tried in vain to duplicate.",answers:["inimitable"],why:"Inimitable means impossible to copy or duplicate."},
+      {word:"peerless",tier:"core",prompt:"With three consecutive undefeated seasons, the gymnast earned a ___ reputation among college athletes.",answers:["peerless"],why:"Peerless means having no equal or match."},
+      {word:"zenith",tier:"core",prompt:"The astronomer predicted that the constellation would reach its ___ above the southern horizon at midnight.",answers:["zenith"],why:"Zenith is the peak or highest point."},
+      {word:"quintessence",tier:"core",prompt:"The cozy brick library with leaded-glass windows is the ___ example of collegiate architecture.",answers:["quintessential"],why:"Quintessential is the adjective meaning most typical or representative."},
+      {word:"eclipse",tier:"core",prompt:"Her sensational breakout novel quickly ___ the sales figures of every veteran author on the bestseller list.",answers:["eclipsed"],why:"Eclipsed is the past-tense verb meaning surpassed or outshone."},
+      {word:"impeccable",tier:"core",prompt:"The laboratory was ___ maintained, ensuring that no dust or contamination could compromise the samples.",answers:["impeccably"],why:"Impeccably is the adverb meaning flawlessly."},
+      {word:"optimum",tier:"core",prompt:"Engineers ran multiple simulations to determine the ___ operating angle for the solar panels.",answers:["optimum"],why:"Optimum is the adjective meaning most favorable or advantageous."},
+      {word:"culminate",tier:"core",prompt:"A decade of negotiations will ___ in a comprehensive international trade agreement.",answers:["culminate"],why:"Culminate is the verb meaning to reach completion or a final high point."},
+      {word:"optimum",tier:"core",prompt:"The software development team continuously ___ their algorithms to process transactions in milliseconds.",answers:["optimizes","optimized"],why:"Optimizes is the verb meaning makes as efficient or favorable as possible."},
+      {word:"epitome",tier:"core",prompt:"During the gala, the speaker noted how the founder's lifelong charity work ___ compassion.",answers:["epitomizes","epitomized"],why:"Epitomizes/epitomized expresses representing a quality as a prime example."}
+    ];
+
+    const LANG_SET4_SHORT_ANSWER_PAIRS = [
+      {words:["culminate","zenith"],prompt:"Create one or more complete sentences using both culminate and zenith, or appropriate derivatives.",model:"Her scientific career reached its zenith when she received the international award, which culminated twenty years of tireless research."},
+      {words:["epitome","quintessence"],prompt:"Create one or more complete sentences using both epitome and quintessence, or appropriate derivatives.",model:"The historic hotel was the epitome of luxury service and represented the quintessence of classical European hospitality."},
+      {words:["peerless","inimitable"],prompt:"Create one or more complete sentences using both peerless and inimitable, or appropriate derivatives.",model:"The pianist's technique was peerless because none of the other competitors could match her accuracy, while her inimitable interpretation of the piece gave her a style that nobody could convincingly copy."},
+      {words:["impeccable","optimum"],prompt:"Create one or more complete sentences using both impeccable and optimum, or appropriate derivatives.",model:"The engineer produced an impeccable report with no errors and recommended the optimum operating temperature for the machine."},
+      {words:["epitome","optimum"],prompt:"Create one or more complete sentences using both epitomize and optimize, or appropriate derivatives.",model:"The coach worked to optimize the team's training schedule while reminding the athletes that their captain epitomized true sportsmanship."},
+      {words:["eclipse","sublime"],prompt:"Create one or more complete sentences using both eclipse and sublime, or appropriate derivatives.",model:"The soloist's sublime vocal performance eclipsed every other act in the festival and left the audience spellbound."},
+      {words:["culminate","impeccable"],prompt:"Create one or more complete sentences using both culmination and impeccable, or appropriate derivatives.",model:"The immaculate gala was the culmination of months of planning by an impeccably organized committee."},
+      {words:["quintessence","peerless"],prompt:"Create one or more complete sentences using both quintessential and peerless, or appropriate derivatives.",model:"Widely regarded as the quintessential detective novel, the book achieved a peerless standing that no modern thriller has matched."},
+      {words:["optimum","eclipse"],prompt:"Create one or more complete sentences using both optimum and eclipse, or appropriate derivatives.",model:"Under optimum track conditions, the sprinter eclipsed the national record set fifteen years earlier."},
+      {words:["inimitable","sublime"],prompt:"Create one or more complete sentences using both inimitable and sublime, or appropriate derivatives.",model:"The choir delivered a sublime rendition of the anthem, distinguished by an inimitable blend of harmonic textures that left listeners breathless."},
+      {words:["culminate","eclipse"],prompt:"Create one or more complete sentences using both culminate and eclipse, or appropriate derivatives.",model:"Years of intensive design study culminated in her first Paris fashion show, where initial doubts were completely eclipsed by enthusiastic applause."}
+    ];
     const LANG_SETS = {
       1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"]},
       2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[]},
-      3:{words:LANG_SET3_WORDS,usage:LANG_SET3_USAGE,formQuestions:LANG_SET3_FORM_QUESTIONS,transfer:LANG_SET3_TRANSFER_CONTEXTS,confusions:LANG_SET3_CONFUSION_QUESTIONS,derivatives:LANG_SET3_DERIVATIVE_FILLINS,pairs:LANG_SET3_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-3-progress-v1",legacyKeys:[]}
+      3:{words:LANG_SET3_WORDS,usage:LANG_SET3_USAGE,formQuestions:LANG_SET3_FORM_QUESTIONS,transfer:LANG_SET3_TRANSFER_CONTEXTS,confusions:LANG_SET3_CONFUSION_QUESTIONS,derivatives:LANG_SET3_DERIVATIVE_FILLINS,pairs:LANG_SET3_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-3-progress-v1",legacyKeys:[]},
+      4:{words:LANG_SET4_WORDS,usage:LANG_SET4_USAGE,formQuestions:LANG_SET4_FORM_QUESTIONS,transfer:LANG_SET4_TRANSFER_CONTEXTS,confusions:LANG_SET4_CONFUSION_QUESTIONS,derivatives:LANG_SET4_DERIVATIVE_FILLINS,pairs:LANG_SET4_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-4-progress-v1",legacyKeys:[]}
     };
     let activeLangSet = Number(localStorage.getItem("flashcards-ap-lang-last-set") || 1);
     if(!LANG_SETS[activeLangSet]) activeLangSet=1;
@@ -1731,7 +1915,7 @@
     }
     function normalizeAnswer(value) { return String(value || "").toLowerCase().trim().replace(/[’']/g,"'").replace(/[^a-z'\s-]/g,"").replace(/\s+/g," "); }
     function shuffleList(items) { const a=[...items]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-    function getWord(name) { return WORDS.find(w=>w.word===name); }
+    function getWord(name) { return WORDS.find(w=>w.word===name || w.forms.some(f=>f.word===name)); }
     function pluralForm(form) { if(form.endsWith("s")) return form; if(/[^aeiou]y$/.test(form)) return form.slice(0,-1)+"ies"; return form+"s"; }
     function acceptedForms(w) {
       const set=new Set([w.word]);
@@ -1764,6 +1948,11 @@
       speechSynthesis.cancel();
       const utterance=new SpeechSynthesisUtterance(word);
       utterance.rate=slow ? 0.55 : 0.82;utterance.pitch=1;utterance.lang="en-US";
+      try {
+        const voices = speechSynthesis.getVoices();
+        const usVoice = voices.find(v => (v.lang === "en-US" || v.lang === "en_US") && !v.name.includes("Mobile"));
+        if(usVoice) utterance.voice = usVoice;
+      } catch(e) {}
       speechSynthesis.speak(utterance);return true;
     }
     function audioMarkup() {
@@ -1789,11 +1978,11 @@
     function updateCourseNav(course) {
       document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
       const brand=document.getElementById("brandCourse");
-      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":course==="music"?"Music Theory":"Classes";
+      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
     }
     function showView(id) {
       const langViews=["home","learn","practice","cram","review","progress"];
-      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":id==="music"?"music":null;
+      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course==="langsets"?"lang":course==="apushsets"?"apush":course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
@@ -1804,10 +1993,9 @@
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
       if(id==="apush") renderApushCard();
-      if(id==="music") renderMusicCard();
       window.scrollTo({top:0,behavior:"smooth"});
     }
-    function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":course==="music"?"music":"apushsets"); }
+    function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":"apushsets"); }
     function setActiveLangSet(setNumber){
       const next=LANG_SETS[Number(setNumber)]; if(!next)return;
       activeLangSet=Number(setNumber); localStorage.setItem("flashcards-ap-lang-last-set",String(activeLangSet));
@@ -1995,9 +2183,14 @@
       const matching=shuffleList(WORDS).map(w=>({category:"definition",word:w.word,label:"Part 2 · Definition matching · use each once",prompt:w.word,response:"choice",options:[...definitions],answers:[w.definition],why:w.definition,mockMatching:true}));
       return [...shuffleList(spellingQuestions()),...matching,...shuffleList(usageQuestions()).slice(0,5),...shuffleList(derivativeQuestions(null,true)).slice(0,3),...shuffleList(shortAnswerQuestions()).slice(0,1)];
     }
+    const HIGH_RISK_SPELLING = ["epitome","impeccable","inimitable","quintessence","optimum","culminate"];
     function weakWords(){
       const named=[...new Set(appStats.missed)];
-      const ranked=WORDS.map(w=>{const s=wordStats(w.word);return {name:w.word,score:s.correct-s.wrong*2};}).sort((a,b)=>a.score-b.score).map(x=>x.name);
+      const ranked=WORDS.map(w=>{
+        const s=wordStats(w.word);
+        const riskBias=HIGH_RISK_SPELLING.includes(w.word)?-1:0;
+        return {name:w.word,score:s.correct-s.wrong*2+riskBias};
+      }).sort((a,b)=>a.score-b.score).map(x=>x.name);
       return [...new Set([...named,...ranked])].slice(0,5);
     }
     function balancedSession(bank,total){
@@ -2319,188 +2512,7 @@
     bindHorizontalSwipe(document.getElementById("physicsCard"), ()=>movePhysics(1), ()=>movePhysics(-1));
     bindHorizontalSwipe(document.getElementById("apushCard"), ()=>moveApush(1), ()=>moveApush(-1));
 
-    // Music Theory: flashcards deck and progress
-    const MUSIC_THEORY_CARDS = [
-      // Clefs
-      { cat: "clefs", categoryName: "Clefs", front: "Bass clef lines, bottom → top", back: "<strong>G B D F A</strong>" },
-      { cat: "clefs", categoryName: "Clefs", front: "Bass clef spaces, bottom → top", back: "<strong>A C E G</strong>" },
-      { cat: "clefs", categoryName: "Clefs", front: "Alto clef lines, bottom → top", back: "<strong>F A C E G</strong>" },
-      { cat: "clefs", categoryName: "Clefs", front: "Alto clef spaces, bottom → top", back: "<strong>G B D F</strong>" },
-      { cat: "clefs", categoryName: "Clefs", front: "Treble → bass shortcut", back: "Move forward 2 letters" },
-      { cat: "clefs", categoryName: "Clefs", front: "Treble → alto shortcut", back: "Move forward 1 letter" },
-
-      // Rhythm
-      { cat: "rhythm", categoryName: "Rhythm", front: "Eighth-note counting", back: "<strong>1 + 2 + 3 + 4 +</strong>" },
-      { cat: "rhythm", categoryName: "Rhythm", front: "Sixteenth-note counting", back: "<strong>1 e + a 2 e + a 3 e + a 4 e + a</strong>" },
-      { cat: "rhythm", categoryName: "Rhythm", front: "Four sixteenths on beat 3", back: "<strong>3 e + a</strong>" },
-      { cat: "rhythm", categoryName: "Rhythm", front: "Two eighths on beat 2", back: "<strong>2 +</strong>" },
-      { cat: "rhythm", categoryName: "Rhythm", front: "Rests", back: "Still count the beat/subdivision normally." },
-
-      // Key signatures
-      { cat: "keys", categoryName: "Key Signatures", front: "Order of sharps", back: "<strong>F C G D A E B</strong><div class=\"music-sub\">“Father Charles Goes Down And Ends Battle”</div>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "Order of flats", back: "<strong>B E A D G C F</strong><div class=\"music-sub\">“Battle Ends And Down Goes Charles’ Father”</div>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "Major key from sharps", back: "Last sharp + half step" },
-      { cat: "keys", categoryName: "Key Signatures", front: "Major key from flats", back: "Second-to-last flat" },
-      { cat: "keys", categoryName: "Key Signatures", front: "1 flat", back: "<strong>F major</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "No sharps/flats", back: "<strong>C major</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "Minor key signature shortcut", back: "Use its relative major" },
-      { cat: "keys", categoryName: "Key Signatures", front: "E♭ major / C minor", back: "<strong>B♭ E♭ A♭</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "F major / D minor", back: "<strong>B♭</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "G major / E minor", back: "<strong>F♯</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "A major / F♯ minor", back: "<strong>F♯ C♯ G♯</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "B♭ major / G minor", back: "<strong>B♭ E♭</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "C major / A minor", back: "<strong>none</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "D major / B minor", back: "<strong>F♯ C♯</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "E major / C♯ minor", back: "<strong>F♯ C♯ G♯ D♯</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "B♭ minor", back: "Relative major D♭ → <strong>B♭ E♭ A♭ D♭ G♭</strong>" },
-      { cat: "keys", categoryName: "Key Signatures", front: "G♯ minor", back: "Relative major B → <strong>F♯ C♯ G♯ D♯ A♯</strong>" },
-
-      // Scale degrees
-      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "Scale degrees", back: "First note of the scale = 1, then 2 3 4 5 6 7" },
-      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "F major scale degrees", back: "<strong>F1 G2 A3 B♭4 C5 D6 E7</strong>" },
-      { cat: "scale-degrees", categoryName: "Scale Degrees", front: "D major scale degrees", back: "<strong>D1 E2 F♯3 G4 A5 B6 C♯7</strong>" },
-
-      // Intervals
-      { cat: "intervals", categoryName: "Intervals", front: "Interval list<div class=\"music-sub\">Choices given on exam</div>", back: "<strong>P1 M2 M3 P4 P5 M6 M7 P8</strong>" },
-      { cat: "intervals", categoryName: "Intervals", front: "Perfect interval numbers", back: "<strong>1, 4, 5, 8</strong>" },
-      { cat: "intervals", categoryName: "Intervals", front: "Major interval numbers", back: "<strong>2, 3, 6, 7</strong>" },
-      { cat: "intervals", categoryName: "Intervals", front: "How to find the interval number", back: "Count both notes:<br><strong>C→E = C-D-E = 3</strong>" },
-
-      // Minor scales — memorize these rules
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "Natural minor", back: "Use normal minor scale." },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "Harmonic minor", back: "Raise 7 ascending AND descending" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "Melodic minor ascending", back: "Raise 6 and 7" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "Melodic minor descending", back: "Natural minor" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "C natural minor", back: "<strong>C D E♭ F G A♭ B♭ C</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "C harmonic minor ascending", back: "<strong>C D E♭ F G A♭ B C</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "C harmonic minor descending", back: "<strong>C B A♭ G F E♭ D C</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "A natural minor", back: "<strong>A B C D E F G A</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "A melodic minor ascending", back: "<strong>A B C D E F♯ G♯ A</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "A melodic minor descending", back: "<strong>A G F E D C B A</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "B natural minor ascending", back: "<strong>B C♯ D E F♯ G A B</strong>" },
-      { cat: "minor-scales", categoryName: "Minor Scales", front: "B natural minor descending", back: "<strong>B A G F♯ E D C♯ B</strong>" },
-
-      // Chords
-      { cat: "chords", categoryName: "Chords", front: "How to build a triad", back: "<strong>Take, skip, take, skip, take</strong>" },
-      { cat: "chords", categoryName: "Chords", front: "Major-key Roman numerals", back: "<strong>I ii iii IV V vi vii°</strong>" },
-      { cat: "chords", categoryName: "Chords", front: "Minor-key Roman numerals shown on exam", back: "<strong>i ii° III iv V VI vii°</strong>" },
-      { cat: "chords", categoryName: "Chords", front: "Capital Roman numeral", back: "<strong>Major</strong>" },
-      { cat: "chords", categoryName: "Chords", front: "Lowercase Roman numeral", back: "<strong>Minor</strong>" },
-      { cat: "chords", categoryName: "Chords", front: "°", back: "<strong>Diminished</strong>" },
-
-      // Section 7 exact keys
-      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "F major accidentals", back: "<strong>Every B is B♭</strong>" },
-      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "F major triads", back: "<div class=\"triad-grid\"><span>I = F A C</span><span>ii = G B♭ D</span><span>iii = A C E</span><span>IV = B♭ D F</span><span>V = C E G</span><span>vi = D F A</span><span>vii° = E G B♭</span></div>" },
-      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "B♭ major accidentals", back: "<strong>Every B = B♭<br>Every E = E♭</strong>" },
-      { cat: "exact-keys", categoryName: "Section 7 exact keys", front: "B♭ major triads", back: "<div class=\"triad-grid\"><span>I = B♭ D F</span><span>ii = C E♭ G</span><span>iii = D F A</span><span>IV = E♭ G B♭</span><span>V = F A C</span><span>vi = G B♭ D</span><span>vii° = A C E♭</span></div>" },
-
-      // Section 8 exact keys
-      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "G major scale degrees", back: "<strong>G1 A2 B3 C4 D5 E6 F♯7</strong>" },
-      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "G major Roman numerals", back: "<strong>I ii iii IV V vi vii°</strong>" },
-      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "D minor scale degrees", back: "<strong>D1 E2 F3 G4 A5 B♭6 C7</strong>" },
-      { cat: "exact-keys", categoryName: "Section 8 exact keys", front: "D minor Roman numerals used on exam", back: "<strong>i ii° III iv V VI vii°</strong>" }
-    ];
-
-    const MUSIC_STORAGE_KEY = "flashcards-music-theory-v1";
-    let musicActiveCategory = "all";
-    function getFilteredMusicIndices(){
-      if(musicActiveCategory === "all") return MUSIC_THEORY_CARDS.map((_,i)=>i);
-      return MUSIC_THEORY_CARDS.map((c,i)=>c.cat===musicActiveCategory?i:-1).filter(i=>i!==-1);
-    }
-    let musicOrder = getFilteredMusicIndices(), musicPos = 0;
-    let musicStats = (()=>{
-      try { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0,...JSON.parse(localStorage.getItem(MUSIC_STORAGE_KEY)||"{}")}; }
-      catch { return {ratings:{},total:0,correct:0,streak:0,bestStreak:0}; }
-    })();
-    function saveMusicStats(){ localStorage.setItem(MUSIC_STORAGE_KEY,JSON.stringify(musicStats)); renderMusicStats(); }
-    function musicMastered(i){ return (musicStats.ratings[i]?.good||0)>=3; }
-    function renderMusicStats(){
-      const indices = getFilteredMusicIndices();
-      const catMastered = indices.filter(i=>musicMastered(i)).length;
-      const totalMastered = MUSIC_THEORY_CARDS.filter((_,i)=>musicMastered(i)).length;
-      const p = indices.length ? Math.round(catMastered/indices.length*100) : 0;
-      const m = document.getElementById("musicMastered"); if(!m) return;
-      m.textContent = totalMastered;
-      document.getElementById("musicAccuracy").textContent = musicStats.total ? Math.round(musicStats.correct/musicStats.total*100)+"%" : "—";
-      document.getElementById("musicProgressFill").style.width = p+"%";
-      document.getElementById("musicProgressText").textContent = musicActiveCategory==="all"
-        ? `${totalMastered} of ${MUSIC_THEORY_CARDS.length} mastered`
-        : `${catMastered} of ${indices.length} in topic mastered (${totalMastered}/${MUSIC_THEORY_CARDS.length} total)`;
-    }
-    function renderMusicCard(){
-      const cardEl=document.getElementById("musicCard"); if(!cardEl)return;
-      if(!musicOrder.length){
-        document.getElementById("musicIndex").textContent="0 cards";
-        document.getElementById("musicQuestion").textContent="No cards in this topic.";
-        document.getElementById("musicAnswer").textContent="";
-        return;
-      }
-      if(musicPos >= musicOrder.length) musicPos = 0;
-      cardEl.classList.remove("flipped");
-      const i=musicOrder[musicPos], card=MUSIC_THEORY_CARDS[i];
-      document.getElementById("musicIndex").textContent=`Card ${musicPos+1} of ${musicOrder.length}`;
-      const bFront = document.getElementById("musicCategoryBadge");
-      const bBack = document.getElementById("musicCategoryBadgeBack");
-      if(bFront) bFront.textContent = card.categoryName;
-      if(bBack) bBack.textContent = card.categoryName;
-      document.getElementById("musicQuestion").innerHTML = card.front;
-      document.getElementById("musicAnswer").innerHTML = card.back;
-      renderMusicStats();
-    }
-    function flipMusic(){ document.getElementById("musicCard")?.classList.toggle("flipped"); }
-    function moveMusic(d){
-      if(!musicOrder.length) return;
-      musicPos = (musicPos + d + musicOrder.length) % musicOrder.length;
-      renderMusicCard();
-    }
-    function rateMusic(ok){
-      if(!musicOrder.length) return;
-      const i=musicOrder[musicPos], r=musicStats.ratings[i]||{good:0,again:0};
-      musicStats.total++;
-      if(ok){
-        musicStats.correct++;
-        musicStats.streak++;
-        musicStats.bestStreak=Math.max(musicStats.bestStreak,musicStats.streak);
-        r.good++;
-      } else {
-        musicStats.streak=0;
-        r.again++;
-      }
-      musicStats.ratings[i]=r;
-      saveMusicStats();
-      moveMusic(1);
-    }
-    function setMusicCategory(catId){
-      musicActiveCategory = catId;
-      document.querySelectorAll(".music-cat-chip").forEach(c => {
-        c.classList.toggle("active", c.dataset.musicCat === catId);
-      });
-      musicOrder = getFilteredMusicIndices();
-      musicPos = 0;
-      renderMusicCard();
-    }
-    document.querySelectorAll(".music-cat-chip").forEach(b => {
-      b.addEventListener("click", () => setMusicCategory(b.dataset.musicCat));
-    });
-    document.getElementById("musicCard")?.addEventListener("click",flipMusic);
-    document.getElementById("musicCard")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();flipMusic();}});
-    document.getElementById("musicFlipBtn")?.addEventListener("click",flipMusic);
-    document.getElementById("musicAgainBtn")?.addEventListener("click",()=>rateMusic(false));
-    document.getElementById("musicGotItBtn")?.addEventListener("click",()=>rateMusic(true));
-    document.getElementById("musicPrevBtn")?.addEventListener("click",()=>moveMusic(-1));
-    document.getElementById("musicNextBtn")?.addEventListener("click",()=>moveMusic(1));
-    document.getElementById("musicShuffleBtn")?.addEventListener("click",()=>{
-      musicOrder=shuffleList(musicOrder);
-      musicPos=0;
-      renderMusicCard();
-    });
-    bindHorizontalSwipe(document.getElementById("musicCard"), ()=>moveMusic(1), ()=>moveMusic(-1));
-
     document.addEventListener("keydown",e=>{
-      if(document.getElementById("music")?.classList.contains("active")&&!(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))){
-        if(e.key==="ArrowLeft")moveMusic(-1); if(e.key==="ArrowRight")moveMusic(1); if(e.key==="1")rateMusic(false); if(e.key==="2")rateMusic(true); if(e.key===" "){e.preventDefault();flipMusic();}
-        return;
-      }
       if(document.getElementById("apush")?.classList.contains("active")&&!(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))){
         if(e.key==="ArrowLeft")moveApush(-1); if(e.key==="ArrowRight")moveApush(1); if(e.key==="1")rateApush(false); if(e.key==="2")rateApush(true); if(e.key===" "){e.preventDefault();flipApush();}
         return;
@@ -2515,12 +2527,11 @@
     setActiveLangSet(activeLangSet);
     renderPhysicsCard();
     renderApushCard();
-    renderMusicCard();
-    const lastCourse=localStorage.getItem("flashcards-last-course") || "music";
-    if(lastCourse==="music") openCourse("music");
-    else if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
+    const lastCourse=localStorage.getItem("flashcards-last-course") || "classes";
+    if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
     else if(lastCourse==="apush"){setActiveApushSet(activeApushSet);showView("apush");}
-    else if(lastCourse==="physics2") openCourse(lastCourse); else updateCourseNav(null);
+    else if(lastCourse==="physics2") openCourse("physics2");
+    else showView("classes");
   </script>
 </body>
 </html>
