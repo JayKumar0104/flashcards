@@ -570,6 +570,7 @@
         <button class="course-card" data-lang-set="2"><h2>Set 2</h2></button>
         <button class="course-card" data-lang-set="3"><h2>Set 3</h2></button>
         <button class="course-card" data-lang-set="4"><h2>Set 4</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Excellence</p></button>
+        <button class="course-card" data-lang-set="5"><h2>Set 5</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Speaking &amp; Expression</p></button>
       </div>
     </section>
 
@@ -768,6 +769,7 @@
           </div>
           <div class="toolbar" style="margin-top:16px"><button id="printMockBtn" class="btn btn-light btn-small">Print test-format mock</button><span id="cramSetupMessage" class="key-help" aria-live="polite"></span></div>
         </div>
+        <div id="cramPrecisionBox" class="panel" style="margin-top:20px;" hidden></div>
       </div>
 
       <div id="cramPlay" class="quiz-layout" hidden>
@@ -885,6 +887,7 @@
         <button class="course-card" data-apush-set="1"><h2>EPTLs 1–50</h2></button>
         <button class="course-card" data-apush-set="2"><h2>EPTLs 51–100</h2></button>
         <button class="course-card" data-apush-set="3"><h2>EPTLs 101–150</h2></button>
+        <button class="course-card" data-apush-set="4"><h2>EPTLs 151–200</h2></button>
       </div>
     </section>
 
@@ -1870,11 +1873,320 @@
       {words:["inimitable","sublime"],prompt:"Create one or more complete sentences using both inimitable and sublime, or appropriate derivatives.",model:"The choir delivered a sublime rendition of the anthem, distinguished by an inimitable blend of harmonic textures that left listeners breathless."},
       {words:["culminate","eclipse"],prompt:"Create one or more complete sentences using both culminate and eclipse, or appropriate derivatives.",model:"Years of intensive design study culminated in her first Paris fashion show, where initial doubts were completely eclipsed by enthusiastic applause."}
     ];
+
+    const LANG_SET5_WORDS = [
+      {
+        word: "exalt", part: "verb",
+        definition: "elevate; glorify or praise",
+        forms: [
+          {word:"exalt", part:"verb", level:"packet"},
+          {word:"exalts", part:"verb · present tense", level:"packet"},
+          {word:"exalted", part:"verb / adjective", level:"packet"},
+          {word:"exalting", part:"verb · gerund/participle", level:"packet"}
+        ],
+        example: "The king exalted the soldier to a position of great authority; historians should be careful not to exalt a leader while ignoring serious flaws.",
+        cloze: "The university decided to ___ the retiring researcher by dedicating the new science laboratory in her honor.",
+        answer: ["exalt"],
+        options: ["exalt", "exhort", "peremptory", "vivacious"]
+      },
+      {
+        word: "exhort", part: "verb",
+        definition: "strongly urge through argument/advice/appeal",
+        forms: [
+          {word:"exhort", part:"verb", level:"packet"},
+          {word:"exhorts", part:"verb · present tense", level:"packet"},
+          {word:"exhorted", part:"verb · past tense", level:"packet"},
+          {word:"exhorting", part:"verb · gerund/participle", level:"packet"},
+          {word:"exhortation", part:"noun", level:"packet"}
+        ],
+        example: "The coach exhorted the exhausted players to give their full effort during the final minutes; the speaker ended with an exhortation to participate.",
+        cloze: "Before the final examination, the counselor sought to ___ the students to maintain steady study habits.",
+        answer: ["exhort"],
+        options: ["exhort", "exalt", "laconic", "garrulous"]
+      },
+      {
+        word: "garrulous", part: "adjective",
+        definition: "excessively talkative; wordy and rambling",
+        forms: [
+          {word:"garrulous", part:"adjective", level:"packet"},
+          {word:"garrulousness", part:"noun", level:"packet"}
+        ],
+        example: "The garrulous passenger spent the entire flight telling strangers lengthy stories about minor events; his garrulousness made it difficult for anyone else to speak.",
+        cloze: "The committee meeting dragged on because a ___ member insisted on discussing every minor, trivial detail.",
+        answer: ["garrulous"],
+        options: ["garrulous", "vociferous", "laconic", "histrionic"]
+      },
+      {
+        word: "gist", part: "noun",
+        definition: "central idea; essence",
+        forms: [
+          {word:"gist", part:"noun", level:"packet"}
+        ],
+        example: "I missed some details of the lecture, but I understood the gist of the professor's argument.",
+        cloze: "Although the legal brief was over fifty pages, the attorney summarized its ___ in three concise bullet points.",
+        answer: ["gist"],
+        options: ["gist", "polemic", "histrionics", "vivacity"]
+      },
+      {
+        word: "histrionic", part: "adjective",
+        definition: "excessively dramatic or emotional",
+        forms: [
+          {word:"histrionic", part:"adjective", level:"packet"},
+          {word:"histrionics", part:"noun · plural", level:"packet"}
+        ],
+        example: "His histrionic reaction to receiving a minor deduction made the situation seem far more serious than it was; her histrionics included exaggerated crying.",
+        cloze: "The actor's ___ weeping over a minor inconvenience seemed entirely artificial to the rest of the cast.",
+        answer: ["histrionic"],
+        options: ["histrionic", "vivacious", "laconic", "peremptory"]
+      },
+      {
+        word: "laconic", part: "adjective",
+        definition: "using very few words; terse/concise",
+        forms: [
+          {word:"laconic", part:"adjective", level:"packet"}
+        ],
+        example: "When asked for his opinion on the three-hour meeting, his laconic response was simply, 'Unnecessary.'",
+        cloze: "Known for his quiet and ___ demeanor, the seasoned guide rarely uttered more than a sentence or two at a time.",
+        answer: ["laconic"],
+        options: ["laconic", "garrulous", "peremptory", "polemic"]
+      },
+      {
+        word: "peremptory", part: "adjective",
+        definition: "allowing no contradiction/refusal; offensively dictatorial",
+        forms: [
+          {word:"peremptory", part:"adjective", level:"packet"}
+        ],
+        example: "Her peremptory command made it clear that the decision was final and would not be discussed further; his peremptory manner irritated the group.",
+        cloze: "With a ___ snap of his fingers, the manager issued an absolute order that brought all debate to an instant halt.",
+        answer: ["peremptory"],
+        options: ["peremptory", "laconic", "histrionic", "exalted"]
+      },
+      {
+        word: "polemic", part: "noun / adjective",
+        definition: "controversial argument",
+        forms: [
+          {word:"polemic", part:"noun / adjective", level:"packet"},
+          {word:"polemics", part:"noun · plural", level:"packet"},
+          {word:"polemical", part:"adjective", level:"packet"},
+          {word:"polemicist", part:"noun", level:"extended"}
+        ],
+        example: "The essay became a polemic against the proposed education policy; the candidate's polemic remarks provoked another heated debate.",
+        cloze: "The philosopher published a scathing ___ attacking the core assumptions of the newly proposed doctrine.",
+        answer: ["polemic"],
+        options: ["polemic", "gist", "histrionics", "exhortation"]
+      },
+      {
+        word: "vivacious", part: "adjective",
+        definition: "lively; full of animation and spirit",
+        forms: [
+          {word:"vivacious", part:"adjective", level:"packet"},
+          {word:"vivacity", part:"noun", level:"packet"},
+          {word:"vivaciousness", part:"noun", level:"packet"}
+        ],
+        example: "The vivacious host moved enthusiastically through the room, greeting everyone and keeping the conversation energetic; photographs could not fully capture her vivacity.",
+        cloze: "Her ___ presence lifted the mood of the room, as she engaged every guest with genuine warmth and lively wit.",
+        answer: ["vivacious"],
+        options: ["vivacious", "vociferous", "histrionic", "garrulous"]
+      },
+      {
+        word: "vociferous", part: "adjective",
+        definition: "marked by loud, forceful outcries",
+        forms: [
+          {word:"vociferous", part:"adjective", level:"packet"},
+          {word:"vociferousness", part:"noun", level:"packet"},
+          {word:"vociferously", part:"adverb", level:"extended"}
+        ],
+        example: "Vociferous protesters shouted their objections throughout the meeting; the vociferousness of the crowd made it difficult for the speaker to continue.",
+        cloze: "The referee's controversial call prompted a ___ outcry from thousands of furious spectators in the arena.",
+        answer: ["vociferous"],
+        options: ["vociferous", "garrulous", "vivacious", "laconic"]
+      }
+    ];
+
+    const LANG_SET5_USAGE = [
+      {word:"exalt",statement:"Fans exalted the championship team as heroes after their historic comeback victory.",answer:true,why:"Exalt means to elevate in status, glorify, praise, or honor."},
+      {word:"exalt",statement:"Historians should be careful not to exalt a political leader while ignoring serious character flaws.",answer:true,why:"Exalt means to glorify, praise, or hold up as supreme."},
+      {word:"exalt",statement:"After receiving the lifetime achievement award, the actor was exhorted as one of the finest performers of his generation.",answer:false,why:"Praising or honoring someone is exalting them; exhort means strongly urging someone to act."},
+      {word:"exalt",statement:"The coach exalted her exhausted runners to sprint with all their strength during the final lap.",answer:false,why:"Strongly urging athletes to push forward is exhorting them; exalt means to elevate or glorify."},
+      {word:"exhort",statement:"The coach exhorted the exhausted players to give their full effort during the final minutes of the game.",answer:true,why:"Exhort means to urge strongly through stirring advice, argument, or appeal."},
+      {word:"exhort",statement:"The keynote speaker concluded with an urgent exhortation to participate in the local civic initiative.",answer:true,why:"Exhortation is the noun meaning a strong, stirring appeal or urging to act."},
+      {word:"exhort",statement:"An exhortation from a colleague is a legally binding command that leaves you with no choice.",answer:false,why:"Exhortation involves strong persuasion or urging; it does not inherently mean an order with no choice."},
+      {word:"exhort",statement:"The activist exhorted the crowd to boycott the unfair transit fees.",answer:true,why:"Exhorting means strongly appealing to an audience to take action."},
+      {word:"garrulous",statement:"The garrulous passenger spent the entire flight telling strangers lengthy stories about minor events in his life.",answer:true,why:"Garrulous means excessively talkative, wordy, and rambling, especially about trivial subjects."},
+      {word:"garrulous",statement:"His garrulousness made it difficult for anyone else to participate in the dinner conversation.",answer:true,why:"Garrulousness is the noun form describing excessive, rambling talkativeness."},
+      {word:"garrulous",statement:"Although he spoke quietly, the student's forty-minute explanation wandered through irrelevant stories, making him seem vociferous.",answer:false,why:"Rambling endlessly on trivial matters is garrulous; vociferous means loud and forceful."},
+      {word:"garrulous",statement:"Because she was so garrulous, she answered every interview question with a single monosyllabic word.",answer:false,why:"Using very few words is laconic; a garrulous person talks excessively and rambles."},
+      {word:"gist",statement:"I missed some technical details of the lecture, but I understood the gist of the professor's thesis.",answer:true,why:"Gist refers to the central idea, core essence, or main point of a communication."},
+      {word:"gist",statement:"His laconic summary communicated the gist of the four-hundred-page argument in a single clear sentence.",answer:true,why:"A concise (laconic) statement can effectively capture the central idea (gist)."},
+      {word:"gist",statement:"The editor advised the reporter to delete the gist of the opening paragraph to make the article clearer.",answer:false,why:"The gist is the essential central idea; deleting it would destroy the core meaning of the piece."},
+      {word:"histrionic",statement:"His histrionic reaction to receiving a minor point deduction made the situation seem far more serious than it was.",answer:true,why:"Histrionic means excessively dramatic, emotional, or affected."},
+      {word:"histrionic",statement:"The child's histrionics included exaggerated sobbing and dramatic gestures after being told he could not have dessert.",answer:true,why:"Histrionics is the noun referring to theatrical, exaggerated emotional displays."},
+      {word:"histrionic",statement:"He was histrionics throughout the entire formal board meeting.",answer:false,why:"Grammar error: histrionics is a noun; the sentence requires the adjective histrionic."},
+      {word:"histrionic",statement:"The host's natural charm and cheerful warmth were described as histrionic because everyone felt at ease.",answer:false,why:"Natural warmth and liveliness is vivacious; histrionic implies unnatural, affected, and theatrical drama."},
+      {word:"laconic",statement:"When asked for his opinion on the three-hour meeting, his laconic response was simply, 'Unnecessary.'",answer:true,why:"Laconic means marked by the use of few words; terse or concise."},
+      {word:"laconic",statement:"Her answer was laconic because it contained twelve paragraphs explaining every minor detail.",answer:false,why:"A response spanning twelve detailed paragraphs is wordy and garrulous, the direct opposite of laconic."},
+      {word:"laconic",statement:"Because the witness gave a laconic answer, the prosecutor accused him of being automatically rude and dictatorial.",answer:false,why:"Laconic means concise and brief; it does not inherently mean rude or peremptory."},
+      {word:"peremptory",statement:"Her peremptory command made it clear that the decision was final and would not be discussed further.",answer:true,why:"Peremptory means ending debate or action; not allowing contradiction or refusal."},
+      {word:"peremptory",statement:"The judge's peremptory ruling made it clear that no further argument would be heard.",answer:true,why:"Peremptory describes an authoritative action that permits no debate or refusal."},
+      {word:"peremptory",statement:"A peremptory edict invites the public to engage in a prolonged and open-ended debate.",answer:false,why:"Peremptory actions shut down debate and brook no refusal, rather than inviting open discussion."},
+      {word:"peremptory",statement:"His peremptory manner irritated the committee members because he treated disagreement as unacceptable.",answer:true,why:"Peremptory also means offensively self-assured or dictatorial."},
+      {word:"polemic",statement:"His essay was a polemic against the proposed policy, forcefully challenging nearly every argument in its favor.",answer:true,why:"A polemic is a controversial argument, especially one attacking or refuting a doctrine or policy."},
+      {word:"polemic",statement:"The candidate's polemic remarks provoked another heated debate among voters.",answer:true,why:"Polemic functions here as the preferred adjective meaning relating to controversy or dispute."},
+      {word:"polemic",statement:"A five-line editorial that launches a fierce, controversial attack on a doctrine cannot be a polemic because polemics must ramble for hours.",answer:false,why:"A polemic is defined by its aggressive counter-argumentative substance, not rambling length; rambling is garrulous."},
+      {word:"polemic",statement:"The chairperson issued a polemic order that ended all discussion and forbade anyone from speaking.",answer:false,why:"An order that shuts down debate is peremptory; a polemic engages in controversial debate."},
+      {word:"vivacious",statement:"The guest was vivacious, moving energetically through the room and enthusiastically greeting everyone.",answer:true,why:"Vivacious means full of animation and spirit; lively."},
+      {word:"vivacious",statement:"Someone dancing energetically and greeting guests enthusiastically is vociferous, even if they never shout or speak loudly.",answer:false,why:"Energetic, spirited animation is vivacious; vociferous requires loud, forceful vocal outcries."},
+      {word:"vivacious",statement:"The host’s vivacious charmed everyone throughout the evening reception.",answer:false,why:"Grammar error: vivacious is an adjective; the noun vivacity is required."},
+      {word:"vivacious",statement:"The paramedic responding to a critical trauma victim maintained a vivacious demeanor during resuscitation.",answer:false,why:"Vivacious implies lively animation and high spirits; emergency medical care requires serious, calm focus."},
+      {word:"vociferous",statement:"Vociferous protesters shouted their objections throughout the city council meeting.",answer:true,why:"Vociferous means marked by noisy, forceful, or intense outcries."},
+      {word:"vociferous",statement:"The vociferousness of the crowd made it difficult for the speaker to continue.",answer:true,why:"Vociferousness is the noun form naming the state of loud and forceful outcries."},
+      {word:"vociferous",statement:"The protester gave a five-second but extremely loud and forceful objection, proving she was garrulous.",answer:false,why:"A loud, brief outcry is vociferous; garrulous requires excessive and rambling speech."},
+      {word:"vociferous",statement:"The vociferous of the crowd outside drowned out the speaker's remarks.",answer:false,why:"Grammar error: vociferous is an adjective; the noun vociferousness is required."}
+    ];
+
+    const LANG_SET5_FORM_QUESTIONS = [
+      {word:"garrulous",tier:"core",prompt:"Choose the noun derived from garrulous: Sofia's excessive ___ dominated the conversation.",options:["garrulousness","garrulous","garrulity","vociferousness"],correct:"garrulousness",why:"Garrulousness is the high-yield noun form meaning excessive, rambling talkativeness."},
+      {word:"polemic",tier:"core",prompt:"Choose the accepted adjective form: The senator frequently presents ___ arguments that stir heated controversy.",options:["polemic or polemical","polemics","polemicist","polemicize"],correct:"polemic or polemical",why:"The packet explicitly notes that polemic is preferred as the adjective, but polemical is also acceptable."},
+      {word:"exhort",tier:"core",prompt:"Choose the participle: The party leader was seen ___ wavering members to vote for the bill.",options:["exhorting","exalting","exhortation","exhorted"],correct:"exhorting",why:"Exhorting is the present participle meaning strongly urging."},
+      {word:"gist",tier:"core",prompt:"Choose the noun: The central ___ of a flowery speech is often difficult to identify.",options:["gist","laconic","polemic","vivacity"],correct:"gist",why:"Gist is the noun meaning the central idea or essence."},
+      {word:"vociferous",tier:"core",prompt:"Choose the noun derived from vociferous: The sudden ___ of the crowd startled the meeting.",options:["vociferousness","vociferous","vociferously","garrulousness"],correct:"vociferousness",why:"Vociferousness is the high-yield noun naming the quality of noisy, forceful outcries."},
+      {word:"laconic",tier:"core",prompt:"Choose the adjective: Communicating mostly through brief grunts, he gave a ___ reply.",options:["laconic","laconically","peremptory","histrionic"],correct:"laconic",why:"Laconic is the adjective meaning marked by the use of few words; terse or concise."},
+      {word:"exalt",tier:"core",prompt:"Choose the adjective form of exalt: A graduate student finds the ___ atmosphere of a physics symposium inspiring.",options:["exalted","exalting","exhorted","exhorting"],correct:"exalted",why:"Exalted functions as an adjective meaning elevated in character, rank, or honor."},
+      {word:"vivacious",tier:"core",prompt:"Choose the noun derived from vivacious: A radio broadcast cannot capture the lively ___ of her expressions.",options:["vivacity","vivacious","vivaciously","vociferousness"],correct:"vivacity",why:"Vivacity (or vivaciousness) is the high-yield noun meaning spirited liveliness and animation."},
+      {word:"histrionic",tier:"core",prompt:"Choose the noun: A five-year-old child screamed and resorted to dramatic ___ after being denied a treat.",options:["histrionics","histrionic","histrionically","vivacity"],correct:"histrionics",why:"Histrionics is the plural noun meaning exaggerated theatrical or emotional displays."},
+      {word:"peremptory",tier:"core",prompt:"Choose the adjective: The president issued a final, non-negotiable decree that was entirely ___.",options:["peremptory","peremptorily","laconic","polemic"],correct:"peremptory",why:"Peremptory is the adjective meaning admitting no refusal or contradiction."},
+      {word:"histrionic",tier:"core",prompt:"In 'His histrionic reaction embarrassed the team,' what part of speech is histrionic?",options:["adjective","noun","verb","adverb"],correct:"adjective",why:"Histrionic modifies the noun reaction, functioning as an adjective."},
+      {word:"histrionic",tier:"core",prompt:"In 'Her histrionics embarrassed the family,' what part of speech is histrionics?",options:["noun","adjective","verb","adverb"],correct:"noun",why:"Histrionics is a noun naming exaggerated dramatic behavior."},
+      {word:"exhort",tier:"core",prompt:"Choose the noun: The speaker concluded his address with a powerful ___ to support local charities.",options:["exhortation","exhorting","exalted","exaltation"],correct:"exhortation",why:"Exhortation is the noun meaning a strong urging through speech or appeal."},
+      {word:"vociferous",tier:"core",prompt:"Choose the adverb: Angry citizens complained ___ at the town hall meeting.",options:["vociferously","vociferousness","vociferous","garrulously"],correct:"vociferously",why:"Vociferously is the adverb meaning loudly and forcefully."},
+      {word:"polemic",tier:"core",prompt:"Can the word polemic function as both a noun and an adjective in standard packet usage?",options:["Yes, both noun and adjective","No, only a noun","No, only an adjective","No, only an adverb"],correct:"Yes, both noun and adjective",why:"Lesson 9 explicitly notes that polemic is a noun and the preferred adjective (polemical is also acceptable)."}
+    ];
+
+    const LANG_SET5_TRANSFER_CONTEXTS = [
+      {word:"exalt",prompt:"Historians should be careful not to ___ a political leader while ignoring serious human flaws.",answer:"exalt"},
+      {word:"exhort",prompt:"The coach delivered a stirring speech to ___ the team to give everything in the final minutes.",answer:"exhort"},
+      {word:"garrulous",prompt:"The ___ passenger spent three hours telling strangers rambling stories about minor events.",answer:"garrulous"},
+      {word:"gist",prompt:"I missed the opening background, but I easily grasped the ___ of the speaker's proposal.",answer:"gist"},
+      {word:"histrionic",prompt:"His ___ reaction of weeping over a tiny deduction made the minor setback seem catastrophic.",answer:"histrionic"},
+      {word:"laconic",prompt:"When asked whether he had any objection to the proposal, his ___ response was simply 'No.'",answer:"laconic"},
+      {word:"peremptory",prompt:"The chairperson issued a ___ instruction that brought the debate to an immediate close.",answer:"peremptory"},
+      {word:"polemic",prompt:"The scholar published a biting ___ refuting the opposing doctrine point by point.",answer:"polemic"},
+      {word:"vivacious",prompt:"The ___ host circulated energetically through the room, greeting every guest with enthusiasm.",answer:"vivacious"},
+      {word:"vociferous",prompt:"The ___ crowd chanted slogans so loudly that the council had to pause the meeting.",answer:"vociferous"}
+    ];
+
+    const LANG_SET5_CONFUSION_QUESTIONS = [
+      {word:"exhort",category:"context",prompt:"A mentor strongly urges a graduating student to apply for a prestigious scholarship. Does the mentor exalt or exhort the student?",options:["exhort","exalt"],answers:["exhort"],why:"Exhort means to strongly urge through argument or appeal; exalt means to elevate, praise, or glorify."},
+      {word:"exalt",category:"context",prompt:"A community gathers to praise and honor a lifelong volunteer by dedicating a monument. Does the community exalt or exhort the volunteer?",options:["exalt","exhort"],answers:["exalt"],why:"Exalt means to elevate in rank or glorify and praise; exhort means to urge someone to action."},
+      {word:"exhort",category:"usage",prompt:"Can a leader be exhorted to an elevated position of great authority?",options:["No","Yes"],answers:["No"],why:"One is exalted to a high position; exhorting involves urging or persuading someone to act."},
+      {word:"exhort",category:"usage",prompt:"Does exhorting someone inherently mean ordering them so that they have no choice or alternative?",options:["No","Yes"],answers:["No"],why:"Exhorting normally involves strong persuasion and appeal; it is not inherently a dictatorial command."},
+      {word:"garrulous",category:"context",prompt:"A quiet traveler talks non-stop for three hours about trivial lawn maintenance. Is the traveler garrulous or vociferous?",options:["garrulous","vociferous"],answers:["garrulous"],why:"Garrulous means excessively talkative or rambling about trivial things, even if spoken softly."},
+      {word:"vociferous",category:"context",prompt:"A spectator gives a five-second, deafening shout of protest before leaving. Is this outburst vociferous or garrulous?",options:["vociferous","garrulous"],answers:["vociferous"],why:"Vociferous means marked by loud, forceful outcry; a brief shout is not rambling or garrulous."},
+      {word:"vociferous",category:"usage",prompt:"Can a speaker express an opinion vociferously in just two or three sentences?",options:["Yes","No"],answers:["Yes"],why:"Yes, someone can speak loudly and forcefully (vociferously) without rambling talkatively (garrulously)."},
+      {word:"vivacious",category:"context",prompt:"A host mingles with warmth and dances energetically with guests without yelling or shouting. Is the host vivacious or vociferous?",options:["vivacious","vociferous"],answers:["vivacious"],why:"Vivacious means animated, lively, and spirited; vociferous requires loud, forceful vocal outcries."},
+      {word:"histrionic",category:"context",prompt:"A student collapses dramatically onto a desk, weeping theatrically after missing one quiz question. Is this reaction histrionic or vivacious?",options:["histrionic","vivacious"],answers:["histrionic"],why:"Histrionic describes affected, theatrical, and excessively dramatic emotional displays."},
+      {word:"vivacious",category:"context",prompt:"An entertainer radiates natural, authentic cheerfulness and buoyant energy on stage. Is the performance vivacious or histrionic?",options:["vivacious","histrionic"],answers:["vivacious"],why:"Vivacious refers to genuine liveliness and spirit, whereas histrionic denotes exaggerated or fake theatrics."},
+      {word:"laconic",category:"context",prompt:"A witness replies 'Never' to a ten-minute question. Is the witness's one-word answer best described as laconic or the gist?",options:["laconic","gist"],answers:["laconic"],why:"Laconic describes the terse, concise manner of expression; the gist is the central idea itself."},
+      {word:"gist",category:"context",prompt:"An executive asks for the core essence of a sixty-page strategic report. Is the executive asking for the gist or a laconic?",options:["gist","laconic"],answers:["gist"],why:"Gist is the noun meaning the central idea or essence."},
+      {word:"peremptory",category:"context",prompt:"A commander snaps, 'Silence! This decision is final and will not be questioned!' Is this statement primarily peremptory or merely laconic?",options:["peremptory","laconic"],answers:["peremptory"],why:"Peremptory means ending debate or action and allowing no contradiction or refusal."},
+      {word:"polemic",category:"context",prompt:"A political theorist publishes a concise essay aggressively attacking a newly proposed policy doctrine. Is the essay a polemic or garrulous?",options:["a polemic","garrulous"],answers:["a polemic"],why:"A polemic is a controversial argument attacking an opinion or doctrine; it does not need to be rambling."},
+      {word:"polemic",category:"context",prompt:"One speaker participates in an aggressive public debate challenging an opponent's philosophy, while another official issues a non-negotiable edict forbidding any debate. Who is being peremptory?",options:["The official issuing the edict","The speaker debating"],answers:["The official issuing the edict"],why:"Peremptory actions shut down debate; a polemic engages in controversial debate."},
+      {word:"polemic",category:"usage",prompt:"For the sentence 'The senator delivered a ___ speech,' does the packet accept polemic, polemical, or both?",options:["Both polemic and polemical","Only polemic","Only polemical"],answers:["Both polemic and polemical"],why:"The packet notes that polemic is preferred as the adjective, but polemical is also acceptable."}
+    ];
+
+    const LANG_SET5_DERIVATIVE_FILLINS = [
+      {word:"garrulous",tier:"core",prompt:"Sofia talks so much that she barely lets anyone else speak, illustrating her extreme ___.",answers:["garrulousness"],why:"Garrulousness is the noun form denoting excessive talkativeness."},
+      {word:"polemic",tier:"core",prompt:"A senator frequently presents ___ arguments that stir heated controversy.",answers:["polemic","polemical"],why:"The packet explicitly accepts both polemic (preferred) and polemical as the adjective."},
+      {word:"exhort",tier:"core",prompt:"A party leader was seen ___ wavering members to vote for the bill.",answers:["exhorting"],why:"Exhorting is the participle meaning strongly urging through advice or appeal."},
+      {word:"gist",tier:"core",prompt:"The central ___ of a flowery, rambling speech is often difficult to identify.",answers:["gist"],why:"Gist is the noun meaning the central idea or essence."},
+      {word:"vociferous",tier:"core",prompt:"The sudden ___ of the crowd's shouting startled the committee members.",answers:["vociferousness"],why:"Vociferousness is the noun form for the quality of loud, forceful outcries."},
+      {word:"laconic",tier:"core",prompt:"Communicating mostly through gestures and an occasional terse phrase, he gave a characteristically ___ reply.",answers:["laconic"],why:"Laconic remains unchanged and means using very few words; terse or concise."},
+      {word:"exalt",tier:"core",prompt:"A graduate student finds the ___ atmosphere of a theoretical-physics symposium challenging.",answers:["exalted"],why:"Exalted functions as the adjective meaning elevated in character, rank, or honor."},
+      {word:"vivacious",tier:"core",prompt:"A radio broadcast conveys her words, but it cannot capture the natural ___ of her gestures and expressions.",answers:["vivacity","vivaciousness"],why:"Vivacity (or vivaciousness) is the noun naming spirited liveliness and animation."},
+      {word:"histrionic",tier:"core",prompt:"A five-year-old child screamed and launched into dramatic ___ after being denied dessert.",answers:["histrionics"],why:"Histrionics is the plural noun meaning exaggerated, theatrical displays of emotion."},
+      {word:"peremptory",tier:"core",prompt:"The president issued a ___ decree that ended all debate and allowed no refusal.",answers:["peremptory"],why:"Peremptory remains unchanged and means ending debate; dictatorial."},
+      {word:"gist",tier:"core",prompt:"Someone who summarizes the core point of a long, complex argument provides its ___.",answers:["gist"],why:"Gist is the central idea or essence."},
+      {word:"vivacious",tier:"core",prompt:"The exuberant ___ of the student musical lifted the audience's spirits on opening night.",answers:["vivacity","vivaciousness"],why:"Vivacity is the noun meaning liveliness and spirit."},
+      {word:"histrionic",tier:"core",prompt:"Exaggerated crying and theatrical ___ will not convince the strict panel to reverse the decision.",answers:["histrionics"],why:"Histrionics refers to theatrical emotionalism."},
+      {word:"exalt",tier:"core",prompt:"A respected actor's lifetime achievements were ___ with a prestigious national award.",answers:["exalted"],why:"Exalted is the past-tense verb / participle meaning praised or elevated."},
+      {word:"vociferous",tier:"core",prompt:"Loud, forceful, and ___ protests disrupted what was supposed to be a quiet hearing.",answers:["vociferous"],why:"Vociferous means marked by loud, forceful outcries."},
+      {word:"laconic",tier:"core",prompt:"Her grandfather was famously ___, speaking very little even when asked direct questions.",answers:["laconic"],why:"Laconic means marked by the use of few words."},
+      {word:"polemic",tier:"core",prompt:"The challenger launched into a biting ___ attacking the mayor's newly announced transit policy.",answers:["polemic","polemical"],why:"Accept both polemic (preferred) and polemical as an attack on a policy or doctrine."},
+      {word:"garrulous",tier:"core",prompt:"We tried to study quietly, but our ___ friend would not stop telling rambling stories about her day.",answers:["garrulous"],why:"Garrulous means excessively talkative and wordy about trivial matters."},
+      {word:"peremptory",tier:"core",prompt:"The defense lawyers made a ___ challenge that permanently ended consideration of the juror.",answers:["peremptory"],why:"Peremptory describes an action that ends debate or action without appeal."},
+      {word:"exhort",tier:"core",prompt:"The activist passionately ___ the gathered assembly to resist unjust working conditions.",answers:["exhorted"],why:"Exhorted is the past-tense verb meaning strongly urged through stirring argument."},
+      {word:"garrulous",tier:"core",prompt:"After listening for three hours to a ___ presenter, the audience was relieved when the next speaker gave only the gist.",answers:["garrulous"],why:"Garrulous refers to a rambling, excessively talkative speaker."},
+      {word:"garrulous",tier:"core",prompt:"The speaker's excessive ___ made it nearly impossible for anyone else to join the conversation.",answers:["garrulousness"],why:"Garrulousness is the noun for rambling talkativeness."},
+      {word:"exhort",tier:"core",prompt:"The campaign organizer was seen ___ volunteers to continue canvassing despite the rain.",answers:["exhorting"],why:"Exhorting means strongly urging someone to act."},
+      {word:"histrionic",tier:"core",prompt:"The actor reacted so dramatically to the minor inconvenience that everyone became embarrassed by his ___.",answers:["histrionics"],why:"Histrionics is the noun for exaggerated, theatrical displays."},
+      {word:"vivacious",tier:"core",prompt:"The host's lively ___ kept the otherwise quiet party energetic throughout the evening.",answers:["vivacity","vivaciousness"],why:"Vivacity is the noun naming lively spirit and animation."},
+      {word:"peremptory",tier:"core",prompt:"The chairperson issued a ___ instruction that ended the debate immediately without allowing objections.",answers:["peremptory"],why:"Peremptory describes a command that permits no refusal or contradiction."},
+      {word:"vociferous",tier:"core",prompt:"The crowd's deafening ___ could be heard echoing from several city blocks away.",answers:["vociferousness"],why:"Vociferousness is the noun meaning the quality of loud, forceful outcries."},
+      {word:"polemic",tier:"core",prompt:"The scholar wrote a highly ___ essay attacking the proposed theological doctrine.",answers:["polemic","polemical"],why:"Accept both polemic (preferred) and polemical as the adjective."},
+      {word:"exhort",tier:"core",prompt:"The general concluded his speech with an inspiring ___ urging the soldiers to stand firm.",answers:["exhortation"],why:"Exhortation is the noun meaning a stirring appeal or advice."},
+      {word:"exalt",tier:"core",prompt:"The poet was ___ to national prominence after her collection won the Pulitzer Prize.",answers:["exalted"],why:"Exalted means raised in rank, character, or status."},
+      {word:"vociferous",tier:"core",prompt:"Protesters shouted ___ outside the embassy to demand the immediate release of the prisoners.",answers:["vociferously"],why:"Vociferously is the adverb meaning in a loud, forceful manner."}
+    ];
+
+    const LANG_SET5_SHORT_ANSWER_PAIRS = [
+      {
+        words: ["exalt", "exhort"],
+        prompt: "Create one or more complete sentences using both exalt and exhort, or appropriate derivatives.",
+        model: "The keynote speaker exalted the veteran volunteers for their decades of service, then exhorted the younger members to dedicate themselves to the community with equal passion."
+      },
+      {
+        words: ["garrulous", "vociferous"],
+        prompt: "Create one or more complete sentences using both garrulous and vociferous, or appropriate derivatives.",
+        model: "While the garrulous dinner guest droned on endlessly about trivial lawn care, a vociferous demonstrator outside shouted angry slogans through a megaphone."
+      },
+      {
+        words: ["vivacious", "histrionic"],
+        prompt: "Create one or more complete sentences using both vivacious and histrionic, or appropriate derivatives.",
+        model: "The host's vivacious laughter brought natural warmth to the party, which stood in stark contrast to an actor whose histrionic weeping over spilled punch seemed completely fake."
+      },
+      {
+        words: ["laconic", "gist"],
+        prompt: "Create one or more complete sentences using both laconic and gist, or appropriate derivatives.",
+        model: "In a single laconic sentence, the editor managed to convey the entire gist of the four-hundred-page manuscript."
+      },
+      {
+        words: ["polemic", "peremptory"],
+        prompt: "Create one or more complete sentences using both polemic and peremptory, or appropriate derivatives.",
+        model: "The candidate launched into a heated polemic against the city budget, but the committee chair ended the session with a peremptory bang of the gavel."
+      },
+      {
+        words: ["vivacious", "vociferous"],
+        prompt: "Create one or more complete sentences using both vivacious and vociferous, or appropriate derivatives.",
+        model: "The vivacious dancer charmed the crowd with her energetic choreography, while vociferous fans in the bleachers roared their enthusiastic approval."
+      },
+      {
+        words: ["garrulous", "laconic"],
+        prompt: "Create one or more complete sentences using both garrulous and laconic, or appropriate derivatives.",
+        model: "The garrulous cab driver talked continuously about his family vacation, while his laconic passenger answered only with an occasional nod."
+      },
+      {
+        words: ["exalt", "peremptory"],
+        prompt: "Create one or more complete sentences using both exalted and peremptory, or appropriate derivatives.",
+        model: "Holding an exalted position on the high court, the magistrate issued a peremptory order that ended all further argument on the case."
+      },
+      {
+        words: ["exhort", "polemic"],
+        prompt: "Create one or more complete sentences using both exhortation and polemic, or appropriate derivatives.",
+        model: "Her fiery essay was not merely an abstract polemic attacking the proposed tax, but an urgent exhortation for citizens to attend tomorrow's council vote."
+      },
+      {
+        words: ["histrionic", "gist"],
+        prompt: "Create one or more complete sentences using both histrionics and gist, or appropriate derivatives.",
+        model: "Once the detective looked past the witness's dramatic histrionics, he quickly extracted the factual gist of what had actually occurred."
+      }
+    ];
+
     const LANG_SETS = {
-      1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"]},
-      2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[]},
-      3:{words:LANG_SET3_WORDS,usage:LANG_SET3_USAGE,formQuestions:LANG_SET3_FORM_QUESTIONS,transfer:LANG_SET3_TRANSFER_CONTEXTS,confusions:LANG_SET3_CONFUSION_QUESTIONS,derivatives:LANG_SET3_DERIVATIVE_FILLINS,pairs:LANG_SET3_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-3-progress-v1",legacyKeys:[]},
-      4:{words:LANG_SET4_WORDS,usage:LANG_SET4_USAGE,formQuestions:LANG_SET4_FORM_QUESTIONS,transfer:LANG_SET4_TRANSFER_CONTEXTS,confusions:LANG_SET4_CONFUSION_QUESTIONS,derivatives:LANG_SET4_DERIVATIVE_FILLINS,pairs:LANG_SET4_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-4-progress-v1",legacyKeys:[]}
+      1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"],highRisk:["malapropism","portmanteau","neologism","appellation"]},
+      2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[],highRisk:["substantiate","indisputable","dissuade","apologist"]},
+      3:{words:LANG_SET3_WORDS,usage:LANG_SET3_USAGE,formQuestions:LANG_SET3_FORM_QUESTIONS,transfer:LANG_SET3_TRANSFER_CONTEXTS,confusions:LANG_SET3_CONFUSION_QUESTIONS,derivatives:LANG_SET3_DERIVATIVE_FILLINS,pairs:LANG_SET3_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-3-progress-v1",legacyKeys:[],highRisk:["epiphany","reverie","scrupulous","stratagem"]},
+      4:{words:LANG_SET4_WORDS,usage:LANG_SET4_USAGE,formQuestions:LANG_SET4_FORM_QUESTIONS,transfer:LANG_SET4_TRANSFER_CONTEXTS,confusions:LANG_SET4_CONFUSION_QUESTIONS,derivatives:LANG_SET4_DERIVATIVE_FILLINS,pairs:LANG_SET4_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-4-progress-v1",legacyKeys:[],highRisk:["epitome","impeccable","inimitable","quintessence","optimum","culminate"]},
+      5:{words:LANG_SET5_WORDS,usage:LANG_SET5_USAGE,formQuestions:LANG_SET5_FORM_QUESTIONS,transfer:LANG_SET5_TRANSFER_CONTEXTS,confusions:LANG_SET5_CONFUSION_QUESTIONS,derivatives:LANG_SET5_DERIVATIVE_FILLINS,pairs:LANG_SET5_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-5-progress-v1",legacyKeys:[],highRisk:["garrulous","histrionic","peremptory","polemic","vivacious","vociferous","exhort","exalt"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference</h3><p>High-yield core contrasts and essential derivative shifts for Set 5.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EXALT</strong> = praise / elevate</p><p style="margin:4px 0; font-size:13px;"><strong>EXHORT</strong> = strongly urge</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>GARRULOUS</strong> = talks too much / rambles</p><p style="margin:4px 0; font-size:13px;"><strong>VOCIFEROUS</strong> = shouts / speaks loudly &amp; forcefully</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VIVACIOUS</strong> = lively / animated</p><p style="margin:4px 0; font-size:13px;"><strong>HISTRIONIC</strong> = excessively dramatic / affected</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>LACONIC</strong> = few words / concise</p><p style="margin:4px 0; font-size:13px;"><strong>GIST</strong> = central idea / essence</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>POLEMIC</strong> = controversial argument</p><p style="margin:4px 0; font-size:13px;"><strong>PEREMPTORY</strong> = shuts down debate / allows no refusal</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>garrulous</strong> (adj) → <strong>garrulousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>histrionic</strong> (adj) → <strong>histrionics</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vivacious</strong> (adj) → <strong>vivacity</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vociferous</strong> (adj) → <strong>vociferousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exhort</strong> (verb) → <strong>exhorting</strong> / <strong>exhortation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exalt</strong> (verb) → <strong>exalted</strong> (verb / adj)</p><p style="margin:4px 0; font-size:13px;"><strong>polemic</strong> (noun/adj) → <strong>polemic</strong> OR <strong>polemical</strong> (adj accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>gist, laconic, peremptory</strong> → unchanged depending on context</p></div></div>`}
     };
     let activeLangSet = Number(localStorage.getItem("flashcards-ap-lang-last-set") || 1);
     if(!LANG_SETS[activeLangSet]) activeLangSet=1;
@@ -2008,6 +2320,8 @@
       const eye=document.getElementById("langHomeEyebrow");if(eye)eye.textContent=`AP English Language and Composition · Set ${activeLangSet} · focused practice`;
       const brandEl=document.querySelector(".brand");if(brandEl)brandEl.setAttribute("aria-label",`Flashcards — AP English Language and Composition · Set ${activeLangSet}`);
       const count=document.getElementById("langWordCount");if(count)count.textContent=WORDS.length;
+      const precBox=document.getElementById("cramPrecisionBox");
+      if(precBox){ if(next.precisionGuide){ precBox.innerHTML=next.precisionGuide; precBox.hidden=false; } else precBox.hidden=true; }
       renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();updateCourseNav("lang");
     }
     document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
@@ -2053,7 +2367,13 @@
       document.getElementById("wordBank").innerHTML=WORDS.map(w=>`<article class="panel word-row"><div><h3>${w.word}</h3><p>${w.definition}</p><div class="form-list">${w.forms.length?w.forms.map(f=>`${f.word} (${f.part}; ${f.level==="packet"?"high-yield":f.level==="rare"?"rare":"extended"})`).join(" · "):"No standard derivative; regular inflections are accepted"}</div></div><span class="mastery-dot ${mastered(w.word)?"done":""}" title="${mastered(w.word)?"Mastered":"Still practicing"}"></span></article>`).join("");
     }
 
-    function spellingQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why:`Correct spelling: ${w.word}.`}));}
+    function spellingQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>{
+      let why = `Correct spelling: ${w.word}.`;
+      if(w.word === "polemic") why = "Correct spelling: polemic (for base dictation, provide the base form 'polemic' rather than 'polemical').";
+      if(w.word === "exhort") why = "Correct spelling: exhort (strongly urge). Do not confuse with exalt (elevate/praise).";
+      if(w.word === "exalt") why = "Correct spelling: exalt (elevate/praise). Do not confuse with exhort (strongly urge).";
+      return {category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why};
+    });}
     function definitionQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"definition",word:w.word,label:"Part 2 · Choose the definition",prompt:w.word,response:"choice",options:shuffleList([w.definition,...definitionDistractors(w.word)]),answers:[w.definition],why:w.definition}));}
     function usageQuestions(restrict=null){return USAGE.filter(q=>!restrict||restrict.includes(q.word)).map(q=>({category:"usage",word:q.word,label:"Part 3 · Correct or incorrect?",prompt:q.statement,response:"choice",options:["True","False"],answers:[q.answer?"True":"False"],why:q.why}));}
     function derivativeQuestions(restrict=null,coreOnly=false){return DERIVATIVE_FILLINS.filter(q=>(!restrict||restrict.includes(q.word))&&(!coreOnly||q.tier==="core")).map(q=>({category:"derivative",word:q.word,label:`Part 3 · Write the derivative${q.tier==="core"?" · high-yield":" · extended"}`,prompt:q.prompt,response:"text",answers:q.answers,why:q.why}));}
@@ -2183,12 +2503,12 @@
       const matching=shuffleList(WORDS).map(w=>({category:"definition",word:w.word,label:"Part 2 · Definition matching · use each once",prompt:w.word,response:"choice",options:[...definitions],answers:[w.definition],why:w.definition,mockMatching:true}));
       return [...shuffleList(spellingQuestions()),...matching,...shuffleList(usageQuestions()).slice(0,5),...shuffleList(derivativeQuestions(null,true)).slice(0,3),...shuffleList(shortAnswerQuestions()).slice(0,1)];
     }
-    const HIGH_RISK_SPELLING = ["epitome","impeccable","inimitable","quintessence","optimum","culminate"];
     function weakWords(){
       const named=[...new Set(appStats.missed)];
+      const highRisk = LANG_SETS[activeLangSet]?.highRisk || ["epitome","impeccable","inimitable","quintessence","optimum","culminate"];
       const ranked=WORDS.map(w=>{
         const s=wordStats(w.word);
-        const riskBias=HIGH_RISK_SPELLING.includes(w.word)?-1:0;
+        const riskBias=highRisk.includes(w.word)?-1:0;
         return {name:w.word,score:s.correct-s.wrong*2+riskBias};
       }).sort((a,b)=>a.score-b.score).map(x=>x.name);
       return [...new Set([...named,...ranked])].slice(0,5);
@@ -2397,9 +2717,61 @@
       {number:149,term:"Coercive Acts / Intolerable Acts / Repressive Acts",definition:"Punitive laws passed in 1774 after the Boston Tea Party. They closed Boston Harbor, restricted Massachusetts self-government, strengthened quartering provisions, and protected royal officials, prompting greater colonial unity."},
       {number:150,term:"Boston Port Act",definition:"One of the Coercive Acts; it closed Boston Harbor to most trade until the destroyed tea was paid for and royal authority was restored, causing economic hardship and intercolonial support for Massachusetts."}
     );
-    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-150-v1";
-    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
-    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3].includes(activeApushSet))activeApushSet=1;
+    APUSH_EPTL_CARDS.push(
+      {number:151,term:"Massachusetts Government Act",definition:"This was another of the Coercive Acts, which said that members of the Massachusetts assembly would no longer be elected, but instead would be appointed by the king. In response, the colonists elected their own legislature which met in the interior of the colony."},
+      {number:152,term:"Quebec Act, First Continental Congress, 1774",definition:"The Quebec Act, passed by Parliament, alarmed the colonies because it recognized the Roman Catholic Church in Quebec. Some colonials took it as a sign that Britain was planning to impose Catholicism upon the colonies. The First Continental Congress met to discuss their concerns over Parliament's dissolutions of the New York (for refusing to pay to quarter troops), Massachusetts (for the Boston Tea Party), and Virginia Assemblies. The First Continental Congress rejected the plan for a unified colonial government, stated grievances against the crown called the Declaration of Rights, resolved to prepare militias, and created the Continental Association to enforce a new non-importation agreement through Committees of Vigilance. In response, in February, 1775, Parliament declared the colonies to be in rebellion."},
+      {number:153,term:"Suffolk Resolves",definition:"Agreed to by delegates from Suffolk county, Massachusetts, and approved by the First Continental Congress on October 8, 1774. Nullified the Coercive Acts, closed royal courts, ordered taxes to be paid to colonial governments instead of the royal government, and prepared local militias."},
+      {number:154,term:"Galloway Plan",definition:"A plan proposed at the First Continental Congress which would have created an American parliament appointed by colonial legislatures. It was defeated by one vote."},
+      {number:155,term:"Continental Association",definition:"Created by the First Continental Congress, it enforced the non-importation of British goods by empowering local Committees of Vigilance in each colony to fine or arrest violators. It was meant to pressure Britain to repeal the Coercive Acts."},
+      {number:156,term:"Lexington and Concord, April 19, 1775",definition:"General Gage, stationed in Boston, was ordered by King George III to arrest Samuel Adams and John Hancock. The British marched on Lexington, where they believed the colonials had a cache of weapons. The colonial militias, warned beforehand by Paul Revere and William Dawes, attempted to block the progress of the troops and were fired on by the British at Lexington. The British continued to Concord, where they believed Adams and Hancock were hiding, and they were again attacked by the colonial militia. As the British retreated to Boston, the colonials continued to shoot at them from behind cover on the sides of the road. This was the start of the Revolutionary War."},
+      {number:157,term:"Paul Revere, William Dawes",definition:"They rode through the countryside warning local militias of the approach of the British troops prior to the Battles of Lexington and Concord, although Revere was detained by the British shortly after setting out, and never completed his portion of the planned ride. Thanks to the advance warning, the militias were able to take the British by surprise."},
+      {number:158,term:"Second Continental Congress",definition:"It met in 1776 and drafted and signed the Declaration of Independence, which justified the Revolutionary War and declared that the colonies should be independent of Britain."},
+      {number:159,term:"George Washington",definition:"He had led troops (rather unsuccessfully) during the French and Indian War and had surrendered Fort Necessity to the French. He was appointed commander-in-chief of the Continental Army and was much more successful in this second command."},
+      {number:160,term:"Battle of Bunker Hill (Breed’s Hill)",definition:"At the beginning of the Revolutionary War, the British troops were based in Boston. The British army had begun to fortify the Dorchester Heights near Boston, and so the Continental Army fortified Breed’s Hill, north of Boston, to counter the British plan. British general Gage led two unsuccessful attempts to take this hill, before he finally seized it with the third assault. The British suffered heavy losses and lost any hope for a quick victory against the colonies. Although the battle centered around Breed’s Hill, it was mistakenly named for nearby Bunker Hill."},
+      {number:161,term:"Olive Branch Petition",definition:"On July 8, 1775, the colonies made a final offer of peace to Britain, agreeing to be loyal to the British government if it addressed their grievances (repealed the Coercive Acts, ended the taxation without representation policies). It was rejected by Parliament, which in December 1775 passed the American Prohibitory Act forbidding all further trade with the colonies."},
+      {number:162,term:"Thomas Paine: Common Sense",definition:"A British citizen, he wrote Common Sense, published on January 1, 1776, to encourage the colonies to seek independence. It spoke out against the unfair treatment of the colonies by the British government and was instrumental in turning public opinion in favor of the Revolution."},
+      {number:163,term:"Natural Rights Philosophy",definition:"Proposed by John Locke, it said that human beings had by nature certain rights, such as the rights to life, liberty, and property."},
+      {number:164,term:"John Locke, Second Treatise of Government",definition:"He wrote that all human beings have a right to life, liberty, and property and that governments exist to protect those rights. He rejected the theory of the Divine Right of the monarchy and believed that government was based upon a \"social contract\" that existed between a government and its people. If the government failed to uphold its end of the contract by protecting those rights, the people could rebel and institute a new government."},
+      {number:165,term:"George III",definition:"Became King of England in 1760 and reigned during the American Revolution."},
+      {number:166,term:"The Lee Resolution",definition:"Proposed on June 7, 1776 by Richard Henry Lee (Virginia delegate to Continental Congress). Stated that the colonies should be independent and sever all political ties with Britain. It was adopted by Congress on July 2, 1776."},
+      {number:167,term:"Thomas Jefferson",definition:"He was a delegate from Virginia at the Second Continental Congress and wrote the Declaration of Independence. He later served as the third President of the United States."},
+      {number:168,term:"Roger Sherman, Robert Livingston",definition:"The two other guys who were part of the committee (along with John Adams and Thomas Jefferson) tasked with Drafting the Declaration of Independence."},
+      {number:169,term:"July 4, 1776 and the Declaration of Independence",definition:"The Declaration of Independence was signed by the Second Continental Congress on July 4. It dissolved the colonies’ ties with Britain, listed grievances against King George III, and declared the colonies to be an independent nation."},
+      {number:170,term:"Abigail Adams",definition:"Wife of John Adams. During the Revolutionary War, she wrote letters to her husband describing life on the homefront. She urged her husband to remember America’s women in the new government he was helping to create."},
+      {number:171,term:"Mercy Otis Warren",definition:"Political writer and propagandist. Prior to Revolution, she published poems and plays that attacked royal authority and urged colonists to resist British infringements on liberty. Later, opposed ratification of the Constitution because it lacked a Bill of Rights."},
+      {number:172,term:"Edmund Burke (1729-1797)",definition:"A conservative British politician who was generally sympathetic to the colonists' grievances, and who felt that Britain's colonial policies were misguided. He also opposed the early feminist movements. He once said, \"A woman is but an animal, and not an animal of the highest order.\""},
+      {number:173,term:"Lafayette",definition:"Marquis de Lafayette was a French major general who aided the colonies during the Revolutionary War. He and Baron von Steuben (a Prussian general) were the two major foreign military experts who helped train the colonial armies."},
+      {number:174,term:"George Rogers Clark (1752-1818)",definition:"Frontiersman who helped remove the Indians from the Illinois territory in May 1798."},
+      {number:175,term:"Benedict Arnold",definition:"He had been a Colonel in the Connecticut militia at the outbreak of the Revolution and soon became a General in the Continental Army. He won key victories for the colonies in the battles in upstate New York in 1777 and was instrumental in General Gates victory over the British at Saratoga. After becoming Commander of Philadelphia in 1778, he went heavily into debt, and in 1780, he was caught plotting to surrender the key Hudson River fortress of West Point to the British in exchange for a commission in the royal army. He is the most famous traitor in American history."},
+      {number:176,term:"Robert Morris (1734-1806)",definition:"A delegate to the Second Continental Congress. He agreed that Britain had treated the colonies unfairly, but he did not believe that the colonies should dissolve ties with Britain. He argued against the Declaration of Independence."},
+      {number:177,term:"John Paul Jones (1747-1792)",definition:"Revolutionary War naval officer. His ship, the Bonhomme Richard, was sunk in a battle with the British ship Serapis, but he managed to board and gain control of the Serapis."},
+      {number:178,term:"Bonhomme Richard and the Serapis",definition:"The Bonhomme Richard was John Paul Jones’ ship, which was named for Benjamin Franklin's pseudonym, Poor Richard. The Serapis was the British ship he captured."},
+      {number:179,term:"Conway Cabal",definition:"The name given to the New England delegates in the Continental Congress who tried to wrest control of the Continental Army and the Revolution away from George Washington. Named after Major General Thomas Conway."},
+      {number:180,term:"French Alliance of 1778, reasons for it",definition:"The colonies needed help from Europe in their war against Britain. France was Britain’s rival and hoped to weaken Britain by causing her to lose the American colonies. The French were persuaded to support the colonists by news of the American victory at the Battle of Saratoga."},
+      {number:181,term:"Major battles: Saratoga, Valley Forge",definition:"In 1777, British General John Burgoyne attacked southward from Canada along the Hudson Valley in New York, hoping to link up with General Howe in New York City, thereby cutting the colonies in half. Burgoyne was defeated by American General Horatio Gates on October 17, 1777, at the Battle of Saratoga, surrendering the entire British Army of the North. Valley Forge was not a battle; it was the site where the Continental Army camped during the winter of 1777-’78, after its defeats at the Battles of the Brandywine and Germantown. The Continental Army suffered further casualties at Valley Forge due to cold and disease. Washington chose the site because it allowed him to defend the Continental Congress if necessary, which was then meeting in York, Pennsylvania after the British capture of Philadelphia."},
+      {number:182,term:"Yorktown, Lord Cornwallis",definition:"Because of their lack of success in suppressing the Revolution in the northern colonies, in early 1780 the British switched their strategy and undertook a series of campaigns through the southern colonies. This strategy was equally unsuccessful, and the British decided to return to their main headquarters in New York City. While marching from Virginia to New York, British commander Lord Cornwallis became trapped in Yorktown on the Chesapeake Bay. His troops fortified the town and waited for reinforcements. The French navy, led by DeGrasse, blocked their escape. After a series of battles, Cornwallis surrendered to the Continental Army on October 19, 1781, which ended all major fighting in the Revolutionary War."},
+      {number:183,term:"Treaty of Paris, 1783",definition:"This treaty ended the Revolutionary War, recognized the independence of the American colonies, and granted the colonies the territory from the southern border of Canada to the northern border of Florida, and from the Atlantic coast to the Mississippi River."},
+      {number:184,term:"Benjamin Franklin, John Adams, John Jay",definition:"They were the American delegates who signed the Treaty of Paris in 1783."},
+      {number:185,term:"Social impact of the war",definition:"The Revolutionary War saw the emergence of the first anti-slavery groups, and many of the northern states abolished slavery after the war. Women gained a small status increase for their efforts in the war, but they were primarily valued as mothers of future patriots."},
+      {number:186,term:"Disestablishment, Virginia Statute of Religious Freedom",definition:"1779 - Written by Thomas Jefferson, this statute outlawed an established church and called for separation of Church and State."},
+      {number:187,term:"New state constitutions (Massachusetts adopted by popular vote)",definition:"The first set of constitutions drafted by the individual states placed most of the government’s power in the legislature, and almost none in the executive in order to promote democracy and avoid tyranny. However, without the strong leadership of the executive, the state legislatures argued among themselves and couldn’t get anything done. After the Constitution was written, the states abandoned these old constitutions and wrote new ones that better balanced the power between the legislative and the executive."},
+      {number:188,term:"Newburgh Conspiracy",definition:"The officers of the Continental Army had long gone without pay, and they met in Newburgh, New York to address Congress about their pay. Unfortunately, the American government had little money after the Revolutionary War. They also considered staging a coup and seizing control of the new government, but the plotting ceased when George Washington refused to support the plan."},
+      {number:189,term:"Articles of Confederation: powers, weaknesses, successes",definition:"The Articles of Confederation delegated most of the powers (the power to tax, to regulate trade, and to draft troops) to the individual states, but left the federal government power over war, foreign policy, and issuing money. The Articles’ weakness was that they gave the federal government so little power that it couldn’t keep the country united. The Articles’ only major success was that they settled western land claims with the Northwest Ordinance. The Articles were abandoned for the Constitution."},
+      {number:190,term:"Constitution",definition:"The document which established the present federal government of the United States and outlined its powers, divided into legislative, executive, and judicial branches. It can be changed through amendments."},
+      {number:191,term:"Constitution: Preamble",definition:"\"We the people of the United States, in order to form a more perfect union, establish justice, insure domestic tranquility, provide for the common defense, promote the general welfare, and secure the blessings of liberty to ourselves and our posterity, do ordain and establish this Constitution for the United States of America.\""},
+      {number:192,term:"Constitution: Legislature",definition:"One of the three branches of government, the legislature makes laws. There are two parts to the legislature: the House of Representatives and the Senate."},
+      {number:193,term:"Constitution: Riders",definition:"Separate, unrelated clauses added to a bill in the legislature, either to ensure that the bill passes or to ensure that it fails."},
+      {number:194,term:"Constitution: Quorum",definition:"The minimum number of members of Congress who must be present to hold a session. In Congress, this number is more than half of the members."},
+      {number:195,term:"Constitution: Seniority",definition:"Part of the committee system. A member of Congress in a committee moves up in rank in that committee if he is reelected."},
+      {number:196,term:"Constitution: Committee system",definition:"After a bill is introduced in Congress, it is assigned to a small group of legislators for review and consideration, and the committee must vote to approve the bill before it is returned to the Senate or the House for a vote."},
+      {number:197,term:"Constitution: Majority leader",definition:"The person elected, by the majority party of Congress, to be leader of the majority party in Congress."},
+      {number:198,term:"Constitution: Majority whip",definition:"The person who tells members of the majority party in Congress how they should vote."},
+      {number:199,term:"Constitution: Minority leader",definition:"The person elected, by the minority party of Congress, to be leader of the minority party in Congress."},
+      {number:200,term:"Constitution: Minority whip",definition:"The person who tells members of the minority party in Congress how they should vote."}
+    );
+    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-200-v1";
+    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-150-v1","flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
+    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3,4].includes(activeApushSet))activeApushSet=1;
     const apushSetIndices=()=>Array.from({length:50},(_,i)=>(activeApushSet-1)*50+i);
     let apushOrder = apushSetIndices(), apushPos = 0;
     let apushStats = (()=>{
@@ -2417,7 +2789,7 @@
       document.getElementById("apushProgressText").textContent=`${mastered} of ${indices.length} mastered`;
     }
     function setActiveApushSet(setNumber){
-      const n=Number(setNumber);if(![1,2,3].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
+      const n=Number(setNumber);if(![1,2,3,4].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
       apushOrder=apushSetIndices();apushPos=0;
       const range=`${(n-1)*50+1}–${n*50}`;document.getElementById("apushEyebrow").textContent=`AP United States History · EPTLs ${range}`;document.getElementById("apush-title").textContent=`EPTLs ${range}`;
       updateCourseNav("apush");renderApushCard();
