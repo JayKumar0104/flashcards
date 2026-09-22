@@ -571,6 +571,7 @@
         <button class="course-card" data-lang-set="3"><h2>Set 3</h2></button>
         <button class="course-card" data-lang-set="4"><h2>Set 4</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Excellence</p></button>
         <button class="course-card" data-lang-set="5"><h2>Set 5</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Speaking &amp; Expression</p></button>
+        <button class="course-card" data-lang-set="6"><h2>Set 6</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -pli-</p></button>
       </div>
     </section>
 
@@ -888,6 +889,8 @@
         <button class="course-card" data-apush-set="2"><h2>EPTLs 51–100</h2></button>
         <button class="course-card" data-apush-set="3"><h2>EPTLs 101–150</h2></button>
         <button class="course-card" data-apush-set="4"><h2>EPTLs 151–200</h2></button>
+        <button class="course-card" data-apush-set="5"><h2>EPTLs 201–250</h2></button>
+        <button class="course-card" data-apush-set="6"><h2>EPTLs 251–300</h2></button>
       </div>
     </section>
 
@@ -2181,12 +2184,1484 @@
       }
     ];
 
+
+    const LANG_SET6_WORDS = [
+      {
+            "word": "complicity",
+            "part": "noun",
+            "definition": "involvement in wrongdoing as an accomplice",
+            "forms": [
+                  {
+                        "word": "complicity",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "complicit",
+                        "part": "adjective",
+                        "level": "packet"
+                  }
+            ],
+            "example": "The cashier was fired for complicity in the theft; her complicit partner was also arrested.",
+            "cloze": "The internal investigation uncovered the accountant's clear ___ in the embezzlement scheme.",
+            "answer": [
+                  "complicity"
+            ],
+            "options": [
+                  "complicity",
+                  "implication",
+                  "supplication",
+                  "explication"
+            ]
+      },
+      {
+            "word": "deploy",
+            "part": "verb",
+            "definition": "position strategically; put into use",
+            "forms": [
+                  {
+                        "word": "deploy",
+                        "part": "verb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "deploys",
+                        "part": "verb · present tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "deployed",
+                        "part": "verb · past tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "deploying",
+                        "part": "verb · participle",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "deployment",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "deployments",
+                        "part": "noun · plural",
+                        "level": "extended"
+                  }
+            ],
+            "example": "The general deployed troops along the border; the agency also deployed emergency equipment to the flood zone.",
+            "cloze": "The emergency management agency prepared to ___ relief workers immediately after the disaster.",
+            "answer": [
+                  "deploy"
+            ],
+            "options": [
+                  "deploy",
+                  "implicate",
+                  "explicate",
+                  "supplicate"
+            ]
+      },
+      {
+            "word": "explicate",
+            "part": "verb",
+            "definition": "explain or clarify the meaning",
+            "forms": [
+                  {
+                        "word": "explicate",
+                        "part": "verb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicates",
+                        "part": "verb · present tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicated",
+                        "part": "verb · past tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicating",
+                        "part": "verb · participle",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicable",
+                        "part": "adjective",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explication",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explications",
+                        "part": "noun · plural",
+                        "level": "extended"
+                  }
+            ],
+            "example": "The professor explicated the obscure Renaissance poem; once explained, its central theme was entirely explicable.",
+            "cloze": "The literature scholar paused to ___ the underlying themes and symbolism of the sonnet.",
+            "answer": [
+                  "explicate"
+            ],
+            "options": [
+                  "explicate",
+                  "implicate",
+                  "deploy",
+                  "supplicate"
+            ]
+      },
+      {
+            "word": "explicit",
+            "part": "adjective",
+            "definition": "clearly/directly expressed; readily observable",
+            "forms": [
+                  {
+                        "word": "explicit",
+                        "part": "adjective",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicitly",
+                        "part": "adverb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "explicitness",
+                        "part": "noun",
+                        "level": "extended"
+                  }
+            ],
+            "example": "The laboratory guidelines gave explicit instructions; the video contained explicit demonstrations of chemical safety.",
+            "cloze": "The manager gave ___ instructions that left no doubt about what each team member was required to do.",
+            "answer": [
+                  "explicit"
+            ],
+            "options": [
+                  "explicit",
+                  "implicit",
+                  "supple",
+                  "inexplicable"
+            ]
+      },
+      {
+            "word": "implicate",
+            "part": "verb",
+            "definition": "connect someone with something, especially wrongdoing; entail as a consequence",
+            "forms": [
+                  {
+                        "word": "implicate",
+                        "part": "verb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implicates",
+                        "part": "verb · present tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implicated",
+                        "part": "verb · past tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implicating",
+                        "part": "verb · participle",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implication",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implications",
+                        "part": "noun · plural",
+                        "level": "packet"
+                  }
+            ],
+            "example": "Bank records served to implicate the executive in fraud; the policy change carried grave implications for the economy.",
+            "cloze": "The leaked emails seemed to ___ several senior officials in the bribery scandal.",
+            "answer": [
+                  "implicate"
+            ],
+            "options": [
+                  "implicate",
+                  "explicate",
+                  "deploy",
+                  "replicate"
+            ]
+      },
+      {
+            "word": "implicit",
+            "part": "adjective",
+            "definition": "understood without being directly stated; unquestioning",
+            "forms": [
+                  {
+                        "word": "implicit",
+                        "part": "adjective",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implication",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implications",
+                        "part": "noun · plural",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "implicitly",
+                        "part": "adverb",
+                        "level": "extended"
+                  }
+            ],
+            "example": "They shared an implicit understanding based on years of friendship; the child placed implicit trust in her parents.",
+            "cloze": "Even without signed rules, there was an ___ agreement among neighbors to keep evening noise to a minimum.",
+            "answer": [
+                  "implicit"
+            ],
+            "options": [
+                  "implicit",
+                  "explicit",
+                  "complicit",
+                  "supple"
+            ]
+      },
+      {
+            "word": "inexplicable",
+            "part": "adjective",
+            "definition": "impossible or very difficult to explain",
+            "forms": [
+                  {
+                        "word": "inexplicable",
+                        "part": "adjective",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "inexplicably",
+                        "part": "adverb",
+                        "level": "packet"
+                  }
+            ],
+            "example": "The patient made an inexplicable recovery that baffled the medical team; inexplicable events often invite superstition.",
+            "cloze": "The sudden and complete disappearance of the historical artifacts from the locked vault remains entirely ___.",
+            "answer": [
+                  "inexplicable"
+            ],
+            "options": [
+                  "inexplicable",
+                  "explicable",
+                  "explicit",
+                  "implicit"
+            ]
+      },
+      {
+            "word": "replica",
+            "part": "noun",
+            "definition": "a copy or reproduction",
+            "forms": [
+                  {
+                        "word": "replica",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "replicas",
+                        "part": "noun · plural",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "replicate",
+                        "part": "verb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "replicated",
+                        "part": "verb · past tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "replicating",
+                        "part": "verb · participle",
+                        "level": "packet"
+                  }
+            ],
+            "example": "The museum displayed an exact plaster replica of the Roman bust; researchers attempted to replicate the laboratory results.",
+            "cloze": "The museum displayed a detailed plaster ___ of the famous Roman statue beside the fragile original.",
+            "answer": [
+                  "replica"
+            ],
+            "options": [
+                  "replica",
+                  "explication",
+                  "supplicant",
+                  "complicity"
+            ]
+      },
+      {
+            "word": "supple",
+            "part": "adjective",
+            "definition": "flexible or easily bent; adaptable/yielding",
+            "forms": [
+                  {
+                        "word": "supple",
+                        "part": "adjective",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "suppleness",
+                        "part": "noun",
+                        "level": "packet"
+                  }
+            ],
+            "example": "Conditioned leather remains soft and supple; a skilled diplomat needs a supple mind that adapts to changing circumstances.",
+            "cloze": "Quality leather remains ___ and pliable even after years of regular use.",
+            "answer": [
+                  "supple"
+            ],
+            "options": [
+                  "supple",
+                  "supplicant",
+                  "explicit",
+                  "implicit"
+            ]
+      },
+      {
+            "word": "supplicant",
+            "part": "noun",
+            "definition": "a person who humbly and earnestly pleads or begs",
+            "forms": [
+                  {
+                        "word": "supplicant",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplicants",
+                        "part": "noun · plural",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplicate",
+                        "part": "verb",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplicated",
+                        "part": "verb · past tense",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplicating",
+                        "part": "verb · participle",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplication",
+                        "part": "noun",
+                        "level": "packet"
+                  },
+                  {
+                        "word": "supplications",
+                        "part": "noun · plural",
+                        "level": "packet"
+                  }
+            ],
+            "example": "The kneeling supplicant begged the emperor for clemency; the impoverished villagers raised earnest supplications for food.",
+            "cloze": "Kneeling before the judge with bowed head, the humble ___ offered an earnest plea for mercy.",
+            "answer": [
+                  "supplicant"
+            ],
+            "options": [
+                  "supplicant",
+                  "supple",
+                  "replica",
+                  "complicity"
+            ]
+      }
+];
+
+    const LANG_SET6_USAGE = [
+      {
+            "word": "complicity",
+            "statement": "The store cashier was terminated for complicity in the theft after helping an accomplice bypass the register.",
+            "answer": true,
+            "why": "Complicity is the noun meaning involvement as an accomplice in wrongdoing or a crime."
+      },
+      {
+            "word": "complicity",
+            "statement": "Anyone who knowingly conceals evidence of an embezzlement scheme shares complicity in the unlawful act.",
+            "answer": true,
+            "why": "Complicity refers to being an accomplice in wrongdoing."
+      },
+      {
+            "word": "complicity",
+            "statement": "The bank teller was accused of being complicity in the heist because he unlocked the vault door.",
+            "answer": false,
+            "why": "Grammar error: complicity is a noun; the sentence requires the predicate adjective complicit."
+      },
+      {
+            "word": "complicity",
+            "statement": "Because the guard refused every bribe and reported the burglars immediately, the court indicted him for complicity in the crime.",
+            "answer": false,
+            "why": "A person who refuses bribes and reports a crime is not an accomplice and does not share complicity."
+      },
+      {
+            "word": "complicity",
+            "statement": "The detective discovered the accomplice's explication in the jewelry store burglary.",
+            "answer": false,
+            "why": "High-value false substitution: involvement in a crime is complicity, not explication (explanation)."
+      },
+      {
+            "word": "complicity",
+            "statement": "A person involved in a fraud scheme is complicit, and that involvement has serious implications for the future.",
+            "answer": true,
+            "why": "Packet challenge context: complicit is the adjective for someone involved in wrongdoing; implications are consequences."
+      },
+      {
+            "word": "complicity",
+            "statement": "Someone may unknowingly be complicit in causing a bad outcome by carelessly spreading unverified rumors.",
+            "answer": true,
+            "why": "Packet reading context: complicit describes being involved or participating in causing a negative result."
+      },
+      {
+            "word": "complicity",
+            "statement": "Her loyalty was complicit because she placed total, unquestioning trust in her lifelong business partner.",
+            "answer": false,
+            "why": "High-value false substitution: unquestioning trust without reservation is implicit; complicit means involved in wrongdoing."
+      },
+      {
+            "word": "complicity",
+            "statement": "The teacher posted complicit directions on the board so that no student would misinterpret the project requirements.",
+            "answer": false,
+            "why": "High-value false substitution: clear, unambiguous directions are explicit; complicit means involved in a crime."
+      },
+      {
+            "word": "deploy",
+            "statement": "The general deployed peacekeeping battalions along the contested frontier to prevent cross-border skirmishes.",
+            "answer": true,
+            "why": "Deploy means to strategically or systematically position military troops or people."
+      },
+      {
+            "word": "deploy",
+            "statement": "The disaster agency deployed search-and-rescue teams, water purifiers, and emergency medical kits into the flooded province.",
+            "answer": true,
+            "why": "Deploy extends beyond the military to putting personnel, equipment, or resources into action."
+      },
+      {
+            "word": "deploy",
+            "statement": "In sustainable agriculture, farmers deploy ducks into flooded rice paddies to consume weed seeds and insect pests.",
+            "answer": true,
+            "why": "Packet reading context: deploy means to strategically position or put animals/tools into action."
+      },
+      {
+            "word": "deploy",
+            "statement": "A parachutist must deploy the reserve chute immediately if the main parachute malfunctions during a jump.",
+            "answer": true,
+            "why": "Deploy means to put equipment into operational use or action."
+      },
+      {
+            "word": "deploy",
+            "statement": "The federal prosecutor sought to deploy the corporate vice president in the illegal tax-evasion conspiracy.",
+            "answer": false,
+            "why": "High-value false substitution: connecting someone with wrongdoing is implicating them, not deploying them."
+      },
+      {
+            "word": "deploy",
+            "statement": "A municipal fire chief cannot deploy water pumps because the word deploy is restricted strictly to armed military troops.",
+            "answer": false,
+            "why": "Deploy is not restricted to the military; putting emergency equipment, resources, or workers into action is completely valid."
+      },
+      {
+            "word": "explicate",
+            "statement": "The literature professor explicated the intricate metaphysical conceits and classical allusions in John Donne's poetry.",
+            "answer": true,
+            "why": "Explicate means to explain, interpret, or clarify the meaning of a text or concept."
+      },
+      {
+            "word": "explicate",
+            "statement": "The research team published a thorough explication clarifying how the newly discovered enzyme regulates cell metabolism.",
+            "answer": true,
+            "why": "Packet reading context: an explication is a comprehensive explanation or clarification of meaning."
+      },
+      {
+            "word": "explicate",
+            "statement": "The detective's newly discovered surveillance footage explicated the suspect in the late-night armed robbery.",
+            "answer": false,
+            "why": "High-value false substitution: connecting a suspect to a crime is implicating them; explicate means to explain or clarify meaning."
+      },
+      {
+            "word": "explicate",
+            "statement": "Her laboratory safety instructions were explicate because every necessary precaution was written in bold capital letters.",
+            "answer": false,
+            "why": "Grammar error: instructions that are directly expressed are explicit (adjective); explicate is a verb meaning to explain."
+      },
+      {
+            "word": "explicate",
+            "statement": "The art conservator attempted to explicate the broken Roman amphora by casting a silicone mold of its fragments.",
+            "answer": false,
+            "why": "High-value false substitution: making a copy or reproduction is replicating it; explicate means to explain or clarify."
+      },
+      {
+            "word": "explicit",
+            "statement": "The building contract contained explicit payment terms, leaving no room for subjective interpretation.",
+            "answer": true,
+            "why": "Explicit means fully and clearly expressed, leaving nothing implied."
+      },
+      {
+            "word": "explicit",
+            "statement": "The documentary included explicit footage of the battlefield, making the destructive consequences readily observable.",
+            "answer": true,
+            "why": "Explicit means readily observable as well as clearly and directly expressed."
+      },
+      {
+            "word": "explicit",
+            "statement": "The syllabus explicitly forbade students from consulting unapproved online summaries during take-home essays.",
+            "answer": true,
+            "why": "Explicitly is the adverb meaning fully and directly stated."
+      },
+      {
+            "word": "explicit",
+            "statement": "Her instructions were implicit because every step and calculation was directly and precisely stated on the board.",
+            "answer": false,
+            "why": "High-value false substitution: directly and clearly stated instructions are explicit; implicit means unstated or implied."
+      },
+      {
+            "word": "explicit",
+            "statement": "The accountant was explicit in the embezzlement scheme because she forged signatures on the company checks.",
+            "answer": false,
+            "why": "High-value false substitution: being an accomplice in wrongdoing is being complicit; explicit means directly stated or observable."
+      },
+      {
+            "word": "implicate",
+            "statement": "Bank transfer records and phone logs implicated two senior executives in the international money-laundering network.",
+            "answer": true,
+            "why": "Implicate means to involve or connect someone, especially in an incriminating way."
+      },
+      {
+            "word": "implicate",
+            "statement": "Closing the regional shipping terminal will implicate dozens of local freight companies that depend on harbor freight.",
+            "answer": true,
+            "why": "One packet sense of implicate is to involve as a consequence or entail effects."
+      },
+      {
+            "word": "implicate",
+            "statement": "The ecological findings have far-reaching implications for regional water-conservation policies.",
+            "answer": true,
+            "why": "Packet reading context: implications are consequences or results entailed by a discovery."
+      },
+      {
+            "word": "implicate",
+            "statement": "The scholar implicated the obscure theological treatise by writing a paragraph-by-paragraph commentary explaining its ideas.",
+            "answer": false,
+            "why": "High-value false substitution: explaining or clarifying a text is explicating it; implicate means connecting to wrongdoing or entailing consequences."
+      },
+      {
+            "word": "implicate",
+            "statement": "The starving beggar knelt on the cathedral steps and implicated the passing bishop for bread.",
+            "answer": false,
+            "why": "High-value false substitution: begging or pleading humbly is supplicating; implicate means connecting to wrongdoing or entailing consequences."
+      },
+      {
+            "word": "implicit",
+            "statement": "Although no formal contract had been signed, there was an implicit agreement between the partners to share travel expenses equally.",
+            "answer": true,
+            "why": "Implicit means understood or implied without being directly stated."
+      },
+      {
+            "word": "implicit",
+            "statement": "A child usually has implicit trust in her parents, relying on their protection without any doubt or reservation.",
+            "answer": true,
+            "why": "Packet definition: implicit also means unquestioning or without doubt/reservation; implicit trust is fully valid."
+      },
+      {
+            "word": "implicit",
+            "statement": "The director's sarcastic tone carried an implicit critique of the script's overly predictable dialogue.",
+            "answer": true,
+            "why": "Implicit describes a meaning suggested or understood rather than stated outright."
+      },
+      {
+            "word": "implicit",
+            "statement": "The directions on the government grant application were implicit, listing each required attachment and line item in exhaustive, direct detail.",
+            "answer": false,
+            "why": "High-value false substitution: directions that are directly and exhaustively stated are explicit, not implicit."
+      },
+      {
+            "word": "implicit",
+            "statement": "The phrase 'implicit faith' is semantically invalid because implicit can only describe hints or unstated messages.",
+            "answer": false,
+            "why": "Implicit explicitly includes the packet sense of unquestioning or without doubt/reservation."
+      },
+      {
+            "word": "inexplicable",
+            "statement": "The sudden disappearance of three fishing boats from the calm harbor remained entirely inexplicable to maritime investigators.",
+            "answer": true,
+            "why": "Inexplicable means difficult or impossible to explain or account for."
+      },
+      {
+            "word": "inexplicable",
+            "statement": "In the animal behavior study, initially inexplicable actions by nesting birds were later understood as vital defense mechanisms.",
+            "answer": true,
+            "why": "Packet reading context: inexplicable behavior is behavior that is difficult or impossible to explain initially."
+      },
+      {
+            "word": "inexplicable",
+            "statement": "Despite its strange appearance, the optical illusion was scientifically explicable through the refraction of light in warm air.",
+            "answer": true,
+            "why": "Explicable is the adjective meaning capable of being explained or accounted for."
+      },
+      {
+            "word": "inexplicable",
+            "statement": "Because the clock's mechanical failure obeyed standard friction laws, the watchmaker pronounced the damage completely inexplicable.",
+            "answer": false,
+            "why": "High-value false substitution: damage readily accounted for by known laws is explicable, not inexplicable."
+      },
+      {
+            "word": "inexplicable",
+            "statement": "The real estate lease was inexplicable because every tenant right and rental rate was spelled out in plain, readable language.",
+            "answer": false,
+            "why": "High-value false substitution: a lease with clearly spelled-out terms is explicit; inexplicable means impossible to explain."
+      },
+      {
+            "word": "replica",
+            "statement": "The museum gift shop sold an authentic miniature replica of the Liberty Bell made of cast bronze.",
+            "answer": true,
+            "why": "A replica is a copy or reproduction, often of an original artwork and sometimes smaller than the original."
+      },
+      {
+            "word": "replica",
+            "statement": "Researchers deployed wooden duck replicas in the marsh to study how migrating waterfowl interact with decoy flocks.",
+            "answer": true,
+            "why": "Packet reading context: duck replicas are model copies or decoys."
+      },
+      {
+            "word": "replica",
+            "statement": "Biologists were eager to replica the successful cloning experiment in their own research facility.",
+            "answer": false,
+            "why": "Grammar error: replica is a noun; the verb meaning to reproduce or copy is replicate."
+      },
+      {
+            "word": "replica",
+            "statement": "The art historian published an insightful replica analyzing the painter's brush technique across three decades.",
+            "answer": false,
+            "why": "High-value false substitution: an explanatory analysis of art is an explication; a replica is a physical copy or reproduction."
+      },
+      {
+            "word": "supple",
+            "statement": "The gymnast maintained supple joints through two hours of daily flexibility conditioning.",
+            "answer": true,
+            "why": "Supple means easily bent, limber, or pliant."
+      },
+      {
+            "word": "supple",
+            "statement": "A skilled mediator needs a supple mind that can adapt smoothly as negotiations shift and new proposals arise.",
+            "answer": true,
+            "why": "Packet definition: supple means adaptable, compliant, or readily yielding, not only physically flexible."
+      },
+      {
+            "word": "supple",
+            "statement": "The humble supple bowed deeply before the altar, pleading tearfully for a miraculous cure.",
+            "answer": false,
+            "why": "High-value false substitution & grammar error: a person pleading humbly is a supplicant; supple is an adjective meaning flexible or adaptable."
+      },
+      {
+            "word": "supple",
+            "statement": "The word supple cannot describe human reasoning or negotiation because its meaning is restricted strictly to physical leather.",
+            "answer": false,
+            "why": "Supple includes the packet sense of adaptable, compliant, or readily yielding."
+      },
+      {
+            "word": "supplicant",
+            "statement": "Kneeling before the tribal chieftain, the ragged supplicant presented a humble request for food and shelter.",
+            "answer": true,
+            "why": "A supplicant is someone who asks, pleads, prays, or begs humbly and earnestly."
+      },
+      {
+            "word": "supplicant",
+            "statement": "In the historical allegory, starving birds on the temple steps were described as behaving like humble supplicants.",
+            "answer": true,
+            "why": "Packet reading context: acting like supplicants means behaving like humble pleaders begging for help."
+      },
+      {
+            "word": "supplicant",
+            "statement": "An Olympic gymnast must be exceptionally supplicant if she hopes to execute complex floor maneuvers with high flexibility.",
+            "answer": false,
+            "why": "High-value false substitution: a limber, flexible athlete is supple; a supplicant is a person who begs or pleads humbly."
+      },
+      {
+            "word": "supplicant",
+            "statement": "Because the warehouse manager was an active supplicant in the cargo theft, he was charged with felony grand larceny.",
+            "answer": false,
+            "why": "High-value false substitution: an accomplice involved in a crime is complicit; a supplicant is a humble pleader."
+      }
+];
+
+    const LANG_SET6_FORM_QUESTIONS = [
+      {
+            "word": "complicity",
+            "tier": "core",
+            "prompt": "Choose the adjective: A person involved in a fraudulent scheme is legally considered ___ in the crime.",
+            "options": [
+                  "complicit",
+                  "complicity",
+                  "implicit",
+                  "explicable"
+            ],
+            "correct": "complicit",
+            "why": "Complicit is the packet-emphasized adjective meaning involved with others in wrongdoing."
+      },
+      {
+            "word": "complicity",
+            "tier": "core",
+            "prompt": "In the sentence 'Her complicity in the theft was proven in court,' what part of speech is complicity?",
+            "options": [
+                  "noun",
+                  "adjective",
+                  "verb",
+                  "adverb"
+            ],
+            "correct": "noun",
+            "why": "Complicity is a noun naming the state or act of being an accomplice in wrongdoing."
+      },
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "Choose the noun: The rapid ___ of search-and-rescue teams allowed aid to reach the disaster area within hours.",
+            "options": [
+                  "deployment",
+                  "deploy",
+                  "deploying",
+                  "implication"
+            ],
+            "correct": "deployment",
+            "why": "Deployment is the packet-emphasized noun naming the strategic or systematic positioning of personnel or resources."
+      },
+      {
+            "word": "explicate",
+            "tier": "core",
+            "prompt": "Choose the adjective meaning capable of being explained: Once the missing data was recovered, the error was entirely ___.",
+            "options": [
+                  "explicable",
+                  "inexplicable",
+                  "explicit",
+                  "explicate"
+            ],
+            "correct": "explicable",
+            "why": "Explicable is the packet-emphasized adjective meaning capable of being explained or accounted for."
+      },
+      {
+            "word": "explicate",
+            "tier": "core",
+            "prompt": "Choose the noun: The literary critic gave a detailed ___ of the poem's complex religious imagery.",
+            "options": [
+                  "explication",
+                  "explicate",
+                  "explicit",
+                  "implication"
+            ],
+            "correct": "explication",
+            "why": "Explication is the packet noun meaning an explanation or analytical clarification of meaning."
+      },
+      {
+            "word": "explicit",
+            "tier": "core",
+            "prompt": "Choose the adverb modifying stated: The laboratory safety protocol ___ stated that protective eyewear was mandatory.",
+            "options": [
+                  "explicitly",
+                  "explicit",
+                  "implicitly",
+                  "explicitness"
+            ],
+            "correct": "explicitly",
+            "why": "Explicitly is the packet-emphasized adverb meaning fully, clearly, and directly expressed."
+      },
+      {
+            "word": "implicate",
+            "tier": "core",
+            "prompt": "Choose the plural noun meaning consequences: The sudden collapse of the regional bank has grave ___ for local businesses.",
+            "options": [
+                  "implications",
+                  "implicates",
+                  "explications",
+                  "supplications"
+            ],
+            "correct": "implications",
+            "why": "Implications is the packet plural noun meaning consequences or entailed effects."
+      },
+      {
+            "word": "implicit",
+            "tier": "core",
+            "prompt": "Choose the noun meaning an unstated suggestion or hint: His subtle remark carried the unmistakable ___ that layoffs were coming.",
+            "options": [
+                  "implication",
+                  "implicate",
+                  "explication",
+                  "complicity"
+            ],
+            "correct": "implication",
+            "why": "Implication can name an unstated suggestion or hint derived from an implicit communication."
+      },
+      {
+            "word": "implicit",
+            "tier": "core",
+            "prompt": "Choose the adverb: Although never put into writing, the partners ___ agreed to share all future profits equally.",
+            "options": [
+                  "implicitly",
+                  "implicit",
+                  "explicitly",
+                  "complicitly"
+            ],
+            "correct": "implicitly",
+            "why": "Implicitly is the adverb meaning in a manner understood without being directly stated."
+      },
+      {
+            "word": "inexplicable",
+            "tier": "core",
+            "prompt": "Choose the adverb: The engine warning lights flashed ___ before the vehicle suddenly stalled on the highway.",
+            "options": [
+                  "inexplicably",
+                  "inexplicable",
+                  "explicably",
+                  "explicitly"
+            ],
+            "correct": "inexplicably",
+            "why": "Inexplicably is the adverb meaning in a way that is impossible or difficult to explain."
+      },
+      {
+            "word": "replica",
+            "tier": "core",
+            "prompt": "Choose the verb: Scientists must be able to ___ experimental findings before a discovery is validated.",
+            "options": [
+                  "replicate",
+                  "replica",
+                  "explicate",
+                  "supplicate"
+            ],
+            "correct": "replicate",
+            "why": "Replicate is the packet-tested verb meaning to copy, reproduce, or repeat."
+      },
+      {
+            "word": "supple",
+            "tier": "core",
+            "prompt": "Choose the noun meaning the flexible quality of leather: Applying mink oil restored the natural ___ of the riding boots.",
+            "options": [
+                  "suppleness",
+                  "supple",
+                  "supplicant",
+                  "supplication"
+            ],
+            "correct": "suppleness",
+            "why": "Suppleness is the packet-tested noun meaning the quality of being easily bent, limber, or pliant."
+      },
+      {
+            "word": "supplicant",
+            "tier": "core",
+            "prompt": "Choose the verb: The impoverished villagers traveled to the capital to ___ the king for grain relief.",
+            "options": [
+                  "supplicate",
+                  "supplicant",
+                  "supplication",
+                  "implicate"
+            ],
+            "correct": "supplicate",
+            "why": "Supplicate is the verb meaning to ask, plead, or beg humbly and earnestly."
+      },
+      {
+            "word": "supplicant",
+            "tier": "core",
+            "prompt": "Choose the plural noun meaning earnest pleas or prayers: The abbot listened with deep empathy to the ___ of the pilgrims.",
+            "options": [
+                  "supplications",
+                  "supplicants",
+                  "explications",
+                  "implications"
+            ],
+            "correct": "supplications",
+            "why": "Supplications is the packet-tested plural noun meaning earnest pleas, requests, or prayers."
+      },
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "Can deploy apply to positioning emergency workers and equipment in non-military disaster relief?",
+            "options": [
+                  "Yes, it applies to personnel, equipment, and resources",
+                  "No, it applies only to armed military combatants"
+            ],
+            "correct": "Yes, it applies to personnel, equipment, and resources",
+            "why": "Deploy means to position strategically or put into use/action (troops, emergency personnel, equipment, resources, parachute)."
+      }
+];
+
+    const LANG_SET6_TRANSFER_CONTEXTS = [
+      {
+            "word": "complicity",
+            "prompt": "Involvement in a theft that leads to formal criminal prosecution is an example of ___.",
+            "answer": "complicity"
+      },
+      {
+            "word": "deploy",
+            "prompt": "The general strategically ___ divisions of soldiers along the river to secure the border.",
+            "answer": "deployed"
+      },
+      {
+            "word": "inexplicable",
+            "prompt": "Specialists could not account for the patient's sudden, baffling recovery, calling it completely ___.",
+            "answer": "inexplicable"
+      },
+      {
+            "word": "replica",
+            "prompt": "The art museum displayed an exact bronze ___ of the famous classical sculpture.",
+            "answer": "replica"
+      },
+      {
+            "word": "explicate",
+            "prompt": "The literature professor paused during the seminar to ___ the deeper symbolic meaning of the difficult poem.",
+            "answer": "explicate"
+      },
+      {
+            "word": "implicate",
+            "prompt": "Leaked financial records threatened to ___ several senior corporate executives in the insider-trading scandal.",
+            "answer": "implicate"
+      },
+      {
+            "word": "supple",
+            "prompt": "Conditioned with natural oils, the imported leather jacket remained soft, bendable, and ___.",
+            "answer": "supple"
+      },
+      {
+            "word": "explicit",
+            "prompt": "Because the film contained ___ and directly shown depictions of graphic violence, it received a restricted rating.",
+            "answer": "explicit"
+      },
+      {
+            "word": "implicit",
+            "prompt": "Having worked as partners for two decades, they shared complete, unquestioning, and ___ trust.",
+            "answer": "implicit"
+      },
+      {
+            "word": "supplicant",
+            "prompt": "Kneeling on the stone floor with outstretched hands, the humble ___ begged the magistrate for mercy.",
+            "answer": "supplicant"
+      }
+];
+
+    const LANG_SET6_CONFUSION_QUESTIONS = [
+      {
+            "word": "complicity",
+            "category": "context",
+            "prompt": "An employee participates in an insider-trading fraud. Does she demonstrate complicity (noun) or is she complicit (adjective) in the crime?",
+            "options": [
+                  "She demonstrates complicity and is complicit",
+                  "She demonstrates complicit and is complicity",
+                  "Neither term is used for corporate fraud"
+            ],
+            "answers": [
+                  "She demonstrates complicity and is complicit"
+            ],
+            "why": "Complicity is the noun naming the involvement; complicit is the adjective describing the person involved."
+      },
+      {
+            "word": "explicate",
+            "category": "context",
+            "prompt": "A professor clarifies the obscure symbols in an epic poem. Does the professor explicate the text or make it explicit?",
+            "options": [
+                  "explicate the text",
+                  "make the text explicate"
+            ],
+            "answers": [
+                  "explicate the text"
+            ],
+            "why": "Explicate is a verb meaning to explain or clarify; explicit is an adjective meaning clearly expressed."
+      },
+      {
+            "word": "explicate",
+            "category": "context",
+            "prompt": "Forensic evidence connects a suspect to a jewelry heist. Does the evidence explicate or implicate the suspect?",
+            "options": [
+                  "implicate",
+                  "explicate"
+            ],
+            "answers": [
+                  "implicate"
+            ],
+            "why": "Implicate means to connect someone with wrongdoing; explicate means to explain or clarify meaning."
+      },
+      {
+            "word": "implicate",
+            "category": "context",
+            "prompt": "An understanding is communicated through a knowing glance without direct words. Is this agreement implicit or implicated?",
+            "options": [
+                  "implicit",
+                  "implicated"
+            ],
+            "answers": [
+                  "implicit"
+            ],
+            "why": "Implicit means understood or implied without being directly stated."
+      },
+      {
+            "word": "explicit",
+            "category": "context",
+            "prompt": "Safety directions that spell out every required step and measurement in plain language are explicit or implicit?",
+            "options": [
+                  "explicit",
+                  "implicit"
+            ],
+            "answers": [
+                  "explicit"
+            ],
+            "why": "Explicit directions are directly and clearly stated, leaving nothing implied."
+      },
+      {
+            "word": "implicit",
+            "category": "usage",
+            "prompt": "Can implicit describe both an unstated suggestion and complete, unquestioning trust?",
+            "options": [
+                  "Yes, both senses are valid packet meanings",
+                  "No, only unstated suggestions",
+                  "No, only unquestioning trust"
+            ],
+            "answers": [
+                  "Yes, both senses are valid packet meanings"
+            ],
+            "why": "Packet senses include: 1. understood without being directly stated; 2. unquestioning / without doubt or reservation (implicit trust)."
+      },
+      {
+            "word": "deploy",
+            "category": "usage",
+            "prompt": "Is the verb deploy limited strictly to armed combat troops, or can an agency deploy relief workers and emergency equipment?",
+            "options": [
+                  "It applies to troops, relief workers, and equipment",
+                  "It applies strictly to military combat troops"
+            ],
+            "answers": [
+                  "It applies to troops, relief workers, and equipment"
+            ],
+            "why": "Deploy means to position strategically or put into use/action (troops, workers, equipment, resources, parachute)."
+      },
+      {
+            "word": "replica",
+            "category": "context",
+            "prompt": "An artisan creates a miniature copy of a famous statue. Is the resulting object a replica or a replicate?",
+            "options": [
+                  "a replica",
+                  "a replicate"
+            ],
+            "answers": [
+                  "a replica"
+            ],
+            "why": "Replica is the noun for the copy; replicate is the verb meaning to reproduce or copy."
+      },
+      {
+            "word": "supple",
+            "category": "context",
+            "prompt": "An athlete requires limber, flexible muscles, while a kneeling person pleads for food. Who is the supplicant?",
+            "options": [
+                  "The kneeling person pleading for food",
+                  "The limber athlete"
+            ],
+            "answers": [
+                  "The kneeling person pleading for food"
+            ],
+            "why": "A supplicant is someone who asks or begs humbly and earnestly; supple means flexible or limber."
+      },
+      {
+            "word": "inexplicable",
+            "category": "context",
+            "prompt": "A phenomenon that scientists can easily explain and account for under physical laws is explicable or inexplicable?",
+            "options": [
+                  "explicable",
+                  "inexplicable"
+            ],
+            "answers": [
+                  "explicable"
+            ],
+            "why": "Explicable means capable of being explained; inexplicable means impossible or very difficult to explain."
+      },
+      {
+            "word": "implicate",
+            "category": "usage",
+            "prompt": "Can the noun implication refer to both an entailed consequence and an unstated suggestion?",
+            "options": [
+                  "Yes, context determines whether consequence or suggestion is meant",
+                  "No, only a consequence",
+                  "No, only an unstated suggestion"
+            ],
+            "answers": [
+                  "Yes, context determines whether consequence or suggestion is meant"
+            ],
+            "why": "Implication derives from both implicate (consequence / involvement) and implicit (unstated suggestion)."
+      },
+      {
+            "word": "supple",
+            "category": "usage",
+            "prompt": "Can the word supple describe a person's adaptable mind as well as physical flexibility?",
+            "options": [
+                  "Yes, it means adaptable and compliant as well as limber",
+                  "No, it refers only to physical flexibility"
+            ],
+            "answers": [
+                  "Yes, it means adaptable and compliant as well as limber"
+            ],
+            "why": "Packet senses of supple include: 1. easily bent, limber, pliant; 2. adaptable, compliant, or readily yielding."
+      }
+];
+
+    const LANG_SET6_DERIVATIVE_FILLINS = [
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "The rapid ___ of emergency personnel allowed aid to reach the damaged area quickly.",
+            "answers": [
+                  "deployment"
+            ],
+            "why": "Grammar requires the noun deployment (strategic positioning of people/resources), not the verb deploy."
+      },
+      {
+            "word": "complicity",
+            "tier": "core",
+            "prompt": "Investigators proved that the accountant was ___ in the fraud scheme, having signed off on false ledgers.",
+            "answers": [
+                  "complicit"
+            ],
+            "why": "The sentence requires the predicate adjective complicit, not the noun complicity."
+      },
+      {
+            "word": "explicate",
+            "tier": "core",
+            "prompt": "Although the physics formula appeared daunting at first, its underlying logic proved completely ___ once explained step by step.",
+            "answers": [
+                  "explicable"
+            ],
+            "why": "The sentence requires the adjective explicable (capable of being explained), not the verb explicate."
+      },
+      {
+            "word": "inexplicable",
+            "tier": "core",
+            "prompt": "Even after months of rigorous investigation, the aircraft's sudden radar disappearance remains entirely ___.",
+            "answers": [
+                  "inexplicable"
+            ],
+            "why": "Inexplicable is the adjective meaning impossible or difficult to explain."
+      },
+      {
+            "word": "supple",
+            "tier": "core",
+            "prompt": "Regular conditioning with natural beeswax preserved the remarkable ___ of the antique saddle.",
+            "answers": [
+                  "suppleness"
+            ],
+            "why": "Grammar requires the noun suppleness (the quality of being flexible), not the adjective supple."
+      },
+      {
+            "word": "implicate",
+            "tier": "core",
+            "prompt": "The CEO's unexpected resignation had serious economic ___ for the entire tech sector.",
+            "answers": [
+                  "implications"
+            ],
+            "why": "Grammar requires the plural noun implications meaning consequences or effects."
+      },
+      {
+            "word": "explicit",
+            "tier": "core",
+            "prompt": "The laboratory safety guidelines ___ stated that goggles must be worn at all times.",
+            "answers": [
+                  "explicitly"
+            ],
+            "why": "The adverb explicitly modifies the verb stated."
+      },
+      {
+            "word": "implicit",
+            "tier": "core",
+            "prompt": "The politician avoided making a direct promise, but his tone carried the clear ___ that taxes would be lowered.",
+            "answers": [
+                  "implication"
+            ],
+            "why": "The sentence requires the noun implication meaning an unstated suggestion or hint."
+      },
+      {
+            "word": "supplicant",
+            "tier": "core",
+            "prompt": "The monastery abbot bowed his head and offered heartfelt ___ for peace across the war-torn land.",
+            "answers": [
+                  "supplications"
+            ],
+            "why": "Grammar requires the plural noun supplications meaning earnest prayers or humble pleas."
+      },
+      {
+            "word": "replica",
+            "tier": "core",
+            "prompt": "The museum curator commissioned a detailed plaster ___ of the damaged marble bust.",
+            "answers": [
+                  "replica"
+            ],
+            "why": "Replica is the noun for a copy or reproduction."
+      },
+      {
+            "word": "explicate",
+            "tier": "core",
+            "prompt": "The graduate student published a comprehensive ___ of the seventeenth-century manuscript.",
+            "answers": [
+                  "explication"
+            ],
+            "why": "The noun explication means a detailed explanation or analytical clarification."
+      },
+      {
+            "word": "supplicant",
+            "tier": "core",
+            "prompt": "Desperate villagers gathered outside the palace gates to ___ the monarch for grain.",
+            "answers": [
+                  "supplicate"
+            ],
+            "why": "The infinitive requires the verb supplicate meaning to plead or beg earnestly."
+      },
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "The commander ordered the immediate ___ of defensive units along the river.",
+            "answers": [
+                  "deployment"
+            ],
+            "why": "The noun deployment names the strategic positioning of units."
+      },
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "The hospital staff prepared to ___ portable generators as soon as the storm severed electrical power.",
+            "answers": [
+                  "deploy"
+            ],
+            "why": "The infinitive requires the base verb deploy (put into action or use)."
+      },
+      {
+            "word": "complicity",
+            "tier": "core",
+            "prompt": "Her active ___ in the shoplifting ring resulted in three years of supervised probation.",
+            "answers": [
+                  "complicity"
+            ],
+            "why": "The subject requires the noun complicity (involvement in wrongdoing as an accomplice)."
+      },
+      {
+            "word": "replica",
+            "tier": "core",
+            "prompt": "Modern laboratories struggled to ___ the controversial results reported in the initial study.",
+            "answers": [
+                  "replicate"
+            ],
+            "why": "The infinitive requires the verb replicate (to reproduce or copy)."
+      },
+      {
+            "word": "supple",
+            "tier": "core",
+            "prompt": "Years of martial arts conditioning kept the athlete's limbs remarkably ___ and agile.",
+            "answers": [
+                  "supple"
+            ],
+            "why": "The predicate adjective supple means limber, pliant, and easily bent."
+      },
+      {
+            "word": "inexplicable",
+            "tier": "core",
+            "prompt": "The night guard described an ___ blue light hovering silently above the valley before vanishing.",
+            "answers": [
+                  "inexplicable"
+            ],
+            "why": "The adjective inexplicable modifies light and means impossible to account for."
+      },
+      {
+            "word": "implicate",
+            "tier": "core",
+            "prompt": "Phone logs obtained by federal agents served to ___ the bank manager in the money-laundering operation.",
+            "answers": [
+                  "implicate"
+            ],
+            "why": "The infinitive requires the verb implicate (to connect with wrongdoing)."
+      },
+      {
+            "word": "implicit",
+            "tier": "core",
+            "prompt": "Between the lifelong business partners existed an ___ agreement never to undercut each other's prices.",
+            "answers": [
+                  "implicit"
+            ],
+            "why": "The adjective implicit modifies agreement and means understood without being directly stated."
+      },
+      {
+            "word": "inexplicable",
+            "tier": "core",
+            "prompt": "[inexplicable] Even after thorough scientific analysis, the ancient stone markings remained entirely ___ to archaeologists.",
+            "answers": [
+                  "inexplicable"
+            ],
+            "why": "Inexplicable remains unchanged as the adjective meaning impossible or difficult to explain."
+      },
+      {
+            "word": "replica",
+            "tier": "core",
+            "prompt": "[replica] The collector purchased a hand-carved miniature ___ of the cathedral's famous bronze doors.",
+            "answers": [
+                  "replica"
+            ],
+            "why": "Replica is the noun for a miniature copy or reproduction of an original."
+      },
+      {
+            "word": "supple",
+            "tier": "core",
+            "prompt": "[supple] The leatherworker marveled at the fine ___ of the imported calfskin.",
+            "answers": [
+                  "suppleness"
+            ],
+            "why": "Suppleness is the packet noun for the flexible, yielding quality of leather."
+      },
+      {
+            "word": "deploy",
+            "tier": "core",
+            "prompt": "[deploy] The sudden ___ of peacekeeping forces stabilized the tense border region.",
+            "answers": [
+                  "deployment"
+            ],
+            "why": "Deployment is the packet noun for the rapid positioning of troops or personnel."
+      },
+      {
+            "word": "complicity",
+            "tier": "core",
+            "prompt": "[complicity] The witness admitted he was ___ in the fraud, having knowingly concealed the missing ledger.",
+            "answers": [
+                  "complicit"
+            ],
+            "why": "Complicit is the packet adjective meaning involved in a crime or wrongdoing."
+      },
+      {
+            "word": "explicate",
+            "tier": "core",
+            "prompt": "[explicate] Once the missing variable was identified, the sudden chemical reaction became entirely ___.",
+            "answers": [
+                  "explicable"
+            ],
+            "why": "Explicable is the packet adjective meaning capable of explanation."
+      },
+      {
+            "word": "implicate",
+            "tier": "core",
+            "prompt": "[implicate] The controversial new trade legislation carried profound ___ for international supply chains.",
+            "answers": [
+                  "implications"
+            ],
+            "why": "Implications is the packet plural noun meaning consequences or entailed effects."
+      },
+      {
+            "word": "explicit",
+            "tier": "core",
+            "prompt": "[explicit] The judge ___ warned the jurors not to read newspaper accounts of the ongoing trial.",
+            "answers": [
+                  "explicitly"
+            ],
+            "why": "Explicitly is the packet adverb modifying the verb warned."
+      },
+      {
+            "word": "implicit",
+            "tier": "core",
+            "prompt": "[implicit] The editorial did not mention the senator by name, but the negative ___ was unmistakable.",
+            "answers": [
+                  "implication"
+            ],
+            "why": "Implication is the packet noun meaning an unstated suggestion or hint."
+      },
+      {
+            "word": "supplicant",
+            "tier": "core",
+            "prompt": "[supplicant] The monarch was moved to tears by the desperate ___ of the impoverished farmers.",
+            "answers": [
+                  "supplications"
+            ],
+            "why": "Supplications is the packet plural noun meaning earnest pleas or humble requests."
+      }
+];
+
+    const LANG_SET6_SHORT_ANSWER_PAIRS = [
+      {
+            "words": [
+                  "explicit",
+                  "implicit"
+            ],
+            "prompt": "Create one or more complete sentences using both explicit and implicit, or appropriate derivatives.",
+            "model": "Although the employee handbook contained explicit rules detailing exact working hours, there was an implicit understanding among the staff that leaving early before holiday weekends was quietly permitted."
+      },
+      {
+            "words": [
+                  "explicate",
+                  "implicate"
+            ],
+            "prompt": "Create one or more complete sentences using both explicate and implicate, or appropriate derivatives.",
+            "model": "While the forensic scientist explicated the complicated chemical analysis for the jury, prosecutors introduced bank records that strongly implicated the defendant in the corporate bribery scheme."
+      },
+      {
+            "words": [
+                  "complicity",
+                  "complicit"
+            ],
+            "prompt": "Create one or more complete sentences using both complicity and complicit, or appropriate derivatives.",
+            "model": "The audit exposed the CFO's active complicity in falsifying quarterly earnings, proving that several department heads were also complicit in concealing the shortfall."
+      },
+      {
+            "words": [
+                  "replica",
+                  "replicate"
+            ],
+            "prompt": "Create one or more complete sentences using both replica and replicate, or appropriate derivatives.",
+            "model": "The museum conservator crafted an exact plaster replica of the broken Roman vase, hoping to replicate the precise casting techniques used by ancient artisans."
+      },
+      {
+            "words": [
+                  "supple",
+                  "supplicant"
+            ],
+            "prompt": "Create one or more complete sentences using both supple and supplicant, or appropriate derivatives.",
+            "model": "The agile dancer lowered her supple body to the temple floor, bowing like a humble supplicant before the altar to offer earnest prayers for her village."
+      },
+      {
+            "words": [
+                  "explicable",
+                  "inexplicable"
+            ],
+            "prompt": "Create one or more complete sentences using both explicable and inexplicable, or appropriate derivatives.",
+            "model": "While the initial engine stall was easily explicable as a clogged fuel filter, the plane's complete electrical blackout moments later remained entirely inexplicable to aviation investigators."
+      },
+      {
+            "words": [
+                  "deploy",
+                  "implication"
+            ],
+            "prompt": "Create one or more complete sentences using both deploy and implication, or appropriate derivatives.",
+            "model": "The president decided to deploy peacekeeping forces along the contested border, a decisive move with far-reaching political implications for regional stability."
+      },
+      {
+            "words": [
+                  "implicate",
+                  "supplicant"
+            ],
+            "prompt": "Create one or more complete sentences using both implicate and supplicant, or appropriate derivatives.",
+            "model": "Fearing that fabricated records would implicate him in the palace conspiracy, the trembling courtier appeared before the emperor as a desperate supplicant begging for mercy."
+      }
+];
+
     const LANG_SETS = {
       1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"],highRisk:["malapropism","portmanteau","neologism","appellation"]},
       2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[],highRisk:["substantiate","indisputable","dissuade","apologist"]},
       3:{words:LANG_SET3_WORDS,usage:LANG_SET3_USAGE,formQuestions:LANG_SET3_FORM_QUESTIONS,transfer:LANG_SET3_TRANSFER_CONTEXTS,confusions:LANG_SET3_CONFUSION_QUESTIONS,derivatives:LANG_SET3_DERIVATIVE_FILLINS,pairs:LANG_SET3_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-3-progress-v1",legacyKeys:[],highRisk:["epiphany","reverie","scrupulous","stratagem"]},
       4:{words:LANG_SET4_WORDS,usage:LANG_SET4_USAGE,formQuestions:LANG_SET4_FORM_QUESTIONS,transfer:LANG_SET4_TRANSFER_CONTEXTS,confusions:LANG_SET4_CONFUSION_QUESTIONS,derivatives:LANG_SET4_DERIVATIVE_FILLINS,pairs:LANG_SET4_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-4-progress-v1",legacyKeys:[],highRisk:["epitome","impeccable","inimitable","quintessence","optimum","culminate"]},
       5:{words:LANG_SET5_WORDS,usage:LANG_SET5_USAGE,formQuestions:LANG_SET5_FORM_QUESTIONS,transfer:LANG_SET5_TRANSFER_CONTEXTS,confusions:LANG_SET5_CONFUSION_QUESTIONS,derivatives:LANG_SET5_DERIVATIVE_FILLINS,pairs:LANG_SET5_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-5-progress-v1",legacyKeys:[],highRisk:["garrulous","histrionic","peremptory","polemic","vivacious","vociferous","exhort","exalt"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference</h3><p>High-yield core contrasts and essential derivative shifts for Set 5.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EXALT</strong> = praise / elevate</p><p style="margin:4px 0; font-size:13px;"><strong>EXHORT</strong> = strongly urge</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>GARRULOUS</strong> = talks too much / rambles</p><p style="margin:4px 0; font-size:13px;"><strong>VOCIFEROUS</strong> = shouts / speaks loudly &amp; forcefully</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VIVACIOUS</strong> = lively / animated</p><p style="margin:4px 0; font-size:13px;"><strong>HISTRIONIC</strong> = excessively dramatic / affected</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>LACONIC</strong> = few words / concise</p><p style="margin:4px 0; font-size:13px;"><strong>GIST</strong> = central idea / essence</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>POLEMIC</strong> = controversial argument</p><p style="margin:4px 0; font-size:13px;"><strong>PEREMPTORY</strong> = shuts down debate / allows no refusal</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>garrulous</strong> (adj) → <strong>garrulousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>histrionic</strong> (adj) → <strong>histrionics</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vivacious</strong> (adj) → <strong>vivacity</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vociferous</strong> (adj) → <strong>vociferousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exhort</strong> (verb) → <strong>exhorting</strong> / <strong>exhortation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exalt</strong> (verb) → <strong>exalted</strong> (verb / adj)</p><p style="margin:4px 0; font-size:13px;"><strong>polemic</strong> (noun/adj) → <strong>polemic</strong> OR <strong>polemical</strong> (adj accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>gist, laconic, peremptory</strong> → unchanged depending on context</p></div></div>`}
+,
+      6:{words:LANG_SET6_WORDS,usage:LANG_SET6_USAGE,formQuestions:LANG_SET6_FORM_QUESTIONS,transfer:LANG_SET6_TRANSFER_CONTEXTS,confusions:LANG_SET6_CONFUSION_QUESTIONS,derivatives:LANG_SET6_DERIVATIVE_FILLINS,pairs:LANG_SET6_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-6-progress-v1",legacyKeys:[],highRisk:["complicity","complicit","explicate","explicable","inexplicable","implicate","implicit","supple","supplicant"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 23: The Root -pli-</h3><p>Root context (-pli-, -plic-, -ploy- from Latin <em>plicare</em>, "to fold"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>COMPLICITY</strong> (noun) = involvement as accomplice in crime<br><strong>COMPLICIT</strong> (adj) = involved in the wrongdoing</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICATE</strong> (verb) = explain or clarify meaning<br><strong>EXPLICABLE</strong> (adj) = capable of explanation<br><strong>INEXPLICABLE</strong> (adj) = impossible / difficult to explain</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICIT</strong> = directly stated; readily observable<br><strong>IMPLICIT</strong> = unstated / understood; unquestioning trust</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>IMPLICATE</strong> = connect with wrongdoing; entail consequences<br><strong>IMPLICATION</strong> = consequence (from implicate) OR unstated hint (from implicit)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>REPLICA</strong> (noun) = the copy or reproduction<br><strong>REPLICATE</strong> (verb) = to reproduce or duplicate</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SUPPLE</strong> = flexible / limber; adaptable / compliant<br><strong>SUPPLICANT</strong> = person pleading or begging humbly</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DEPLOY</strong> = position strategically; put into use (troops, relief workers, equipment, resources, parachutes)</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>complicity</strong> (noun) → <strong>complicit</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>deploy</strong> (verb) → <strong>deployment</strong> / <strong>deployments</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>explicate</strong> (verb) → <strong>explication</strong> (noun), <strong>explicable</strong> (adj), <strong>inexplicable</strong> (neg adj)</p><p style="margin:4px 0; font-size:13px;"><strong>explicit</strong> (adj) → <strong>explicitly</strong> (adverb), <strong>explicitness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicate</strong> (verb) → <strong>implication</strong> / <strong>implications</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicit</strong> (adj) → <strong>implication</strong> (noun), <strong>implicitly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>inexplicable</strong> (adj) → <strong>inexplicably</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>replica</strong> (noun) → <strong>replicate</strong> (verb), <strong>replication</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supple</strong> (adj) → <strong>suppleness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supplicant</strong> (noun) → <strong>supplicate</strong> (verb), <strong>supplication</strong> / <strong>supplications</strong> (noun)</p></div></div>`}
     };
     let activeLangSet = Number(localStorage.getItem("flashcards-ap-lang-last-set") || 1);
     if(!LANG_SETS[activeLangSet]) activeLangSet=1;
@@ -2372,6 +3847,13 @@
       if(w.word === "polemic") why = "Correct spelling: polemic (for base dictation, provide the base form 'polemic' rather than 'polemical').";
       if(w.word === "exhort") why = "Correct spelling: exhort (strongly urge). Do not confuse with exalt (elevate/praise).";
       if(w.word === "exalt") why = "Correct spelling: exalt (elevate/praise). Do not confuse with exhort (strongly urge).";
+      if(w.word === "explicate") why = "Correct spelling: explicate (explain or clarify). Do not confuse with explicit (clearly expressed).";
+      if(w.word === "explicit") why = "Correct spelling: explicit (clearly stated / readily observable). Do not confuse with explicate (explain).";
+      if(w.word === "implicate") why = "Correct spelling: implicate (connect with wrongdoing / entail). Do not confuse with implicit (unstated).";
+      if(w.word === "implicit") why = "Correct spelling: implicit (unstated or unquestioning). Do not confuse with implicate (connect with wrongdoing).";
+      if(w.word === "inexplicable") why = "Correct spelling: inexplicable (impossible to explain). Root -pli-/-plic-.";
+      if(w.word === "complicity") why = "Correct spelling: complicity (noun for accomplice involvement in wrongdoing).";
+      if(w.word === "supplicant") why = "Correct spelling: supplicant (noun for person pleading humbly). Notice the -cant ending.";
       return {category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why};
     });}
     function definitionQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"definition",word:w.word,label:"Part 2 · Choose the definition",prompt:w.word,response:"choice",options:shuffleList([w.definition,...definitionDistractors(w.word)]),answers:[w.definition],why:w.definition}));}
@@ -2769,9 +4251,111 @@
       {number:199,term:"Constitution: Minority leader",definition:"The person elected, by the minority party of Congress, to be leader of the minority party in Congress."},
       {number:200,term:"Constitution: Minority whip",definition:"The person who tells members of the minority party in Congress how they should vote."}
     );
-    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-200-v1";
-    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-150-v1","flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
-    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3,4].includes(activeApushSet))activeApushSet=1;
+    APUSH_EPTL_CARDS.push(
+      {"number": 201, "term": "Constitution: Gerrymander", "definition": "The practice of drawing the boundary lines of Congressional voting districts to give a particular political party an advantage when electing representatives. First used during Eldbridge Gerry’s second term as governor of Massachusetts, the term comes from a combination of Gerry's name and a reference that the shape of the district boundary resembled a salamander."},
+      {"number": 202, "term": "Constitution: Bills become law", "definition": "In order for a bill to become a law, it must be introduced to committee and be approved. Then it must be voted on by the House of Representatives, and then voted on by the Senate, or vice versa, depending on the branch in which the bill was first introduced. Finally, it must be signed by the President."},
+      {"number": 203, "term": "Constitution: House of Representatives", "definition": "One of the two parts of Congress, considered the \"lower house.\" Representatives are elected directly by the people, with the number of representatives for each state determined by the state’s population."},
+      {"number": 204, "term": "Constitution: Senate", "definition": "The other of the two parts of Congress, considered the \"upper house.\" Senators were originally appointed by state legislatures, but now they are elected directly by the people. Each state has two senators."},
+      {"number": 205, "term": "Constitution: Executive branch", "definition": "One of the three branches of government, the executive enforces laws. It is headed by the president, who has the power to veto legislation passed by Congress."},
+      {"number": 206, "term": "Constitution: Judiciary branch", "definition": "One of the three branches of government, the judiciary interprets laws. The highest authority in the judiciary is the Supreme Court, which determines the constitutionality of laws."},
+      {"number": 207, "term": "Constitution: Interstate relations", "definition": "No state is allowed to form a compact with another state or with a foreign power without the consent of Congress."},
+      {"number": 208, "term": "Constitution: The amendment process", "definition": "An amendment to the Constitution may be proposed if 2/3 of the members of Congress or 2/3 of state legislatures vote for it. The amendment may then be added to the Constitution by a 3/4 vote of state legislatures, or special state conventions elected for that purpose."},
+      {"number": 209, "term": "Constitution: Supremacy clause", "definition": "Article VI of the Constitution, which declares the Constitution, all federal laws passed pursuant to its provisions, and all federal treaties, to be the \"supreme law of the land,\" which override any state laws or state constitutional provisions to the contrary."},
+      {"number": 210, "term": "Constitution: Ratification", "definition": "The Constitution had to be ratified (approved) by at least 9 of the 13 original states in order to be put into effect."},
+      {"number": 211, "term": "Constitution: Checks and balances", "definition": "Each of the three branches of government \"checks\" (ie, blocks) the power of the other two, so no one branch can become too powerful. The president (executive) can veto laws passed by Congress (legislative), and also chooses the judges in the Supreme Court (judiciary). Congress can overturn a presidential veto if 2/3 of the members vote to do so. The Supreme Court can declare laws passed by Congress and the president unconstitutional, and hence invalid."},
+      {"number": 212, "term": "Constitution: Separation of power", "definition": "The powers of the government are divided between three branches: the executive, the legislative, and the judiciary."},
+      {"number": 213, "term": "Maryland, cession of western land claims", "definition": "After the Revolutionary War, many states claimed all the western land between their northernmost and southernmost borders, which meant that many strips of land were claimed by more than one state. The Continental Congress was trying to get the states to ratify the Articles of Confederation, but Maryland refused to ratify it until all the states gave their western land claims. Maryland held out, and the western land claims were abandoned."},
+      {"number": 214, "term": "New state constitutions during the Revolutionary War and after", "definition": "The first set of constitutions drafted by the individual states placed most of the government’s power in the legislature, and almost none in the executive in order to promote democracy and avoid tyranny. However, without the strong leadership of the executive, the state legislatures argued among themselves and could not get anything done. After the Constitution was written, the states abandoned these old constitutions and wrote new ones to change the balance of power between the legislative and the executive."},
+      {"number": 215, "term": "Pennsylvania militia routs Congress, 1783", "definition": "Unpaid Revolutionary War veterans staged a protest outside Congress’ meeting hall, forcing Congress to move to Princeton, New Jersey."},
+      {"number": 216, "term": "Northwest Posts", "definition": "British fur-trading posts in the Northwest Territory. Their presence in the U.S. led to continued British-American conflicts."},
+      {"number": 217, "term": "Land Ordinance of 1785", "definition": "A major success of the Articles of Confederation. Provided for the orderly surveying and distribution of land belonging to the U.S."},
+      {"number": 218, "term": "Northwest Ordinance, 1787", "definition": "A major success of the Articles of Confederation. Set up the framework of a government for the Northwest territory. The Ordinance provided that the Territory would be divided into 3 to 5 states, outlawed slavery in the Territory, and set 60,000 as the minimum population for statehood."},
+      {"number": 219, "term": "Shay’s Rebellion", "definition": "Occurred in the winter of 1786-7 under the Articles of Confederation. Poor, indebted landowners in Massachusetts blocked access to courts and prevented the government from arresting or repossessing the property of those in debt. The federal government was too weak to help Boston remove the rebels, a sign that the Articles of Confederation weren’t working effectively."},
+      {"number": 220, "term": "Annapolis Convention, 1786", "definition": "A precursor to the Constitutional Convention of 1787. A dozen commissioners form New York, New Jersey, Pennsylvania, Delaware, and Virginia met to discuss reform of interstate commerce regulations, to design a U.S. currency standard, and to find a way to repay the federal government’s debts to Revolutionary War veterans. Little was accomplished, except for the delegates to recommend that a further convention be held to discuss changes to the form of the federal government; the idea was endorsed by the Confederation Congress in February, 1878, which called for another convention to be held in May that year in Philadelphia."},
+      {"number": 221, "term": "1780's Depression", "definition": "Caused by a post-war decrease in production and increase in unemployment, and caused by tough interstate commerce rules which decreased trade."},
+      {"number": 222, "term": "Noah Webster (1758-1843)", "definition": "Wrote some of the first dictionaries and spellers in the U.S. His books, which became the standard for the U.S., promoted American spellings and pronunciations, rather than British."},
+      {"number": 223, "term": "Philadelphia Convention for the Constitution (aka Constitutional Convention)", "definition": "Beginning on May 25, 1787, the convention recommended by the Annapolis Convention was held in Philadelphia. All the states except Rhode Island sent delegates, and George Washington served as president of the convention. The convention lasted 16 weeks, and on September 17, 1787, produced the present Constitution of the United States, which was drafted largely by James Madison."},
+      {"number": 224, "term": "Montesquieu, The Spirit of Laws", "definition": "French enlightenment philosopher who believed that the government’s power should be divided into separate branches, that the government should be close to the people, and that laws should reflect the will of the people."},
+      {"number": 225, "term": "John Locke, Second Treatise of Government", "definition": "British enlightenment philosopher who wrote that all human beings have a right to life, liberty, and property and that governments exist to protect those rights. He believed that a contract existed between a government and its people, and if the government failed to uphold its end of the contract, the people could rebel and institute a new government."},
+      {"number": 226, "term": "Hobbes (1588-1679)", "definition": "English philosopher (author of The Leviathan) who believed that people are motivated mainly by greed and fear and need a strong government to keep them under control. He developed the theory that kings are given their position by divine right, and thus should have absolute power."},
+      {"number": 227, "term": "James Madison, \"Father of the Constitution\"", "definition": "His proposals for an effective government became the Virginia Plan, which was the basis for the Constitution. He was responsible for drafting most of the language of the Constitution."},
+      {"number": 228, "term": "The Great Compromise", "definition": "At the Constitutional Convention, larger states wanted to follow the Virginia Plan, which based each state’s representation in Congress on state population. Smaller states wanted to follow the New Jersey Plan, which gave every state the same number of representatives. The convention compromised by creating the House and the Senate and using both of the two separate plans as the method for electing members of each."},
+      {"number": 229, "term": "Virginia Plan, New Jersey Plan, Connecticut Plan", "definition": "The Virginia Plan called for a two-house Congress with each state’s representation based on state population. The New Jersey Plan called for a one-house Congress in which each state had equal representation. The Connecticut Plan called for a two-house Congress in which both types of representation would be applied and is also known as the Compromise Plan."},
+      {"number": 230, "term": "North-South Compromises", "definition": "The North was given full federal protection of trade and commerce. The South was given permanent relief from export taxes and a guarantee that the importation of slaves would not be halted for at least 20 years, plus the national capitol was placed in the South. Slaves were also deemed to be counted as 3/5 of a person when determining the state population, thus giving the Southern states a greater number of representatives in the House."},
+      {"number": 231, "term": "Slavery and the Constitution: slave trade, 3/5 Clause", "definition": "The South’s slave trade was guaranteed for at least 20 years after the ratification of the Constitution. Slaves were considered 3/5 of a person when determining the state population."},
+      {"number": 232, "term": "Procedures for Amendments", "definition": "An amendment to the Constitution may be proposed if 2/3 of Congress or 2/3 of state legislatures vote for it. The amendment may then be added to the Constitution by a 3/4 vote of state legislatures or state conventions."},
+      {"number": 233, "term": "Beard Thesis", "definition": "Charles Austin Beard wrote in 1913 that the Constitution was written not to ensure a democratic government for the people, but to protect the economic interests of its writers (most of the men at the Constitutional Convention were very rich), and specifically to benefit wealthy financial speculators who had purchased Revolutionary War government bonds through the creation of a strong national government that could insure the bonds repayment."},
+      {"number": 234, "term": "Antifederalists", "definition": "They opposed the ratification of the Constitution because it gave more power to the federal government and less to the states, and because it did not ensure individual rights. Many wanted to keep the Articles of Confederation. The Antifederalists were instrumental in obtaining passage of the Bill of Rights as a prerequisite to ratification of the Constitution in several states. After the ratification of the Constitution, the Antifederalists regrouped as the Democratic-Republican (or simply Republican) party. They included Patrick Henry and Samuel Adams."},
+      {"number": 235, "term": "Federalists", "definition": "Their leaders included John Jay, Alexander Hamilton, and James Madison, who wrote the Federalist Papers in support of the Constitution. Favored a strong central government. Drew support from industry, merchant, and monied classes. Concerned about the implications of Shay’s Rebellion. Went on to form the core of the nascent Federalist Party."},
+      {"number": 236, "term": "George Mason, Bill of Rights", "definition": "He opposed the Constitution because it didn’t protect individual rights. His opposition led to the inclusion of the Bill of Rights."},
+      {"number": 237, "term": "The ratification fights in Massachusetts, New York, and Virginia", "definition": "Massachusetts farmers opposed the Constitution because they felt it protected trade more than agriculture, but Massachusetts became the 6th state to ratify. New York was opposed to the Constitution; the Federalist Papers were published there to gain support for it. Virginia and New York would not ratify until the Bill of Rights was added to the Constitution."},
+      {"number": 238, "term": "The Federalist Papers, Jay, Hamilton, Madison", "definition": "This collection of essays by John Jay, Alexander Hamilton, and James Madison, explained the importance of a strong central government. It was published to convince New York to ratify the Constitution."},
+      {"number": 239, "term": "\"The Federalist, # 10\"", "definition": "This essay from the Federalist Papers proposed setting up a republic to solve the problems of a large democracy (anarchy, rise of factions which disregard public good)."},
+      {"number": 240, "term": "Bill of Rights adopted, 1791", "definition": "The first ten amendments to the Constitution, which limit government power to interfere with certain individual rights and further define the nature of the relationship between the powers of the federal and state governments."},
+      {"number": 241, "term": "President George Washington", "definition": "He established many of the presidential traditions, including limiting a president's tenure to two terms. He was against political parties and strove for political balance in government by appointing political adversaries to government positions."},
+      {"number": 242, "term": "Vice-president John Adams", "definition": "A Federalist, he had little say in Washington’s administration."},
+      {"number": 243, "term": "Judiciary Act, 1789", "definition": "Established the federal court system, defined jurisdictions, and enabled the presidential appointment (with Senate confirmation) of federal judges and magistrates."},
+      {"number": 244, "term": "Sec. of the Treasury Hamilton", "definition": "A leading Federalist, he supported industry and strong central government. He created the National Bank and managed to pay off the U.S.’s early debts through tariffs and the excise tax on whiskey."},
+      {"number": 245, "term": "Sec. of State Jefferson", "definition": "A leading Democratic-Republican, he opposed Hamilton’s ideas. Washington tended to side with Hamilton, so Jefferson resigned."},
+      {"number": 246, "term": "Sec. of War Knox", "definition": "A Revolutionary War hero, Henry Knox had served as Secretary of War under the Articles of Confederation and stayed on in that capacity as part of Washington’s cabinet."},
+      {"number": 247, "term": "Attorney General Randolph", "definition": "Edmund Randolph had been General Washington's aide-de-camp at the outbreak of the Revolution and served both as a Virginia delegate to the Continental Congress and as Governor of Virginia from 1786-1788. He submitted the Virginia Plan at the Constitutional Convention. From 1789-1794 he served as U.S. Attorney General, and then succeeded Jefferson as Sec. of State. In 1795 he resigned form office after being falsely accused of receiving money from France to influence Washington’s administration against Great Britain, although his name was eventually cleared by the French government."},
+      {"number": 248, "term": "Hamilton’s Program", "definition": "Designed to pay off the U.S.’s war debts and stabilize the economy, he believed that the United States should become a leading international commercial power. His programs included the creation of the National Bank, the establishment of the U.S.’s credit rate, increased tariffs, and an excise tax on whiskey. Also, he insisted that the federal government assume debts incurred by the states during the war."},
+      {"number": 249, "term": "Tariff of 1789", "definition": "Designed to raise revenue for the federal government, resulted in a government surplus."},
+      {"number": 250, "term": "Bank of the United States", "definition": "Part of Hamilton’s Plan, it would hold the government’s surplus money and serve as a national lending institution."},
+      {"number": 251, "term": "National debt, state debt, foreign debt", "definition": "The U.S.’s national debt included domestic debt owed to soldiers and others who had not yet been paid for their Revolutionary War services, plus foreign debt to other countries which had helped the U.S. The federal government also assumed all the debts incurred by the states during the war. Hamilton’s program paid off these debts."},
+      {"number": 252, "term": "Excise taxes", "definition": "Taxes placed on manufactured products. The excise tax on whiskey helped raise revenue for Hamilton’s program."},
+      {"number": 253, "term": "Report on Manufactures (1791)", "definition": "A document submitted to Congress, which set up an economic policy to encourage industry."},
+      {"number": 254, "term": "Implied powers, elastic clause, necessary and proper clause", "definition": "Section 8 of Article I contains a long list of powers specifically granted to Congress, and ends with the statement that Congress shall also have the power \"to make all laws which shall be necessary and proper for carrying into execution the foregoing powers.\" These unspecified powers are known as Congress' \"implied\" powers. There has long been a debate as to how much power this clause grants to Congress, which is sometimes referred to as the \"elastic\" clause because it can be \"stretched\" to include almost any other power that Congress might try to assert."},
+      {"number": 255, "term": "Loose, strict interpretation of the Constitution", "definition": "Loose interpretation allows the government to do anything which the Constitution does not specifically forbid it from doing. Strict interpretation forbids the government from doing anything except what the Constitution specifically empowers it to do."},
+      {"number": 256, "term": "Compromise of 1790 (District of Columbia)", "definition": "Hamilton’s plan for the federal government to assume the Revolutionary War debts of the states was deadlocked in Congress. Southern states opposed the national government assuming debts which largely derived from Northern states. A compromise was struck; in exchange for passing Hamilton’s debt plan, the norther states would agree to moving the national capital to a location between Maryland and Virginia (to become the District of Columbia). Alexander Hamilton and Thomas Jefferson were in the room where it happened."},
+      {"number": 257, "term": "Naturalization Act of 1790", "definition": "Set the length of time which immigrants must live in the U.S. in order to become legal citizens. Immigrants must reside in the US for 2 years and be free white persons of good moral character."},
+      {"number": 258, "term": "Major L’Enfant, Benjamin Banneker", "definition": "Architects of Washington, D.C."},
+      {"number": 259, "term": "Whiskey Rebellion", "definition": "In 1794, farmers in Pennsylvania rebelled against Hamilton's excise tax on whiskey, and several federal officers were killed in the riots caused by their attempts to serve arrest warrants on the offenders. In October 1794, the army, led by Washington, put down the rebellion. The incident showed that the new government under the Constitution could react swiftly and effectively to such a problem, in contrast to the inability of the government under the Articles of Confederation to deal with Shay’s Rebellion."},
+      {"number": 260, "term": "Washington’s Farewell Address", "definition": "He warned against the dangers of political parties and foreign alliances."},
+      {"number": 261, "term": "Election of 1796: President Adams, Vice-president Jefferson", "definition": "The first true election (when Washington ran, there was never any question that he would be elected). Adams was a Federalist and Jefferson was a Democratic-Republican."},
+      {"number": 262, "term": "New states: Vermont, Kentucky, Tennessee", "definition": "After the western land claims were settled, Vermont, Kentucky, and Tennessee (in that order) were added to the United States under the Constitution."},
+      {"number": 263, "term": "Federalists and Democratic-Republicans", "definition": "The first two political parties. Many of the Democratic-Republicans had earlier been members of the Antifederalists, which had never organized into a formal political party."},
+      {"number": 264, "term": "Federalists / Democratic-Republicans: Party leaders", "definition": "The leading Federalists were Alexander Hamilton and John Adams. The leading Democratic-Republicans were Thomas Jefferson and James Madison."},
+      {"number": 265, "term": "Federalists / Democratic-Republicans: Programs", "definition": "Federalist programs were the National Bank and taxes to support the growth of industry. The Democratic-Republicans opposed these programs, favoring state banks and no direct support for industry."},
+      {"number": 266, "term": "Federalists / Democratic-Republicans: Philosophies", "definition": "Federalists believed in a strong central government, a strong army, industry, and loose interpretation of the Constitution. Democratic-Republicans believed in a weak central government, state and individual rights, and strict interpretation of the Constitution."},
+      {"number": 267, "term": "Federalists / Democratic-Republicans: Foreign Policy", "definition": "Federalists supported Britain, while the Democratic-Republicans felt that France was the U.S.’s most important ally."},
+      {"number": 268, "term": "Society of the Cincinnati", "definition": "A secret society formed by officers of the Continental Army. The group was named for George Washington, whose nickname was Cincinnatus, although Washington himself was not involved in the society."},
+      {"number": 269, "term": "Democratic societies", "definition": "Clubs which met for discussion, designed to keep alive the philosophies of the American Revolution. They were sometimes called Jacobean clubs because they also supported the French Revolution."},
+      {"number": 270, "term": "Alien and Sedition Acts", "definition": "These consist of four laws passed by the Federalist Congress and signed by President Adams in 1798: the Naturalization Act, which increased the waiting period for an immigrant to become a citizen from 5 to 14 years; the Alien Act, which empowered the president to arrest and deport dangerous aliens; the Alien Enemy Act, which allowed for the arrest and deportation of citizens of countries at was with the US; and the Sedition Act, which made it illegal to publish defamatory statements about the federal government or its officials. The first 3 were enacted in response to the XYZ Affair, and were aimed at French and Irish immigrants, who were considered subversives. The Sedition Act was an attempt to stifle Democratic-Republican opposition, although only 25 people were ever arrested, and only 10 convicted, under the law. The Kentucky and Virginia Resolutions, which initiated the concept of \"nullification\" of federal laws were written in response to the Acts."},
+      {"number": 271, "term": "Virginia and Kentucky Resolutions", "definition": "Written anonymously by Jefferson and Madison in response to the Alien and Sedition Acts, they declared that states could nullify federal laws that the states considered unconstitutional."},
+      {"number": 272, "term": "Doctrine of Nullification", "definition": "Expressed in the Virginia and Kentucky Resolutions, it said that states could nullify federal laws."},
+      {"number": 273, "term": "Election of 1800", "definition": "The two Democratic-Republicans Thomas Jefferson and Aaron Burr defeated Federalist John Adams but tied with each other. The final decision went the House of Representatives, where there was another tie. After a long series of ties in the House, Jefferson was finally chosen as president. Burr became vice-president. This led to the 12th Amendment, which requires the president and vice-president of the same party to run on the same ticket."},
+      {"number": 274, "term": "Revolution of 1800", "definition": "Jefferson’s election changed the direction of the government from Federalist to Democratic-Republican, so it was called a \"revolution.\""},
+      {"number": 275, "term": "Jefferson’s Inaugural Address", "definition": "Continued Washington’s policy of avoiding foreign alliances. Also sought to bridge the partisan divide which had manifested during the 1800 campaign by declaring, “We are all republicans, we are all federalists.”"},
+      {"number": 276, "term": "12th Amendment", "definition": "Brought about by the Jefferson/Burr tie, stated that presidential and vice-presidential nominees would run on the same party ticket. Before that time, all of the candidates ran against each other, with the winner becoming president and second place becoming vice-president."},
+      {"number": 277, "term": "Second Great Awakening", "definition": "A series of religious revivals starting in 1801, based on Methodism and Baptism. Stressed a religious philosophy of salvation through good deeds and tolerance for all Protestant sects. The revivals attracted women, Blacks, and Native Americans."},
+      {"number": 278, "term": "Gilbert Stuart (1755-1828)", "definition": "American painter, most famous for painting the portrait of Washington which was copied for the one-dollar bill."},
+      {"number": 279, "term": "Charles Wilson Peale (1741-1827)", "definition": "An American naturalist painter. Famous for portraits of George Washington, John Hancock, Benjamin Franklin, Thomas Jefferson, and Alexander Hamilton."},
+      {"number": 280, "term": "Franco-American Alliance of 1778", "definition": "France aided the U.S. in the American Revolution, and the U.S. agreed to aid France if the need ever arose. Although France could have used American aid during the French Revolution, the U.S. did not do anything to help. The U.S. did not fulfill their part of the agreement until World War I."},
+      {"number": 281, "term": "French Revolution", "definition": "The second great democratic revolution, taking place in the 1790s, after the American Revolution had been proven to be a success. The U.S. did nothing to aid either side. The French people overthrew the king and his government, and then instituted a series of unsuccessful democratic governments until Napoleon took over as dictator in 1799."},
+      {"number": 282, "term": "Citizen Genêt", "definition": "Edmond Charles Genêt. A French diplomat who came to the U.S. 1793 to ask the American government to send money and troops to aid the revolutionaries in the French Revolution. President Washington asked France to recall Genêt after Genêt began recruiting men and arming ships in U.S. ports. However, Washington later relented and allowed Genêt U.S. citizenship upon learning that the new French government planned to arrest Genêt."},
+      {"number": 283, "term": "Neutrality Proclamation", "definition": "Washington’s declaration that the U.S. would not take sides after the French Revolution touched off a war between France and a coalition consisting primarily of England, Austria and Prussia. Washington's Proclamation was technically a violation of the Franco-American Treaty of 1778."},
+      {"number": 284, "term": "XYZ Affair, Talleyrand", "definition": "1798 - A commission had been sent to France in 1797 to discuss the disputes that had arisen out of the U.S.'s refusal to honor the Franco-American Treaty of 1778. President Adams had also criticized the French Revolution, so France began to break off relations with the U.S. Adams sent delegates to meet with French foreign minister Talleyrand in the hopes of working things out. Talleyrand’s three agents told the American delegates that they could meet with Talleyrand only in exchange for a very large bribe. The Americans did not pay the bribe, and in 1798 Adams made the incident public, substituting the letters \"X, Y and Z\" for the names of the three French agents in his report to Congress."},
+      {"number": 285, "term": "Undeclared Naval War with France", "definition": "Beginning in 1794, the French had began seizing American vessels in retaliation for Jay's Treaty, so Congress responded by ordering the navy to attack any French ships on the American coast. The conflict became especially violent after the XYZ Affair. A peace convention in 1800 with the newly installed dictator, Napoleon, ended the conflict."},
+      {"number": 286, "term": "Convention of 1800", "definition": "A conference between the U.S. and France which ended the naval hostilities."},
+      {"number": 287, "term": "British seizure of American ships", "definition": "France blocked English ports during the Napoleonic Wars of the early 1800s; England responded by blocking French ports. The British seized neutral American merchant ships which tried to trade at French ports."},
+      {"number": 288, "term": "\"Rule of 1756\"", "definition": "A British proclamation that said that neutral countries could not trade with both of two warring nations; they had to chose sides and only trade with one of the nations. This justified Britain’s seizure of neutral American ships during the war between Britain and France in the early 1800s."},
+      {"number": 289, "term": "Northwest posts", "definition": "British fur-trading posts in the Northwest Territory. Their presence in the U.S. led to continued British-American conflicts."},
+      {"number": 290, "term": "Jay’s Treaty (1794)", "definition": "Signed in the hopes of settling the growing conflicts between the U.S. and Britain. It dealt with the Northwest posts and trade on the Mississippi River. It was unpopular with most Americans because it did not punish Britain for the attacks on neutral American ships. It was particularly unpopular with France, because the U.S. also accepted the British restrictions on the rights of neutrals."},
+      {"number": 291, "term": "Washington’s Farewell Address", "definition": "He warned against the dangers of political parties and foreign alliances."},
+      {"number": 292, "term": "Pickney’s Treaty", "definition": "1795 - Treaty between the U.S. and Spain which gave the U.S. the right to transport goods on the Mississippi river and to store goods in the Spanish port of New Orleans."},
+      {"number": 293, "term": "Spanish intrigue in the Southwest", "definition": "During the late 1700s/early 1800s Spain was exploring and settling the region which is now the Southwest U.S. The Spanish used the Indians of Florida and Georgia as spies and encouraged the tribes to raid U.S. settlements, which contributed to the outbreak of the War of 1812. Zebulon Pike used his expedition to the West as an opportunity to spy on the Spanish and map out their land."},
+      {"number": 294, "term": "James Wilkinson (1759-1825)", "definition": "Wilkinson had been an officer in the Continental Army, and later held several positions relating to the Army, such as secretary of the board of war and clothier general to the army. He was one of the Commissioners appointed to receive the Purchase Louisiana from the French and served as Governor of Louisiana from 1805-1806. He informed Pres. Jefferson of Burr's conspiracy to take over Louisiana and was the primary witness against Burr at his treason trial, even though Wilkinson was himself implicated in the plot."},
+      {"number": 295, "term": "\"Mad\" Anthony Wayne, Battle of Fallen Timbers", "definition": "Wayne had been one of the leading generals of the Continental Army and had played a crucial role in the defeat of Cornwallis at Yorktown. In the early 1790's, the British held trading posts in the Ohio Valley and encouraged the local Indian tribes to attack the Americans. Led by Wayne, the Americans defeated the Miami Indians in the Battle of Fallen Timbers on August 20, 1794 near what is today Toledo, Ohio. This paved the way for American settlement of the Ohio Valley."},
+      {"number": 296, "term": "Treaty of Greenville, 1795", "definition": "Drawn up after the Battle of Fallen Timbers. The 12 local Indian tribes gave the Americans the Ohio Valley territory in exchange for a reservation and $10,000."},
+      {"number": 297, "term": "Barbary Pirates", "definition": "The name given to several renegade countries on the Mediterranean coast of North Africa who demanded tribute in exchange for refraining from attacking ships in the Mediterranean. From 1795-1801, the U.S. paid the Barbary states for protection against the pirates. Jefferson stopped paying the tribute, and the U.S. fought the Barbary Wars (1801-1805) against the countries of Tripoli and Algeria. The war was inconclusive, and the U.S. went back to paying the tribute."},
+      {"number": 298, "term": "Rutgers v. Waddington (1784)", "definition": "In 1783, the New York State Legislature passed the Trespass Act, which allowed landowners whose property had been occupied by the British during the Revolution to sue for damages. Rutgers sued in the Mayor’s Court over the seizure of her brewery, and the Mayor, James Duane, declared the Act void because it conflicted with a provision of the Treaty of Paris. It was the first time a U.S. court had declared a law unconstitutional and was an important precedent for the later U.S. Supreme Court decision in Marbury v. Madison."},
+      {"number": 299, "term": "Trevett v. Weeden (1787)", "definition": "Occurred under the Articles of Confederation, when each state had a different type of currency. Acts passed by the Rhode Island Legislature imposed heavy fines on those who refused to accept the state’s depreciated currency at face value. Weeden was acquitted on the grounds that the acts were unconstitutional."},
+      {"number": 300, "term": "Bayard v. Singleton (1787)", "definition": "First court decision in which a law was found unconstitutional based on a written constitution."}
+    );
+    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-300-v1";
+    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-200-v1","flashcards-apush-eptl-1-150-v1","flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
+    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3,4,5,6].includes(activeApushSet))activeApushSet=1;
     const apushSetIndices=()=>Array.from({length:50},(_,i)=>(activeApushSet-1)*50+i);
     let apushOrder = apushSetIndices(), apushPos = 0;
     let apushStats = (()=>{
@@ -2789,7 +4373,7 @@
       document.getElementById("apushProgressText").textContent=`${mastered} of ${indices.length} mastered`;
     }
     function setActiveApushSet(setNumber){
-      const n=Number(setNumber);if(![1,2,3,4].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
+      const n=Number(setNumber);if(![1,2,3,4,5,6].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
       apushOrder=apushSetIndices();apushPos=0;
       const range=`${(n-1)*50+1}–${n*50}`;document.getElementById("apushEyebrow").textContent=`AP United States History · EPTLs ${range}`;document.getElementById("apush-title").textContent=`EPTLs ${range}`;
       updateCourseNav("apush");renderApushCard();
