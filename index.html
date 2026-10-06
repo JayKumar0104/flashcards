@@ -542,6 +542,7 @@
         <button class="nav-btn" data-course-nav="lang" data-view="review" hidden>Review</button>
         <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
         <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
+        <button class="nav-btn" data-course-nav="apush" data-view="apushsets" hidden>Sets</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apush" hidden>Flashcards</button>
       </nav>
     </div>
@@ -573,6 +574,7 @@
         <button class="course-card" data-lang-set="5"><h2>Set 5</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">Speaking &amp; Expression</p></button>
         <button class="course-card" data-lang-set="6"><h2>Set 6</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -pli-</p></button>
         <button class="course-card" data-lang-set="7"><h2>Set 7</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -spec-</p></button>
+        <button class="course-card" data-lang-set="8"><h2>Set 8</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Roots -val- &amp; -vince-</p></button>
       </div>
     </section>
 
@@ -679,7 +681,13 @@
         <div class="test-part-grid" aria-label="Test-part drills">
           <button class="test-part-card" data-part-start="spelling"><span class="part-number">Part 1</span><strong>Dictation & spelling</strong><p>Hear each vocabulary word and type the exact spelling.</p></button>
           <button class="test-part-card" data-part-start="matching"><span class="part-number">Part 2</span><strong>Definition matching</strong><p>Match every word to a shuffled definition bank; each definition can be used once.</p></button>
-          <button class="test-part-card" data-part-start="part3"><span class="part-number">Part 3</span><strong>Application set</strong><p>Usage true/false, typed derivatives, and a paired-word short answer.</p></button>
+          <button class="test-part-card" data-part-start="part3"><span class="part-number">Part 3</span><strong>Application set</strong><p id="part3CardDesc">Usage true/false, typed derivatives, and a paired-word short answer.</p></button>
+        </div>
+        <div style="display:flex; justify-content:flex-end; align-items:center; margin-top:10px; margin-bottom:8px;">
+          <label style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; user-select:none;">
+            <input type="checkbox" id="part3IncludeSentence" checked style="accent-color:var(--navy); width:16px; height:16px; cursor:pointer;">
+            <span>Include 2-word sentence prompt in Part 3</span>
+          </label>
         </div>
         <div class="setup-grid">
           <div class="setup-row">
@@ -892,11 +900,18 @@
         <button class="course-card" data-apush-set="4"><h2>EPTLs 151–200</h2></button>
         <button class="course-card" data-apush-set="5"><h2>EPTLs 201–250</h2></button>
         <button class="course-card" data-apush-set="6"><h2>EPTLs 251–300</h2></button>
+        <button class="course-card" data-apush-set="7"><h2>EPTLs 301–350</h2></button>
+        <button class="course-card" data-apush-set="8"><h2>EPTLs 351–400</h2></button>
+        <button class="course-card" data-apush-set="9"><h2>EPTLs 401–450</h2></button>
+        <button class="course-card" data-apush-set="10"><h2>EPTLs 451–500</h2></button>
       </div>
     </section>
 
     <section id="apush" class="view" aria-labelledby="apush-title">
-      <button class="btn btn-light btn-small course-back" data-view="classes">← Classes</button>
+      <div style="display:flex;gap:8px;margin-bottom:18px;">
+        <button class="btn btn-light btn-small" data-view="apushsets">← Sets</button>
+        <button class="btn btn-light btn-small" data-view="classes">← Classes</button>
+      </div>
       <div class="physics-hero page-intro">
         <div>
           <span id="apushEyebrow" class="eyebrow">AP United States History · EPTLs 1–50</span>
@@ -5141,6 +5156,1056 @@
       }
 ];
 
+    const LANG_SET8_WORDS = [
+  {
+    "word": "ambivalence",
+    "part": "noun",
+    "definition": "the presence of conflicting or opposing ideas or feelings; uncertainty or indecisiveness about which course to follow",
+    "forms": [
+      { "word": "ambivalence", "part": "noun", "level": "packet" },
+      { "word": "ambivalent", "part": "adjective", "level": "packet" },
+      { "word": "ambivalently", "part": "adverb", "level": "extended" }
+    ],
+    "example": "Sanjay felt ambivalence toward his difficult but worthwhile job, proud of the mission yet exhausted by the relentless demands.",
+    "cloze": "When asked whether she preferred moving across the country or staying near family, her ___ was evident when she said, 'I can\\'t decide.'",
+    "answer": ["ambivalence"],
+    "options": ["ambivalence", "valiance", "countervailing", "evaluation"]
+  },
+  {
+    "word": "avail",
+    "part": "verb",
+    "definition": "to be of use, advantage, or help; use, benefit, or advantage",
+    "forms": [
+      { "word": "avail", "part": "verb/noun", "level": "packet" },
+      { "word": "availed", "part": "verb", "level": "packet" },
+      { "word": "availing", "part": "verb", "level": "packet" },
+      { "word": "unavailing", "part": "adjective", "level": "extended" }
+    ],
+    "example": "She availed herself of every opportunity at the university, utilizing campus research labs, workshops, and career counseling.",
+    "cloze": "The rescue team tried repeatedly to restart the stalled generator, but their frantic efforts were to no ___ in the freezing blizzard.",
+    "answer": ["avail"],
+    "options": ["avail", "prevail", "vanquish", "evince"]
+  },
+  {
+    "word": "countervailing",
+    "part": "adjective",
+    "definition": "acting against something so as to cancel or offset its effect; counteractive",
+    "forms": [
+      { "word": "countervailing", "part": "adjective", "level": "packet" },
+      { "word": "countervail", "part": "verb", "level": "packet" },
+      { "word": "countervailed", "part": "verb", "level": "packet" },
+      { "word": "countervails", "part": "verb", "level": "packet" }
+    ],
+    "example": "Opposing concrete abutments provide a countervailing force that offsets the enormous tension exerted by suspension bridge cables.",
+    "cloze": "Economists argued that increased consumer spending acted as a ___ influence, balancing out the sharp decline in foreign exports.",
+    "answer": ["countervailing"],
+    "options": ["countervailing", "prevailing", "invaluable", "ambivalent"]
+  },
+  {
+    "word": "evaluate",
+    "part": "verb",
+    "definition": "to judge or determine the value, quality, condition, or performance of something",
+    "forms": [
+      { "word": "evaluate", "part": "verb", "level": "packet" },
+      { "word": "evaluates", "part": "verb", "level": "packet" },
+      { "word": "evaluated", "part": "verb", "level": "packet" },
+      { "word": "evaluating", "part": "verb", "level": "packet" },
+      { "word": "evaluation", "part": "noun", "level": "packet" },
+      { "word": "evaluative", "part": "adjective", "level": "extended" },
+      { "word": "evaluator", "part": "noun", "level": "extended" }
+    ],
+    "example": "Standardized benchmark tests are designed to evaluate student progress and pinpoint concepts that require additional review.",
+    "cloze": "Before issuing a driver's license, the state examiner must thoroughly ___ the applicant's road judgment and vehicle control.",
+    "answer": ["evaluate"],
+    "options": ["evaluate", "evince", "prevail", "vanquish"]
+  },
+  {
+    "word": "evince",
+    "part": "verb",
+    "definition": "to show or demonstrate clearly",
+    "forms": [
+      { "word": "evince", "part": "verb", "level": "packet" },
+      { "word": "evinces", "part": "verb", "level": "packet" },
+      { "word": "evinced", "part": "verb", "level": "packet" },
+      { "word": "evincing", "part": "verb", "level": "packet" }
+    ],
+    "example": "When confronted with the shocking video footage, his widening eyes and dropped jaw clearly evinced disbelief.",
+    "cloze": "Community volunteers consistently ___ an unselfish spirit, devoting their weekends to stocking food banks and tutoring children.",
+    "answer": ["evince"],
+    "options": ["evince", "evaluate", "countervail", "avail"]
+  },
+  {
+    "word": "invaluable",
+    "part": "adjective",
+    "definition": "priceless; having a value too great to be measured",
+    "forms": [
+      { "word": "invaluable", "part": "adjective", "level": "packet" },
+      { "word": "invaluably", "part": "adverb", "level": "extended" }
+    ],
+    "example": "A unique photograph of a deceased relative is an invaluable keepsake whose sentimental worth cannot be calculated in money.",
+    "cloze": "The veteran surgeon's advice during the unexpected emergency proved ___, guiding the surgical team safely through the operation.",
+    "answer": ["invaluable"],
+    "options": ["invaluable", "valiant", "ambivalent", "countervailing"]
+  },
+  {
+    "word": "prevail",
+    "part": "verb",
+    "definition": "to triumph or win out; to be current or in use; to persuade successfully",
+    "forms": [
+      { "word": "prevail", "part": "verb", "level": "packet" },
+      { "word": "prevails", "part": "verb", "level": "packet" },
+      { "word": "prevailed", "part": "verb", "level": "packet" },
+      { "word": "prevailing", "part": "adjective", "level": "packet" },
+      { "word": "prevalence", "part": "noun", "level": "extended" },
+      { "word": "prevalent", "part": "adjective", "level": "extended" }
+    ],
+    "example": "Despite intense pressure from special interest groups, common sense and public welfare ultimately prevailed in the senate vote.",
+    "cloze": "Although modern trends dominate urban centers, ancient hospitality traditions still ___ throughout the rural mountain valleys.",
+    "answer": ["prevail"],
+    "options": ["prevail", "avail", "vanquish", "evaluate"]
+  },
+  {
+    "word": "valedictorian",
+    "part": "noun",
+    "definition": "the student with the highest academic rank in a graduating class who usually delivers the farewell speech",
+    "forms": [
+      { "word": "valedictorian", "part": "noun", "level": "packet" },
+      { "word": "valedictory", "part": "adjective/noun", "level": "packet" },
+      { "word": "valediction", "part": "noun", "level": "extended" }
+    ],
+    "example": "Because she achieved the highest grade point average across four years of rigorous coursework, Maya was honored as class valedictorian.",
+    "cloze": "At commencement, the ___ delivered an inspiring speech encouraging fellow graduates to pursue excellence with empathy.",
+    "answer": ["valedictorian"],
+    "options": ["valedictorian", "valedictory", "valiance", "ambivalence"]
+  },
+  {
+    "word": "valiant",
+    "part": "adjective",
+    "definition": "brave; courageous; showing courage and boldness",
+    "forms": [
+      { "word": "valiant", "part": "adjective", "level": "packet" },
+      { "word": "valiance", "part": "noun", "level": "packet" },
+      { "word": "valiantly", "part": "adverb", "level": "packet" }
+    ],
+    "example": "The paramedic made a valiant effort to reach the trapped passengers before floodwaters engulfed the submerged vehicle.",
+    "cloze": "The under-equipped fire crew demonstrated extraordinary ___ as they stood their ground to keep the wildfire from entering the town.",
+    "answer": ["valiant"],
+    "options": ["valiant", "valiance", "invaluable", "prevailing"]
+  },
+  {
+    "word": "vanquish",
+    "part": "verb",
+    "definition": "to defeat, overcome, conquer, or subdue completely",
+    "forms": [
+      { "word": "vanquish", "part": "verb", "level": "packet" },
+      { "word": "vanquishes", "part": "verb", "level": "packet" },
+      { "word": "vanquished", "part": "verb", "level": "packet" },
+      { "word": "vanquishing", "part": "verb", "level": "packet" },
+      { "word": "vanquisher", "part": "noun", "level": "extended" }
+    ],
+    "example": "Seth wrestled with fierce concentration and vanquished his opponent in the final seconds of the state tournament match.",
+    "cloze": "With patience, encouraging mentors, and steady practice, the young debater managed to figuratively ___ her lifelong fear of public speaking.",
+    "answer": ["vanquish"],
+    "options": ["vanquish", "prevail", "evaluate", "countervail"]
+  }
+];
+
+const LANG_SET8_USAGE = [
+  // --- True usages: packet examples, primary meanings, alternate definitions ---
+  {
+    "word": "ambivalence",
+    "statement": "Sanjay felt deep ambivalence toward his difficult but worthwhile job, loving its public impact while dreading its exhausting hours.",
+    "answer": true,
+    "why": "Ambivalence correctly refers to the coexistence of conflicting or opposing feelings toward something."
+  },
+  {
+    "word": "ambivalence",
+    "statement": "Parents frequently experience poignant ambivalence on the day their oldest child leaves for college, feeling immensely proud yet deeply sorrowful.",
+    "answer": true,
+    "why": "Ambivalence specifically captures simultaneous conflicting emotions, such as pride and sorrow."
+  },
+  {
+    "word": "ambivalence",
+    "statement": "Facing two contradictory career opportunities, the undecided graduate confessed, 'I can't decide which path to follow,' admitting her lingering ambivalence.",
+    "answer": true,
+    "why": "Ambivalence encompasses indecisiveness and uncertainty between opposing courses of action."
+  },
+  {
+    "word": "avail",
+    "statement": "The determined student availed herself of every academic opportunity, attending office hours, study groups, and writing center workshops.",
+    "answer": true,
+    "why": "Avail oneself of is a critical idiom meaning to make use of or take advantage of an opportunity or resource."
+  },
+  {
+    "word": "avail",
+    "statement": "The hikers tried repeatedly to start a campfire with damp kindling, but their shivering efforts were to no avail.",
+    "answer": true,
+    "why": "To no avail correctly means without success, uselessly, or in vain."
+  },
+  {
+    "word": "avail",
+    "statement": "During the long winter blockade, the isolated villagers had to avail themselves of all available root crops stored in cellars.",
+    "answer": true,
+    "why": "Avail oneself of correctly denotes taking advantage of or utilizing existing resources."
+  },
+  {
+    "word": "avail",
+    "statement": "The physician warned that expensive medication would be of little avail unless the patient also adopted necessary lifestyle changes.",
+    "answer": true,
+    "why": "As a noun, avail correctly signifies benefit, use, or help."
+  },
+  {
+    "word": "countervailing",
+    "statement": "Reinforced retaining walls on either side of the excavation provided a countervailing force that offset the pressure of shifting mud.",
+    "answer": true,
+    "why": "Countervailing correctly describes an opposing force acting against another so as to cancel or offset its effect."
+  },
+  {
+    "word": "countervailing",
+    "statement": "During regional planning debates, pressing economic needs often countervail long-term environmental protection priorities.",
+    "answer": true,
+    "why": "The verb countervail correctly means to act against something to offset or counteract its influence."
+  },
+  {
+    "word": "countervailing",
+    "statement": "The underdog team's disciplined defensive efforts countervailed their opponents' explosive offense, keeping the score deadlocked.",
+    "answer": true,
+    "why": "Countervailed correctly means offset, countered, or balanced the effect of an opposing force."
+  },
+  {
+    "word": "evaluate",
+    "statement": "Standardized midterm examinations are administered to evaluate student progress and pinpoint areas requiring remediation.",
+    "answer": true,
+    "why": "Evaluate correctly means to judge, assess, or determine the quality, performance, or condition of something."
+  },
+  {
+    "word": "evaluate",
+    "statement": "During the behind-the-wheel exam, the state official evaluated the applicant's lane positioning, mirror checks, and brake control.",
+    "answer": true,
+    "why": "Evaluate correctly denotes systematically assessing driving performance and competence."
+  },
+  {
+    "word": "evaluate",
+    "statement": "At the conclusion of the fiscal year, department supervisors formally evaluate each employee's contributions and professional growth.",
+    "answer": true,
+    "why": "Evaluate correctly refers to appraising and determining employee performance."
+  },
+  {
+    "word": "evaluate",
+    "statement": "Historians offered a mixed evaluation of the prime minister's wartime administration, praising his courage while criticizing his diplomacy.",
+    "answer": true,
+    "why": "Evaluation correctly denotes a formal judgment, appraisal, or assessment."
+  },
+  {
+    "word": "evince",
+    "statement": "When the spoiled carton of milk was opened, the customer's wrinkled nose and backward recoil clearly evinced disgust.",
+    "answer": true,
+    "why": "Evince correctly means to display, show, or demonstrate an emotion or reaction clearly."
+  },
+  {
+    "word": "evince",
+    "statement": "Tears welling silently in the listener's eyes may evince profound sadness even before a single sorrowful word is uttered.",
+    "answer": true,
+    "why": "Evince correctly means to reveal or demonstrate a feeling clearly through visible signs."
+  },
+  {
+    "word": "evince",
+    "statement": "A tireless charity volunteer usually evinces an unselfish spirit through daily acts of kindness toward strangers.",
+    "answer": true,
+    "why": "Evinces correctly describes exhibiting or clearly demonstrating a virtuous disposition."
+  },
+  {
+    "word": "evince",
+    "statement": "Consumer advocacy groups lamented that pharmaceutical companies evinced little interest in developing treatments for rare disorders.",
+    "answer": true,
+    "why": "Evinced correctly signifies showing or manifesting little concern or engagement."
+  },
+  {
+    "word": "invaluable",
+    "statement": "A lone surviving photograph of a beloved deceased grandparent is an invaluable family treasure that insurance money could never replace.",
+    "answer": true,
+    "why": "Invaluable correctly means priceless, possessing worth far too great to be calculated in money."
+  },
+  {
+    "word": "invaluable",
+    "statement": "Discovering an effective, universally accessible cure for malaria would be an invaluable breakthrough for global public health.",
+    "answer": true,
+    "why": "Invaluable correctly describes an achievement of immeasurable, priceless benefit."
+  },
+  {
+    "word": "invaluable",
+    "statement": "Satellite communications technology proved invaluable for coordinating first responders during the massive hurricane recovery.",
+    "answer": true,
+    "why": "Invaluable correctly denotes assistance or technology whose high utility and worth cannot be overstated."
+  },
+  {
+    "word": "prevail",
+    "statement": "Philosophers throughout history have argued that ethical truth and human dignity will ultimately prevail over injustice and tyranny.",
+    "answer": true,
+    "why": "Prevail correctly means to triumph, win out, or be greater in strength and moral influence."
+  },
+  {
+    "word": "prevail",
+    "statement": "Despite rapid globalization, the ancient custom of taking an afternoon siesta still prevails in small Mediterranean towns.",
+    "answer": true,
+    "why": "Prevail correctly means to be current, in active use, or widespread in a society."
+  },
+  {
+    "word": "prevail",
+    "statement": "After hours of patient persuasion, the weary travelers prevailed upon the innkeeper to let them shelter in the barn for the night.",
+    "answer": true,
+    "why": "Prevail upon someone is a crucial idiom meaning to persuade or convince someone successfully."
+  },
+  {
+    "word": "prevail",
+    "statement": "During the heated city council debate, the prevailing opinion among residents strongly favored constructing a new public library.",
+    "answer": true,
+    "why": "Prevailing correctly functions as an adjective meaning dominant, current, or widely accepted."
+  },
+  {
+    "word": "prevail",
+    "statement": "When fatigue tempted Zach to abandon the grueling mountain trek, his trail companions prevailed upon him to finish the final mile.",
+    "answer": true,
+    "why": "Prevailed upon correctly describes successfully urging or persuading someone to take action."
+  },
+  {
+    "word": "valedictorian",
+    "statement": "Having earned the highest cumulative grade point average over four rigorous years, Julian was chosen as the senior class valedictorian.",
+    "answer": true,
+    "why": "Valedictorian correctly names the graduating student with the highest academic rank in a class."
+  },
+  {
+    "word": "valedictorian",
+    "statement": "Before handing over executive authority, the outgoing university president delivered an eloquent valedictory address to the assembled faculty.",
+    "answer": true,
+    "why": "Valedictory correctly functions as an adjective meaning relating to a farewell or closing speech."
+  },
+  {
+    "word": "valedictorian",
+    "statement": "A high school valedictorian would normally possess exemplary study habits, stellar grades, and strong intellectual discipline.",
+    "answer": true,
+    "why": "Valedictorian correctly designates the top-ranked student in a graduating cohort."
+  },
+  {
+    "word": "valiant",
+    "statement": "A courageous paramedic who plunges into an icy river to extricate a trapped passenger acts valiantly in the face of imminent danger.",
+    "answer": true,
+    "why": "Valiantly correctly describes acting bravely and courageously under peril."
+  },
+  {
+    "word": "valiant",
+    "statement": "Despite suffering multiple equipment failures, the search-and-rescue squad made a valiant effort to reach the stranded climbers.",
+    "answer": true,
+    "why": "Valiant correctly describes an endeavor showing courage, determination, and boldness."
+  },
+  {
+    "word": "valiant",
+    "statement": "City leaders awarded commemorative medals to the firefighters who demonstrated extraordinary valiance during the chemical plant blaze.",
+    "answer": true,
+    "why": "Valiance is the noun form naming courage, bravery, and boldness."
+  },
+  {
+    "word": "valiant",
+    "statement": "In historic battle records, the infantry unit was commended for performing valiantly while holding the defensive perimeter against superior numbers.",
+    "answer": true,
+    "why": "Valiantly is the adverb form meaning bravely and boldly."
+  },
+  {
+    "word": "vanquish",
+    "statement": "Relying on superior leverage and relentless physical stamina, Seth vanquished his heavyweight opponent in the championship wrestling final.",
+    "answer": true,
+    "why": "Vanquished correctly means defeated, conquered, or subdued an opponent."
+  },
+  {
+    "word": "vanquish",
+    "statement": "During antiquity, the legions of the Roman Empire were trained to vanquish hostile invaders and establish imperial order.",
+    "answer": true,
+    "why": "Vanquish correctly means to conquer, subdue, or defeat completely in military conflict."
+  },
+  {
+    "word": "vanquish",
+    "statement": "Through steady encouragement from her vocal coach, the young soprano finally managed to vanquish the stage fright that had once silenced her.",
+    "answer": true,
+    "why": "Vanquish can be used figuratively to mean overcoming, subduing, or conquering fear, doubt, or difficulty."
+  },
+
+  // --- False usages: Melton T/F swaps targeting priority traps ---
+  {
+    "word": "evaluate",
+    "statement": "The senior inspector carefully evinced the damaged airplane turbine to judge whether the metal had suffered structural fatigue.",
+    "answer": false,
+    "why": "False swap: evaluate should replace evince. Evaluate means to judge or assess the condition or quality of something; evince means to show or demonstrate clearly."
+  },
+  {
+    "word": "evince",
+    "statement": "When the verdict was announced, the defendant's sudden pallor and trembling hands evaluated profound panic.",
+    "answer": false,
+    "why": "False swap: evinced should replace evaluated. Evince means to display or demonstrate clearly; evaluate means to judge, assess, or grade."
+  },
+  {
+    "word": "evaluate",
+    "statement": "The human resources director conducted formal interviews to evince each candidate's suitability and technical qualifications for the position.",
+    "answer": false,
+    "why": "False swap: evaluate should replace evince. Evaluating is appraising or determining value and competence, whereas evincing is merely revealing or showing."
+  },
+  {
+    "word": "evince",
+    "statement": "A medical examiner evaluates sadness when observing tears roll down a family member's cheeks.",
+    "answer": false,
+    "why": "False swap: evinces should replace evaluates. Tears show or evince sadness; they do not perform an appraisal or evaluation of sadness."
+  },
+  {
+    "word": "prevail",
+    "statement": "After hours of patient explanation, the counselor vanquished upon the troubled teenager to return to his family.",
+    "answer": false,
+    "why": "False swap: prevailed should replace vanquished. The fixed idiom is 'prevail upon' meaning to persuade successfully; vanquish means to defeat or conquer."
+  },
+  {
+    "word": "prevail",
+    "statement": "Zach's close friends vanquished upon him to complete the arduous final leg of the Appalachian trail hike.",
+    "answer": false,
+    "why": "False swap: prevailed should replace vanquished. Prevailed upon means successfully persuaded; vanquished means subdued or conquered."
+  },
+  {
+    "word": "vanquish",
+    "statement": "The ancient custom of lighting hilltop bonfires at the winter solstice still vanquishes across several isolated Scandinavian islands.",
+    "answer": false,
+    "why": "False swap: prevails should replace vanquishes. Prevail means to be current, widespread, or in practice; vanquish means to conquer or subdue."
+  },
+  {
+    "word": "avail",
+    "statement": "The stranded motorists tried pushing their sedan out of the snowbank for nearly two hours, but their freezing efforts were to no prevail.",
+    "answer": false,
+    "why": "False swap: avail should replace prevail. The fixed packet phrase is 'to no avail' meaning without success; prevail means to triumph or be widespread."
+  },
+  {
+    "word": "avail",
+    "statement": "During orientation, international students were urged to prevail themselves of the complimentary English conversation workshops.",
+    "answer": false,
+    "why": "False swap: avail should replace prevail. The standard construction is 'avail oneself of' meaning to take advantage of or make use of an opportunity."
+  },
+  {
+    "word": "prevail",
+    "statement": "The environmental lobbyist availed upon several undecided lawmakers to cast votes against the controversial pipeline bill.",
+    "answer": false,
+    "why": "False swap: prevailed should replace availed. The idiom meaning to persuade successfully is 'prevail upon', not 'avail upon'."
+  },
+  {
+    "word": "valedictorian",
+    "statement": "At the conclusion of the solemn ceremony, the retiring diplomat presented a moving valedictorian to the international delegation.",
+    "answer": false,
+    "why": "False swap: valedictory should replace valedictorian. A valedictory is a farewell speech or address; a valedictorian is the graduating person who achieved highest rank."
+  },
+  {
+    "word": "valedictorian",
+    "statement": "The principal announced that Sofia had been chosen as the class valedictory after compiling the highest GPA in the school's history.",
+    "answer": false,
+    "why": "False swap: valedictorian should replace valedictory. The person who attains the top academic rank is the valedictorian; valedictory refers to the farewell speech."
+  },
+  {
+    "word": "ambivalence",
+    "statement": "Torn between continuing her education and accepting a high-paying corporate role, Clara felt completely ambivalence during the meeting.",
+    "answer": false,
+    "why": "False swap: ambivalent should replace ambivalence. Grammar requires the predicate adjective ambivalent after the linking verb 'felt', not the noun ambivalence."
+  },
+  {
+    "word": "ambivalence",
+    "statement": "His obvious ambivalent made it impossible for the search committee to know whether he genuinely wanted the executive position.",
+    "answer": false,
+    "why": "False swap: ambivalence should replace ambivalent. Grammar requires the noun ambivalence as the subject of the clause, not the adjective ambivalent."
+  },
+  {
+    "word": "valiant",
+    "statement": "The governor presented the Silver Star to the young soldier in recognition of his extraordinary valiant while rescuing comrades under fire.",
+    "answer": false,
+    "why": "False swap: valiance should replace valiant. Grammar requires the noun valiance (courage/boldness) following the possessive pronoun 'his', not the adjective valiant."
+  },
+  {
+    "word": "valiant",
+    "statement": "Although hopelessly outnumbered by the enemy forces, the castle garrison fought valiant until dawn to protect the villagers.",
+    "answer": false,
+    "why": "False swap: valiantly should replace valiant. Grammar requires the adverb valiantly to modify the action verb 'fought'."
+  },
+  {
+    "word": "invaluable",
+    "statement": "Because the faded blueprint had no clear commercial buyer and was covered in grime, the salvage worker discarded it as invaluable junk.",
+    "answer": false,
+    "why": "False usage trap: Invaluable does NOT mean 'not valuable' or worthless; it means priceless and having worth too vast to be measured."
+  },
+  {
+    "word": "invaluable",
+    "statement": "The broken printer was missing key replacement parts, making it an invaluable piece of equipment that nobody in the office could use.",
+    "answer": false,
+    "why": "False usage trap: Invaluable means priceless and extremely valuable, not useless or worthless."
+  }
+];
+
+const LANG_SET8_FORM_QUESTIONS = [
+  {
+    "word": "ambivalence",
+    "tier": "core",
+    "prompt": "Choose the adjective: Even after weighing all pros and cons, the applicant remained ___ about relocating to an unfamiliar city.",
+    "options": ["ambivalent", "ambivalence", "ambivalently", "countervailing"],
+    "correct": "ambivalent",
+    "why": "Ambivalent is the adjective describing someone experiencing conflicting feelings or indecision."
+  },
+  {
+    "word": "ambivalence",
+    "tier": "core",
+    "prompt": "Choose the noun: Parents often experience deep ___ when their child departs for college, feeling both joyous pride and acute heartache.",
+    "options": ["ambivalence", "ambivalent", "valiance", "evaluation"],
+    "correct": "ambivalence",
+    "why": "Ambivalence is the noun naming the presence of conflicting emotions or uncertainty."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "Choose the correct past-tense verb: During her summer internship at the research hospital, Jordan ___ herself of every shadowing opportunity.",
+    "options": ["availed", "availing", "prevailed", "unavailing"],
+    "correct": "availed",
+    "why": "Availed is the past-tense verb form in the idiom 'avail oneself of' (made use of / took advantage of)."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "Choose the noun in the fixed phrase: The mechanic replaced multiple engine components, but the car still failed to start, making his labor of no ___.",
+    "options": ["avail", "prevail", "valiance", "evaluation"],
+    "correct": "avail",
+    "why": "Avail is the noun in the fixed idiom 'to no avail' (or 'of no avail'), meaning without success or benefit."
+  },
+  {
+    "word": "countervailing",
+    "tier": "core",
+    "prompt": "Choose the adjective: In naval architecture, ballast tanks create a ___ force to prevent high ocean waves from capsizing the cargo vessel.",
+    "options": ["countervailing", "countervail", "countervailed", "prevailing"],
+    "correct": "countervailing",
+    "why": "Countervailing is the participial adjective modifying 'force', meaning acting against something to cancel or offset its effect."
+  },
+  {
+    "word": "countervailing",
+    "tier": "core",
+    "prompt": "Choose the verb: Factory managers hoped that technological automation would ___ the sharp rise in raw material prices.",
+    "options": ["countervail", "countervailing", "countervailed", "evaluate"],
+    "correct": "countervail",
+    "why": "Countervail is the base verb meaning to act against something so as to offset or counteract its impact."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "Choose the noun: At the conclusion of the trial period, the board completed a rigorous ___ of the new software system.",
+    "options": ["evaluation", "evaluate", "evaluated", "evince"],
+    "correct": "evaluation",
+    "why": "Evaluation is the noun naming an appraisal, judgment, or assessment of value or performance."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "Choose the verb: State examiners regularly visit public school cafeterias to ___ adherence to federal health and sanitation codes.",
+    "options": ["evaluate", "evaluation", "evaluative", "evince"],
+    "correct": "evaluate",
+    "why": "Evaluate is the verb meaning to judge or determine condition, quality, or compliance."
+  },
+  {
+    "word": "evince",
+    "tier": "core",
+    "prompt": "Choose the past-tense verb: When shown the unexpected congratulatory banner, the honoree's radiant smile and tearful eyes ___ heartfelt gratitude.",
+    "options": ["evinced", "evince", "evaluated", "countervailed"],
+    "correct": "evinced",
+    "why": "Evinced is the past-tense verb meaning showed or demonstrated clearly."
+  },
+  {
+    "word": "invaluable",
+    "tier": "core",
+    "prompt": "Choose the adjective: The veteran paramedic's calm guidance in the emergency room proved ___ to the newly hired triage nurses.",
+    "options": ["invaluable", "invaluably", "ambivalent", "unavailing"],
+    "correct": "invaluable",
+    "why": "Invaluable is the adjective meaning priceless or having worth far too great to be measured."
+  },
+  {
+    "word": "prevail",
+    "tier": "core",
+    "prompt": "Choose the adjective: While radical ideas gained attention online, the ___ consensus among local voters favored moderate tax policies.",
+    "options": ["prevailing", "prevail", "prevailed", "valiant"],
+    "correct": "prevailing",
+    "why": "Prevailing is the adjective describing an opinion or condition that is current, dominant, or widespread."
+  },
+  {
+    "word": "valedictorian",
+    "tier": "core",
+    "prompt": "Choose the noun referring to a person: Having maintained a pristine 4.0 GPA while captaining two varsity teams, Chloe was named the class ___.",
+    "options": ["valedictorian", "valedictory", "valediction", "valiance"],
+    "correct": "valedictorian",
+    "why": "Valedictorian is the noun naming the top-ranking graduating student who delivers the farewell speech."
+  },
+  {
+    "word": "valedictorian",
+    "tier": "core",
+    "prompt": "Choose the adjective describing a speech: Before relinquishing his cabinet post, the defense secretary delivered a poignant ___ address outlining national priorities.",
+    "options": ["valedictory", "valedictorian", "valiance", "ambivalent"],
+    "correct": "valedictory",
+    "why": "Valedictory is the adjective designating a farewell or parting statement."
+  },
+  {
+    "word": "valiant",
+    "tier": "core",
+    "prompt": "Choose the adverb: Trapped behind enemy lines, the small scout patrol defended the mountain pass ___ until backup units arrived.",
+    "options": ["valiantly", "valiant", "valiance", "prevailingly"],
+    "correct": "valiantly",
+    "why": "Valiantly is the adverb modifying 'defended', meaning courageously and boldly."
+  },
+  {
+    "word": "valiant",
+    "tier": "core",
+    "prompt": "Choose the noun: The mayor praised the extraordinary ___ of civilian volunteers who waded into raging currents to rescue flood victims.",
+    "options": ["valiance", "valiant", "valiantly", "ambivalence"],
+    "correct": "valiance",
+    "why": "Valiance is the noun form naming courage, bravery, and boldness."
+  }
+];
+
+const LANG_SET8_TRANSFER_CONTEXTS = [
+  {
+    "word": "ambivalence",
+    "prompt": "Caught between a lucrative corporate offer in London and her deep love for her hometown community, Sophia's ___ left her unable to decide.",
+    "answer": "ambivalence"
+  },
+  {
+    "word": "avail",
+    "prompt": "The trapped spelunkers blew emergency whistles for twelve hours in the cavern, but their desperate calls were to no ___ in the deep tunnels.",
+    "answer": "avail"
+  },
+  {
+    "word": "countervailing",
+    "prompt": "To combat severe domestic inflation, the Federal Reserve raised benchmark interest rates as a ___ force to temper excessive consumer spending.",
+    "answer": "countervailing"
+  },
+  {
+    "word": "evaluate",
+    "prompt": "Before purchasing the commercial complex, the investment firm hired an independent engineering team to ___ the structural integrity of the foundations.",
+    "answer": "evaluate"
+  },
+  {
+    "word": "evince",
+    "prompt": "Despite the suspect's calm verbal denials, his dilated pupils and trembling hands continued to ___ acute terror throughout the questioning.",
+    "answer": "evince"
+  },
+  {
+    "word": "invaluable",
+    "prompt": "During the hospital's sudden power blackout, the veteran surgical nurse's composure and encyclopedic memory proved ___ to the operating team.",
+    "answer": "invaluable"
+  },
+  {
+    "word": "prevail",
+    "prompt": "Civil rights advocates maintained unwavering conviction that constitutional equality would eventually ___ over discriminatory local ordinances.",
+    "answer": "prevail"
+  },
+  {
+    "word": "prevailing",
+    "prompt": "Meteorologists noted that the ___ westerly winds carried Pacific moisture across the coastal mountain range, triggering heavy rain in the valley.",
+    "answer": "prevailing"
+  },
+  {
+    "word": "valedictorian",
+    "prompt": "With the highest academic ranking in the senior class, Marcus took the podium at commencement as the honored class ___.",
+    "answer": "valedictorian"
+  },
+  {
+    "word": "valedictory",
+    "prompt": "In an emotional ceremony marking his retirement from public service, the beloved governor gave his final ___ address to the legislature.",
+    "answer": "valedictory"
+  },
+  {
+    "word": "valiant",
+    "prompt": "The paramedic received a commendation for her ___ attempt to free a driver from a burning semi-truck before emergency fire crews arrived.",
+    "answer": "valiant"
+  },
+  {
+    "word": "vanquish",
+    "prompt": "Supported by specialized speech therapy and regular rehearsals, the high school actor worked determinedly to ___ his severe stutter.",
+    "answer": "vanquish"
+  }
+];
+
+const LANG_SET8_CONFUSION_QUESTIONS = [
+  {
+    "word": "evaluate",
+    "category": "context",
+    "prompt": "A school superintendent reviews teacher classroom portfolios to assign annual merit ratings. Is the superintendent evaluating or evincing teacher performance?",
+    "options": ["evaluating", "evincing"],
+    "answers": ["evaluating"],
+    "why": "Evaluate means to judge or assess quality and performance; evince means to show or demonstrate clearly."
+  },
+  {
+    "word": "evince",
+    "category": "context",
+    "prompt": "A witness on the stand clutches the railing and breaks into cold sweats upon seeing the suspect. Do these involuntary physical reactions evaluate fear or evince fear?",
+    "options": ["evince fear", "evaluate fear"],
+    "answers": ["evince fear"],
+    "why": "Physical reactions show or evince feelings; they do not calculate or evaluate them."
+  },
+  {
+    "word": "avail",
+    "category": "context",
+    "prompt": "A stranded climber blows a rescue whistle for hours, but no one hears the sound. Were his efforts to no avail or to no prevail?",
+    "options": ["to no avail", "to no prevail"],
+    "answers": ["to no avail"],
+    "why": "The fixed idiomatic phrase is 'to no avail' meaning without success or fruitlessly; 'to no prevail' is nonstandard."
+  },
+  {
+    "word": "prevail",
+    "category": "context",
+    "prompt": "After a protracted legal dispute, the Supreme Court rules in favor of free speech over censorship. Did freedom of speech prevail or avail over censorship?",
+    "options": ["prevail over censorship", "avail over censorship"],
+    "answers": ["prevail over censorship"],
+    "why": "Prevail over means to triumph or win out over an opposing force."
+  },
+  {
+    "word": "prevail",
+    "category": "context",
+    "prompt": "Friends spend an entire evening urging Zach to finish the final steep mile of the hike until he agrees. Did the friends prevail upon Zach or vanquish Zach?",
+    "options": ["prevail upon Zach", "vanquish Zach"],
+    "answers": ["prevail upon Zach"],
+    "why": "Prevail upon someone means to persuade or urge them successfully; vanquish means to conquer or subdue."
+  },
+  {
+    "word": "vanquish",
+    "category": "context",
+    "prompt": "A wrestler pins his fierce championship opponent in the final ten seconds of the match. Did the wrestler vanquish his opponent or countervail his opponent?",
+    "options": ["vanquish his opponent", "countervail his opponent"],
+    "answers": ["vanquish his opponent"],
+    "why": "Vanquish means to overcome, defeat, or conquer an opponent completely."
+  },
+  {
+    "word": "valedictorian",
+    "category": "context",
+    "prompt": "Elena earns the highest cumulative GPA in her graduating class and is chosen to give the commencement speech. Is Elena the class valedictorian or the class valedictory?",
+    "options": ["valedictorian", "valedictory"],
+    "answers": ["valedictorian"],
+    "why": "Valedictorian is the person who graduates at the top of the class; valedictory is the farewell address delivered."
+  },
+  {
+    "word": "valedictory",
+    "category": "context",
+    "prompt": "A retiring company founder writes a closing letter thanking employees for thirty years of dedication. Is this letter a valedictory address or a valedictorian address?",
+    "options": ["valedictory address", "valedictorian address"],
+    "answers": ["valedictory address"],
+    "why": "Valedictory is the adjective meaning relating to a farewell or closing message."
+  },
+  {
+    "word": "valiant",
+    "category": "context",
+    "prompt": "Firefighters rush into a collapsing warehouse to pull an injured civilian to safety. Which sentence uses the correct form of the root -val-?",
+    "options": [
+      "The firefighters made a valiant rescue effort.",
+      "The firefighters made a valiance rescue effort."
+    ],
+    "answers": ["The firefighters made a valiant rescue effort."],
+    "why": "Valiant is the adjective modifying 'rescue effort'; valiance is a noun."
+  },
+  {
+    "word": "ambivalence",
+    "category": "context",
+    "prompt": "A parent experiences mixed emotions—profound joy and genuine sadness—when dropping off a child at college. Is the parent feeling ambivalence or valiance?",
+    "options": ["ambivalence", "valiance"],
+    "answers": ["ambivalence"],
+    "why": "Ambivalence is the coexistence of conflicting or opposing feelings; valiance means courage."
+  },
+  {
+    "word": "countervailing",
+    "category": "context",
+    "prompt": "Engineers install huge hydraulic dampers to cancel out the swaying vibrations caused by hurricane-force winds. Do the dampers provide a countervailing force or an unavailing force?",
+    "options": ["a countervailing force", "an unavailing force"],
+    "answers": ["a countervailing force"],
+    "why": "Countervailing describes an active force that offsets or cancels another effect; unavailing means useless."
+  },
+  {
+    "word": "invaluable",
+    "category": "context",
+    "prompt": "An irreplaceable historic handwritten diary from the American Revolution is donated to the museum. Is the artifact invaluable or does in- mean it is not valuable?",
+    "options": [
+      "invaluable (priceless and beyond measure)",
+      "not valuable (having negligible worth)"
+    ],
+    "answers": ["invaluable (priceless and beyond measure)"],
+    "why": "Invaluable means priceless and having worth too vast to calculate; the prefix in- here is intensive, not negative."
+  },
+  {
+    "word": "avail",
+    "category": "context",
+    "prompt": "During his college career, Mateo utilized campus career fairs, free resume workshops, and tutoring centers. Did Mateo avail himself of campus resources or prevail himself of campus resources?",
+    "options": ["avail himself of campus resources", "prevail himself of campus resources"],
+    "answers": ["avail himself of campus resources"],
+    "why": "The idiom meaning to make use of or take advantage of an opportunity is 'avail oneself of'."
+  },
+  {
+    "word": "countervailing",
+    "category": "context",
+    "prompt": "A student simply prefers reading poetry over studying calculus. Is this casual personal preference a countervailing force against mathematics?",
+    "options": [
+      "No, countervailing requires an active opposing force that cancels or offsets another effect",
+      "Yes, any personal disagreement or preference is countervailing"
+    ],
+    "answers": ["No, countervailing requires an active opposing force that cancels or offsets another effect"],
+    "why": "Countervailing specifically signifies an opposing force that works to cancel, balance, or offset an impact, not a casual preference."
+  }
+];
+
+const LANG_SET8_DERIVATIVE_FILLINS = [
+  {
+    "word": "ambivalence",
+    "tier": "core",
+    "prompt": "Facing a difficult career crossroads, Maya felt immense ___ about whether she should accept the overseas promotion.",
+    "answers": ["ambivalence"],
+    "why": "Grammar requires the noun ambivalence following the adjective immense."
+  },
+  {
+    "word": "ambivalence",
+    "tier": "core",
+    "prompt": "Because he had conflicting feelings about moving abroad, Marcus was deeply ___ about leaving his hometown.",
+    "answers": ["ambivalent"],
+    "why": "Grammar requires the adjective ambivalent following the linking verb was."
+  },
+  {
+    "word": "ambivalence",
+    "tier": "core",
+    "prompt": "When asked whether she supported the new policy, the council member spoke ___, highlighting both major benefits and severe drawbacks.",
+    "answers": ["ambivalently"],
+    "why": "Grammar requires the adverb ambivalently modifying the verb spoke."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "The lost motorists searched frantically for cellular service, but their desperate attempts were to no ___ in the remote canyon.",
+    "answers": ["avail"],
+    "why": "The fixed idiom is 'to no avail' meaning without success or fruitlessly."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "Throughout her undergraduate studies, Rebecca ___ herself of every laboratory research grant offered by the chemistry department.",
+    "answers": ["availed"],
+    "why": "The past-tense verb availed completes the idiom 'availed herself of' (took advantage of)."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "High school counselors urge incoming freshmen to ___ themselves of free tutoring services before their first exams.",
+    "answers": ["avail"],
+    "why": "The infinitive verb avail completes the construction 'to avail themselves of'."
+  },
+  {
+    "word": "avail",
+    "tier": "core",
+    "prompt": "Despite the rescue crew's round-the-clock labor, their efforts to revive the flooded generator proved completely ___.",
+    "answers": ["unavailing"],
+    "why": "Unavailing is the adjective derivative meaning futile, useless, or without success."
+  },
+  {
+    "word": "countervailing",
+    "tier": "core",
+    "prompt": "Heavy steel anchor cables on the suspension bridge provide a ___ force that cancels out the immense downward pull of traffic.",
+    "answers": ["countervailing"],
+    "why": "Grammar requires the participial adjective countervailing modifying force."
+  },
+  {
+    "word": "countervailing",
+    "tier": "core",
+    "prompt": "Company executives anticipated that international sales growth would ___ the sharp decline in domestic orders.",
+    "answers": ["countervail"],
+    "why": "Grammar requires the base verb countervail following the modal would."
+  },
+  {
+    "word": "countervailing",
+    "tier": "core",
+    "prompt": "The defense team's rigorous presentation of forensic evidence successfully ___ the prosecutor's circumstantial accusations.",
+    "answers": ["countervailed"],
+    "why": "Grammar requires the past-tense verb countervailed meaning offset or canceled the effect of."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "The state licensing department uses a standardized road examination to ___ the driving skills of new applicants.",
+    "answers": ["evaluate"],
+    "why": "Grammar requires the base verb evaluate following the infinitive marker to."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "At the conclusion of each semester, the academic committee formally ___ the instructional effectiveness of every instructor.",
+    "answers": ["evaluates"],
+    "why": "Grammar requires the third-person singular present verb evaluates for the committee."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "During the annual performance review, the regional director thoroughly ___ the clinic's patient outcomes and operating budget.",
+    "answers": ["evaluated"],
+    "why": "Grammar requires the past-tense verb evaluated."
+  },
+  {
+    "word": "evaluate",
+    "tier": "core",
+    "prompt": "After months of field testing, the hospital staff completed a comprehensive ___ of the new biometric monitoring equipment.",
+    "answers": ["evaluation"],
+    "why": "Grammar requires the noun evaluation naming the appraisal or assessment."
+  },
+  {
+    "word": "evince",
+    "tier": "core",
+    "prompt": "Tears streaming down the young girl's cheeks may clearly ___ sorrow long before she speaks a word.",
+    "answers": ["evince"],
+    "why": "Grammar requires the base verb evince following the modal may."
+  },
+  {
+    "word": "evince",
+    "tier": "core",
+    "prompt": "When the unexpected award was announced, her trembling hands and gasping breath ___ genuine astonishment.",
+    "answers": ["evinced"],
+    "why": "Grammar requires the past-tense verb evinced meaning showed or demonstrated clearly."
+  },
+  {
+    "word": "evince",
+    "tier": "core",
+    "prompt": "A dedicated youth mentor consistently ___ patience, empathy, and steadfast commitment to her students.",
+    "answers": ["evinces"],
+    "why": "Grammar requires the third-person singular present verb evinces."
+  },
+  {
+    "word": "invaluable",
+    "tier": "core",
+    "prompt": "The mentor's decades of courtroom experience proved an ___ resource to the young public defender during her first murder trial.",
+    "answers": ["invaluable"],
+    "why": "Invaluable is the adjective meaning priceless or of immeasurable worth (preceded by 'an')."
+  },
+  {
+    "word": "invaluable",
+    "tier": "core",
+    "prompt": "A sole surviving photograph of an ancestor who emigrated century ago is an ___ family possession that cannot be replaced.",
+    "answers": ["invaluable"],
+    "why": "Invaluable is the adjective meaning priceless and irreplaceable."
+  },
+  {
+    "word": "prevail",
+    "tier": "core",
+    "prompt": "Despite temporary setbacks and fierce opposition, democratic principles and human dignity will ultimately ___ over tyranny.",
+    "answers": ["prevail"],
+    "why": "Grammar requires the base verb prevail following the modal will."
+  },
+  {
+    "word": "prevail",
+    "tier": "core",
+    "prompt": "After an hour of gentle encouragement, Maria's friends ___ upon her to audition for the school musical.",
+    "answers": ["prevailed"],
+    "why": "The past-tense verb prevailed completes the idiom 'prevailed upon' (persuaded successfully)."
+  },
+  {
+    "word": "prevail",
+    "tier": "core",
+    "prompt": "The ___ meteorological pattern across the plains during summer is characterized by hot, humid southerly winds.",
+    "answers": ["prevailing"],
+    "why": "Grammar requires the participial adjective prevailing meaning dominant or current."
+  },
+  {
+    "word": "prevail",
+    "tier": "core",
+    "prompt": "Even in an era of digital communication, the centuries-old custom of written holiday cards still ___ throughout the country.",
+    "answers": ["prevails"],
+    "why": "Grammar requires the third-person singular verb prevails meaning is current or in active use."
+  },
+  {
+    "word": "valedictorian",
+    "tier": "core",
+    "prompt": "Because she achieved the highest academic rank across four years of high school, Rachel was named class ___.",
+    "answers": ["valedictorian"],
+    "why": "Valedictorian is the noun naming the top-ranking graduating student."
+  },
+  {
+    "word": "valedictorian",
+    "tier": "core",
+    "prompt": "Before stepping down from the presidency, George Washington delivered a famous ___ address offering farewell guidance to the fledgling republic.",
+    "answers": ["valedictory"],
+    "why": "Valedictory is the adjective meaning relating to a farewell or parting statement."
+  },
+  {
+    "word": "valiant",
+    "tier": "core",
+    "prompt": "The paramedic made a ___ effort to reach the trapped passengers before the rising floodwaters inundated the roadway.",
+    "answers": ["valiant"],
+    "why": "Grammar requires the adjective valiant modifying effort."
+  },
+  {
+    "word": "valiant",
+    "tier": "core",
+    "prompt": "City officials awarded medals of honor to the police officers who demonstrated exceptional ___ during the hostage crisis.",
+    "answers": ["valiance"],
+    "why": "Grammar requires the noun valiance meaning courage, bravery, or valor."
+  },
+  {
+    "word": "valiant",
+    "tier": "core",
+    "prompt": "Though outnumbered and low on ammunition, the courageous garrison defended the frontier fort ___ throughout the night.",
+    "answers": ["valiantly"],
+    "why": "Grammar requires the adverb valiantly modifying defended."
+  },
+  {
+    "word": "vanquish",
+    "tier": "core",
+    "prompt": "With intensive physical training and sharp tactical focus, Seth was determined to ___ his state tournament wrestling opponent.",
+    "answers": ["vanquish"],
+    "why": "Grammar requires the base verb vanquish following the infinitive to."
+  },
+  {
+    "word": "vanquish",
+    "tier": "core",
+    "prompt": "Through persistent cognitive therapy and supportive mentors, the young performer finally ___ the stage fright that once paralyzed her.",
+    "answers": ["vanquished"],
+    "why": "Grammar requires the past-tense verb vanquished meaning figuratively overcame or subdued."
+  }
+];
+
+const LANG_SET8_SHORT_ANSWER_PAIRS = [
+  {
+    "words": ["evaluate", "evince"],
+    "prompt": "Create one or more complete sentences using both evaluate and evince, or appropriate derivatives.",
+    "model": "The admissions committee convened to evaluate each applicant's academic portfolio, noting that the candidate's personal essays evinced a profound commitment to community leadership."
+  },
+  {
+    "words": ["avail", "prevail"],
+    "prompt": "Create one or more complete sentences using both avail and prevail, or appropriate derivatives.",
+    "model": "The defense attorney availed herself of every constitutional precedent on record, arguing passionately that fundamental justice must prevail over local prejudice."
+  },
+  {
+    "words": ["prevail", "vanquish"],
+    "prompt": "Create one or more complete sentences using both prevail and vanquish, or appropriate derivatives.",
+    "model": "Although the reigning champion had vanquished every opponent in the preliminary rounds, the determined challenger prevailed in the final period through sheer endurance."
+  },
+  {
+    "words": ["valiant", "vanquish"],
+    "prompt": "Create one or more complete sentences using both valiant and vanquish, or appropriate derivatives.",
+    "model": "Through a valiant effort in the second half of the championship game, the underdog squad managed to vanquish their undefeated rivals."
+  },
+  {
+    "words": ["ambivalence", "evaluate"],
+    "prompt": "Create one or more complete sentences using both ambivalence and evaluate, or appropriate derivatives.",
+    "model": "Sanjay felt genuine ambivalence toward the lucrative executive offer, taking several days to evaluate whether the prestige and salary justified the relentless travel."
+  },
+  {
+    "words": ["invaluable", "avail"],
+    "prompt": "Create one or more complete sentences using both invaluable and avail, or appropriate derivatives.",
+    "model": "The veteran engineer offered invaluable technical counsel to the apprentice team, but their frantic attempts to restore the corrupted server were to no avail."
+  },
+  {
+    "words": ["valedictorian", "valiant"],
+    "prompt": "Create one or more complete sentences using both valedictorian and valiant, or appropriate derivatives.",
+    "model": "In her commencement address, the class valedictorian commended her peers for their valiant perseverance in overcoming unprecedented disruptions to complete their degrees."
+  },
+  {
+    "words": ["countervailing", "prevail"],
+    "prompt": "Create one or more complete sentences using both countervailing and prevail, or appropriate derivatives.",
+    "model": "The central bank implemented countervailing interest rate measures to offset inflation, and economic stability gradually prevailed as market confidence was restored."
+  }
+];
+
     const LANG_SETS = {
       1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"],highRisk:["malapropism","portmanteau","neologism","appellation"]},
       2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[],highRisk:["substantiate","indisputable","dissuade","apologist"]},
@@ -5149,7 +6214,8 @@
       5:{words:LANG_SET5_WORDS,usage:LANG_SET5_USAGE,formQuestions:LANG_SET5_FORM_QUESTIONS,transfer:LANG_SET5_TRANSFER_CONTEXTS,confusions:LANG_SET5_CONFUSION_QUESTIONS,derivatives:LANG_SET5_DERIVATIVE_FILLINS,pairs:LANG_SET5_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-5-progress-v1",legacyKeys:[],highRisk:["garrulous","histrionic","peremptory","polemic","vivacious","vociferous","exhort","exalt"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference</h3><p>High-yield core contrasts and essential derivative shifts for Set 5.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EXALT</strong> = praise / elevate</p><p style="margin:4px 0; font-size:13px;"><strong>EXHORT</strong> = strongly urge</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>GARRULOUS</strong> = talks too much / rambles</p><p style="margin:4px 0; font-size:13px;"><strong>VOCIFEROUS</strong> = shouts / speaks loudly &amp; forcefully</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VIVACIOUS</strong> = lively / animated</p><p style="margin:4px 0; font-size:13px;"><strong>HISTRIONIC</strong> = excessively dramatic / affected</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>LACONIC</strong> = few words / concise</p><p style="margin:4px 0; font-size:13px;"><strong>GIST</strong> = central idea / essence</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>POLEMIC</strong> = controversial argument</p><p style="margin:4px 0; font-size:13px;"><strong>PEREMPTORY</strong> = shuts down debate / allows no refusal</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>garrulous</strong> (adj) → <strong>garrulousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>histrionic</strong> (adj) → <strong>histrionics</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vivacious</strong> (adj) → <strong>vivacity</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>vociferous</strong> (adj) → <strong>vociferousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exhort</strong> (verb) → <strong>exhorting</strong> / <strong>exhortation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>exalt</strong> (verb) → <strong>exalted</strong> (verb / adj)</p><p style="margin:4px 0; font-size:13px;"><strong>polemic</strong> (noun/adj) → <strong>polemic</strong> OR <strong>polemical</strong> (adj accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>gist, laconic, peremptory</strong> → unchanged depending on context</p></div></div>`}
 ,
       6:{words:LANG_SET6_WORDS,usage:LANG_SET6_USAGE,formQuestions:LANG_SET6_FORM_QUESTIONS,transfer:LANG_SET6_TRANSFER_CONTEXTS,confusions:LANG_SET6_CONFUSION_QUESTIONS,derivatives:LANG_SET6_DERIVATIVE_FILLINS,pairs:LANG_SET6_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-6-progress-v1",legacyKeys:[],highRisk:["complicity","complicit","explicate","explicable","inexplicable","implicate","implicit","supple","supplicant"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 23: The Root -pli-</h3><p>Root context (-pli-, -plic-, -ploy- from Latin <em>plicare</em>, "to fold"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>COMPLICITY</strong> (noun) = involvement as accomplice in crime<br><strong>COMPLICIT</strong> (adj) = involved in the wrongdoing</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICATE</strong> (verb) = explain or clarify meaning<br><strong>EXPLICABLE</strong> (adj) = capable of explanation<br><strong>INEXPLICABLE</strong> (adj) = impossible / difficult to explain</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICIT</strong> = directly stated; readily observable<br><strong>IMPLICIT</strong> = unstated / understood; unquestioning trust</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>IMPLICATE</strong> = connect with wrongdoing; entail consequences<br><strong>IMPLICATION</strong> = consequence (from implicate) OR unstated hint (from implicit)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>REPLICA</strong> (noun) = the copy or reproduction<br><strong>REPLICATE</strong> (verb) = to reproduce or duplicate</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SUPPLE</strong> = flexible / limber; adaptable / compliant<br><strong>SUPPLICANT</strong> = person pleading or begging humbly</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DEPLOY</strong> = position strategically; put into use (troops, relief workers, equipment, resources, parachutes)</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>complicity</strong> (noun) → <strong>complicit</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>deploy</strong> (verb) → <strong>deployment</strong> / <strong>deployments</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>explicate</strong> (verb) → <strong>explication</strong> (noun), <strong>explicable</strong> (adj), <strong>inexplicable</strong> (neg adj)</p><p style="margin:4px 0; font-size:13px;"><strong>explicit</strong> (adj) → <strong>explicitly</strong> (adverb), <strong>explicitness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicate</strong> (verb) → <strong>implication</strong> / <strong>implications</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicit</strong> (adj) → <strong>implication</strong> (noun), <strong>implicitly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>inexplicable</strong> (adj) → <strong>inexplicably</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>replica</strong> (noun) → <strong>replicate</strong> (verb), <strong>replication</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supple</strong> (adj) → <strong>suppleness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supplicant</strong> (noun) → <strong>supplicate</strong> (verb), <strong>supplication</strong> / <strong>supplications</strong> (noun)</p></div></div>`},
-      7:{words:LANG_SET7_WORDS,usage:LANG_SET7_USAGE,formQuestions:LANG_SET7_FORM_QUESTIONS,transfer:LANG_SET7_TRANSFER_CONTEXTS,confusions:LANG_SET7_CONFUSION_QUESTIONS,derivatives:LANG_SET7_DERIVATIVE_FILLINS,pairs:LANG_SET7_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-7-progress-v1",legacyKeys:[],highRisk:["perspicuous","specious","auspices","auspicious","circumspect","introspective","specter","spectacle","spectrum","despicable"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 22: The Root -spec-</h3><p>Root context (-spec-, -spic- from Latin <em>specere</em>, "to look"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>PERSPICUOUS</strong> (adj) = clearly expressed; easy to understand<br><strong>SPECIOUS</strong> (adj) = seemingly true or convincing, but actually false</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AUSPICES</strong> (noun) = sponsorship, support, or protection ("under the auspices of")<br><strong>AUSPICIOUS</strong> (adj) = favorable; promising success / marked by prosperity</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INTROSPECTIVE</strong> (adj) = looking inward; reflecting on own thoughts and feelings<br><strong>CIRCUMSPECT</strong> (adj) = cautious, prudent, and mindful of consequences</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SPECTACLE</strong> = impressive public display OR public scene of bad behavior<br><strong>SPECTER</strong> = ghost / spirit OR haunting threat/possibility (packet spelling)<br><strong>SPECTRUM</strong> = ordered band of wavelengths OR broad range of qualities/ideas</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DESPICABLE</strong> (adj) = deserving scorn or contempt<br><strong>DESPISE</strong> (verb) = to feel contempt or scorn for</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>specious</strong> (adj) → <strong>speciousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>perspicuous</strong> (adj) → <strong>perspicuity</strong> (noun), <strong>perspicuously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>introspective</strong> (adj) → <strong>introspection</strong> (noun), <strong>introspect</strong> (verb)</p><p style="margin:4px 0; font-size:13px;"><strong>circumspect</strong> (adj) → <strong>circumspection</strong> (noun), <strong>circumspectly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>auspicious</strong> (adj) → <strong>inauspicious</strong> (negative adj), <strong>auspiciously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>auspices</strong> (noun) → used in phrase "under the auspices of"</p><p style="margin:4px 0; font-size:13px;"><strong>despicable</strong> (adj) → <strong>despise</strong> (verb), <strong>despised</strong>, <strong>despises</strong></p><p style="margin:4px 0; font-size:13px;"><strong>specter</strong> (noun) → <strong>spectral</strong> (adj), <strong>specters</strong> (plural)</p><p style="margin:4px 0; font-size:13px;"><strong>spectrum</strong> (noun) → <strong>spectra</strong> OR <strong>spectrums</strong> (both plural accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>spectacle</strong> (noun) → <strong>spectacles</strong> (plural displays), <strong>spectacular</strong> (adj)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master alternate meanings for spectacle, specter, spectrum</li><li>Drill perspicuous vs. specious precision trap</li><li>Contrast auspices (noun support) vs. auspicious (adj favorable)</li><li>Contrast introspective (inner thought) vs. circumspect (outer caution)</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Find the Example associations</li><li>Practice hard Melton True/False swaps</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final 10-point Part 3 simulation</li></ol></div></div>`}
+      7:{words:LANG_SET7_WORDS,usage:LANG_SET7_USAGE,formQuestions:LANG_SET7_FORM_QUESTIONS,transfer:LANG_SET7_TRANSFER_CONTEXTS,confusions:LANG_SET7_CONFUSION_QUESTIONS,derivatives:LANG_SET7_DERIVATIVE_FILLINS,pairs:LANG_SET7_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-7-progress-v1",legacyKeys:[],highRisk:["perspicuous","specious","auspices","auspicious","circumspect","introspective","specter","spectacle","spectrum","despicable"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 22: The Root -spec-</h3><p>Root context (-spec-, -spic- from Latin <em>specere</em>, "to look"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>PERSPICUOUS</strong> (adj) = clearly expressed; easy to understand<br><strong>SPECIOUS</strong> (adj) = seemingly true or convincing, but actually false</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AUSPICES</strong> (noun) = sponsorship, support, or protection ("under the auspices of")<br><strong>AUSPICIOUS</strong> (adj) = favorable; promising success / marked by prosperity</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INTROSPECTIVE</strong> (adj) = looking inward; reflecting on own thoughts and feelings<br><strong>CIRCUMSPECT</strong> (adj) = cautious, prudent, and mindful of consequences</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SPECTACLE</strong> = impressive public display OR public scene of bad behavior<br><strong>SPECTER</strong> = ghost / spirit OR haunting threat/possibility (packet spelling)<br><strong>SPECTRUM</strong> = ordered band of wavelengths OR broad range of qualities/ideas</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DESPICABLE</strong> (adj) = deserving scorn or contempt<br><strong>DESPISE</strong> (verb) = to feel contempt or scorn for</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>specious</strong> (adj) → <strong>speciousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>perspicuous</strong> (adj) → <strong>perspicuity</strong> (noun), <strong>perspicuously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>introspective</strong> (adj) → <strong>introspection</strong> (noun), <strong>introspect</strong> (verb)</p><p style="margin:4px 0; font-size:13px;"><strong>circumspect</strong> (adj) → <strong>circumspection</strong> (noun), <strong>circumspectly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>auspicious</strong> (adj) → <strong>inauspicious</strong> (negative adj), <strong>auspiciously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>auspices</strong> (noun) → used in phrase "under the auspices of"</p><p style="margin:4px 0; font-size:13px;"><strong>despicable</strong> (adj) → <strong>despise</strong> (verb), <strong>despised</strong>, <strong>despises</strong></p><p style="margin:4px 0; font-size:13px;"><strong>specter</strong> (noun) → <strong>spectral</strong> (adj), <strong>specters</strong> (plural)</p><p style="margin:4px 0; font-size:13px;"><strong>spectrum</strong> (noun) → <strong>spectra</strong> OR <strong>spectrums</strong> (both plural accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>spectacle</strong> (noun) → <strong>spectacles</strong> (plural displays), <strong>spectacular</strong> (adj)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master alternate meanings for spectacle, specter, spectrum</li><li>Drill perspicuous vs. specious precision trap</li><li>Contrast auspices (noun support) vs. auspicious (adj favorable)</li><li>Contrast introspective (inner thought) vs. circumspect (outer caution)</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Find the Example associations</li><li>Practice hard Melton True/False swaps</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final 10-point Part 3 simulation</li></ol></div></div>`},
+      8:{words:LANG_SET8_WORDS,usage:LANG_SET8_USAGE,formQuestions:LANG_SET8_FORM_QUESTIONS,transfer:LANG_SET8_TRANSFER_CONTEXTS,confusions:LANG_SET8_CONFUSION_QUESTIONS,derivatives:LANG_SET8_DERIVATIVE_FILLINS,pairs:LANG_SET8_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-8-progress-v1",legacyKeys:[],highRisk:["ambivalence","avail","countervailing","evaluate","evince","invaluable","prevail","valedictorian","valiant","vanquish"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 25: The Roots -val- and -vince-</h3><p>Root context (-val- from Latin <em>valere</em>, "to be strong/worthy/healthy"; -vince-/-vict- from Latin <em>vincere</em>, "to conquer/defeat"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EVALUATE</strong> (verb) = judge or assess value/quality/performance<br><strong>EVINCE</strong> (verb) = show or demonstrate clearly ("face evinced disgust")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>PREVAIL</strong> = (1) triumph/win out ("prevail over"); (2) be current/in effect ("custom prevails"); (3) persuade successfully ("prevail upon someone")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AVAIL</strong> = (verb) be of use/help; (noun) benefit/advantage<br>• <em>to no avail</em> = without success / uselessly<br>• <em>avail oneself of</em> = take advantage of / make use of</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INVALUABLE</strong> (adj) = priceless / value too great to measure<br>⚠️ <em>MAJOR TRAP:</em> Does NOT mean "not valuable" or worthless!</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VANQUISH</strong> (verb) = directly defeat, conquer, or subdue completely (literal opponent OR figurative fear/doubt)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>COUNTERVAILING</strong> (adj) = acting against something so as to cancel or offset its effect (NOT merely disagreeing)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AMBIVALENCE</strong> (noun) = conflicting feelings (proud yet sad) OR indecision ("I can\'t decide")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VALEDICTORIAN</strong> (noun) = highest-ranking student who speaks<br><strong>VALEDICTORY</strong> (adj/noun) = farewell speech/address</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>ambivalence</strong> (noun) ↔ <strong>ambivalent</strong> (adj) ↔ <strong>ambivalently</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>avail</strong> (verb/noun) ↔ <strong>availed</strong> (past), <strong>availing</strong> (pres), <strong>unavailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>countervailing</strong> (adj) ↔ <strong>countervail</strong> (verb), <strong>countervailed</strong> (past)</p><p style="margin:4px 0; font-size:13px;"><strong>evaluate</strong> (verb) ↔ <strong>evaluates</strong>, <strong>evaluated</strong>, <strong>evaluation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>evince</strong> (verb) ↔ <strong>evinces</strong>, <strong>evinced</strong> (past), <strong>evincing</strong> (part)</p><p style="margin:4px 0; font-size:13px;"><strong>invaluable</strong> (adj) ↔ <strong>invaluably</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>prevail</strong> (verb) ↔ <strong>prevails</strong>, <strong>prevailed</strong>, <strong>prevailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>valedictorian</strong> (person noun) ↔ <strong>valedictory</strong> (farewell speech adj/noun)</p><p style="margin:4px 0; font-size:13px;"><strong>valiant</strong> (adj) ↔ <strong>valiance</strong> (noun), <strong>valiantly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>vanquish</strong> (verb) ↔ <strong>vanquishes</strong>, <strong>vanquished</strong> (past), <strong>vanquishing</strong></p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master all 3 meanings of prevail (triumph, current/in effect, persuade upon)</li><li>Master avail patterns: "to no avail" and "avail oneself of"</li><li>Drill evaluate (judge) vs. evince (show/display) precision trap</li><li>Contrast valedictorian (person) vs. valedictory (farewell speech)</li><li>Distinguish valiant (adj), valiance (noun), and valiantly (adv)</li><li>Remember invaluable = priceless, never worthless</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Practice Melton True/False swaps (evaluated ↔ evinced, prevail ↔ vanquish, avail ↔ prevail)</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final Part 3 simulation (5 T/F + 3 derivatives + 1 sentence prompt)</li></ol></div></div>`}
     };
     let activeLangSet = Number(localStorage.getItem("flashcards-ap-lang-last-set") || 1);
     if(!LANG_SETS[activeLangSet]) activeLangSet=1;
@@ -5352,6 +6418,16 @@
       if(w.word === "spectacle") why = "Correct spelling: spectacle (an impressive display or embarrassing public scene). Do not confuse with specter or spectrum.";
       if(w.word === "specter") why = "Correct spelling: specter (a ghost or haunting possibility; packet spelling -er). Do not confuse with spectacle or spectrum.";
       if(w.word === "spectrum") why = "Correct spelling: spectrum (range or ordered band). Plural: spectra or spectrums.";
+      if(w.word === "ambivalence") why = "Correct spelling: ambivalence (noun: conflicting feelings; suffix -ence). Note: adjective is ambivalent.";
+      if(w.word === "avail") why = "Correct spelling: avail (to be of use/help; fixed phrases: 'to no avail', 'avail oneself of'). Do not confuse with prevail.";
+      if(w.word === "countervailing") why = "Correct spelling: countervailing (acting against to offset/cancel; root -val-). Verb form is countervail.";
+      if(w.word === "evaluate") why = "Correct spelling: evaluate (to judge or determine value; root -val-). Do not confuse with evince (to show).";
+      if(w.word === "evince") why = "Correct spelling: evince (to show or demonstrate clearly; root -vince-). Do not confuse with evaluate (to judge).";
+      if(w.word === "invaluable") why = "Correct spelling: invaluable (priceless; of immeasurable worth). Prefix in- here is intensive; does NOT mean worthless.";
+      if(w.word === "prevail") why = "Correct spelling: prevail (triumph, be current, or persuade upon; root -val-). Do not confuse with avail or vanquish.";
+      if(w.word === "valedictorian") why = "Correct spelling: valedictorian (top-ranking graduating student; suffix -ian). Note: the farewell speech is valedictory.";
+      if(w.word === "valiant") why = "Correct spelling: valiant (brave, courageous; root -val-). Noun: valiance; adverb: valiantly.";
+      if(w.word === "vanquish") why = "Correct spelling: vanquish (to defeat or conquer completely; root -vince-). Note spelling -quish.";
       return {category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why};
     });}
     function definitionQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"definition",word:w.word,label:"Part 2 · Choose the definition",prompt:w.word,response:"choice",options:shuffleList([w.definition,...definitionDistractors(w.word)]),answers:[w.definition],why:w.definition}));}
@@ -5382,7 +6458,10 @@
     function startTestPart(part){
       if(part==="matching"){startDefinitionMatching();return;}
       if(part==="spelling"){beginPracticeQueue(shuffleList(spellingQuestions()));return;}
-      const usage=shuffleList(usageQuestions()).slice(0,5),derivatives=shuffleList(derivativeQuestions(null,true)).slice(0,3),shortAnswer=shuffleList(shortAnswerQuestions()).slice(0,1);
+      const includeSentence = document.getElementById("part3IncludeSentence") ? document.getElementById("part3IncludeSentence").checked : true;
+      const usage=shuffleList(usageQuestions()).slice(0,5);
+      const derivatives=shuffleList(derivativeQuestions(null,true)).slice(0,3);
+      const shortAnswer=includeSentence ? shuffleList(shortAnswerQuestions()).slice(0,1) : [];
       beginPracticeQueue([...usage,...derivatives,...shortAnswer]);
     }
     document.querySelectorAll("[data-part-start]").forEach(b=>b.addEventListener("click",()=>startTestPart(b.dataset.partStart)));
@@ -5481,7 +6560,9 @@
     function buildMockExam(){
       const definitions=shuffleList(WORDS.map(w=>w.definition));
       const matching=shuffleList(WORDS).map(w=>({category:"definition",word:w.word,label:"Part 2 · Definition matching · use each once",prompt:w.word,response:"choice",options:[...definitions],answers:[w.definition],why:w.definition,mockMatching:true}));
-      return [...shuffleList(spellingQuestions()),...matching,...shuffleList(usageQuestions()).slice(0,5),...shuffleList(derivativeQuestions(null,true)).slice(0,3),...shuffleList(shortAnswerQuestions()).slice(0,1)];
+      const includeSentence = document.getElementById("part3IncludeSentence") ? document.getElementById("part3IncludeSentence").checked : true;
+      const shortAnswer = includeSentence ? shuffleList(shortAnswerQuestions()).slice(0,1) : [];
+      return [...shuffleList(spellingQuestions()),...matching,...shuffleList(usageQuestions()).slice(0,5),...shuffleList(derivativeQuestions(null,true)).slice(0,3),...shortAnswer];
     }
     function weakWords(){
       const named=[...new Set(appStats.missed)];
@@ -5851,9 +6932,221 @@
       {"number": 299, "term": "Trevett v. Weeden (1787)", "definition": "Occurred under the Articles of Confederation, when each state had a different type of currency. Acts passed by the Rhode Island Legislature imposed heavy fines on those who refused to accept the state’s depreciated currency at face value. Weeden was acquitted on the grounds that the acts were unconstitutional."},
       {"number": 300, "term": "Bayard v. Singleton (1787)", "definition": "First court decision in which a law was found unconstitutional based on a written constitution."}
     );
-    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-300-v1";
-    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-200-v1","flashcards-apush-eptl-1-150-v1","flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
-    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3,4,5,6].includes(activeApushSet))activeApushSet=1;
+    // EPTLs 301–350
+    APUSH_EPTL_CARDS.push(
+      {"number": 301, "term": "Chisholm v. Georgia (1793)", "definition": "The heirs of Alexander Chisholm (a citizen of South Carolina) sued the state of Georgia. The Supreme Court upheld the right of citizens of one state to sue another state and decided against Georgia."},
+      {"number": 302, "term": "Ware v. Hylton (1796)", "definition": "A treaty between the U.S. and Great Britain required that all debts owed by the U.S. to Britain had to be paid in full. However, a Virginia statute said that American debts to Britain could be paid in depreciated currency. The Supreme Court upheld the treaty, proving that federal laws take precedence over state laws."},
+      {"number": 303, "term": "War of 1812 (1812-1814)", "definition": "A war between the U.S. and Great Britain caused by American outrage over the impressment of American sailors by the British, the British seizure of American ships, and British aid to the Indians attacking the Americans on the western frontier. Also, a war against Britain gave the U.S. an excuse to seize the British northwest posts and to annex Florida from Britain’s ally Spain, and possibly even to seize Canada from Britain. The War Hawks (young westerners led by Henry Clay and John C. Calhoun) argued for war in Congress. The war involved several sea battles and frontier skirmishes. U.S. troops led by Andrew Jackson seized Florida and at one point the British managed to invade and burn Washington, D.C. The Treaty of Ghent (December 1814) restored the status quo and required the U.S. to give back Florida. Two weeks later, Andrew Jackson’s troops defeated the British at the Battle of New Orleans, not knowing that a peace treaty had already been signed. The war strengthened American nationalism and encouraged the growth of industry."},
+      {"number": 304, "term": "Clay’s American System", "definition": "Proposed by Henry Clay after the War of 1812, it included using federal money for internal improvements (roads, bridges, industrial improvements, etc.), enacting a protective tariff to foster the growth of American industries, and strengthening the national bank."},
+      {"number": 305, "term": "Was Jacksonianism an attack on privilege?", "definition": "To some extent, it was. Jackson opposed monopolies and the privileged class of society; he attacked the national bank for this reason. He advocated increased popular participation in government and greater opportunity for the common man."},
+      {"number": 306, "term": "Bank war: its enemies and defenders", "definition": "During Jackson’s presidency, this was a struggle between those who wanted to keep the national bank in operation and those who wanted to abolish it. Jackson and states’ rights advocates opposed the national bank, which they felt imposed discriminatory credit restrictions on local banks, making it more difficult for farmers and small businessmen to obtain loans. The bank was defended by Nicholas Biddle and Henry Clay, the National Republicans, the wealthy, and larger merchants, who felt that local banks credit policies were irresponsible and would lead to a depression."},
+      {"number": 307, "term": "Bank war: Veto message by Andrew Jackson", "definition": "1832 - President Jackson vetoed the bill to re-charter the national bank."},
+      {"number": 308, "term": "Bank war: laws from 1800 to 1865 on banking", "definition": "These laws moved away from favoring the national bank towards favoring state banks."},
+      {"number": 309, "term": "Changes in federal land laws and policies", "definition": "The Land Acts of 1800 and 1820, and the Preemptive Acts of the 1830s and 1840s lowered the price of land and made it easier for prospective settlers to acquire it. This encouraged people to move west."},
+      {"number": 310, "term": "Changes and improvements in transportation and its effect", "definition": "These included canals in the Great Lakes region, toll roads, steamboats, and clipper ships. The result was faster trade and easier access to the western frontier. It aided the growth of the nation."},
+      {"number": 311, "term": "President Jefferson", "definition": "He believed in a less aristocratic presidency. He wanted to reduce federal spending and government interference in everyday life. He was a Democratic-Republican (originally an Anti- Federalist), so he believed in strict interpretation of the Constitution."},
+      {"number": 312, "term": "Vice-President Burr", "definition": "Aaron Burr was one of the leading Democratic-Republicans of New York and served as a U.S. Senator from New York from 1791-1797. He was the principal opponent of Alexander Hamilton’s Federalist policies. In the election of 1800, Burr tied with Jefferson in the Electoral College. The House of Representatives awarded the Presidency to Jefferson and made Burr Vice- President."},
+      {"number": 313, "term": "Sec. of Treasury Gallatin", "definition": "Albert Gallatin was a Swiss immigrant who was a financial genius and served as U.S. Secretary of the Treasury from 1801 - 1814 under Presidents Jefferson and Madison. He advocated free trade and opposed the Federalists’ economic policies. Gallatin was a member of the U.S. delegation that negotiated the Treaty of Ghent, and later served as Ambassador to France and to Britain."},
+      {"number": 314, "term": "Federalist control of courts and judges, midnight judges", "definition": "On his last day in office, President Adams appointed a large number of Federalist judges to the federal courts in an effort to maintain Federalist control of the government. (The Federalists had lost the presidency and much of Congress to the Republicans.) These newly appointed Federalist judges were called midnight judges because John Adams had stayed up until midnight signing the appointments."},
+      {"number": 315, "term": "Justice Samuel Chase", "definition": "A Federalist judge appointed by Washington to the Supreme Court. Chase had been a Revolutionary War hero and was a signer of the Declaration of Independence. Jefferson disagreed with his rulings and had him impeached for publicly criticizing the Jefferson administration to the Maryland grand jury. Chase was acquitted by the Senate, and the impeachment failed. (This is the only attempt in history to impeach a U.S. Supreme Court Justice.)"},
+      {"number": 316, "term": "Tripolitan War (1801-1805)", "definition": "Also called the Barbary Wars, this was a series of naval engagements launched by President Jefferson in an effort to stop the attacks on American merchant ships by the Barbary pirates. The war was inconclusive, afterwards, the U.S. paid a tribute to the Barbary states to protect their ships from pirate attacks."},
+      {"number": 317, "term": "Treaty of Sam Ildefonso", "definition": "1800 - In this treaty, Spain gave the Louisiana territory back to France (France had lost it to Spain in the Seven Years War)."},
+      {"number": 318, "term": "Louisiana Purchase: reasons, Jefferson, loose construction", "definition": "1803 - The U.S. purchased the land from the Mississippi River to the Rocky Mountains from Napoleon for $15 million. Jefferson was interested in the territory because it would give the U.S. the Mississippi River and New Orleans (both were valuable for trade and shipping) and room to expand. Napoleon wanted to sell because he needed money for his European campaigns and because a rebellion against the French in Haiti had soured him on the idea of New World colonies. The Constitution did not give the federal government the power to buy land, so Jefferson used loose construction to justify the purchase."},
+      {"number": 319, "term": "Toussaint L’Overture", "definition": "1803 - Led a slave rebellion which took control of Haiti, the most important island of France’s Caribbean possessions. The rebellion led Napoleon to feel that New World colonies were more trouble than they were worth, and encouraged him to sell Louisiana to the U.S."},
+      {"number": 320, "term": "Federalist opposition to the Louisiana Purchase", "definition": "Federalists opposed it because they felt Jefferson overstepped his Constitutional powers by making the purchase."},
+      {"number": 321, "term": "Hamilton-Burr duel", "definition": "After Burr lost to Jefferson as a Republican, he switched to the Federalist party and ran for governor of New York. When he lost, he blamed Hamilton (a successful Federalist politician) of making defamatory remarks that cost him the election. Burr challenged Hamilton to a duel, in which Hamilton threw away his shot and was killed on July 11, 1804."},
+      {"number": 322, "term": "Burr expedition, treason trial", "definition": "After the duel, Burr fled New York and joined a group of mercenaries in the southern Louisiana territory region. The U.S. arrested them as they moved towards Mexico. Burr claimed that they had intended to attack Mexico, but the U.S. believed that they were actually trying to get Mexican aid to start a secession movement in the territories. Burr was tried for treason, and although Jefferson advocated Burr’s punishment, the Burr was acquitted."},
+      {"number": 323, "term": "Lewis and Clark expedition and its findings", "definition": "1804-1806 - Meriwether Lewis and William Clark were commissioned by Jefferson to map and explore the Louisiana Purchase region. Beginning at St. Louis, Missouri, the expedition travelled up the Missouri River to the Great Divide, and then down the Columbia River to the Pacific Ocean. It produced extensive maps of the area and recorded many scientific discoveries, greatly facilitating later settlement of the region and travel to the Pacific coast."},
+      {"number": 324, "term": "Pike, Major Long, their observations", "definition": "Zebulon Pike explored (1805-1807) Minnesota and the Southwest, mapped the region, and spied on the Spanish whenever his exploration took him into their territory. (He was eventually captured by the Spanish, but the U.S. arranged for his release.) Major Long explored the middle of the Louisiana Purchase region (Nebraska, Kansas, Colorado) and concluded that it was a worthless \"Great American Desert.\""},
+      {"number": 325, "term": "Berlin Decree (1806), Milan Decree (1807)", "definition": "These decrees issued by Napoleon dealt with shipping and led to the War of 1812. The Berlin Decree initiated the Continental System, which closed European ports to ships which had docked in Britain. The Milan Decree authorized French ships to seize neutral shipping vessels trying to trade at British ports."},
+      {"number": 326, "term": "Orders-in-council", "definition": "British laws which led to the War of 1812. Orders-in-council passed in 1807 permitted the impressment of sailors and forbade neutral ships from visiting ports from which Britain was excluded unless they first went to Britain and traded for British goods."},
+      {"number": 327, "term": "Impressment", "definition": "British seamen often deserted to join the American merchant marines. The British would board American vessels in order to retrieve the deserters, and often seized any sailor who could not prove that he was an American citizen and not British."},
+      {"number": 328, "term": "Chesapeake-Leopard Affair", "definition": "1807 - The American ship Chesapeake refused to allow the British on the Leopard to board to look for deserters. In response, the Leopard fired on the Chesapeake. As a result of the incident, the U.S. expelled all British ships from its waters until Britain issued an apology. They surrendered the colony to the English on Sept. 8, 1664."},
+      {"number": 329, "term": "Embargo of 1807", "definition": "This act issued by Jefferson forbade American trading ships from leaving the U.S. It was meant to force Britain and France to change their policies towards neutral vessels by depriving them of American trade. It was difficult to enforce because it was opposed by merchants and everyone else whose livelihood depended upon international trade. It also hurt the national economy, so it was replaced by the Non-Intercourse Act."},
+      {"number": 330, "term": "Non-Intercourse Act (1809)", "definition": "Replaced the Embargo of 1807. Unlike the Embargo, which forbade American trade with all foreign nations, this act only forbade trade with France and Britain. It did not succeed in changing British or French policy towards neutral ships, so it was replaced by Macon’s Bill No. 2."},
+      {"number": 331, "term": "Erskine Agreement (1809)", "definition": "The U.S. offered to cease all trade with France and resume trade with Britain if the British would stop the impressment of American sailors. The British did not agree to this, so this proposal never went into effect."},
+      {"number": 332, "term": "Macon’s Bill No. 2 (1810)", "definition": "Forbade trade with Britain and France but offered to resume trade with whichever nation lifted its neutral trading restrictions first. France quickly changed its policies against neutral vessels, so the U.S. resumed trade with France, but not Britain."},
+      {"number": 333, "term": "Tecumseh (1763-1813)", "definition": "A Shawnee chief who, along with his brother, Tenskwatawa, a religious leader known as The Prophet, worked to unite the Northwestern Indian tribes. The league of tribes was defeated by an American army led by William Henry Harrison at the Battle of Tippecanoe in 1811. Tecumseh was killed fighting for the British during the War of 1812 at the Battle of the Thames in 1813."},
+      {"number": 334, "term": "War Hawks", "definition": "Western settlers who advocated war with Britain because they hoped to acquire Britain’s northwest posts (and also Florida or even Canada) and because they felt the British were aiding the Indians and encouraging them to attack the Americans on the frontier. In Congress, the War Hawks were Henry Clay and John C. Calhoun."},
+      {"number": 335, "term": "Causes of the War of 1812", "definition": "These included: British impressment of sailors, British seizure of neutral American trading ships, and the reasons given by the War Hawks (the British were inciting the Indians on the frontier to attack the Americans, and the war would allow the U.S. to seize the northwest posts, Florida, and possibly Canada)."},
+      {"number": 336, "term": "Why war against Britain rather than against France?", "definition": "Britain practiced impressment and was believed to be supplying weapons to the Indians on the frontier and encouraging them to attack the U.S. Also, Britain held land near the U.S. which the Americans hoped to acquire, and a war with Britain would allow the U.S. to seize Florida from Britain’s ally Spain. Although France had also seized American ships, France had agreed to lift its neutral trading restrictions, and the U.S. had resumed trade with France."},
+      {"number": 337, "term": "Federalist opposition to the War of 1812", "definition": "The Federalist party was mainly composed of New England merchants, who wanted good relations with Britain and free trade. New England merchants met at the Hartford Convention in protest of the war and the U.S. government’s restrictions on trade."},
+      {"number": 338, "term": "Naval engagements in the War of 1812", "definition": "The U.S. navy won some important battles on the Great Lakes but failed to break the British blockade of the U.S."},
+      {"number": 339, "term": "Fort McHenry, Francis Scott Key, \"Star Spangled Banner\"", "definition": "Francis Scott Key saw Fort McHenry hold out during the night against a British attack. He wrote the poem \"Star Spangled Banner\" about the experience of seeing the U.S. flag still flying above the fort in the morning, and the poem was later set to the tune of an old English bar song."},
+      {"number": 340, "term": "Events of the War of 1812: Key Battles", "definition": "Oliver Perry led an 1813 naval victory against the British on Lake Erie. Washington D.C. was captured and burned by the British in 1814. The Battle of New Orleans was a great victory for the U.S. in January 1815, but it took place two weeks after the signing of the Treaty of Ghent had ended the war."},
+      {"number": 341, "term": "Battle of New Orleans (1815)", "definition": "A large British invasion force was repelled by Andrew Jackson’s troops at New Orleans. Jackson had been given the details of the British army’s battle plans by the French pirate, Jean Laffite. About 2500 British soldiers were killed or captured, while in the American army only 8 men were killed. Neither side knew that the Treaty of Ghent had ended the War of 1812 two weeks before the battle. This victory inspired American nationalism."},
+      {"number": 342, "term": "New England’s merchants, critics of the War of 1812, Essex Junto", "definition": "New England’s merchants opposed the War of 1812 because it cut off trade with Great Britain. Critics of the war were mainly Federalists who represented New England. The Essex Junto was a group of extreme Federalists led by Aaron Burr who advocated New England’s secession from the U.S."},
+      {"number": 343, "term": "Hartford Convention (1814)", "definition": "A convention of New England merchants who opposed the Embargo and other trade restriction, and the War of 1812. They proposed some Amendments to the Constitution and advocated the right of states to nullify federal laws. They also discussed the idea of seceding from the U.S. if their desires were ignored. The Hartford Convention turned public sentiment against the Federalists and led to the demise of the party."},
+      {"number": 344, "term": "Treaty of Ghent (1814)", "definition": "John Quincy Adamas, Albert Gallatin, and Henry Clay led the American delegation which negotiated the Treaty of Ghent. The treaty ended the War of 1812 and restored the status quo. For the most part, territory captured in the war was returned to the original owner. It also set up a commission to determine the disputed Canada/U.S. border."},
+      {"number": 345, "term": "War of 1812 increased nationalism and economic independence", "definition": "The U.S.’s success in the War of 1812 gave Americans a feeling of national pride. The War of 1812 had cut off America’s access to British manufactured goods and forced the U.S. to develop the means to produce those goods on its own."},
+      {"number": 346, "term": "Second Bank of the U.S., a reversal of Jeffersonian ideas", "definition": "As a Democratic-Republican, Jefferson opposed the National Bank. The Second Bank of the U.S. was established in 1816 and was given more authority than the First Bank of the U.S. Bank loans were used to finance the American industrial revolution in the period after the War of 1812."},
+      {"number": 347, "term": "Tariff of 1816", "definition": "This protective tariff helped American industry by raising the prices of British manufactured goods, which were often cheaper and of higher quality than those produced in the U.S."},
+      {"number": 348, "term": "Bonus Bill veto", "definition": "March 1817 - Madison vetoed John C. Calhoun’s Bonus Bill, which would have used the bonus money paid to the government by the Second National Bank to build roads and canals. Madison believed in strict interpretation and using federal money for internal improvements is not a power granted to the federal government in the Constitution."},
+      {"number": 349, "term": "Rush-Bagot Treaty (1817)", "definition": "This treaty between the U.S. and Great Britain (which controlled Canada) provided for the mutual disarmament of the Great Lakes. This was later expanded into an unarmed Canada/U.S. border."},
+      {"number": 350, "term": "Convention of 1818", "definition": "Set the border between the U.S. and Canada at the 49th parallel (or latitude). Also affirmed U.S. rights to fisheries along Newfoundland and Labrador."}
+    );
+    // EPTLs 351–400
+    APUSH_EPTL_CARDS.push(
+      {"number": 351, "term": "Panic of 1819", "definition": "A natural post-war depression caused by overproduction and the reduced demand for goods after the war. However, it was generally blamed on the National Bank."},
+      {"number": 352, "term": "West Florida, 1810", "definition": "The U.S. wanted this region, which now forms the southern parts of the states of Alabama and Mississippi, because it bordered the Mississippi River. The U.S. seized West Florida after an uprising by American settlers in the region."},
+      {"number": 353, "term": "Jackson in Florida", "definition": "1817 - The Seminole Indians in Florida, encouraged by the Spanish, launched a series of raids into the U.S. President J. Q. Adams ordered Andrew Jackson, whose troops were on the U.S./Florida border, to seize Spanish forts in northern Florida. Jackson’s successful attacks convinced the Spanish that they could not defend Florida against the U.S."},
+      {"number": 354, "term": "Purchase of Florida (1819)", "definition": "Under the Adams-Onis Treaty, Spain sold Florida to the U.S., and the U.S. gave up its claims to Texas."},
+      {"number": 355, "term": "Adams-Onis Treaty (1819)", "definition": "Spain gave up Florida to the U.S. and the U.S./Mexico border was set so that Texas and the American Southwest would be part of Mexico."},
+      {"number": 356, "term": "George Canning (1770-1829)", "definition": "Led the House of Commons in Parliament. First leader to recognize the independence of the Spanish colonies in America and support the Monroe Doctrine, which helped restore good relations between the U.S. and Great Britain."},
+      {"number": 357, "term": "Monroe Doctrine (1823)", "definition": "Declared that Europe should not interfere in the affairs of the Western Hemisphere and that any attempt at interference by a European power would be seen as a threat to the U.S. It also declared that a New World colony which has gained independence may not be re-colonized by Europe. (It was written at a time when many South American nations were gaining independence). Only England, in particular George Canning, supported the Monroe Doctrine. Mostly just a show of nationalism, the doctrine had no major impact until later in the 1800s."},
+      {"number": 358, "term": "Era of Good Feelings", "definition": "A name for President Monroe’s two terms, a period of strong nationalism, economic growth, and territorial expansion. Since the Federalist party dissolved after the War of 1812, there was only one political party and no partisan conflicts."},
+      {"number": 359, "term": "Chief Justice John Marshall", "definition": "Justice Marshall was a Federalist whose decisions on the U.S. Supreme Court promoted federal power over state power and established the judiciary as a branch of government equal to the legislative and executive. In Marbury v. Madison he established the Supreme Court’s power of judicial review, which allows the Supreme Court to declare laws unconstitutional."},
+      {"number": 360, "term": "Missouri: Tallmadge Amendment, Thomas Amendment", "definition": "When Missouri applied for statehood, there was a dispute over whether it would be admitted as a slave state or a free state. The Tallmadge Amendment was a bill which would have admitted Missouri with its existing slave population but would forbid the introduction of additional slaves and free all slave children at age 25. The Thomas Amendment was a bill which would have admitted Missouri as a slave state but forbid slavery north of the 36°30\" latitude in the Louisiana Purchase region. Neither bill was put into effect."},
+      {"number": 361, "term": "Missouri Compromise (1820)", "definition": "Admitted Missouri as a slave state and at the same time admitted Maine as a free state. Declared that all territory north of the 36°30\" latitude would become free states, and all territory south of that latitude would become slave states."},
+      {"number": 362, "term": "Growth of industry in New England, textiles", "definition": "The industrial revolution had occurred in England in the 1700s, but it was not until the period industrial growth after the War of 1812 that the U.S. began to manufacture goods with the aid of factories and machines. New England, rather than the South, emerged as a manufacturing center because New England had many rivers to supply waterpower, plus a better system of roads and canals. The first major industry in New England was textiles."},
+      {"number": 363, "term": "Samuel Slater (1768-1835)", "definition": "When he emigrated from England to America in the 1790s, he brought with him the plans to an English factory. With these plans, he helped build the first factory in America."},
+      {"number": 364, "term": "Robert Fulton, Clermont", "definition": "A famous inventor, Robert Fulton designed and built America’s first steamboat, the Clermont in 1807. He also built the Nautilus, the first practical submarine."},
+      {"number": 365, "term": "Eli Whitney: cotton gin (short for \"engine\")", "definition": "1798 - He developed the cotton gin, a machine which could separate cotton form its seeds. This invention made cotton a profitable crop of great value to the Southern economy. It also reinforced the importance of slavery in the economy of the South."},
+      {"number": 366, "term": "Interchangeable parts", "definition": "1799-1800 - Eli Whitney developed a manufacturing system which uses standardized parts which are all identical and thus, interchangeable. Before this, each part of a given device had been designed only for that one device; if a single piece of the device broke, it was difficult or impossible to replace. With standardized parts, it was easy to get a replacement part from the manufacturer. Whitney first put used standardized parts to make muskets for the U.S. government."},
+      {"number": 367, "term": "Boston Associates, Lowell, Massachusetts", "definition": "The Boston Associates were a group of Boston businessmen who built the first power loom. In 1814 in Waltham, Massachusetts, they opened a factory run by Lowell. Their factory-made cloth so cheaply that women began to buy it rather than make it themselves."},
+      {"number": 368, "term": "Daniel Webster (1782-1852)", "definition": "A great American orator. He gave several important speeches, first as a lawyer, then as a Congressman. He was a major representative of the North in pre-Civil War Senate debates, just as Sen. John C. Calhoun was the representative of the South in that time."},
+      {"number": 369, "term": "National Road (also called Cumberland Road)", "definition": "The first highway built by the federal government. Constructed during 1825-1850, it stretched from Pennsylvania to Illinois. It was a major overland shipping route and an important connection between the North and the West."},
+      {"number": 370, "term": "Internal improvements", "definition": "The program for building roads, canals, bridges, and railroads in and between the states. There was a dispute over whether the federal government should fund internal improvements since it was not specifically given that power by the Constitution."},
+      {"number": 371, "term": "Erie Canal, Dewitt Clinton", "definition": "1825 - The Erie canal was opened as a toll waterway connecting New York to the Great Lakes. The canal was approved in 1817 with the support of New York’s Governor, Dewitt Clinton. Along with the Cumberland Road, it helped connect the North and the West."},
+      {"number": 372, "term": "New states, 1815-1840", "definition": "The government tried to maintain a balance between slave states and free states. The new states admitted were: Indiana (1816, free), Mississippi (1817, slave), Illinois (1818, free), Alabama (1819, slave), Maine (1820, free), Missouri (1821, slave), Arkansas (1836, slave), and Michigan (1837, free)."},
+      {"number": 373, "term": "Federal government’s land policy: 1796, 1800, 1804, 1820", "definition": "In 1796, land was sold in 640-acre tracts or more for no less than $2 per acre. In 1800, the minimum lot size was reduced to 320 acres. In 1804, the minimum lot size was 160 acres, and the minimum price $1.64 per acre. In 1804, the minimum lot size was 80 acres, and the minimum price $1.25 per acre."},
+      {"number": 374, "term": "New England’s opposition to cheap land", "definition": "New England was opposed to the federal government’s liberal land policy because they did not feel that their region was benefiting from the money made off the land sales."},
+      {"number": 375, "term": "John Quincy Adams as Sec. of State: Florida, Monroe Doctrine", "definition": "He served under President Monroe. In 1819, he drew up the Adams-Onis Treaty in which Spain gave the U.S. Florida in exchange for the U.S. dropping its claims to Texas. The Monroe Doctrine was mostly Adams’ work."},
+      {"number": 376, "term": "Election of 1824", "definition": "Popular vote: Jackson - 152,933 (42%), Adams - 115,626 (32%), Clay - 47,136 (13%), Crawford - 46,979 (13%). Electoral vote: Jackson - 99, Adams - 84, Crawford - 41, Clay - 37. House vote: Adams - 13, Jackson - 7, Crawford - 4, Clay - dropped. Jackson did not have a majority in the electoral vote, so the election went to the House of Representatives, where Adams won."},
+      {"number": 377, "term": "\"Corrupt Bargain\"", "definition": "The charge made by Jacksonians in 1825 that Clay had supported John Quincy Adams in the House presidential vote in return for the office of Secretary of State. Clay knew he could not win, so he traded his votes for an office."},
+      {"number": 378, "term": "Panama Conference (aka Panama Congress aka Amphictyonic Congress)", "definition": "Summoned by the Venezuelan revolutionary leader, Simon Bolivar, in 1826 to discuss commercial treaties, adopt a code of international law, and arrive at a common Latin American policy toward Spain. President JQA & Secretary of State Henry Clay wanted the US to participate; but because most of the invited nations had outlawed slavery, Southern congressmen held up funding for the delegation’s travel expenses. Eventually the delegation departed for the conference; however, one US delegate died enroute and the other arrived after the conference has concluded."},
+      {"number": 379, "term": "Tariff of 1828 (aka Tariff of Abominations)", "definition": "Raised the tariff on imported manufactured goods. The tariff protected the North but harmed the South; South said that the tariff was economically discriminatory and unconstitutional because it violated state's rights. It passed because New England favored high tariffs."},
+      {"number": 380, "term": "South Carolina Exposition and Protest", "definition": "Vice-President Calhoun anonymously published the essay South Carolina Exposition, which proposed that each state in the union counter the tyranny of the majority by asserting the right to nullify an unconstitutional act of Congress. It was written in reaction to the Tariff of 1828, which he said placed the Union in danger and stripped the South of its rights. South Carolina had threatened to secede if the tariff was not revoked; Calhoun suggested state nullification as a more peaceful solution."},
+      {"number": 381, "term": "Jacksonian Revolution of 1828", "definition": "Andrew Jackson became president after a campaign which depicted him as the representative of the “common man;” even to the extent of hyping his birth in a log cabin. Jackson appointed more diverse (class/education/income) people to government positions than had been done in prior administrations. Jefferson's emphasis on farmers’ welfare gave way to Jackson's appeal to city workers, small businessmen, and farmers. Jackson's election was the billed as the revolution of the \"Common Man\"."},
+      {"number": 382, "term": "Age of the Common Man", "definition": "Jackson's presidency was the called the Age of the Common Man. An idea that government should be run by common people - a democracy based on self-sufficient middle class with ideas formed by liberal education and a free press. All white men could now vote, and the increased voting rights helped Jackson to be elected."},
+      {"number": 383, "term": "Jacksonian Democracy", "definition": "The Jacksonian era (1829-1841) included many reforms: free public schools, more women's rights, better working conditions in factories, and the rise of the Abolition movement. In the election, Jackson was portrayed as a common man and his opponent, J.Q. Adams, was attacked for his aristocratic principles. Electors in the electoral college were also chosen by popular vote. Common man, nationalism, National Nominating Conventions."},
+      {"number": 384, "term": "Franchise extended, spoils system", "definition": "Franchise extended - more people were given the right to vote, even men who owned no land. Spoils system - \"To the victor go the spoils\" - the winner of the election may do whatever they want with the staff. Jackson made more staff changes than any previous president, firing many people and replacing them with his own."},
+      {"number": 385, "term": "National Republicans", "definition": "After the 1824 election, part of the Democratic-Republican party joined John Q. Adams, Clay, and Daniel Webster to oppose Andrew Jackson. They favored nationalistic measures like re-charter of the Bank of the United States, high tariffs, and internal improvements at national expense. They were supported mainly by Northwesterners and were not very successful. They were conservatives alarmed by Jackson's radicalness; they joined with the Whigs in the 1830's."},
+      {"number": 386, "term": "Caucus System, Nation Nominating Conventions", "definition": "In the National Nominating Convention, delegates voted on the results of a primary. In the Caucus System, candidates were elected by small, secretive party groups and the public had little say in the process."},
+      {"number": 387, "term": "Kitchen Cabinet", "definition": "A small group of Jackson's friends and advisors who were especially influential in the first years of his presidency. Jackson conferred with them instead of his regular cabinet. Many people didn't like Jackson ignoring official procedures and called it the \"Kitchen Cabinet\" or \"Lower Cabinet\"."},
+      {"number": 388, "term": "Cherokee Indian removal, \"Trail of Tears\"", "definition": "A minority of the Cherokee tribe, despite the protest of the majority, had surrendered their Georgia land in the 1835 Treaty of New Echota. During the winter of 1838 - 1839, troops under General Winfield Scott evicted them from their homes in Georgia and moved them to Oklahoma Indian country. Many died on the trail; the journey became known as the \"Trail of Tears\"."},
+      {"number": 389, "term": "Cherokee Nation v. Georgia (1831); Worcester v. Georgia (1832)", "definition": "Worcester v. Georgia: 1832 - The Supreme Court decided Georgia had no jurisdiction over Cherokee reservations. Georgia refused to enforce decision and President Jackson did not support the Court. Cherokee Nation v. Georgia: 1831 - The Supreme Court ruled that Indians were not independent nations but dependent domestic nations which could be regulated by the federal government. From then until 1871, treaties were formalities with the terms dictated by the federal government."},
+      {"number": 390, "term": "Whigs: origins, policies", "definition": "Whigs were conservatives and popular with pro-Bank people and plantation owners. They mainly came from the National Republican Party, which was once largely Federalists. They took their name from the British political party that had opposed King George during the American Revolution. Among the Whigs were Henry Clay, Daniel Webster, and, for a while, Calhoun. Their policies included support of industry, protective tariffs, and Clay's American System. They were generally upper class in origin."},
+      {"number": 391, "term": "Maysville Road Veto (1830)", "definition": "The Maysville Road Bill proposed building a road in Kentucky (Henry Clay's state) at federal expense. Jackson vetoed it because he did not like Clay, and Martin Van Buren pointed out that New York and Pennsylvania paid for their transportation improvements with state money. Applied strict interpretation of the Constitution by saying that the federal government could not pay for internal improvements."},
+      {"number": 392, "term": "Election of 1832, Anti-Masonic Party", "definition": "Andrew Jackson (Democrat) ran for re-election with V.P. Martin Van Buren. The main issue was his veto of the re-charter of the U.S. Bank, which he said was a monopoly. Henry Clay (Whig), who was pro-Bank, ran against him The Anti-Masonic Party nominated William Wirt. This was the first election with a national nominating convention. Jackson won - 219 to Clay's 49 and Wirt's 1. The Masons were a semi-secret society devoted to libertarian principles to which most educated or upper-class men of the Revolutionary War era belonged. The Anti-Masons sprang up as a reaction to the perceived elitism of the Masons, and the new party took votes from the Whigs, helping Jackson to win the election."},
+      {"number": 393, "term": "Clay, Bank Re-charter Bill, Nicholas Biddle", "definition": "The Bank of the United States was chartered by Congress in 1791; it held government funds and was also commercial. It was not re-chartered in 1811, but a second bank was established in 1816 (1/5 government owned). Jackson opposed it, saying it drove other banks out of business and favored the rich, but Clay favored it. Nicholas Biddle became the bank's president. He made the bank's loan policy stricter and testified that, although the bank had enormous power, it did not destroy small banks. The bank went out of business in 1836 amid controversy over whether the National Bank was constitutional and should be re-chartered."},
+      {"number": 394, "term": "Jackson Bank Veto Message (1832)", "definition": "Jackson, in his veto message of the re-charter of the Second Bank of the U.S., said that the bank was a monopoly that catered to the rich, and that it was owned by the wealthy and by foreigners."},
+      {"number": 395, "term": "Jackson's removal of deposits, Roger B. Taney, pet bank, Loco Focos", "definition": "Angry because Biddle used bank funds to support anti-Jacksonian candidates, Jackson removed federal deposits from the bank in 1833, firing the secretaries of treasury who wouldn't comply, and was charged with abuse of power. Roger B. Taney was Chief Justice of the Supreme Court and helped Jackson crush the Bank of the U.S. Pet banks were state banks into which Jackson deposited federal funds in 1833, after he vetoed the re-charter of the Second Bank of the U.S., so called because people thought they were chosen on political grounds. Loco Focos (1835) were Democrats who wanted reform and opposed tariffs, banks, monopolies, and other places of special privilege."},
+      {"number": 396, "term": "Foote Resolution, Webster-Hayne debate", "definition": "The Webster-Hayne debate in 1830 was over an 1830 bill by Samuel A. Foote to limit the sale of public lands in the west to new settlers. Daniel Webster, in a dramatic speech, showed the danger of the states' rights doctrine, which permitted each state to decide for itself which laws were unconstitutional, claiming it would lead to civil war. States' rights (South) vs. nationalism (North)."},
+      {"number": 397, "term": "Peggy Eaton Affair", "definition": "Social scandal (1829-1831) - John Eaton, Secretary of War, stayed with the Timberlakes when in Washington, and there were rumors of his affair with Peggy Timberlake even before her husband died in 1828. Many cabinet members snubbed the socially unacceptable Mrs. Eaton. Jackson sided with the Eatons, and the affair helped to dissolve the cabinet - especially those members associated with John C. Calhoun (V.P.), who was against the Eatons and had other problems with Jackson."},
+      {"number": 398, "term": "Calhoun resigns as vice-president", "definition": "1832 - Calhoun, from South Carolina, wrote the doctrine of nullification, expressing his views in support of states' rights. His views were so disputed and so different from Jackson's that Calhoun resigned and was appointed senator in South Carolina to present their case to Congress."},
+      {"number": 399, "term": "South opposes protective tariffs (Tariff of Abominations)", "definition": "The North wanted tariffs that protected new industries, but the agricultural Southern states depended on cheap imports of manufactured goods and only wanted tariffs for revenue. The South strongly opposed protective tariffs like the Tariffs of 1828 and 1832 and protested by asserting that enforcement of the tariffs could be prohibited by individual states, and by refusing to collect tariff duties."},
+      {"number": 400, "term": "Nullification crisis, South Carolina Exposition and Protest", "definition": "When faced with the protective Tariff of 1828, John Calhoun presented a theory in the South Carolina Exposition and Protest (1828) that federal tariffs could be declared null and void by individual states and that they could refuse to enforce them. South Carolina called a convention in 1832, after the revised Tariff of 1828 became the Tariff of 1832, and passed an ordinance forbidding collection of tariff duties in the state. This was protested by Jackson."}
+    );
+    // EPTLs 401–450
+    APUSH_EPTL_CARDS.push(
+      {"number": 401, "term": "Jefferson Day Dinner: toasts and quotes", "definition": "April 13, 1830 - At the Jefferson anniversary dinner, President Jackson toasted, \"Our federal union! It must and shall be preserved!\" making it clear to the nullifiers that he would resist the states' rights supporters' claim to nullify the tariff law. V.P. Calhoun's response to the toast was, \"The union, next to our liberty, most dear. May we always remember that it can only be preserved by distributing evenly the benefits and burdens of the Union.\" Calhoun had wanted Jackson to side with him (for states' rights) in public, but he did not succeed."},
+      {"number": 402, "term": "Clay: Compromise Tariff of 1833", "definition": "Henry Clay devised the Compromise Tariff of 1833 which gradually reduced the rates levied under the Tariffs of 1828 and 1832. It caused South Carolina to withdraw the ordinance nullifying the Tariffs of 1828 and 1832. Both protectionists and anti-protectionists accepted the compromise."},
+      {"number": 403, "term": "Force Bill (1833)", "definition": "The Force Bill authorized President Jackson to use the army and navy to collect duties on the Tariffs of 1828 and 1832. South Carolina's ordinance of nullification had declared these tariffs null and void, and South Carolina would not collect duties on them. The Force Act was never invoked because it was passed by Congress the same day as the Compromise Tariff of 1833, so it became unnecessary. South Carolina also nullified the Force Act."},
+      {"number": 404, "term": "Calhoun splits with Jackson", "definition": "1832 - Calhoun resigned as vice-president when his views on states' rights were disputed by Jackson. Calhoun wanted each section of the country to share federal power equally, and he wanted independence for the South if they were to be controlled by the majority."},
+      {"number": 405, "term": "Martin Van Buren, the Albany Regency", "definition": "Martin Van Buren, a Democratic-Republican Senator from New York, rallied the factory workers of the North in support of Jackson. He became Jackson's V.P. after Calhoun resigned. New York politics at that time was controlled by a clique of wealthy landowners known as the Albany Regency, of which Van Buren became the leader."},
+      {"number": 406, "term": "Specie Circular", "definition": "1836 - The Specie Circular, issued by President Jackson July 11, 1836, was meant to stop land speculation caused by states printing paper money without proper specie (gold or silver) backing it. The Circular required that the purchase of public lands be paid for in specie. It stopped the land speculation and the sale of public lands went down sharply. The panic of 1837 followed."},
+      {"number": 407, "term": "Charles River Bridge Decision, Chief Justice Roger B. Taney, General Incorporation Laws", "definition": "1837 - The Charles River Bridge Decision, delivered by Roger B. Taney, modified C.J. Marshall's ruling in the Dartmouth College Case of 1819, which said that a state could not make laws infringing on the charters of private organizations. Taney ruled that a charter granted by a state to a company cannot work to the disadvantage of the public. The Charles River Bridge Company protested when the Warren Bridge Company was authorized in 1828 to build a free bridge where it had been chartered to operate a toll bridge in 1785. The court ruled that the Charles River Company was not granted a monopoly right in their charter, and the Warren Company could build its bridge. Began the legal concept that private companies cannot injure the public welfare."},
+      {"number": 408, "term": "Panic of 1837", "definition": "When Jackson was president, many state banks received government money that had been withdrawn from the Bank of the U.S. These banks issued paper money and financed wild speculation, especially in federal lands. Jackson issued the Specie Circular to force the payment for federal lands with gold or silver. Many state banks collapsed as a result. A panic ensued (1837). Bank of the U.S. failed, cotton prices fell, businesses went bankrupt, and there was widespread unemployment and distress."},
+      {"number": 409, "term": "Dorr's Rebellion", "definition": "In 1841, Rhode Island was governed by a 1663 charter which said that only property holders and their eldest sons could vote (1/2 the adult male population). Thomas Dorr led a group of rebels who wrote a new constitution and elected him governor in 1842. The state militia was called in to stop the rebellion. Dorr was sentenced to life imprisonment, but the sentence was withdrawn. Dorr's Rebellion caused conservatives to realize the need for reform. A new constitution in 1843 gave almost all men the right to vote."},
+      {"number": 410, "term": "Election of 1840: candidates, characteristics", "definition": "William Henry Harrison and V.P. John Tyler - Whig - 234 votes. Martin Van Buren - Democrat - 60 votes. James G. Birney - Liberty Party - 0 votes. Panic of 1837 and a coming depression kept Van Buren from being reelected. Whigs rejected Clay, nominated military hero Harrison with the slogan \"Tippecanoe and Tyler too\". They depicted Van Buren as living in luxury and Harrison as a \"log cabin and hard cider\" guy, which wasn't entirely true."},
+      {"number": 411, "term": "Rise of the Second Party System", "definition": "Since the 1840's, two major political parties have managed to eliminate all competition. Democrats and Republicans have controlled nearly all government systems since the 1840's."},
+      {"number": 412, "term": "Pre-emption Act, 1841", "definition": "This was to help settlers who occupied land and improved it before surveys were done. Without it, settlers could be outbid for the land. Some speculators used \"floaters\" to pre-empt land for them."},
+      {"number": 413, "term": "Tariff of 1842", "definition": "A protective tariff signed by President John Tyler. Known as the “Black Tariff” by its opponents, it raised the general level of duties from 20% to 40%, which was about where they had been before the Compromise Tariff of 1833."},
+      {"number": 414, "term": "Transcendentalism", "definition": "A philosophy pioneered by Ralph Waldo Emerson in the 1830's and 1840's, in which each person has direct communication with God and Nature, and there is no need for organized churches. It incorporated the ideas that mind goes beyond matter, intuition is valuable, that each soul is part of the Great Spirit, and each person is part of a reality where only the invisible is truly real. Promoted individualism, self-reliance, and freedom from social constraints, and emphasized emotions."},
+      {"number": 415, "term": "Transcendentalists", "definition": "Believed in Transcendentalism, they included Emerson (who pioneered the movement) and Thoreau. Many of them formed cooperative communities such as Brook Farm and Fruitlands, in which they lived and farmed together with the philosophy as their guide. \"They sympathize with each other in the hope that the future will not always be as the past.\" It was more literary than practical - Brook Farm lasted only from 1841 to 1847."},
+      {"number": 416, "term": "Ralph Waldo Emerson (1803-1882)", "definition": "Essayist, poet. A leading transcendentalist, emphasizing freedom and self-reliance in essays which still make him a force today. He had an international reputation as a first-rate poet. He spoke and wrote many works on the behalf of the Abolitionists."},
+      {"number": 417, "term": "Henry David Thoreau, Walden (1817-1862), \"On Civil Disobedience\"", "definition": "A transcendentalist and friend of Emerson. He lived alone on Walden Pond with only $8 a year from 1845-1847 and wrote about it in Walden. In his essay, \"On Civil Disobedience,\" he inspired social and political reformers because he had refused to pay a poll tax in protest of slavery and the Mexican American War, and had spent a night in jail. He was an extreme individualist and advised people to protest by not obeying laws (passive resistance)."},
+      {"number": 418, "term": "Orestes Brownson (1803-1876)", "definition": "Presbyterian layman, Universalist minister, Unitarian preacher, and founder of his own church in Boston. Spent his life searching for his place and supporting various causes. As an editor, he attacked organized Christianity and won a large intellectual New England following. Then turned Roman Catholic and became a strong defender of Catholicism in Brownson's Quarterly Review, from 1844 until his death."},
+      {"number": 419, "term": "Margaret Fuller (1810-1815), The Dial", "definition": "Social reformer, leader in women's movement and a transcendentalist. Edited The Dial (1840-1842), which was the publication of the transcendentalists. It appealed to people who wanted \"perfect freedom\", \"progress in philosophy and theology . . . and hope that the future will not always be as the past.\""},
+      {"number": 420, "term": "James Fenimore Cooper (1789-1851), The Spy, The Pioneers", "definition": "American novelist. The Spy (1821) was about the American Revolution. The Pioneers (1823) tells of an old scout returning to his boyhood home and is one of the Leatherstocking Tales, a series of novels about the American frontier, for which Cooper was famous. (Leatherstocking is the scout.) Cooper later stayed in Europe for seven years, and when he returned, he was disgusted by American society because it didn't live up to his books. Cooper emphasized the independence of individuals and importance of a stable social order."},
+      {"number": 421, "term": "James Fenimore Cooper, Last of the Mohicans", "definition": "1826 - It is about a scout named Hawkeye during the French and Indian War, while he was in his prime. It is one of the Leatherstocking Tales, about a frontiersman and a noble Indian, and the clash between growing civilization and untamed wilderness."},
+      {"number": 422, "term": "Herman Melville (1819-1891), Moby Dick", "definition": "Wrote Moby Dick (1851) about a Captain Ahab who seeks revenge on the white whale that crippled him but ends up losing his life, his ship, and his crew. Was not popular at the time but now highly regarded. Melville rejected the optimism of the transcendentalists and felt that man faced a tragic destiny. His views were not popular at the time but were accepted by later generations."},
+      {"number": 423, "term": "Nathaniel Hawthorne (1804-1864), The Scarlet Letter", "definition": "Originally a transcendentalist; later rejected them and became a leading anti-transcendentalist. He was a descendant of Puritan settlers. The Scarlet Letter shows the hypocrisy and insensitivity of New England puritans by showing their cruelty to a woman who has committed adultery and is forced to wear a scarlet \"A\"."},
+      {"number": 424, "term": "Edgar Allen Poe (1809-1849)", "definition": "Author who wrote many poems and short stories including \"The Raven,\" \"The Bells,\" \"The Tell-Tale Heart,\" and \"The Gold Bug.\" He was the originator of the detective story and had a major influence on symbolism and surrealism. Best known for macabre stories."},
+      {"number": 425, "term": "Washington Irving (1783-1859)", "definition": "Author, diplomat. Wrote The Sketch Book, which included \"Rip Van Winkle\" and \"The Legend of Sleepy Hollow.\" He was the first American to be recognized in England (and elsewhere) as a writer."},
+      {"number": 426, "term": "Henry Wadsworth Longfellow (1807-1882)", "definition": "Internationally recognized poet. Emphasized the value of tradition and the impact of the past on the present."},
+      {"number": 427, "term": "Walt Whitman (1819-1892), Leaves of Grass", "definition": "Leaves of Grass (1855) was his first volume of poetry. He broke away from the traditional forms and content of New England poetry by describing the life of working Americans and using words like \"I reckon\", \"duds\", and \"folks\". He loved people and expressed the new democracy of a nation finding itself. He had radical ideas and abolitionist views - Leaves of Grass was considered immoral. Patriotic."},
+      {"number": 428, "term": "Hudson River School of Art", "definition": "In about 1825, a group of American painters, led by Thomas Cole, used their talents to do landscapes, which were not highly regarded. They painted many scenes of New York's Hudson River. Mystical overtones."},
+      {"number": 429, "term": "Alexis de Tocqueville, Democracy in America", "definition": "De Tocqueville came from France to America in 1831. He observed democracy in government and society. His book (written in two parts in 1835 and 1840) discusses the advantages of democracy and consequences of the majority's unlimited power. First to raise topics of American practicality over theory, the industrial aristocracy, and the conflict between the masses and individuals."},
+      {"number": 430, "term": "Millennialism, Millerites", "definition": "Millerites were Seventh Day Adventists who followed William Miller. They sold their possessions because they believed the Second Coming would be in 1843 or 1844 and waited for the world to end. The Millennial Dawnists, another sect of the Seventh Day Adventists, believed the world was under Satan's rule and felt it their obligation to announce the Second Coming of Christ and the battle of Armageddon."},
+      {"number": 431, "term": "\"The Burned-Over District\"", "definition": "Term applied to the region of western New York along the Erie Canal, and refers to the religious fervor of its inhabitants. In the 1800's, farmers there were susceptible to revivalist and tent rallies by the Pentecostals (religious groups)."},
+      {"number": 432, "term": "Charles G. Finney (1792-1875)", "definition": "An immensely successful revivalist of the 1800's. He helped establish the \"Oberlin Theology\". His emphasis on \"disinterested benevolence\" helped shape the main charitable enterprises of the time."},
+      {"number": 433, "term": "Mormons: Joseph Smith (1805-1844)", "definition": "Founded Mormonism in New York in 1830 with the guidance of an angel. In 1843, Smith's announcement that God sanctioned polygamy split the Mormons and let to an uprising against Mormons in 1844. He translated the Book of Mormon and died a martyr."},
+      {"number": 434, "term": "Brigham Young, Great Salt Lake, Utah", "definition": "1847 - Brigham Young let the Mormons to the Great Salt Lake Valley in Utah, where they founded the Mormon republic of Deseret. Believed in polygamy and strong social order. Others feared that the Mormons would act as a block, politically and economically."},
+      {"number": 435, "term": "Brook Farm", "definition": "An experiment in Utopian socialism, it lasted for six years (1841-1847) in New Roxbury, Massachusetts."},
+      {"number": 436, "term": "New Harmony", "definition": "A utopian settlement in Indiana lasting from 1825 to 1827. It had 1,000 settlers, but a lack of authority caused it to break up."},
+      {"number": 437, "term": "Oneida Community", "definition": "A group of socio-religious perfectionists who lived in New York. Practiced polygamy, communal property, and communal raising of children."},
+      {"number": 438, "term": "Shakers", "definition": "A millennial group who believed in both Jesus and a mystic named Ann Lee. Since they were celibate and could only increase their numbers through recruitment and conversion, they eventually ceased to exist."},
+      {"number": 439, "term": "Amana Community", "definition": "A German religious sect set up this community with communist overtones. Still in existence."},
+      {"number": 440, "term": "Lyceum Movement", "definition": "Developed in the 1800's in response to growing interest in higher education. Associations were formed in nearly every state to give lectures, concerts, debates, scientific demonstrations, and entertainment. This movement was influential for the increase in the number of institutions of higher learning."},
+      {"number": 441, "term": "Dorothea Dix", "definition": "A reformer and pioneer in the movement to treat the insane as mentally ill, beginning in the 1820's, she was responsible for improving conditions in jails, poorhouses and insane asylums throughout the U.S. and Canada. She succeeded in persuading many states to assume responsibility for the care of the mentally ill. She served as the Superintendent of Nurses for the Union Army during the Civil War."},
+      {"number": 442, "term": "Rise of labor leaders", "definition": "During the 1800's, labor unions became more and more common. Their leaders sought to achieve the unions' goals through political actions. Their goals included reduction in the length of the workday, universal education, free land for settlers, and abolition of monopolies. Labor unions were the result of the growth of factories."},
+      {"number": 443, "term": "National Trade Union", "definition": "Unions formed by groups of skilled craftsmen."},
+      {"number": 444, "term": "Commonwealth v. Hunt (1842)", "definition": "Case heard by the Massachusetts supreme court. The case was the first judgment in the U.S. that recognized that the conspiracy law is inapplicable to unions and that strikes for a closed shop are legal. Also decided that unions are not responsible for the illegal acts of their members."},
+      {"number": 445, "term": "Criminal Conspiracy Laws and early unions", "definition": "For a time in the 1700's and 1800's, these laws were directed at early labor unions. The organized stoppage of work by a group of employees in a strike could be judged a criminal restraint of trade. This approach largely ended after Commonwealth v. Hunt."},
+      {"number": 446, "term": "Oberlin, 1833; Mt. Holyoke, 1836", "definition": "Oberlin: founded by a New England Congregationalist at Oberlin, Ohio. First coed facility at the college level. The first to enroll Blacks in 1835. Mt. Holyoke: founded in 1837 in South Hadley, Massachusetts. Became the model for later liberal arts institutions of higher education for women. Liberal colleges."},
+      {"number": 447, "term": "Public education, Horace Mann", "definition": "Secretary of the newly formed Massachusetts Board of Education, he created a public-school system in Massachusetts that became the model for the nation. Started the first American public schools, using European schools (Prussian military schools) as models. Now you know who to blame."},
+      {"number": 448, "term": "American Temperance Union", "definition": "The flagship of the temperance movement in the 1800's. Opposed alcohol."},
+      {"number": 449, "term": "\"Ten Nights in a Bar-Room,\" Timothy Shay Arthur", "definition": "A melodramatic story, published in 1856, which became a favorite text for temperance lecturers. In it, a traveler visits the town of Cedarville occasionally for ten years, notes the changing fortunes of the citizens and blames the saloon."},
+      {"number": 450, "term": "Maine Law, Neal Dow", "definition": "In 1838, Dow founded the Maine Temperance Union. As mayor of Portland, Maine, Dow secured in 1851 the state's passage the Maine Law, which forbade the sale or manufacture of liquor."}
+    );
+    // EPTLs 451–500
+    APUSH_EPTL_CARDS.push(
+      {"number": 451, "term": "Irish, German immigration", "definition": "Irish: arriving in immense waves in the 1800's, they were extremely poor peasants who later became the manpower for canal and railroad construction. German: also came because of economic distress, German immigration had a large impact on America, shaping many of its morals. Both groups of immigrants were heavy drinkers and supplied the labor force for the early industrial era."},
+      {"number": 452, "term": "Nativism", "definition": "An anti-foreign feeling that arose in the 1840's and 1850's in response to the influx of Irish and German Catholics."},
+      {"number": 453, "term": "Samuel F.B. Morse, Imminent Dangers to the Free Institutions of the U.S. Through Foreign Immigration, and the Present State of the Naturalization Laws", "definition": "He was briefly involved in Nativism and anti-Catholic movements, asserting that foreign immigration posed a threat to the free institutions of the U.S., as immigrants took jobs from Americans and brought dangerous new ideas."},
+      {"number": 454, "term": "Lucretia Mott (1803-1880)", "definition": "An early feminist, she worked constantly with her husband in liberal causes, particularly slavery abolition and women's suffrage. Her home was a station on the underground railroad. With Elizabeth Cady Stanton, she helped organize the first women's rights convention, held in Seneca Falls, New York in 1848."},
+      {"number": 455, "term": "Elizabeth Cady Stanton", "definition": "A pioneer in the women's suffrage movement, she helped organize the first women's rights convention in Seneca Falls, New York in 1848. She later helped edit the militant feminist magazine Revolution from 1868 - 1870."},
+      {"number": 456, "term": "Seneca Falls Convention (1848)", "definition": "The first modern women's right convention. At the gathering, Elizabeth Cady Stanton read a Declaration of Sentiment listing the many discriminations against women, and adopted eleven resolutions, one of which called for women's suffrage."},
+      {"number": 457, "term": "Emma Willard (1787-1870)", "definition": "Early supporter of women's education, in 1818 she published Plan for Improving Female Education, which became the basis for public education of women in New York. In 1821, she opened her own girls’ school, the Troy Female Seminary, designed to prepare women for college."},
+      {"number": 458, "term": "Catherine Beecher (1800-1878)", "definition": "A writer and lecturer, she worked on behalf of household arts and education of the young. She established two schools for women and emphasized better teacher training. She opposed women's suffrage."},
+      {"number": 459, "term": "\"Cult of True Womanhood\": piety, domesticity, purity and submissiveness", "definition": "While many women were in favor of the women's movement, some were not. Some of these believed in preserving the values of \"true womanhood\": piety, domesticity, purity and submissiveness. These opponents of the women’s movement referred to their ideas as the \"Cult of True Womanhood.\""},
+      {"number": 460, "term": "Women's movement, like others, overshadowed by anti-slavery movement", "definition": "In the 1800's, the women's movement was often overshadowed by the anti-slavery movement. Many men who had been working on behalf of the women's movement worked for the abolition of slavery once it became a major issue."},
+      {"number": 461, "term": "American Peace Society", "definition": "Founded in 1828 by William Laddit. Formally condemned all wars, though it supported the U.S. government during the Civil War, WWI, and WWII. It was dissolved after the United Nations was formed in 1945."},
+      {"number": 462, "term": "Prison reform: Auburn system, Pennsylvania system", "definition": "Prison reform in the U.S. began with the Pennsylvania system in 1790, based on the concept that solitary confinement would induce meditation and moral reform. However, this led to many mental breakdowns. The Auburn system, adopted in 1816, allowed the congregation of prisoners during the day."},
+      {"number": 463, "term": "Supreme Court: Marbury v. Madison (1803)", "definition": "The case arose out of Jefferson’s refusal to deliver the commissions to the judges appointed by Adams’ Midnight Appointments. One of the appointees, Marbury, sued the Sect. of State, Madison, to obtain his commission. The Supreme Court held that Jefferson need not deliver the commissions because the Congressional act that had created the new judgeships violated the judiciary provisions of the Constitution and was therefore unconstitutional and void. This case established the Supreme Court's right to judicial review. Chief Justice John Marshall presided."},
+      {"number": 464, "term": "Supreme Court: Fletcher v. Peck (1810)", "definition": "A state had tried to revoke a land grant on the grounds that it had been obtained by corruption. The Court ruled that a state cannot arbitrarily interfere with a person’s property rights. Since the land grant was a legal contract, it could not be repealed, even if corruption were involved."},
+      {"number": 465, "term": "Supreme Court: Martin v. Hunters Lessee (1816)", "definition": "This case upheld the right of the Supreme Court to review the decisions of state courts."},
+      {"number": 466, "term": "Supreme Court: Dartmouth College v. Woodward (1819)", "definition": "This decision declared private corporation charters to be contracts and immune form impairment by states' legislative action. It freed corporations from the states which created them."},
+      {"number": 467, "term": "Supreme Court: McCulloch v. Maryland (1819)", "definition": "This decision upheld the power of Congress to charter a bank as a government agency and denied the state the power to tax that agency."},
+      {"number": 468, "term": "Supreme Court: Gibbons v. Ogden (1824)", "definition": "This case ruled that only the federal government has authority over interstate commerce."},
+      {"number": 469, "term": "Supreme Court: Cherokee Nation v. Georgia (1831)", "definition": "Supreme Court refused to hear a suit filed by the Cherokee Nation against a Georgia law abolishing tribal legislature. Court said Indians were not foreign nations, and U.S. had broad powers over tribes but a responsibility for their welfare."},
+      {"number": 470, "term": "Supreme Court: Worchester v. Georgia (1832)", "definition": "Expanded tribal authority by declaring tribes sovereign entities, like states, with exclusive authority within their own boundaries. President Jackson and the state of Georgia ignored the ruling."},
+      {"number": 471, "term": "Supreme Court: River Bridge v. Warren Bridge (1837)", "definition": "1837 - Supreme Court ruled that a charter granted by a state to a company cannot work to the disadvantage of the public. The Charles River Bridge Company protested when the Warren Bridge Company was authorized in 1828 to build a free bridge where it had been chartered to operate a toll bridge in 1785. The court ruled that the Charles River Company was not granted a monopoly right in their charter, and the Warren Company could build its bridge."},
+      {"number": 472, "term": "Supreme Court: Commonwealth v. Hunt (1842)", "definition": "1842 - Case heard by the Massachusetts supreme court. The case was the first judgment in the U.S. that recognized that the conspiracy law is inapplicable to unions and that strikes for a closed shop are legal. Also decided that unions are not responsible for the illegal acts of their members."},
+      {"number": 473, "term": "Great American Desert", "definition": "Region between the Missouri River and the Rocky Mountains. Vast domain became accessible to Americans wishing to settle there. This region was called the \"Great American Desert\" in atlases published between 1820 and 1850, and many people were convinced this land was a Sahara habitable only to Indians. The phrase had been coined by Major Long during his exploration of the middle of the Louisiana Purchase region."},
+      {"number": 474, "term": "Manifest Destiny", "definition": "Phrase commonly used in the 1840's and 1850's. It expressed the inevitableness of continued expansion of the U.S. to the Pacific."},
+      {"number": 475, "term": "Horace Greeley (1811-1873)", "definition": "Founder and editor of the New York Tribune. He popularized the saying \"Go west, young man.\" He said that people who were struggling in the East could make the fortunes by going west."},
+      {"number": 476, "term": "Stephen Austin (1793-1836)", "definition": "In 1822, Austin founded the first settlement of Americans in Texas. In 1833 he was sent by the colonists to negotiate with the Mexican government for Texan independence and was imprisoned in Mexico until 1835, when he returned to Texas and became the commander of the settlers’ army in the Texas Revolution."},
+      {"number": 477, "term": "Texas War for Independence", "definition": "After a few skirmishes with Mexican soldiers in 1835, Texas leaders met and organized a temporary government. Texas troops initially seized San Antonio but lost it after the massacre of the outpost garrisoning the Alamo. In response, Texas issued a Declaration of Independence. Santa Ana tried to swiftly put down the rebellion, but Texan soldiers surprised him and his troops on April 21, 1836. They crushed his forces and captured him in the Battle of San Jacinto and forced him to sign a treaty granting Texan independence. U.S. lent no aid."},
+      {"number": 478, "term": "Antonio López de Santa Anna", "definition": "As dictator of Mexico, he led the attack on the Alamo in 1836. He was later defeated by Sam Houston at San Jacinto."},
+      {"number": 479, "term": "The Alamo", "definition": "A Spanish mission converted into a fort; it was besieged by Mexican troops in 1836. The Texas garrison held out for thirteen days, but in the final battle, all the Texans were killed by the larger Mexican force."},
+      {"number": 480, "term": "San Jacinto", "definition": "A surprise attack by Texas forces on Santa Ana's camp on April 21, 1836. Santa Ana's men were surprised and overrun in twenty minutes. Santa Ana was taken prisoner and signed an armistice securing Texas independence. Mexicans - 1,500 dead, 1,000 captured. Texans - 4 dead."},
+      {"number": 481, "term": "Sam Houston (1793-1863)", "definition": "Former Governor of Tennessee and an adopted member of the Cherokee Indian tribe, Houston settled in Texas after being sent there by Pres. Jackson to negotiate with the local Indians. Appointed commander of the Texas army in 1835, he led them to victory at San Jacinto, where they were outnumbered 2 to 1. He was President of the Republic of Texas (1836-1838 & 1841-1845) and advocated Texas joining the Union in 1845. He later served as U.S. Senator and Governor of Texas but was removed from the governorship in 1861 for refusing to ratify Texas joining the Confederacy."},
+      {"number": 482, "term": "Republic of Texas", "definition": "Created March 1836 but not recognized until the next month after the battle of San Jacinto. Its second president attempted to establish a sound government and develop relations with England and France. However, rapidly rising public debt, internal conflicts and renewed threats from Mexico led Texas to join the U.S. in 1845."},
+      {"number": 483, "term": "Annexation of Texas, Joint Resolution under President Tyler", "definition": "U.S. made Texas a state in 1845. Joint resolution - both houses of Congress supported annexation under Tyler, and he signed the bill shortly before leaving office."},
+      {"number": 484, "term": "Election of 1844: Candidates", "definition": "James K. Polk - Democrat. Henry Clay - Whig. James G. Birney - Liberty Party."},
+      {"number": 485, "term": "Election of 1844: Issues", "definition": "Manifest Destiny Issues: The annexation of Texas and the reoccupation of Oregon. Tariff reform."},
+      {"number": 486, "term": "Election of 1844: Third party's impact", "definition": "Third party's impact was significant. James G. Birney drew enough votes away from Clay to give Polk New York, and thus the election."},
+      {"number": 487, "term": "Election 1844: Liberty Party", "definition": "The first abolitionist party - believed in ending slavery."},
+      {"number": 488, "term": "Reoccupation of Texas and re-annexation of Oregon", "definition": "Texas was annexed by Polk in 1845. Oregon was explored by Lewis and Clark from 1804 to 1806 and American fur traders set up there, but during the War of 1812, the British essentially took control of Oregon and held it jointly with the U.S. The land was returned to the U.S. with the Oregon Treaty of 1846, supported by Polk."},
+      {"number": 489, "term": "54º40' or Fight!", "definition": "An aggressive slogan adopted in the Oregon boundary dispute, a dispute over where the border between Canada and Oregon should be drawn. This was also Polk's slogan - the Democrats wanted the U.S. border drawn at the 54º40' latitude. Polk settled for the 49º latitude in 1846."},
+      {"number": 490, "term": "James K. Polk", "definition": "President known for promoting Manifest Destiny."},
+      {"number": 491, "term": "Slidell Mission to Mexico", "definition": "Appointed minister to Mexico in 1845, John Slidell went to Mexico to pay for disputed Texas and California land. But the Mexican government was still angry about the annexation of Texas and refused to talk to him."},
+      {"number": 492, "term": "Rio Grande, Nueces River, disputed territory", "definition": "Texas claimed its southern border was the Rio Grande; Mexico wanted the border drawn at the Nueces River, about 100 miles north of the Rio Grande. U.S. and Mexico agreed not to send troops into the disputed territory between the two rivers, but President Polk later reneged on the agreement."},
+      {"number": 493, "term": "General Zachary Taylor", "definition": "Commander of the Army of Occupation on the Texas border. On President Polk’s orders, he took the Army into the disputed territory between the Nueces and Rio Grande Rivers and built a fort on the north bank of the Rio Grande River. When the Mexican Army tried to capture the fort, Taylor’s forces engaged in is a series of engagements that led to the Mexican War. His victories in the war and defeat of Santa Ana made him a national hero."},
+      {"number": 494, "term": "Mexican War: causes, results", "definition": "Causes: annexation of Texas, diplomatic ineptness of U.S./Mexican relations in the 1840's and particularly the provocation of U.S. troops on the Rio Grande. The first half of the war was fought in northern Mexico near the Texas border, with the U.S. Army led by Zachary Taylor. The second half of the war was fought in central Mexico after U.S. troops seized the port of Veracruz, with the Army being led by Winfield Scott. Results: U.S. captured Mexico City, Zachary Taylor was elected president, Santa Ana abdicated, and Mexico ceded large parts of the West, including New Mexico, Colorado, Utah, Arizona, Nevada and California, to the U.S."},
+      {"number": 495, "term": "Spot Resolutions", "definition": "Congressman Abraham Lincoln supported a proposition to find the exact spot where American troops were fired upon, suspecting that they had illegally crossed into Mexican territory."},
+      {"number": 496, "term": "John C. Fremont", "definition": "Civil governor of California, led the Army exploration to help Kearny. Heard that a war with Mexico was coming, thought he could take California by himself before the war began and become a hero. He failed, so he joined forces with Kearny."},
+      {"number": 497, "term": "General Winfield Scott", "definition": "Led the U.S. forces' march on Mexico City during the Mexican War. He took the city and ended the war."},
+      {"number": 498, "term": "Treaty of Guadeloupe Hidalgo (1848)", "definition": "This treaty required Mexico to cede the American Southwest, including New Mexico, Colorado, Utah, Arizona, Nevada and California, to the U.S. U.S. gave Mexico $15 million in exchange, so that it would not look like conquest."},
+      {"number": 499, "term": "All Mexico Movement", "definition": "Benito Juarez overthrew Mexican dictator Santa Ana. Mexico began blocking American immigration (Mexico for Mexicans only)."},
+      {"number": 500, "term": "Mexican Cession", "definition": "Some of Mexico's territory was added to the U.S. after the Mexican War: Arizona, New Mexico, California, Utah, Nevada & Colorado. (Treaty of Guadeloupe Hidalgo)"}
+    );
+    const APUSH_STORAGE_KEY = "flashcards-apush-eptl-1-500-v1";
+    const APUSH_LEGACY_STORAGE_KEYS = ["flashcards-apush-eptl-1-300-v1","flashcards-apush-eptl-1-200-v1","flashcards-apush-eptl-1-150-v1","flashcards-apush-eptl-1-100-v1","flashcards-apush-eptl-1-50-v1"];
+    let activeApushSet=Number(localStorage.getItem("flashcards-apush-last-set")||1);if(![1,2,3,4,5,6,7,8,9,10].includes(activeApushSet))activeApushSet=1;
     const apushSetIndices=()=>Array.from({length:50},(_,i)=>(activeApushSet-1)*50+i);
     let apushOrder = apushSetIndices(), apushPos = 0;
     let apushStats = (()=>{
@@ -5871,7 +7164,7 @@
       document.getElementById("apushProgressText").textContent=`${mastered} of ${indices.length} mastered`;
     }
     function setActiveApushSet(setNumber){
-      const n=Number(setNumber);if(![1,2,3,4,5,6].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
+      const n=Number(setNumber);if(![1,2,3,4,5,6,7,8,9,10].includes(n))return;activeApushSet=n;localStorage.setItem("flashcards-apush-last-set",String(n));
       apushOrder=apushSetIndices();apushPos=0;
       const range=`${(n-1)*50+1}–${n*50}`;document.getElementById("apushEyebrow").textContent=`AP United States History · EPTLs ${range}`;document.getElementById("apush-title").textContent=`EPTLs ${range}`;
       updateCourseNav("apush");renderApushCard();
@@ -5977,6 +7270,21 @@
     document.querySelectorAll("[data-class-open]").forEach(b=>b.addEventListener("click",()=>openCourse(b.dataset.classOpen)));
     document.querySelectorAll("[data-lang-set]").forEach(b=>b.addEventListener("click",()=>{setActiveLangSet(b.dataset.langSet);showView("home");}));
     document.querySelectorAll("[data-apush-set]").forEach(b=>b.addEventListener("click",()=>{setActiveApushSet(b.dataset.apushSet);showView("apush");}));
+
+    const part3Toggle = document.getElementById("part3IncludeSentence");
+    if(part3Toggle) {
+      const saved = localStorage.getItem("flashcards-part3-include-sentence");
+      if(saved !== null) part3Toggle.checked = saved === "true";
+      const updateDesc = () => {
+        const desc = document.getElementById("part3CardDesc");
+        if(desc) desc.textContent = part3Toggle.checked ? "Usage true/false, typed derivatives, and a paired-word short answer." : "Usage true/false and typed derivatives.";
+      };
+      updateDesc();
+      part3Toggle.addEventListener("change", () => {
+        localStorage.setItem("flashcards-part3-include-sentence", String(part3Toggle.checked));
+        updateDesc();
+      });
+    }
 
     setActiveLangSet(activeLangSet);
     renderPhysicsCard();
