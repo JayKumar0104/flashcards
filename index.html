@@ -539,7 +539,7 @@
         <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Learn</button>
         <button class="nav-btn" data-course-nav="lang" data-view="practice" hidden>Practice</button>
         <button class="nav-btn" data-course-nav="lang" data-view="cram" hidden>Cram</button>
-        <button class="nav-btn" data-course-nav="lang" data-view="review" hidden>Review</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="review" id="navReviewBtn" hidden>Review</button>
         <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
         <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apushsets" hidden>Sets</button>
@@ -586,7 +586,7 @@
           <p class="lede">Prepare for the expected format: spell every word from dictation, match all ten definitions once, judge usage, supply the correct derivative, and write complete sentences with paired words.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" data-cram-start="sprint">Start 5-minute sprint</button>
-            <button class="btn btn-ghost" data-go="review">Review due words</button>
+            <button class="btn btn-ghost" data-go="review" id="heroReviewBtn">Review due words</button>
           </div>
         </div>
         <div class="hero-side" aria-label="Study statistics">
@@ -608,8 +608,8 @@
           <button class="mode-card" data-go="cram">
             <span class="mode-icon">⚡</span><h3>Cram</h3><p>Diagnose quickly, focus weak skills, and run a test-format mock exam.</p><span class="mode-link">Open exam prep →</span>
           </button>
-          <button class="mode-card" data-go="review">
-            <span class="mode-icon">↻</span><h3>Retain</h3><p>Review words when due with expanding intervals and varied prompts.</p><span class="mode-link">Review due words →</span>
+          <button class="mode-card" data-go="review" id="modeCardReview">
+            <span class="mode-icon" id="modeCardReviewIcon">↻</span><h3 id="modeCardReviewTitle">Retain</h3><p id="modeCardReviewDesc">Review words when due with expanding intervals and varied prompts.</p><span class="mode-link" id="modeCardReviewLink">Review due words →</span>
           </button>
         </div>
       </div>
@@ -793,27 +793,53 @@
     </section>
 
     <section id="review" class="view" aria-labelledby="review-title">
-      <div class="page-intro">
-        <span class="eyebrow">Long-term retention · successive relearning</span>
-        <h2 id="review-title">Review what is due</h2>
-        <p class="lede">A word is never permanently finished. Successful recalls move it through expanding intervals; difficult recalls return sooner and can reappear later in the same session.</p>
-      </div>
-      <div id="reviewSetup">
-        <div class="review-hero panel">
-          <div><span class="question-type">Due today</span><strong id="reviewDueLarge">10</strong><p id="reviewDueMessage">All new words are ready for their first retrieval.</p></div>
-          <div class="review-actions"><button id="startDueBtn" class="btn btn-primary">Start due review</button><button id="cumulativeReviewBtn" class="btn btn-light">Cumulative 10</button></div>
+      <!-- Standard Review (Sets 1-7) -->
+      <div id="standardReviewWrapper">
+        <div class="page-intro">
+          <span class="eyebrow">Long-term retention · successive relearning</span>
+          <h2 id="review-title">Review what is due</h2>
+          <p class="lede">A word is never permanently finished. Successful recalls move it through expanding intervals; difficult recalls return sooner and can reappear later in the same session.</p>
         </div>
-        <div class="section">
-          <div class="section-head"><div><h3>How the schedule grows</h3><p>Intervals adapt to your rating rather than treating mastery as permanent.</p></div></div>
-          <div class="interval-row" aria-label="Review intervals"><span>Same session</span><i>→</i><span>1 day</span><i>→</i><span>3 days</span><i>→</i><span>7 days</span><i>→</i><span>14 days</span><i>→</i><span>30 days</span><i>→</i><span>60–90 days</span></div>
+        <div id="reviewSetup">
+          <div class="review-hero panel">
+            <div><span class="question-type">Due today</span><strong id="reviewDueLarge">10</strong><p id="reviewDueMessage">All new words are ready for their first retrieval.</p></div>
+            <div class="review-actions"><button id="startDueBtn" class="btn btn-primary">Start due review</button><button id="cumulativeReviewBtn" class="btn btn-light">Cumulative 10</button></div>
+          </div>
+          <div class="section">
+            <div class="section-head"><div><h3>How the schedule grows</h3><p>Intervals adapt to your rating rather than treating mastery as permanent.</p></div></div>
+            <div class="interval-row" aria-label="Review intervals"><span>Same session</span><i>→</i><span>1 day</span><i>→</i><span>3 days</span><i>→</i><span>7 days</span><i>→</i><span>14 days</span><i>→</i><span>30 days</span><i>→</i><span>60–90 days</span></div>
+          </div>
+        </div>
+        <div id="reviewPlay" class="quiz-layout" hidden>
+          <div id="reviewCard" class="panel quiz-card review-card"></div>
+          <aside class="quiz-side">
+            <div class="panel"><strong>Review queue</strong><div class="progress-track"><div id="reviewProgress" class="progress-fill"></div></div><div id="reviewSideText" class="key-help"></div></div>
+            <div class="panel control-stack"><button id="endReviewBtn" class="btn btn-light btn-small">End review</button></div>
+          </aside>
         </div>
       </div>
-      <div id="reviewPlay" class="quiz-layout" hidden>
-        <div id="reviewCard" class="panel quiz-card review-card"></div>
-        <aside class="quiz-side">
-          <div class="panel"><strong>Review queue</strong><div class="progress-track"><div id="reviewProgress" class="progress-fill"></div></div><div id="reviewSideText" class="key-help"></div></div>
-          <div class="panel control-stack"><button id="endReviewBtn" class="btn btn-light btn-small">End review</button></div>
-        </aside>
+
+      <!-- Module 8 Interactive Definition Recall (replaces Retain) -->
+      <div id="defDrillWrapper" hidden>
+        <div class="page-intro">
+          <span class="eyebrow">Interactive Practice · Module 8 Definitions</span>
+          <h2 id="defDrillTitle">Definition Recall Drill</h2>
+          <p class="lede">All 10 definitions are presented in random order. Type each vocabulary word and get instant grading, with a clear Next button to advance through the deck.</p>
+        </div>
+        <div id="defDrillPlay" class="quiz-layout">
+          <div id="defDrillCard" class="panel quiz-card"></div>
+          <aside class="quiz-side">
+            <div class="panel">
+              <strong>Drill Progress</strong>
+              <div class="progress-track"><div id="defDrillProgress" class="progress-fill"></div></div>
+              <div id="defDrillSideText" class="key-help" style="margin-top: 8px;"></div>
+            </div>
+            <div class="panel control-stack">
+              <button id="defDrillRestartSideBtn" class="btn btn-light btn-small">Restart (New Order)</button>
+              <button id="defDrillHomeSideBtn" class="btn btn-light btn-small">← Module 8 Home</button>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -6330,7 +6356,25 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
       if(id==="learn"){renderFlashcardV2();renderWordBankV2();}
       if(id==="practice") renderSentenceLab();
-      if(id==="review") renderReviewSetup();
+      if(id==="review") {
+        if(activeLangSet === 8) {
+          const stdWrap = document.getElementById("standardReviewWrapper");
+          const drillWrap = document.getElementById("defDrillWrapper");
+          if(stdWrap) stdWrap.hidden = true;
+          if(drillWrap) drillWrap.hidden = false;
+          if(!defDrillStarted) {
+            startDefDrill();
+          } else {
+            renderDefDrillCard();
+          }
+        } else {
+          const stdWrap = document.getElementById("standardReviewWrapper");
+          const drillWrap = document.getElementById("defDrillWrapper");
+          if(stdWrap) stdWrap.hidden = false;
+          if(drillWrap) drillWrap.hidden = true;
+          renderReviewSetup();
+        }
+      }
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
       if(id==="apush") renderApushCard();
@@ -6342,7 +6386,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       activeLangSet=Number(setNumber); localStorage.setItem("flashcards-ap-lang-last-set",String(activeLangSet));
       WORDS=next.words;USAGE=next.usage;FORM_QUESTIONS=next.formQuestions;TRANSFER_CONTEXTS=next.transfer;CONFUSION_QUESTIONS=next.confusions;DERIVATIVE_FILLINS=next.derivatives;SHORT_ANSWER_PAIRS=next.pairs;APP_STORAGE_KEY=next.storageKey;LEGACY_STORAGE_KEYS=next.legacyKeys;
       appStats=loadAppStats();deckOrder=WORDS.map((_,i)=>i);flashIndex=0;labWordIndex=0;
-      practiceQueue=[];cramQueue=[];reviewQueue=[];
+      practiceQueue=[];cramQueue=[];reviewQueue=[];defDrillStarted=false;
       document.getElementById("quizPlay").hidden=true;document.getElementById("quizSetup").hidden=false;
       document.getElementById("cramPlay").hidden=true;document.getElementById("cramSetup").hidden=false;
       document.getElementById("reviewPlay").hidden=true;document.getElementById("reviewSetup").hidden=false;
@@ -6351,6 +6395,31 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       const count=document.getElementById("langWordCount");if(count)count.textContent=WORDS.length;
       const precBox=document.getElementById("cramPrecisionBox");
       if(precBox){ if(next.precisionGuide){ precBox.innerHTML=next.precisionGuide; precBox.hidden=false; } else precBox.hidden=true; }
+
+      const isSet8 = activeLangSet === 8;
+      const modeCardReviewIcon = document.getElementById("modeCardReviewIcon");
+      const modeCardReviewTitle = document.getElementById("modeCardReviewTitle");
+      const modeCardReviewDesc = document.getElementById("modeCardReviewDesc");
+      const modeCardReviewLink = document.getElementById("modeCardReviewLink");
+      const heroReviewBtn = document.getElementById("heroReviewBtn");
+      const navReviewBtn = document.getElementById("navReviewBtn");
+
+      if(isSet8) {
+        if(modeCardReviewIcon) modeCardReviewIcon.textContent = "⌨";
+        if(modeCardReviewTitle) modeCardReviewTitle.textContent = "Definitions";
+        if(modeCardReviewDesc) modeCardReviewDesc.textContent = "Type the vocabulary word for all 10 definitions in random order.";
+        if(modeCardReviewLink) modeCardReviewLink.textContent = "Start definition drill →";
+        if(heroReviewBtn) heroReviewBtn.textContent = "Start definition drill";
+        if(navReviewBtn) navReviewBtn.textContent = "Definitions";
+      } else {
+        if(modeCardReviewIcon) modeCardReviewIcon.textContent = "↻";
+        if(modeCardReviewTitle) modeCardReviewTitle.textContent = "Retain";
+        if(modeCardReviewDesc) modeCardReviewDesc.textContent = "Review words when due with expanding intervals and varied prompts.";
+        if(modeCardReviewLink) modeCardReviewLink.textContent = "Review due words →";
+        if(heroReviewBtn) heroReviewBtn.textContent = "Review due words";
+        if(navReviewBtn) navReviewBtn.textContent = "Review";
+      }
+
       renderFlashcardV2();renderWordBankV2();renderSentenceLab();renderAllStats();updateCourseNav("lang");
     }
     document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
@@ -6709,6 +6778,270 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
     function finishReview(){document.getElementById("reviewProgress").style.width="100%";document.getElementById("reviewCard").innerHTML=`<div class="summary"><span class="question-type">Review complete</span><div class="summary-score">${reviewCompleted}</div><h3>retrievals completed</h3><p>Your next due dates have been updated. Words rated Again were repeated after intervening cards.</p><button id="reviewDoneBtn" class="btn btn-primary">Back to review schedule</button></div>`;document.getElementById("reviewDoneBtn").addEventListener("click",endReview);}
     function endReview(){if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("reviewPlay").hidden=true;document.getElementById("reviewSetup").hidden=false;renderReviewSetup();}
     document.getElementById("endReviewBtn").addEventListener("click",endReview);
+
+    // AP Lang Module 8: Interactive Definition Drill (replaces Retain)
+    let defDrillQueue = [], defDrillIndex = 0, defDrillScore = 0, defDrillStreak = 0, defDrillMissed = [], defDrillSubmitted = false, defDrillStarted = false, defDrillQuestionStarted = 0;
+
+    function startDefDrill(wordsToUse) {
+      const sourceList = wordsToUse || (activeLangSet === 8 ? LANG_SET8_WORDS : WORDS);
+      defDrillQueue = shuffleList(sourceList);
+      defDrillIndex = 0;
+      defDrillScore = 0;
+      defDrillStreak = 0;
+      defDrillMissed = [];
+      defDrillSubmitted = false;
+      defDrillStarted = true;
+      renderDefDrillCard();
+    }
+
+    function renderDefDrillCard() {
+      if (!defDrillQueue.length || defDrillIndex >= defDrillQueue.length) {
+        finishDefDrill();
+        return;
+      }
+      defDrillSubmitted = false;
+      defDrillQuestionStarted = Date.now();
+      const w = defDrillQueue[defDrillIndex];
+      const total = defDrillQueue.length;
+      const progressPct = pct(defDrillIndex, total);
+
+      const progEl = document.getElementById("defDrillProgress");
+      if (progEl) progEl.style.width = progressPct + "%";
+      const sideTextEl = document.getElementById("defDrillSideText");
+      if (sideTextEl) sideTextEl.textContent = `Question ${defDrillIndex + 1} of ${total} · Score: ${defDrillScore} · Streak: ${defDrillStreak}`;
+
+      const cardEl = document.getElementById("defDrillCard");
+      if (!cardEl) return;
+
+      cardEl.innerHTML = `
+        <div class="quiz-top">
+          <span class="quiz-count">Question ${defDrillIndex + 1} of ${total}</span>
+          <span class="quiz-score">Score: ${defDrillScore} / ${total} · Best Streak: ${appStats.bestStreak}</span>
+        </div>
+        <span class="question-type">Module 8 · Definition Recall</span>
+        <div style="margin: 10px 0 4px;">
+          <span class="part">${escapeHtml(w.part)}</span>
+        </div>
+        <h3 class="question" style="font-family: Georgia, serif; font-size: clamp(21px, 3.5vw, 30px); line-height: 1.38; margin: 12px 0 24px; color: var(--navy);">
+          “${escapeHtml(w.definition)}”
+        </h3>
+        <div style="margin-bottom: 18px;">
+          <label for="defDrillInput" class="sr-only">Type the vocabulary word</label>
+          <input id="defDrillInput" class="answer-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Type the vocabulary word here..." />
+        </div>
+        <div id="defDrillFeedback" aria-live="polite"></div>
+        <div id="defDrillActions" class="quiz-actions" style="margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+          <button id="defDrillSkipBtn" class="btn btn-light btn-small">Skip / Reveal word</button>
+          <button id="defDrillGradeBtn" class="btn btn-dark" style="padding: 12px 28px; font-weight: 800;">Check Answer</button>
+        </div>
+      `;
+
+      const input = document.getElementById("defDrillInput");
+      const gradeBtn = document.getElementById("defDrillGradeBtn");
+      const skipBtn = document.getElementById("defDrillSkipBtn");
+
+      gradeBtn?.addEventListener("click", () => gradeDefDrill(false));
+      skipBtn?.addEventListener("click", () => gradeDefDrill(true));
+
+      input?.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          if (!defDrillSubmitted) {
+            gradeDefDrill(false);
+          } else {
+            nextDefDrillQuestion();
+          }
+        }
+      });
+
+      input?.focus();
+    }
+
+    function gradeDefDrill(isSkipped) {
+      if (defDrillSubmitted) return;
+      const w = defDrillQueue[defDrillIndex];
+      const inputEl = document.getElementById("defDrillInput");
+      const feedbackEl = document.getElementById("defDrillFeedback");
+      const rawVal = (inputEl ? inputEl.value : "").trim();
+
+      if (!isSkipped && !rawVal) {
+        if (feedbackEl) {
+          feedbackEl.innerHTML = `<div class="feedback bad" style="margin-top: 14px;">Please type a word first, or click "Skip / Reveal word".</div>`;
+        }
+        inputEl?.focus();
+        return;
+      }
+
+      defDrillSubmitted = true;
+      if (inputEl) inputEl.disabled = true;
+
+      const normInput = normalizeAnswer(rawVal);
+      const normTarget = normalizeAnswer(w.word);
+      const forms = acceptedForms(w).map(normalizeAnswer);
+      const strippedInput = normInput.replace(/^to\s+/, "");
+
+      let isCorrect = false;
+      let formNote = "";
+
+      if (!isSkipped) {
+        if (normInput === normTarget || strippedInput === normTarget) {
+          isCorrect = true;
+        } else if (forms.includes(normInput) || forms.includes(strippedInput)) {
+          isCorrect = true;
+          formNote = ` (accepted derivative for headword "${w.word}")`;
+        }
+      }
+
+      const elapsed = Date.now() - defDrillQuestionStarted;
+
+      if (isCorrect) {
+        defDrillScore++;
+        defDrillStreak++;
+        if (defDrillStreak > appStats.bestStreak) appStats.bestStreak = defDrillStreak;
+        recordResult(w.word, "definition", true, elapsed);
+
+        if (inputEl) {
+          inputEl.style.borderColor = "var(--green)";
+          inputEl.style.backgroundColor = "var(--green-soft)";
+          inputEl.style.color = "#0b5f3b";
+          inputEl.style.fontWeight = "750";
+        }
+
+        if (feedbackEl) {
+          feedbackEl.innerHTML = `
+            <div class="feedback good" style="margin-top: 18px;">
+              <strong style="font-size: 16px; display: block; margin-bottom: 4px;">✓ Correct!</strong>
+              <div style="font-size: 19px; font-weight: 750; color: var(--navy); margin-bottom: 6px;">
+                ${escapeHtml(w.word)} <span class="part" style="font-size: 11px;">${escapeHtml(w.part)}</span>
+                ${formNote ? `<span style="font-size: 13px; font-weight: 600; color: #0b5f3b;">${escapeHtml(formNote)}</span>` : ""}
+              </div>
+              <div style="font-size: 14px; color: var(--ink); margin-top: 6px; line-height: 1.55;">
+                <em>“${escapeHtml(w.example)}”</em>
+              </div>
+            </div>
+          `;
+        }
+      } else {
+        defDrillStreak = 0;
+        defDrillMissed.push(w);
+        recordResult(w.word, "definition", false, elapsed);
+
+        if (inputEl) {
+          inputEl.style.borderColor = "var(--red)";
+          inputEl.style.backgroundColor = "var(--red-soft)";
+          inputEl.style.color = "#8f1c13";
+        }
+
+        if (feedbackEl) {
+          feedbackEl.innerHTML = `
+            <div class="feedback bad" style="margin-top: 18px;">
+              <strong style="font-size: 16px; display: block; margin-bottom: 4px;">${isSkipped ? "Skipped" : "✗ Not quite"}</strong>
+              ${!isSkipped ? `<div style="font-size: 14px; margin-bottom: 6px;">You entered: <strong style="text-decoration: line-through;">${escapeHtml(rawVal)}</strong></div>` : ""}
+              <div style="font-size: 19px; font-weight: 750; color: var(--red); margin: 6px 0;">
+                Correct word: <strong>${escapeHtml(w.word)}</strong> <span class="part" style="font-size: 11px;">${escapeHtml(w.part)}</span>
+              </div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 4px;">“${escapeHtml(w.definition)}”</div>
+              <div style="font-size: 14px; color: var(--ink); margin-top: 6px; line-height: 1.55;">
+                <em>“${escapeHtml(w.example)}”</em>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // Render the clear Next button
+      const isLast = defDrillIndex === defDrillQueue.length - 1;
+      const nextLabel = isLast ? "See Results →" : "Next Question →";
+      const actionsEl = document.getElementById("defDrillActions");
+      if (actionsEl) {
+        actionsEl.innerHTML = `
+          <button id="defDrillListenBtn" class="btn btn-light btn-small" title="Listen to pronunciation">♪ Listen to word</button>
+          <button id="defDrillNextBtn" class="btn btn-primary" style="font-size: 16px; padding: 13px 36px; font-weight: 850; box-shadow: 0 4px 18px rgba(247, 186, 69, .45);">
+            ${nextLabel}
+          </button>
+        `;
+        document.getElementById("defDrillListenBtn")?.addEventListener("click", () => speakWord(w.word));
+        const nextBtn = document.getElementById("defDrillNextBtn");
+        if (nextBtn) {
+          nextBtn.addEventListener("click", nextDefDrillQuestion);
+          nextBtn.focus();
+        }
+      }
+    }
+
+    function nextDefDrillQuestion() {
+      defDrillIndex++;
+      if (defDrillIndex >= defDrillQueue.length) {
+        finishDefDrill();
+      } else {
+        renderDefDrillCard();
+      }
+    }
+
+    function finishDefDrill() {
+      defDrillStarted = false;
+      const progEl = document.getElementById("defDrillProgress");
+      if (progEl) progEl.style.width = "100%";
+      const total = defDrillQueue.length;
+      const p = pct(defDrillScore, total);
+      const missed = [...new Set(defDrillMissed)];
+
+      const sideTextEl = document.getElementById("defDrillSideText");
+      if (sideTextEl) sideTextEl.textContent = `Complete · ${defDrillScore} / ${total} correct (${p}%)`;
+
+      const cardEl = document.getElementById("defDrillCard");
+      if (!cardEl) return;
+
+      cardEl.innerHTML = `
+        <div class="summary">
+          <span class="question-type">Module 8 · Definition Recall Drill Complete</span>
+          <div class="summary-score">${defDrillScore} / ${total}</div>
+          <h3 style="font-size: 24px; margin: 12px 0 6px; color: var(--navy);">
+            ${p === 100 ? "Flawless! All 10 definitions mastered!" : p >= 80 ? "Great job! Strong recall of Module 8." : "Keep practicing to master all 10 words."}
+          </h3>
+          <p class="lede" style="margin: 0 auto 22px;">
+            ${defDrillScore} correct, ${missed.length} missed · <strong>${p}%</strong> accuracy
+          </p>
+
+          ${missed.length ? `
+            <div style="margin: 26px 0; text-align: left;">
+              <h4 style="margin-bottom: 12px; color: var(--navy); font-size: 16px;">Words to review (${missed.length}):</h4>
+              <div class="missed-list">
+                ${missed.map(m => `
+                  <div class="missed-item" style="display: block; padding: 15px 18px; border-radius: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+                      <strong style="font-size: 18px; color: var(--navy); font-family: Georgia, serif;">${escapeHtml(m.word)}</strong>
+                      <span class="part">${escapeHtml(m.part)}</span>
+                    </div>
+                    <div style="color: var(--ink); font-size: 14px; margin-bottom: 6px;">“${escapeHtml(m.definition)}”</div>
+                    <div style="font-size: 13px; color: var(--muted);"><em>${escapeHtml(m.example)}</em></div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          ` : `
+            <div style="margin: 24px 0; padding: 20px; background: var(--green-soft); border: 1px solid #a6ddbf; border-radius: 16px; color: #0b5f3b; font-size: 16px;">
+              <strong>🎉 Perfect 10 out of 10!</strong> You correctly typed every word from its definition in random order.
+            </div>
+          `}
+
+          <div class="hero-actions" style="justify-content: center; margin-top: 28px; gap: 12px;">
+            <button id="defDrillRestartBtn" class="btn btn-primary">Start New Drill (Random Order)</button>
+            ${missed.length ? `<button id="defDrillRetryMissedBtn" class="btn btn-light">Retry Missed Words (${missed.length})</button>` : ""}
+            <button id="defDrillHomeBtn" class="btn btn-ghost" style="color: var(--navy); border-color: var(--line);">Back to Home</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("defDrillRestartBtn")?.addEventListener("click", () => startDefDrill());
+      if (missed.length) {
+        document.getElementById("defDrillRetryMissedBtn")?.addEventListener("click", () => startDefDrill(missed));
+      }
+      document.getElementById("defDrillHomeBtn")?.addEventListener("click", () => showView("home"));
+    }
+
+    document.getElementById("defDrillRestartSideBtn")?.addEventListener("click", () => startDefDrill());
+    document.getElementById("defDrillHomeSideBtn")?.addEventListener("click", () => showView("home"));
 
     function renderProgress(){
       if(!document.getElementById("progressAnswered"))return;const due=dueWordNames().length,longTerm=WORDS.filter(w=>reviewState(w.word).interval>=30).length;
