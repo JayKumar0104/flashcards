@@ -524,6 +524,40 @@
       .apush-definition { font-size:15px; }
     }
 
+    /* AP Lang Fall 2026 midterm styles; independent of existing modules. */
+    .midterm-entry { background:linear-gradient(135deg,#0b1739,#193c7c);color:white;border-color:#214781; }
+    .midterm-entry h2 { color:#ffe2a0; }
+    .midterm-entry p {color:#d5e0f6;font-size:13px;line-height:1.5;margin:0;}
+    .midterm-entry:hover {border-color:var(--gold)!important;}
+    .midterm-actions {display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px;}
+    .midterm-stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px;}
+    .midterm-category {margin-top:28px;}
+    .midterm-category-heading {display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:13px;}
+    .midterm-category-heading h3 {font-size:21px;margin:0;}
+    .midterm-category-heading span {font-size:12px;color:var(--muted);white-space:nowrap;}
+    .midterm-decks {display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;}
+    .midterm-deck {display:flex;flex-direction:column;gap:9px;min-width:0;min-height:151px;padding:17px 18px;border:1px solid var(--line);background:white;border-radius:17px;text-align:left;color:var(--ink);box-shadow:0 5px 20px rgba(18,33,67,.045);}
+    .midterm-deck:hover {border-color:#aebbd3;background:#f9fbff;}
+    .midterm-deck strong {font-size:17px;line-height:1.25;}
+    .midterm-deck-description {color:var(--muted);font-size:12px;line-height:1.45;flex:1;}
+    .midterm-deck-count {color:#31579f;font-size:12px;font-weight:800;}
+    .midterm-deck-track {height:7px;border-radius:99px;overflow:hidden;background:#edf0f5;}
+    .midterm-deck-track span {display:block;height:100%;background:var(--gold);border-radius:99px;}
+    .midterm-flash-wrap {display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:stretch;margin-top:19px;}
+    .midterm-stage,.midterm-card {min-height:410px;}
+    .midterm-card .physics-question {font-size:clamp(24px,3.5vw,36px);line-height:1.36;}
+    .midterm-card .physics-answer {font-size:clamp(19px,2.55vw,27px);line-height:1.5;white-space:pre-line;}
+    .midterm-card .physics-face {overflow-wrap:anywhere;}
+    .midterm-card .midterm-source {color:#c5d2ee;font-size:11px;line-height:1.55;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
+    .midterm-side {display:grid;gap:12px;align-content:start;}
+    .midterm-side .panel {padding:16px;}
+    .midterm-side .btn {min-height:44px;}
+    .midterm-progress {margin-top:19px;}
+    .midterm-summary {max-width:640px;margin:30px auto;}
+    #midtermStorageNotice {margin-top:12px;color:var(--red);font-size:13px;}
+    @media(max-width:880px){.midterm-flash-wrap {grid-template-columns:1fr;}.midterm-stats {grid-template-columns:repeat(2,minmax(0,1fr));}.midterm-side .control-stack {grid-template-columns:repeat(2,minmax(0,1fr));}.midterm-side .control-stack .control-wide{grid-column:1/-1;}}
+    @media(max-width:680px){.midterm-stage,.midterm-card{height:clamp(350px,55svh,485px);min-height:0;}.midterm-card .physics-question{font-size:clamp(21px,5.6vw,28px);}.midterm-card .physics-answer{font-size:clamp(18px,4.8vw,23px);}.midterm-category-heading h3{font-size:19px;}.midterm-side .panel{padding:11px;}.midterm-side .btn{min-height:46px;}.midterm-stats .stat-box{padding:11px;}.midterm-stats .stat-box strong{font-size:19px;}.midterm-actions .btn{flex:1 1 auto;}}
+
   </style>
 </head>
 <body>
@@ -542,6 +576,8 @@
         <button class="nav-btn" data-course-nav="lang" data-view="review" id="navReviewBtn" hidden>Review</button>
         <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
         <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
+        <button class="nav-btn" data-course-nav="langmidterm" data-view="langmidterm" hidden>Midterm</button>
+        <button class="nav-btn" data-course-nav="langmidterm" data-view="langsets" hidden>AP Lang sets</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apushsets" hidden>Sets</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apush" hidden>Flashcards</button>
       </nav>
@@ -575,6 +611,77 @@
         <button class="course-card" data-lang-set="6"><h2>Set 6</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -pli-</p></button>
         <button class="course-card" data-lang-set="7"><h2>Set 7</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -spec-</p></button>
         <button class="course-card" data-lang-set="8"><h2>Set 8</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Roots -val- &amp; -vince-</p></button>
+        <button type="button" class="course-card midterm-entry" data-midterm-open><h2>Midterm Exam Prep</h2><p>Fall 2026 · 82 cards · 14 short decks across 8 categories</p></button>
+      </div>
+    </section>
+
+    <section id="langmidterm" class="view" aria-labelledby="midterm-title">
+      <button class="btn btn-light btn-small course-back" data-view="langsets">← AP Lang sets</button>
+      <div id="midtermOverview">
+        <div class="page-intro">
+          <span class="eyebrow">AP English Language &amp; Composition · Fall 2026</span>
+          <h2 id="midterm-title" style="margin-top:14px">Midterm Exam Prep</h2>
+          <p class="lede">82 focused flashcards in 14 short decks, organized by Melton's review sheet. Attempt each answer from memory, then flip and rate your recall. Choose one small deck at a time.</p>
+        </div>
+        <div id="midtermStats" class="midterm-stats" aria-live="polite"></div>
+        <div class="progress-track" aria-hidden="true"><div id="midtermOverallFill" class="progress-fill"></div></div>
+        <p id="midtermOverallLabel" class="small-note"></p>
+        <div class="midterm-actions">
+          <button type="button" class="btn btn-primary" id="midtermMissedBtn">Review missed</button>
+          <button type="button" class="btn btn-light" id="midtermDueBtn">Review due</button>
+          <button type="button" class="btn btn-light btn-small" id="midtermResetBtn">Reset midterm progress</button>
+        </div>
+        <p id="midtermStorageNotice" hidden>Browser storage is unavailable. Your answers work for this session, but progress may not persist.</p>
+        <div id="midtermCategoryGrid"></div>
+        <p class="small-note" style="margin-top:24px">Progress is saved locally in this browser and does not automatically sync across devices. All content is embedded in this one HTML file.</p>
+      </div>
+
+      <div id="midtermStudy" hidden>
+        <div class="toolbar" style="justify-content:space-between;align-items:center">
+          <button type="button" class="btn btn-light btn-small" data-midterm-home>← All midterm decks</button>
+          <span id="midtermCounter" class="small-note"></span>
+        </div>
+        <h2 id="midtermDeckTitle" style="margin:20px 0 0"></h2>
+        <p class="lede" style="font-size:14px">Recall first, flip second. Rate only after seeing the answer; use Next if you prefer to skip a card.</p>
+        <div class="midterm-flash-wrap">
+          <div class="midterm-stage physics-stage">
+            <div id="midtermCard" class="physics-card midterm-card" role="button" tabindex="0" aria-label="Midterm flashcard. Tap or press Enter to flip.">
+              <div class="physics-face physics-front">
+                <span id="midtermCardIndex" class="physics-card-index"></span>
+                <div><span id="midtermCardCategory" class="physics-label"></span><div id="midtermCardPrompt" class="physics-question"></div></div>
+                <span class="physics-hint">Try to recall the answer before flipping this card.</span>
+              </div>
+              <div class="physics-face physics-back">
+                <span class="physics-card-index">Midterm Exam Prep · answer</span>
+                <div><span class="physics-label">Answer</span><div id="midtermCardAnswer" class="physics-answer"></div></div>
+                <span id="midtermCardSource" class="midterm-source"></span>
+              </div>
+            </div>
+          </div>
+          <aside class="midterm-side" aria-label="Midterm flashcard controls">
+            <div class="panel control-stack">
+              <button type="button" id="midtermFlipBtn" class="btn btn-dark control-wide">Flip card</button>
+              <button type="button" id="midtermAgainBtn" class="btn btn-light" disabled>Again</button>
+              <button type="button" id="midtermGoodBtn" class="btn btn-primary" disabled>Got it</button>
+              <button type="button" id="midtermPrevBtn" class="btn btn-light btn-small">← Previous</button>
+              <button type="button" id="midtermNextBtn" class="btn btn-light btn-small">Next →</button>
+              <button type="button" id="midtermShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle this session</button>
+            </div>
+            <div class="panel desktop-help"><strong>Keyboard</strong><p class="key-help">Space: flip<br>← / →: navigate<br>1: Again · 2: Got it</p></div>
+          </aside>
+        </div>
+        <div class="progress-track midterm-progress" aria-hidden="true"><div id="midtermReviewProgress" class="progress-fill"></div></div>
+        <p class="small-note">A card marked Again appears under Review missed. Cards marked Got it return at increasing intervals.</p>
+      </div>
+
+      <div id="midtermSummary" class="midterm-summary panel" hidden>
+        <span class="eyebrow">Section finished</span>
+        <h2 id="midtermSummaryTitle" style="margin-top:15px"></h2>
+        <p id="midtermSummaryStats" class="lede"></p>
+        <div class="toolbar">
+          <button type="button" id="midtermRetryBtn" class="btn btn-primary">Retry missed from this section</button>
+          <button type="button" class="btn btn-light" data-midterm-home>Back to decks</button>
+        </div>
       </div>
     </section>
 
@@ -992,6 +1099,7 @@
     <p class="footer-note">Progress is stored only in this browser. The app works without accounts, analytics, or external services.</p>
   </main>
 
+  <script id="midtermContentData" type="application/json">{"version":2,"id":"ap-lang-fall-2026-midterm-compact","course":"AP English Language and Composition","title":"Midterm Exam Prep · Fall 2026","content_standard":"Melton Review for Fall Midterm--2026.docx; uploaded teacher handouts and classroom examples","scope_note":"One card per vocabulary word, minimal distinct cards for every named review-sheet topic. Exigence uses standard definition because direct source did not define it; MLA examples use current MLA 9.","total_cards":82,"total_decks":14,"categories":["Vocabulary","Rhetorical Situation","Argument \u0026 Appeals","Language \u0026 Devices","Sentence Patterns","Writing \u0026 MLA","Sentence Structure","Grammar \u0026 Punctuation"],"vocabulary_terms":["parlance","vulgar","fallacy","imply","infer","refute","dissuade","indisputable","red herring","substantiate","exhort","gist","polemic","vociferous","epitome","impeccable","sublime","dogmatic","plausible","ponder","stratagem","circumspect","introspective","perspicuous","specious","spectrum","explicit","implicit","explicate","inexplicable","ambivalence","avail","evaluate","prevail"],"review_topics":["Rhetorical analysis (multiple-choice--not from the actual exam)","Close readings","Annotation","Rhetorical appeals—ethos, logos, pathos","Rhetorical triangle","SOAPSTone","Analysis—definition; not evaluation","Purpose","Exigence","Tone","Connotations","Diction","Syntax","Sentence patterns: cumulative, periodic, inverted, interrupted","Major No-Nos","Specificity","Works Cited format (MLA)","Parenthetical citation (MLA)","Plagiarism","Bias","Figurative language, including metaphor, simile, hyperbole, personification","Imagery","Irony","Parallelism","Reasoning","rhetorical strategy","Super Analysis Sentence","The meaning of these words","Sentence types and Sentence structure","Participles and participial phrases, absolutes","--Punctuation of the above grammatical elements","Semicolons","Commas"],"coverage_index":{"Rhetorical analysis (multiple-choice--not from the actual exam)":["rhetorical-reading-06"],"Close readings":["rhetorical-reading-01"],"Annotation":["rhetorical-reading-02"],"Rhetorical appeals—ethos, logos, pathos":["argument-appeals-01","argument-appeals-02","argument-appeals-03"],"Rhetorical triangle":["rhetorical-reading-03"],"SOAPSTone":["rhetorical-reading-04"],"Analysis—definition; not evaluation":["rhetorical-reading-06"],"Purpose":["rhetorical-reading-05"],"Exigence":["rhetorical-reading-05"],"Tone":["word-choice-01"],"Connotations":["word-choice-02"],"Diction":["word-choice-03"],"Syntax":["word-choice-04"],"Sentence patterns: cumulative, periodic, inverted, interrupted":["sentence-patterns-01","sentence-patterns-02","sentence-patterns-03","sentence-patterns-04"],"Major No-Nos":["analytical-writing-01"],"Specificity":["analytical-writing-02"],"Works Cited format (MLA)":["mla-integrity-01"],"Parenthetical citation (MLA)":["mla-integrity-02"],"Plagiarism":["mla-integrity-03"],"Bias":["argument-appeals-04"],"Figurative language, including metaphor, simile, hyperbole, personification":["devices-01","devices-02","devices-03","devices-04"],"Imagery":["devices-05"],"Irony":["devices-06"],"Parallelism":["devices-07"],"Reasoning":["argument-appeals-05"],"rhetorical strategy":["argument-appeals-06"],"Super Analysis Sentence":["analytical-writing-03"],"The meaning of these words":["vocab-ambivalence","vocab-avail","vocab-circumspect","vocab-dissuade","vocab-dogmatic","vocab-epitome","vocab-evaluate","vocab-exhort","vocab-explicate","vocab-explicit","vocab-fallacy","vocab-gist","vocab-impeccable","vocab-implicit","vocab-imply","vocab-indisputable","vocab-inexplicable","vocab-infer","vocab-introspective","vocab-parlance","vocab-perspicuous","vocab-plausible","vocab-polemic","vocab-ponder","vocab-prevail","vocab-red-herring","vocab-refute","vocab-specious","vocab-spectrum","vocab-stratagem","vocab-sublime","vocab-substantiate","vocab-vociferous","vocab-vulgar"],"Sentence types and Sentence structure":["structure-01","structure-02","structure-03","structure-04"],"Participles and participial phrases, absolutes":["modifiers-01","modifiers-02","modifiers-03","modifiers-04","modifiers-05"],"--Punctuation of the above grammatical elements":["modifiers-06","punctuation-01","punctuation-02"],"Semicolons":["punctuation-04","punctuation-05"],"Commas":["punctuation-03"]},"decks":[{"id":"vocabulary-1","title":"Vocabulary 1–9","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-ambivalence","front":"Define “ambivalence.”","back":"(n.) (1) Mixed or opposing feelings/ideas. (2) Uncertainty or hesitation over which choice to make.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"ambivalence","topics":["The meaning of these words"]},{"id":"vocab-avail","front":"Define “avail.”","back":"(v.) To be useful, helpful, or advantageous. (n.) Use, benefit, advantage.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"avail","topics":["The meaning of these words"]},{"id":"vocab-circumspect","front":"Define “circumspect.”","back":"(adj.) Careful and prudent; attentive to circumstances and possible consequences.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"circumspect","topics":["The meaning of these words"]},{"id":"vocab-dissuade","front":"Define “dissuade.”","back":"(v.) To persuade someone not to take an action; discourage by reason or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"dissuade","topics":["The meaning of these words"]},{"id":"vocab-dogmatic","front":"Define “dogmatic.”","back":"(adj.) Expressing one’s own convictions as unquestionable facts.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"dogmatic","topics":["The meaning of these words"]},{"id":"vocab-epitome","front":"Define “epitome.”","back":"(n.) A perfect or highly representative example of a particular kind.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"epitome","topics":["The meaning of these words"]},{"id":"vocab-evaluate","front":"Define “evaluate.”","back":"(v.) To assess or determine the value or quality of something.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"evaluate","topics":["The meaning of these words"]},{"id":"vocab-exhort","front":"Define “exhort.”","back":"(v.) To urge someone strongly, often by an impassioned appeal or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"exhort","topics":["The meaning of these words"]},{"id":"vocab-explicate","front":"Define “explicate.”","back":"(v.) To explain clearly or unfold the meaning of something.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"explicate","topics":["The meaning of these words"]}]},{"id":"vocabulary-2","title":"Vocabulary 10–18","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-explicit","front":"Define “explicit.”","back":"(adj.) (1) Completely and clearly stated, with nothing left merely implied. (2) Directly or readily observable.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"explicit","topics":["The meaning of these words"]},{"id":"vocab-fallacy","front":"Define “fallacy.”","back":"(n.) (1) A mistaken or false belief. (2) Faulty or illogical reasoning.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"fallacy","topics":["The meaning of these words"]},{"id":"vocab-gist","front":"Define “gist.”","back":"(n.) The main point, essence, or central idea.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"gist","topics":["The meaning of these words"]},{"id":"vocab-impeccable","front":"Define “impeccable.”","back":"(adj.) Flawless; perfect; incapable of wrongdoing (second nuance).","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"impeccable","topics":["The meaning of these words"]},{"id":"vocab-implicit","front":"Define “implicit.”","back":"(adj.) (1) Suggested or understood without being said directly. (2) Unquestioning, free of doubt or reservation.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"implicit","topics":["The meaning of these words"]},{"id":"vocab-imply","front":"Define “imply.”","back":"(v.) To hint at or suggest something indirectly.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"imply","topics":["The meaning of these words"]},{"id":"vocab-indisputable","front":"Define “indisputable.”","back":"(adj.) Beyond doubt or reasonable challenge; certain.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"indisputable","topics":["The meaning of these words"]},{"id":"vocab-inexplicable","front":"Define “inexplicable.”","back":"(adj.) Hard or impossible to explain or account for.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"inexplicable","topics":["The meaning of these words"]},{"id":"vocab-infer","front":"Define “infer.”","back":"(v.) To reach a conclusion from evidence.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"infer","topics":["The meaning of these words"]}]},{"id":"vocabulary-3","title":"Vocabulary 19–27","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-introspective","front":"Define “introspective.”","back":"(adj.) Examining one’s own thoughts, attitudes and feelings.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"introspective","topics":["The meaning of these words"]},{"id":"vocab-parlance","front":"Define “parlance.”","back":"(n.) The distinctive way of speaking used by a group or in a field.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"parlance","topics":["The meaning of these words"]},{"id":"vocab-perspicuous","front":"Define “perspicuous.”","back":"(adj.) Clearly phrased and easy to understand.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"perspicuous","topics":["The meaning of these words"]},{"id":"vocab-plausible","front":"Define “plausible.”","back":"(adj.) Seeming believable, reasonable, or true.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"plausible","topics":["The meaning of these words"]},{"id":"vocab-polemic","front":"Define “polemic.”","back":"(n.) A contentious argument, especially one challenging a viewpoint. (adj.) Relating to controversy or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"polemic","topics":["The meaning of these words"]},{"id":"vocab-ponder","front":"Define “ponder.”","back":"(v.) To consider carefully and thoroughly.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"ponder","topics":["The meaning of these words"]},{"id":"vocab-prevail","front":"Define “prevail.”","back":"(v.) (1) Succeed or overcome; win out. (2) Remain customary/current/in force. (3) Persuade someone, especially prevail upon/on/with.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"prevail","topics":["The meaning of these words"]},{"id":"vocab-red-herring","front":"Define “red herring.”","back":"(n.) An irrelevant distraction that shifts attention away from the main issue.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"red herring","topics":["The meaning of these words"]},{"id":"vocab-refute","front":"Define “refute.”","back":"(v.) To demonstrate that a claim is false or invalid; disprove or deny its accuracy.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"refute","topics":["The meaning of these words"]}]},{"id":"vocabulary-4","title":"Vocabulary 28–34","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-specious","front":"Define “specious.”","back":"(adj.) Apparently true or convincing but actually wrong.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"specious","topics":["The meaning of these words"]},{"id":"vocab-spectrum","front":"Define “spectrum.”","back":"(n.) (1) An ordered band of wavelengths, such as colors or sounds. (2) A wide range of related qualities, ideas, or feelings.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"spectrum","topics":["The meaning of these words"]},{"id":"vocab-stratagem","front":"Define “stratagem.”","back":"(n.) A clever tactic designed to deceive or outmaneuver; sometimes a military feint.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"stratagem","topics":["The meaning of these words"]},{"id":"vocab-sublime","front":"Define “sublime.”","back":"(adj.) Lofty, awe-inspiring, or outstanding. (n.) An awe-inspiring or magnificent thing or quality.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"sublime","topics":["The meaning of these words"]},{"id":"vocab-substantiate","front":"Define “substantiate.”","back":"(v.) To support or prove a claim using evidence.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"substantiate","topics":["The meaning of these words"]},{"id":"vocab-vociferous","front":"Define “vociferous.”","back":"(adj.) Loud and forceful; marked by intense, noisy outcries.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"vociferous","topics":["The meaning of these words"]},{"id":"vocab-vulgar","front":"Define “vulgar.”","back":"(adj.) (1) Associated with ordinary or common speech. (2) Crude or indecent. (3) Gaudy or offensively excessive in showing off oneself or wealth.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"vulgar","topics":["The meaning of these words"]}]},{"id":"rhetorical-reading","title":"Rhetoric \u0026 Close Reading","category":"Rhetorical Situation","description":"Examine writer, audience, purpose, and analysis.","cards":[{"id":"rhetorical-reading-01","front":"What distinguishes close reading from summary?","back":"Close reading inspects precise words, details, structure, and implications to explain how meaning is developed; summary restates content.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Close readings"]},{"id":"rhetorical-reading-02","front":"What does useful annotation do beyond highlighting?","back":"Marks key claims and choices, unfamiliar terms, questions, and patterns; margin notes record why the passage matters.","source":"A Guide To Annotating.doc","topics":["Annotation"]},{"id":"rhetorical-reading-03","front":"Name the three parts of the rhetorical triangle.","back":"Speaker, audience, subject. Their relationship—and the occasion/context—shapes the choices made to achieve a purpose.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Rhetorical triangle"]},{"id":"rhetorical-reading-04","front":"Expand SOAPSTone. What is the final element added to SOAPS?","back":"Speaker, Occasion, Audience, Purpose, Subject, Tone. The textbook teaches SOAPS; Melton’s review adds Tone.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["SOAPSTone"]},{"id":"rhetorical-reading-05","front":"Distinguish a writer’s purpose from exigence.","back":"Purpose = what the writer hopes to accomplish. Exigence = the problem, event, or need prompting the response. Exigence definition is supplemental.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Purpose","Exigence"]},{"id":"rhetorical-reading-06","front":"Distinguish analysis from evaluation in one sentence.","back":"Analysis explains HOW rhetorical choices function; evaluation judges HOW GOOD or effective the text is.","source":"AP English Language \u0026 Composition - Bootcamp Notes.pdf","topics":["Analysis—definition; not evaluation","Rhetorical analysis (multiple-choice--not from the actual exam)"]}]},{"id":"argument-appeals","title":"Appeals \u0026 Argument","category":"Argument \u0026 Appeals","description":"Rhetorical appeals and arguments taught in course.","cards":[{"id":"argument-appeals-01","front":"A writer acknowledges limitations and presents expertise honestly. Which appeal is strengthened?","back":"Ethos: the writer builds credibility through knowledge, fairness, honesty, or shared values—not just credentials.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-02","front":"A writer builds a conclusion from evidence and logical explanation. Which appeal?","back":"Logos: reasoning and supporting evidence; statistics are one possible form, not a requirement.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-03","front":"A speaker draws on grief, hope, pride, or fear to influence an audience. Which appeal?","back":"Pathos: appeal to emotion; not limited to sadness or sentimental anecdotes.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-04","front":"What is bias in nonfiction, even when its facts are technically correct?","back":"A slant caused by selective evidence, framing, assumptions, or loaded language that favors one position.","source":"Analyzing a Visual Text.pdf","topics":["Bias"]},{"id":"argument-appeals-05","front":"Distinguish inductive from deductive reasoning.","back":"Induction: examples/observations toward a probable general conclusion. Deduction: premises/rule toward a logically necessary conclusion if valid.","source":"Logos, Ethos, Pathos.ppt","topics":["Reasoning"]},{"id":"argument-appeals-06","front":"What makes a rhetorical strategy different from simply naming a literary device?","back":"A strategy is a purposeful choice, such as comparison, anecdote, concession, or repetition, explained through its audience-specific function.","source":"Analyzing a Visual Text.pdf","topics":["rhetorical strategy"]}]},{"id":"word-choice","title":"Word Choice \u0026 Syntax","category":"Language \u0026 Devices","description":"Precise language-analysis vocabulary.","cards":[{"id":"word-choice-01","front":"What is tone, and how does it differ from mood?","back":"Tone is the author’s attitude toward subject/audience; mood is the atmosphere produced for the reader. Identify tone using textual evidence.","source":"Analyzing a Visual Text.pdf","topics":["Tone"]},{"id":"word-choice-02","front":"How can two words with similar dictionary meanings change an argument?","back":"Their connotations differ: associations and emotional implications beyond denotation, e.g., \"steadfast\" versus \"stubborn.\"","source":"Analyzing a Visual Text.pdf","topics":["Connotations"]},{"id":"word-choice-03","front":"Define diction. Why is \"strong diction\" weak analysis?","back":"Diction = specific word choice. Name the kind of language, quote examples, then connect the choice to the writer’s purpose.","source":"How to Write a Super Analysis Sentence.pdf","topics":["Diction"]},{"id":"word-choice-04","front":"Define syntax. Name two choices a rhetorical analyst could examine.","back":"Syntax = arrangement of words, phrases, and clauses. Examine clause order, sentence length, parallel structure, inversions, or interruptions.","source":"Analyzing a Visual Text.pdf","topics":["Syntax"]}]},{"id":"devices","title":"Figures \u0026 Rhetorical Devices","category":"Language \u0026 Devices","description":"Distinguish the figurative devices on the review sheet.","cards":[{"id":"devices-01","front":"\"The city is a sleeping giant.\" What figurative device?","back":"Metaphor: direct comparison without \"like\" or \"as.\" Consider what the comparison suggests about the city.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-02","front":"\"The city stirred like a sleeping giant.\" What device?","back":"Simile: comparison using \"like\" or \"as\" to illuminate a quality of one subject through another.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-03","front":"\"I waited a thousand years for the bus.\" What device?","back":"Hyperbole: deliberate exaggeration for emphasis, emotion, or humor; not a literal factual claim.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-04","front":"\"The wind whispered its warning.\" What device?","back":"Personification: assigning a human action or trait to a nonhuman thing.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-05","front":"What makes an image in a text an example of imagery?","back":"Sensory detail invoking sight, sound, touch, taste, or smell; it may be literal or figurative.","source":"Analyzing a Visual Text.pdf","topics":["Imagery"]},{"id":"devices-06","front":"What is the central discrepancy behind irony?","back":"A gap between expectation and reality, a statement and intended meaning, or what an audience knows and what a character knows.","source":"Irony and Satire.pdf","topics":["Irony"]},{"id":"devices-07","front":"What is parallelism? Why might a speaker use it?","back":"Repeated grammatical structure across corresponding ideas; creates balance, emphasis, or an easy-to-follow pattern.","source":"Analyzing a Visual Text.pdf","topics":["Parallelism"]}]},{"id":"sentence-patterns","title":"Four Sentence Patterns","category":"Sentence Patterns","description":"The four constructions named on the review sheet.","cards":[{"id":"sentence-patterns-01","front":"\"The crowd cheered, raising banners and flooding the streets.\" Which pattern?","back":"Cumulative (loose): main independent clause appears early, followed by accumulating details.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-02","front":"\"Despite the rain and the delay, the crowd finally cheered.\" Which pattern?","back":"Periodic: the main independent clause is delayed until after qualifying introductory material.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-03","front":"\"Into the room rushed the students.\" Which pattern?","back":"Inverted: atypical word order, here verb before subject; instead of \"The students rushed into the room.\"","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-04","front":"\"The students—despite their exhaustion—finished the work.\" Which pattern?","back":"Interrupted: parenthetical material breaks the principal clause and adds a qualification or aside.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]}]},{"id":"analytical-writing","title":"Melton’s Analysis Rules","category":"Writing \u0026 MLA","description":"Writing constraints from actual Melton handouts.","cards":[{"id":"analytical-writing-01","front":"Name the problem with Melton’s banned phrase \"keeps the reader interested.\"","back":"It states a vague, unsupported effect. Replace it with a specific function linked to particular language, audience, and purpose.","source":"Major No-No's.pptx.txt","topics":["Major No-Nos"]},{"id":"analytical-writing-02","front":"What does specificity require in rhetorical analysis?","back":"Identify an exact choice, cite precise textual evidence, and explain its effect and connection to purpose. Do not stop at “uses pathos.”","source":"AP English Language \u0026 Composition Exam Rubric--Analysis.pdf","topics":["Specificity"]},{"id":"analytical-writing-03","front":"What elements belong in Melton’s Super Analysis Sentence?","back":"Author + fitting descriptive adjective + rhetorical term + strong verb + FUNCTION + two short textual examples. The adjective must match the function.","source":"How to Write a Super Analysis Sentence.pdf","topics":["Super Analysis Sentence"]}]},{"id":"mla-integrity","title":"MLA \u0026 Academic Integrity","category":"Writing \u0026 MLA","description":"Current MLA concepts, with teacher research-paper context.","cards":[{"id":"mla-integrity-01","front":"How is a Works Cited page organized, and what is its purpose?","back":"A separate, alphabetized, double-spaced list of full source entries, with hanging indents; entries correspond to sources cited in the paper. Use current MLA 9.","source":"50 Essays (4th edition), Documentation Guide, pages 477-481; current MLA 9 conventions","topics":["Works Cited format (MLA)"]},{"id":"mla-integrity-02","front":"Quote from Rivera page 42, author not named in prose. Give the MLA parenthetical citation.","back":"(Rivera 42) before final punctuation. If Rivera appears in the signal phrase, usually cite just (42). Never invent page numbers.","source":"50 Essays (4th edition), Documentation Guide, pages 477-481; current MLA 9 conventions","topics":["Parenthetical citation (MLA)"]},{"id":"mla-integrity-03","front":"When is paraphrasing plagiarism?","back":"When source ideas are presented without credit, or language is too closely copied without proper quotation and citation. Paraphrases still need attribution.","source":"Understanding Plagiarism with Some Help from Dr. Seuss.ppt","topics":["Plagiarism"]}]},{"id":"structure","title":"Sentence Types \u0026 Structures","category":"Sentence Structure","description":"Clause patterns and basic sentence functions.","cards":[{"id":"structure-01","front":"What makes a clause independent rather than dependent?","back":"An independent clause can stand as a complete sentence; a dependent clause cannot. Both may contain a subject and predicate.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-02","front":"Distinguish simple from compound sentence structure, using clauses.","back":"Simple: one independent clause (even with two verbs). Compound: two or more independent clauses, often joined with comma + coordinating conjunction.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-03","front":"Distinguish complex from compound-complex sentence structure.","back":"Complex: one independent clause plus a dependent clause. Compound-complex: at least two independent clauses plus a dependent clause.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-04","front":"Name the four sentence functions and what each does.","back":"Declarative = statement; interrogative = question; imperative = command/request; exclamatory = strong feeling.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]}]},{"id":"modifiers","title":"Participles, Absolutes \u0026 Modifiers","category":"Grammar \u0026 Punctuation","description":"Identify grammatical function and modifier attachment.","cards":[{"id":"modifiers-01","front":"What is a participle? Give a past and present example.","back":"Verb form acting adjectivally: \"shattered\" in “shattered glass”; \"running\" in “running water.” Not every -ing word is a participle.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-02","front":"Identify the opening phrase in \"Hurrying to class, Maya dropped her notes.\"","back":"Participial phrase: “Hurrying to class,” modifying Maya. It contains a participle but has no separate expressed subject.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-03","front":"Identify the opening construction in \"Her hands shaking, Maya spoke.\"","back":"Absolute phrase: “Her hands shaking” has its own noun (“hands”) and participle; it adds background circumstances.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-04","front":"Gerund, participle, or verb: \"Reading conflicting sources takes patience\"?","back":"Gerund: “Reading conflicting sources” acts as the subject (a noun phrase). Compare “the reading student” (participle).","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-05","front":"Fix the dangling modifier: \"Reading the article, the argument became obvious.\"","back":"“Reading the article, I recognized the argument.” The actor of “reading” must logically be the modified subject.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-06","front":"Which modifier needs NO commas: \"Students wearing red badges enter first\" or \"Maya, wearing a red badge, entered\"?","back":"First: “wearing red badges” identifies which students (restrictive); Maya’s modifier is nonessential and is set off by commas.","source":"Describing with Grammatical Techniques(1).pptx","topics":["--Punctuation of the above grammatical elements"]}]},{"id":"punctuation","title":"Comma \u0026 Semicolon Decisions","category":"Grammar \u0026 Punctuation","description":"Punctuation rules Melton named and illustrated.","cards":[{"id":"punctuation-01","front":"Punctuate an introductory participial phrase: \"Exhausted by rehearsal Maya sat down.\"","back":"“Exhausted by rehearsal, Maya sat down.” Place a comma after the introductory phrase.","source":"Grammar Posters.ppt","topics":["--Punctuation of the above grammatical elements"]},{"id":"punctuation-02","front":"Punctuate an introductory absolute: \"Her work completed Maya went home.\"","back":"“Her work completed, Maya went home.” The absolute is normally separated from the main clause by a comma.","source":"Grammar Posters.ppt","topics":["--Punctuation of the above grammatical elements"]},{"id":"punctuation-03","front":"Correct this comma splice: \"The evidence was convincing, the board voted yes.\"","back":"“The evidence was convincing; the board voted yes.” Or use a period or “, and”. Two independent clauses cannot be joined by just a comma.","source":"Grammar Posters.ppt","topics":["Commas"]},{"id":"punctuation-04","front":"When may a semicolon join two sentences?","back":"When both sides are independent clauses closely related in meaning; “however” often takes semicolon before and comma after.","source":"Grammar Posters.ppt","topics":["Semicolons"]},{"id":"punctuation-05","front":"Why use semicolons in \"Austin, Texas; Portland, Oregon; and Denver, Colorado\"?","back":"To separate complicated items that already contain commas, preventing ambiguity.","source":"Grammar Posters.ppt","topics":["Semicolons"]}]}]}</script>
   <script>
     const LANG_SET1_WORDS = [
       {
@@ -6345,11 +6453,11 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
     function updateCourseNav(course) {
       document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
       const brand=document.getElementById("brandCourse");
-      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
+      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="langmidterm"?"AP Lang · Midterm Exam Prep":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
     }
     function showView(id) {
       const langViews=["home","learn","practice","cram","review","progress"];
-      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
+      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="langmidterm"?"langmidterm":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course==="langsets"?"lang":course==="apushsets"?"apush":course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
@@ -6378,6 +6486,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
       if(id==="apush") renderApushCard();
+      if(id==="langmidterm") renderMidtermLanding();
       window.scrollTo({top:0,behavior:"smooth"});
     }
     function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":"apushsets"); }
@@ -7619,11 +7728,202 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       });
     }
 
+    /* AP Lang Fall 2026 midterm — isolated self-contained review module. */
+    const MIDTERM_DATA = JSON.parse(document.getElementById('midtermContentData').textContent);
+    const MIDTERM_STORAGE = 'flashcards-ap-lang-midterm-fall-2026-v1';
+    const MIDTERM_INTERVALS = [0, 1, 3, 7, 14, 30, 60, 90];
+    const midtermDecks = MIDTERM_DATA.decks;
+    const midtermCards = midtermDecks.flatMap(d => d.cards);
+    const midtermById = new Map(midtermCards.map(c => [c.id, c]));
+    let midtermStats = loadMidtermStats();
+    let midtermQueue = [];
+    let midtermPos = 0;
+    let midtermSessionName = '';
+    let midtermSessionResults = {known:0, again:0};
+    const midtermEl = id => document.getElementById(id);
+    function loadMidtermStats() {
+      try {
+        const data = JSON.parse(localStorage.getItem(MIDTERM_STORAGE) || '{}');
+        return data && typeof data === 'object' && data.ratings && typeof data.ratings === 'object'
+          ? {ratings:data.ratings} : {ratings:{}};
+      } catch { return {ratings:{}}; }
+    }
+    function saveMidtermStats() {
+      try { localStorage.setItem(MIDTERM_STORAGE, JSON.stringify(midtermStats)); }
+      catch { midtermEl('midtermStorageNotice').hidden = false; }
+    }
+    function midtermEscape(value) {
+      return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function midtermRatings(cardId) { return midtermStats.ratings[cardId] || {}; }
+    function midtermKnown(cardId) { return midtermRatings(cardId).last === 'good'; }
+    function midtermDue(cardId) {
+      const r=midtermRatings(cardId);
+      return r.seen && r.last === 'good' && (!r.due || r.due <= Date.now());
+    }
+    function renderMidtermLanding() {
+      if(!midtermEl('langmidterm')?.classList.contains('active')) return;
+      const all=midtermCards;
+      const known=all.filter(c=>midtermKnown(c.id)).length;
+      const missed=all.filter(c=>midtermRatings(c.id).last==='again').length;
+      const due=all.filter(c=>midtermDue(c.id)).length;
+      const studied=all.filter(c=>midtermRatings(c.id).seen).length;
+      midtermEl('midtermStats').innerHTML = `
+        <div class="stat-box"><strong>${studied} / ${all.length}</strong><span>attempted</span></div>
+        <div class="stat-box"><strong>${known}</strong><span>last recalled</span></div>
+        <div class="stat-box"><strong>${missed}</strong><span>need another look</span></div>
+        <div class="stat-box"><strong>${due}</strong><span>due to review</span></div>`;
+      midtermEl('midtermDueBtn').disabled=due===0;
+      midtermEl('midtermMissedBtn').disabled=missed===0;
+      const pct=Math.round(known/all.length*100);
+      midtermEl('midtermOverallFill').style.width=pct+'%';
+      midtermEl('midtermOverallLabel').textContent=`${pct}% last recalled correctly · progress stored on this device`;
+      midtermEl('midtermCategoryGrid').innerHTML = MIDTERM_DATA.categories.map(cat=>{
+        const decks=midtermDecks.filter(d=>d.category===cat);
+        const group=decks.flatMap(d=>d.cards);
+        const groupKnown=group.filter(c=>midtermKnown(c.id)).length;
+        const cards=decks.map(d=>{
+          const good=d.cards.filter(c=>midtermKnown(c.id)).length;
+          const misses=d.cards.filter(c=>midtermRatings(c.id).last==='again').length;
+          return `<button type="button" class="midterm-deck" data-midterm-deck="${midtermEscape(d.id)}">
+            <strong>${midtermEscape(d.title)}</strong>
+            <span class="midterm-deck-description">${midtermEscape(d.description)}</span>
+            <span class="midterm-deck-count">${good}/${d.cards.length} recalled${misses ? ` · ${misses} to retry` : ''}</span>
+            <span class="midterm-deck-track"><span style="width:${Math.round(good/d.cards.length*100)}%"></span></span>
+          </button>`;
+        }).join('');
+        return `<section class="midterm-category" aria-label="${midtermEscape(cat)}">
+          <div class="midterm-category-heading"><h3>${midtermEscape(cat)}</h3><span>${groupKnown}/${group.length} recalled</span></div>
+          <div class="midterm-decks">${cards}</div>
+        </section>`;
+      }).join('');
+      midtermEl('midtermOverview').hidden=false;
+      midtermEl('midtermStudy').hidden=true;
+      midtermEl('midtermSummary').hidden=true;
+    }
+    function startMidtermSession(ids,title) {
+      const filtered=ids.filter(id=>midtermById.has(id));
+      if (!filtered.length) return;
+      midtermQueue=filtered;
+      midtermPos=0;
+      midtermSessionName=title;
+      midtermSessionResults={known:0,again:0};
+      midtermEl('midtermOverview').hidden=true;
+      midtermEl('midtermStudy').hidden=false;
+      midtermEl('midtermSummary').hidden=true;
+      midtermEl('midtermDeckTitle').textContent=title;
+      renderMidtermCard();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function renderMidtermCard() {
+      if(midtermPos >= midtermQueue.length) { finishMidtermSession(); return; }
+      const c=midtermById.get(midtermQueue[midtermPos]);
+      midtermEl('midtermCard').classList.remove('flipped');
+      midtermEl('midtermCardIndex').textContent=`Card ${midtermPos+1} of ${midtermQueue.length}`;
+      midtermEl('midtermCardCategory').textContent=c.term?'Vocabulary':midtermDecks.find(d=>d.cards.some(x=>x.id===c.id))?.category||'Concept';
+      midtermEl('midtermCardPrompt').textContent=c.front;
+      midtermEl('midtermCardAnswer').textContent=c.back;
+      midtermEl('midtermCardSource').textContent=`Source: ${c.source}`;
+      midtermEl('midtermCounter').textContent=`${midtermPos+1} / ${midtermQueue.length}`;
+      midtermEl('midtermReviewProgress').style.width=`${Math.round(midtermPos/midtermQueue.length*100)}%`;
+      midtermEl('midtermAgainBtn').disabled=true;
+      midtermEl('midtermGoodBtn').disabled=true;
+      midtermEl('midtermPrevBtn').disabled=midtermPos===0;
+      midtermEl('midtermNextBtn').textContent=midtermPos===midtermQueue.length-1?'Finish section':'Next →';
+    }
+    function flipMidtermCard() {
+      const card=midtermEl('midtermCard');
+      card.classList.toggle('flipped');
+      const revealed=card.classList.contains('flipped');
+      midtermEl('midtermAgainBtn').disabled=!revealed;
+      midtermEl('midtermGoodBtn').disabled=!revealed;
+    }
+    function moveMidtermCard(delta) {
+      const next=midtermPos+delta;
+      if(next<0) return;
+      midtermPos=next;
+      renderMidtermCard();
+    }
+    function rateMidtermCard(good) {
+      if(!midtermEl('midtermCard').classList.contains('flipped')) return;
+      const id=midtermQueue[midtermPos];
+      const prev=midtermRatings(id);
+      const nextStage=good?Math.min((prev.last==='good'?prev.stage||0:0)+1,7):0;
+      const days=MIDTERM_INTERVALS[nextStage];
+      midtermStats.ratings[id]={
+        seen:(prev.seen||0)+1,
+        good:(prev.good||0)+(good?1:0),
+        wrong:(prev.wrong||0)+(good?0:1),
+        last:good?'good':'again',
+        stage:nextStage,
+        due:good?Date.now()+days*86400000:0,
+      };
+      midtermSessionResults[good?'known':'again']++;
+      saveMidtermStats();
+      moveMidtermCard(1);
+    }
+    function finishMidtermSession() {
+      midtermEl('midtermStudy').hidden=true;
+      midtermEl('midtermSummary').hidden=false;
+      const count=midtermQueue.length;
+      const graded=midtermSessionResults.known+midtermSessionResults.again;
+      midtermEl('midtermSummaryTitle').textContent=`${midtermSessionName} complete`;
+      midtermEl('midtermSummaryStats').textContent=`${midtermSessionResults.known} recalled · ${midtermSessionResults.again} need review${graded<count?` · ${count-graded} skipped`:''}.`;
+      const pending=midtermQueue.filter(id=>midtermStats.ratings[id]?.last==='again');
+      const retry=midtermEl('midtermRetryBtn');
+      retry.hidden=pending.length===0;
+      retry.onclick=()=>startMidtermSession(pending,`${midtermSessionName} · retry`);
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    // All card buttons use dedicated listeners to avoid altering the other courses.
+    midtermEl('midtermCategoryGrid').addEventListener('click',event=>{
+      const button=event.target.closest('[data-midterm-deck]');
+      if(!button) return;
+      const d=midtermDecks.find(x=>x.id===button.dataset.midtermDeck);
+      if(d) startMidtermSession(d.cards.map(c=>c.id),d.title);
+    });
+    document.querySelectorAll('[data-midterm-home]').forEach(b=>b.addEventListener('click',renderMidtermLanding));
+    midtermEl('midtermMissedBtn').addEventListener('click',()=>startMidtermSession(midtermCards.filter(c=>midtermRatings(c.id).last==='again').map(c=>c.id),'Review missed cards'));
+    midtermEl('midtermDueBtn').addEventListener('click',()=>startMidtermSession(midtermCards.filter(c=>midtermDue(c.id)).map(c=>c.id),'Due review'));
+    midtermEl('midtermShuffleBtn').addEventListener('click',()=>{
+      // A new shuffle begins at card 1, preserving stored mastery.
+      for(let i=midtermQueue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[midtermQueue[i],midtermQueue[j]]=[midtermQueue[j],midtermQueue[i]];}
+      midtermPos=0;
+      midtermSessionResults={known:0,again:0};
+      renderMidtermCard();
+    });
+    midtermEl('midtermCard').addEventListener('click',flipMidtermCard);
+    midtermEl('midtermCard').addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();flipMidtermCard();}
+    });
+    midtermEl('midtermFlipBtn').addEventListener('click',flipMidtermCard);
+    midtermEl('midtermAgainBtn').addEventListener('click',()=>rateMidtermCard(false));
+    midtermEl('midtermGoodBtn').addEventListener('click',()=>rateMidtermCard(true));
+    midtermEl('midtermPrevBtn').addEventListener('click',()=>moveMidtermCard(-1));
+    midtermEl('midtermNextBtn').addEventListener('click',()=>moveMidtermCard(1));
+    midtermEl('midtermResetBtn').addEventListener('click',()=>{
+      if(!confirm('Reset only AP Lang Midterm Exam Prep progress on this browser? Existing courses will not be changed.'))return;
+      midtermStats={ratings:{}};
+      saveMidtermStats();
+      renderMidtermLanding();
+    });
+    document.querySelectorAll('[data-midterm-open]').forEach(b=>b.addEventListener('click',()=>showView('langmidterm')));
+    document.addEventListener('keydown',e=>{
+      if(!midtermEl('langmidterm').classList.contains('active')||midtermEl('midtermStudy').hidden)return;
+      if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes(document.activeElement.tagName))return;
+      if(e.key==='ArrowLeft')moveMidtermCard(-1);
+      if(e.key==='ArrowRight')moveMidtermCard(1);
+      if(e.key===' '){e.preventDefault();flipMidtermCard();}
+      if(e.key==='1')rateMidtermCard(false);
+      if(e.key==='2')rateMidtermCard(true);
+    });
+
     setActiveLangSet(activeLangSet);
     renderPhysicsCard();
     renderApushCard();
     const lastCourse=localStorage.getItem("flashcards-last-course") || "classes";
-    if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
+    if(lastCourse==="langmidterm"){showView("langmidterm");}
+    else if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
     else if(lastCourse==="apush"){setActiveApushSet(activeApushSet);showView("apush");}
     else if(lastCourse==="physics2") openCourse("physics2");
     else showView("classes");
