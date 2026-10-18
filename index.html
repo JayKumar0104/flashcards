@@ -524,40 +524,6 @@
       .apush-definition { font-size:15px; }
     }
 
-    /* AP Lang Fall 2026 midterm styles; independent of existing modules. */
-    .midterm-entry { background:linear-gradient(135deg,#0b1739,#193c7c);color:white;border-color:#214781; }
-    .midterm-entry h2 { color:#ffe2a0; }
-    .midterm-entry p {color:#d5e0f6;font-size:13px;line-height:1.5;margin:0;}
-    .midterm-entry:hover {border-color:var(--gold)!important;}
-    .midterm-actions {display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px;}
-    .midterm-stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px;}
-    .midterm-category {margin-top:28px;}
-    .midterm-category-heading {display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:13px;}
-    .midterm-category-heading h3 {font-size:21px;margin:0;}
-    .midterm-category-heading span {font-size:12px;color:var(--muted);white-space:nowrap;}
-    .midterm-decks {display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;}
-    .midterm-deck {display:flex;flex-direction:column;gap:9px;min-width:0;min-height:151px;padding:17px 18px;border:1px solid var(--line);background:white;border-radius:17px;text-align:left;color:var(--ink);box-shadow:0 5px 20px rgba(18,33,67,.045);}
-    .midterm-deck:hover {border-color:#aebbd3;background:#f9fbff;}
-    .midterm-deck strong {font-size:17px;line-height:1.25;}
-    .midterm-deck-description {color:var(--muted);font-size:12px;line-height:1.45;flex:1;}
-    .midterm-deck-count {color:#31579f;font-size:12px;font-weight:800;}
-    .midterm-deck-track {height:7px;border-radius:99px;overflow:hidden;background:#edf0f5;}
-    .midterm-deck-track span {display:block;height:100%;background:var(--gold);border-radius:99px;}
-    .midterm-flash-wrap {display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:stretch;margin-top:19px;}
-    .midterm-stage,.midterm-card {min-height:410px;}
-    .midterm-card .physics-question {font-size:clamp(24px,3.5vw,36px);line-height:1.36;}
-    .midterm-card .physics-answer {font-size:clamp(19px,2.55vw,27px);line-height:1.5;white-space:pre-line;}
-    .midterm-card .physics-face {overflow-wrap:anywhere;}
-    .midterm-card .midterm-source {color:#c5d2ee;font-size:11px;line-height:1.55;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
-    .midterm-side {display:grid;gap:12px;align-content:start;}
-    .midterm-side .panel {padding:16px;}
-    .midterm-side .btn {min-height:44px;}
-    .midterm-progress {margin-top:19px;}
-    .midterm-summary {max-width:640px;margin:30px auto;}
-    #midtermStorageNotice {margin-top:12px;color:var(--red);font-size:13px;}
-    @media(max-width:880px){.midterm-flash-wrap {grid-template-columns:1fr;}.midterm-stats {grid-template-columns:repeat(2,minmax(0,1fr));}.midterm-side .control-stack {grid-template-columns:repeat(2,minmax(0,1fr));}.midterm-side .control-stack .control-wide{grid-column:1/-1;}}
-    @media(max-width:680px){.midterm-stage,.midterm-card{height:clamp(350px,55svh,485px);min-height:0;}.midterm-card .physics-question{font-size:clamp(21px,5.6vw,28px);}.midterm-card .physics-answer{font-size:clamp(18px,4.8vw,23px);}.midterm-category-heading h3{font-size:19px;}.midterm-side .panel{padding:11px;}.midterm-side .btn{min-height:46px;}.midterm-stats .stat-box{padding:11px;}.midterm-stats .stat-box strong{font-size:19px;}.midterm-actions .btn{flex:1 1 auto;}}
-
   </style>
 </head>
 <body>
@@ -576,8 +542,6 @@
         <button class="nav-btn" data-course-nav="lang" data-view="review" id="navReviewBtn" hidden>Review</button>
         <button class="nav-btn" data-course-nav="lang" data-view="progress" hidden>Progress</button>
         <button class="nav-btn" data-course-nav="physics2" data-view="physics2" hidden>Flashcards</button>
-        <button class="nav-btn" data-course-nav="langmidterm" data-view="langmidterm" hidden>Midterm</button>
-        <button class="nav-btn" data-course-nav="langmidterm" data-view="langsets" hidden>AP Lang sets</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apushsets" hidden>Sets</button>
         <button class="nav-btn" data-course-nav="apush" data-view="apush" hidden>Flashcards</button>
       </nav>
@@ -611,77 +575,7 @@
         <button class="course-card" data-lang-set="6"><h2>Set 6</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -pli-</p></button>
         <button class="course-card" data-lang-set="7"><h2>Set 7</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Root -spec-</p></button>
         <button class="course-card" data-lang-set="8"><h2>Set 8</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Roots -val- &amp; -vince-</p></button>
-        <button type="button" class="course-card midterm-entry" data-midterm-open><h2>Midterm Exam Prep</h2><p>Fall 2026 · 82 cards · 14 short decks across 8 categories</p></button>
-      </div>
-    </section>
-
-    <section id="langmidterm" class="view" aria-labelledby="midterm-title">
-      <button class="btn btn-light btn-small course-back" data-view="langsets">← AP Lang sets</button>
-      <div id="midtermOverview">
-        <div class="page-intro">
-          <span class="eyebrow">AP English Language &amp; Composition · Fall 2026</span>
-          <h2 id="midterm-title" style="margin-top:14px">Midterm Exam Prep</h2>
-          <p class="lede">82 focused flashcards in 14 short decks, organized by Melton's review sheet. Attempt each answer from memory, then flip and rate your recall. Choose one small deck at a time.</p>
-        </div>
-        <div id="midtermStats" class="midterm-stats" aria-live="polite"></div>
-        <div class="progress-track" aria-hidden="true"><div id="midtermOverallFill" class="progress-fill"></div></div>
-        <p id="midtermOverallLabel" class="small-note"></p>
-        <div class="midterm-actions">
-          <button type="button" class="btn btn-primary" id="midtermMissedBtn">Review missed</button>
-          <button type="button" class="btn btn-light" id="midtermDueBtn">Review due</button>
-          <button type="button" class="btn btn-light btn-small" id="midtermResetBtn">Reset midterm progress</button>
-        </div>
-        <p id="midtermStorageNotice" hidden>Browser storage is unavailable. Your answers work for this session, but progress may not persist.</p>
-        <div id="midtermCategoryGrid"></div>
-        <p class="small-note" style="margin-top:24px">Progress is saved locally in this browser and does not automatically sync across devices. All content is embedded in this one HTML file.</p>
-      </div>
-
-      <div id="midtermStudy" hidden>
-        <div class="toolbar" style="justify-content:space-between;align-items:center">
-          <button type="button" class="btn btn-light btn-small" data-midterm-home>← All midterm decks</button>
-          <span id="midtermCounter" class="small-note"></span>
-        </div>
-        <h2 id="midtermDeckTitle" style="margin:20px 0 0"></h2>
-        <p class="lede" style="font-size:14px">Recall first, flip second. Rate only after seeing the answer; use Next if you prefer to skip a card.</p>
-        <div class="midterm-flash-wrap">
-          <div class="midterm-stage physics-stage">
-            <div id="midtermCard" class="physics-card midterm-card" role="button" tabindex="0" aria-label="Midterm flashcard. Tap or press Enter to flip.">
-              <div class="physics-face physics-front">
-                <span id="midtermCardIndex" class="physics-card-index"></span>
-                <div><span id="midtermCardCategory" class="physics-label"></span><div id="midtermCardPrompt" class="physics-question"></div></div>
-                <span class="physics-hint">Try to recall the answer before flipping this card.</span>
-              </div>
-              <div class="physics-face physics-back">
-                <span class="physics-card-index">Midterm Exam Prep · answer</span>
-                <div><span class="physics-label">Answer</span><div id="midtermCardAnswer" class="physics-answer"></div></div>
-                <span id="midtermCardSource" class="midterm-source"></span>
-              </div>
-            </div>
-          </div>
-          <aside class="midterm-side" aria-label="Midterm flashcard controls">
-            <div class="panel control-stack">
-              <button type="button" id="midtermFlipBtn" class="btn btn-dark control-wide">Flip card</button>
-              <button type="button" id="midtermAgainBtn" class="btn btn-light" disabled>Again</button>
-              <button type="button" id="midtermGoodBtn" class="btn btn-primary" disabled>Got it</button>
-              <button type="button" id="midtermPrevBtn" class="btn btn-light btn-small">← Previous</button>
-              <button type="button" id="midtermNextBtn" class="btn btn-light btn-small">Next →</button>
-              <button type="button" id="midtermShuffleBtn" class="btn btn-light btn-small control-wide">Shuffle this session</button>
-            </div>
-            <div class="panel desktop-help"><strong>Keyboard</strong><p class="key-help">Space: flip<br>← / →: navigate<br>1: Again · 2: Got it</p></div>
-          </aside>
-        </div>
-        <div class="progress-track midterm-progress" aria-hidden="true"><div id="midtermReviewProgress" class="progress-fill"></div></div>
-        <p class="small-note">A card marked Again appears under Review missed. Cards marked Got it return at increasing intervals.</p>
-      </div>
-
-      <div id="midtermSummary" class="midterm-summary panel" hidden>
-        <span class="eyebrow">Section finished</span>
-        <h2 id="midtermSummaryTitle" style="margin-top:15px"></h2>
-        <p id="midtermSummaryStats" class="lede"></p>
-        <div class="toolbar">
-          <button type="button" id="midtermRetryBtn" class="btn btn-primary">Retry missed from this section</button>
-          <button type="button" class="btn btn-light" data-midterm-home>Back to decks</button>
-        </div>
+        <button class="course-card" data-lang-set="9"><h2>Set 9</h2><p style="color:var(--muted);font-size:13px;margin:4px 0 0;font-weight:600;">The Roots -fid- &amp; -jur-</p></button>
       </div>
     </section>
 
@@ -1099,7 +993,6 @@
     <p class="footer-note">Progress is stored only in this browser. The app works without accounts, analytics, or external services.</p>
   </main>
 
-  <script id="midtermContentData" type="application/json">{"version":2,"id":"ap-lang-fall-2026-midterm-compact","course":"AP English Language and Composition","title":"Midterm Exam Prep · Fall 2026","content_standard":"Melton Review for Fall Midterm--2026.docx; uploaded teacher handouts and classroom examples","scope_note":"One card per vocabulary word, minimal distinct cards for every named review-sheet topic. Exigence uses standard definition because direct source did not define it; MLA examples use current MLA 9.","total_cards":82,"total_decks":14,"categories":["Vocabulary","Rhetorical Situation","Argument \u0026 Appeals","Language \u0026 Devices","Sentence Patterns","Writing \u0026 MLA","Sentence Structure","Grammar \u0026 Punctuation"],"vocabulary_terms":["parlance","vulgar","fallacy","imply","infer","refute","dissuade","indisputable","red herring","substantiate","exhort","gist","polemic","vociferous","epitome","impeccable","sublime","dogmatic","plausible","ponder","stratagem","circumspect","introspective","perspicuous","specious","spectrum","explicit","implicit","explicate","inexplicable","ambivalence","avail","evaluate","prevail"],"review_topics":["Rhetorical analysis (multiple-choice--not from the actual exam)","Close readings","Annotation","Rhetorical appeals—ethos, logos, pathos","Rhetorical triangle","SOAPSTone","Analysis—definition; not evaluation","Purpose","Exigence","Tone","Connotations","Diction","Syntax","Sentence patterns: cumulative, periodic, inverted, interrupted","Major No-Nos","Specificity","Works Cited format (MLA)","Parenthetical citation (MLA)","Plagiarism","Bias","Figurative language, including metaphor, simile, hyperbole, personification","Imagery","Irony","Parallelism","Reasoning","rhetorical strategy","Super Analysis Sentence","The meaning of these words","Sentence types and Sentence structure","Participles and participial phrases, absolutes","--Punctuation of the above grammatical elements","Semicolons","Commas"],"coverage_index":{"Rhetorical analysis (multiple-choice--not from the actual exam)":["rhetorical-reading-06"],"Close readings":["rhetorical-reading-01"],"Annotation":["rhetorical-reading-02"],"Rhetorical appeals—ethos, logos, pathos":["argument-appeals-01","argument-appeals-02","argument-appeals-03"],"Rhetorical triangle":["rhetorical-reading-03"],"SOAPSTone":["rhetorical-reading-04"],"Analysis—definition; not evaluation":["rhetorical-reading-06"],"Purpose":["rhetorical-reading-05"],"Exigence":["rhetorical-reading-05"],"Tone":["word-choice-01"],"Connotations":["word-choice-02"],"Diction":["word-choice-03"],"Syntax":["word-choice-04"],"Sentence patterns: cumulative, periodic, inverted, interrupted":["sentence-patterns-01","sentence-patterns-02","sentence-patterns-03","sentence-patterns-04"],"Major No-Nos":["analytical-writing-01"],"Specificity":["analytical-writing-02"],"Works Cited format (MLA)":["mla-integrity-01"],"Parenthetical citation (MLA)":["mla-integrity-02"],"Plagiarism":["mla-integrity-03"],"Bias":["argument-appeals-04"],"Figurative language, including metaphor, simile, hyperbole, personification":["devices-01","devices-02","devices-03","devices-04"],"Imagery":["devices-05"],"Irony":["devices-06"],"Parallelism":["devices-07"],"Reasoning":["argument-appeals-05"],"rhetorical strategy":["argument-appeals-06"],"Super Analysis Sentence":["analytical-writing-03"],"The meaning of these words":["vocab-ambivalence","vocab-avail","vocab-circumspect","vocab-dissuade","vocab-dogmatic","vocab-epitome","vocab-evaluate","vocab-exhort","vocab-explicate","vocab-explicit","vocab-fallacy","vocab-gist","vocab-impeccable","vocab-implicit","vocab-imply","vocab-indisputable","vocab-inexplicable","vocab-infer","vocab-introspective","vocab-parlance","vocab-perspicuous","vocab-plausible","vocab-polemic","vocab-ponder","vocab-prevail","vocab-red-herring","vocab-refute","vocab-specious","vocab-spectrum","vocab-stratagem","vocab-sublime","vocab-substantiate","vocab-vociferous","vocab-vulgar"],"Sentence types and Sentence structure":["structure-01","structure-02","structure-03","structure-04"],"Participles and participial phrases, absolutes":["modifiers-01","modifiers-02","modifiers-03","modifiers-04","modifiers-05"],"--Punctuation of the above grammatical elements":["modifiers-06","punctuation-01","punctuation-02"],"Semicolons":["punctuation-04","punctuation-05"],"Commas":["punctuation-03"]},"decks":[{"id":"vocabulary-1","title":"Vocabulary 1–9","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-ambivalence","front":"Define “ambivalence.”","back":"(n.) (1) Mixed or opposing feelings/ideas. (2) Uncertainty or hesitation over which choice to make.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"ambivalence","topics":["The meaning of these words"]},{"id":"vocab-avail","front":"Define “avail.”","back":"(v.) To be useful, helpful, or advantageous. (n.) Use, benefit, advantage.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"avail","topics":["The meaning of these words"]},{"id":"vocab-circumspect","front":"Define “circumspect.”","back":"(adj.) Careful and prudent; attentive to circumstances and possible consequences.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"circumspect","topics":["The meaning of these words"]},{"id":"vocab-dissuade","front":"Define “dissuade.”","back":"(v.) To persuade someone not to take an action; discourage by reason or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"dissuade","topics":["The meaning of these words"]},{"id":"vocab-dogmatic","front":"Define “dogmatic.”","back":"(adj.) Expressing one’s own convictions as unquestionable facts.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"dogmatic","topics":["The meaning of these words"]},{"id":"vocab-epitome","front":"Define “epitome.”","back":"(n.) A perfect or highly representative example of a particular kind.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"epitome","topics":["The meaning of these words"]},{"id":"vocab-evaluate","front":"Define “evaluate.”","back":"(v.) To assess or determine the value or quality of something.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"evaluate","topics":["The meaning of these words"]},{"id":"vocab-exhort","front":"Define “exhort.”","back":"(v.) To urge someone strongly, often by an impassioned appeal or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"exhort","topics":["The meaning of these words"]},{"id":"vocab-explicate","front":"Define “explicate.”","back":"(v.) To explain clearly or unfold the meaning of something.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"explicate","topics":["The meaning of these words"]}]},{"id":"vocabulary-2","title":"Vocabulary 10–18","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-explicit","front":"Define “explicit.”","back":"(adj.) (1) Completely and clearly stated, with nothing left merely implied. (2) Directly or readily observable.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"explicit","topics":["The meaning of these words"]},{"id":"vocab-fallacy","front":"Define “fallacy.”","back":"(n.) (1) A mistaken or false belief. (2) Faulty or illogical reasoning.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"fallacy","topics":["The meaning of these words"]},{"id":"vocab-gist","front":"Define “gist.”","back":"(n.) The main point, essence, or central idea.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"gist","topics":["The meaning of these words"]},{"id":"vocab-impeccable","front":"Define “impeccable.”","back":"(adj.) Flawless; perfect; incapable of wrongdoing (second nuance).","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"impeccable","topics":["The meaning of these words"]},{"id":"vocab-implicit","front":"Define “implicit.”","back":"(adj.) (1) Suggested or understood without being said directly. (2) Unquestioning, free of doubt or reservation.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"implicit","topics":["The meaning of these words"]},{"id":"vocab-imply","front":"Define “imply.”","back":"(v.) To hint at or suggest something indirectly.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"imply","topics":["The meaning of these words"]},{"id":"vocab-indisputable","front":"Define “indisputable.”","back":"(adj.) Beyond doubt or reasonable challenge; certain.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"indisputable","topics":["The meaning of these words"]},{"id":"vocab-inexplicable","front":"Define “inexplicable.”","back":"(adj.) Hard or impossible to explain or account for.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"inexplicable","topics":["The meaning of these words"]},{"id":"vocab-infer","front":"Define “infer.”","back":"(v.) To reach a conclusion from evidence.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"infer","topics":["The meaning of these words"]}]},{"id":"vocabulary-3","title":"Vocabulary 19–27","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-introspective","front":"Define “introspective.”","back":"(adj.) Examining one’s own thoughts, attitudes and feelings.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"introspective","topics":["The meaning of these words"]},{"id":"vocab-parlance","front":"Define “parlance.”","back":"(n.) The distinctive way of speaking used by a group or in a field.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"parlance","topics":["The meaning of these words"]},{"id":"vocab-perspicuous","front":"Define “perspicuous.”","back":"(adj.) Clearly phrased and easy to understand.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"perspicuous","topics":["The meaning of these words"]},{"id":"vocab-plausible","front":"Define “plausible.”","back":"(adj.) Seeming believable, reasonable, or true.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"plausible","topics":["The meaning of these words"]},{"id":"vocab-polemic","front":"Define “polemic.”","back":"(n.) A contentious argument, especially one challenging a viewpoint. (adj.) Relating to controversy or argument.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"polemic","topics":["The meaning of these words"]},{"id":"vocab-ponder","front":"Define “ponder.”","back":"(v.) To consider carefully and thoroughly.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"ponder","topics":["The meaning of these words"]},{"id":"vocab-prevail","front":"Define “prevail.”","back":"(v.) (1) Succeed or overcome; win out. (2) Remain customary/current/in force. (3) Persuade someone, especially prevail upon/on/with.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"prevail","topics":["The meaning of these words"]},{"id":"vocab-red-herring","front":"Define “red herring.”","back":"(n.) An irrelevant distraction that shifts attention away from the main issue.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"red herring","topics":["The meaning of these words"]},{"id":"vocab-refute","front":"Define “refute.”","back":"(v.) To demonstrate that a claim is false or invalid; disprove or deny its accuracy.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"refute","topics":["The meaning of these words"]}]},{"id":"vocabulary-4","title":"Vocabulary 28–34","category":"Vocabulary","description":"One exact-definition card per assigned term; no repeated application deck.","cards":[{"id":"vocab-specious","front":"Define “specious.”","back":"(adj.) Apparently true or convincing but actually wrong.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"specious","topics":["The meaning of these words"]},{"id":"vocab-spectrum","front":"Define “spectrum.”","back":"(n.) (1) An ordered band of wavelengths, such as colors or sounds. (2) A wide range of related qualities, ideas, or feelings.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"spectrum","topics":["The meaning of these words"]},{"id":"vocab-stratagem","front":"Define “stratagem.”","back":"(n.) A clever tactic designed to deceive or outmaneuver; sometimes a military feint.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"stratagem","topics":["The meaning of these words"]},{"id":"vocab-sublime","front":"Define “sublime.”","back":"(adj.) Lofty, awe-inspiring, or outstanding. (n.) An awe-inspiring or magnificent thing or quality.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"sublime","topics":["The meaning of these words"]},{"id":"vocab-substantiate","front":"Define “substantiate.”","back":"(v.) To support or prove a claim using evidence.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"substantiate","topics":["The meaning of these words"]},{"id":"vocab-vociferous","front":"Define “vociferous.”","back":"(adj.) Loud and forceful; marked by intense, noisy outcries.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"vociferous","topics":["The meaning of these words"]},{"id":"vocab-vulgar","front":"Define “vulgar.”","back":"(adj.) (1) Associated with ordinary or common speech. (2) Crude or indecent. (3) Gaudy or offensively excessive in showing off oneself or wealth.","source":"Melton_Vocabulary_34_Word_Reference.docx","term":"vulgar","topics":["The meaning of these words"]}]},{"id":"rhetorical-reading","title":"Rhetoric \u0026 Close Reading","category":"Rhetorical Situation","description":"Examine writer, audience, purpose, and analysis.","cards":[{"id":"rhetorical-reading-01","front":"What distinguishes close reading from summary?","back":"Close reading inspects precise words, details, structure, and implications to explain how meaning is developed; summary restates content.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Close readings"]},{"id":"rhetorical-reading-02","front":"What does useful annotation do beyond highlighting?","back":"Marks key claims and choices, unfamiliar terms, questions, and patterns; margin notes record why the passage matters.","source":"A Guide To Annotating.doc","topics":["Annotation"]},{"id":"rhetorical-reading-03","front":"Name the three parts of the rhetorical triangle.","back":"Speaker, audience, subject. Their relationship—and the occasion/context—shapes the choices made to achieve a purpose.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Rhetorical triangle"]},{"id":"rhetorical-reading-04","front":"Expand SOAPSTone. What is the final element added to SOAPS?","back":"Speaker, Occasion, Audience, Purpose, Subject, Tone. The textbook teaches SOAPS; Melton’s review adds Tone.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["SOAPSTone"]},{"id":"rhetorical-reading-05","front":"Distinguish a writer’s purpose from exigence.","back":"Purpose = what the writer hopes to accomplish. Exigence = the problem, event, or need prompting the response. Exigence definition is supplemental.","source":"Conversations in American Literature - Midterm.pdf, Chapters 1-3","topics":["Purpose","Exigence"]},{"id":"rhetorical-reading-06","front":"Distinguish analysis from evaluation in one sentence.","back":"Analysis explains HOW rhetorical choices function; evaluation judges HOW GOOD or effective the text is.","source":"AP English Language \u0026 Composition - Bootcamp Notes.pdf","topics":["Analysis—definition; not evaluation","Rhetorical analysis (multiple-choice--not from the actual exam)"]}]},{"id":"argument-appeals","title":"Appeals \u0026 Argument","category":"Argument \u0026 Appeals","description":"Rhetorical appeals and arguments taught in course.","cards":[{"id":"argument-appeals-01","front":"A writer acknowledges limitations and presents expertise honestly. Which appeal is strengthened?","back":"Ethos: the writer builds credibility through knowledge, fairness, honesty, or shared values—not just credentials.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-02","front":"A writer builds a conclusion from evidence and logical explanation. Which appeal?","back":"Logos: reasoning and supporting evidence; statistics are one possible form, not a requirement.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-03","front":"A speaker draws on grief, hope, pride, or fear to influence an audience. Which appeal?","back":"Pathos: appeal to emotion; not limited to sadness or sentimental anecdotes.","source":"Logos, Ethos, Pathos.ppt","topics":["Rhetorical appeals—ethos, logos, pathos"]},{"id":"argument-appeals-04","front":"What is bias in nonfiction, even when its facts are technically correct?","back":"A slant caused by selective evidence, framing, assumptions, or loaded language that favors one position.","source":"Analyzing a Visual Text.pdf","topics":["Bias"]},{"id":"argument-appeals-05","front":"Distinguish inductive from deductive reasoning.","back":"Induction: examples/observations toward a probable general conclusion. Deduction: premises/rule toward a logically necessary conclusion if valid.","source":"Logos, Ethos, Pathos.ppt","topics":["Reasoning"]},{"id":"argument-appeals-06","front":"What makes a rhetorical strategy different from simply naming a literary device?","back":"A strategy is a purposeful choice, such as comparison, anecdote, concession, or repetition, explained through its audience-specific function.","source":"Analyzing a Visual Text.pdf","topics":["rhetorical strategy"]}]},{"id":"word-choice","title":"Word Choice \u0026 Syntax","category":"Language \u0026 Devices","description":"Precise language-analysis vocabulary.","cards":[{"id":"word-choice-01","front":"What is tone, and how does it differ from mood?","back":"Tone is the author’s attitude toward subject/audience; mood is the atmosphere produced for the reader. Identify tone using textual evidence.","source":"Analyzing a Visual Text.pdf","topics":["Tone"]},{"id":"word-choice-02","front":"How can two words with similar dictionary meanings change an argument?","back":"Their connotations differ: associations and emotional implications beyond denotation, e.g., \"steadfast\" versus \"stubborn.\"","source":"Analyzing a Visual Text.pdf","topics":["Connotations"]},{"id":"word-choice-03","front":"Define diction. Why is \"strong diction\" weak analysis?","back":"Diction = specific word choice. Name the kind of language, quote examples, then connect the choice to the writer’s purpose.","source":"How to Write a Super Analysis Sentence.pdf","topics":["Diction"]},{"id":"word-choice-04","front":"Define syntax. Name two choices a rhetorical analyst could examine.","back":"Syntax = arrangement of words, phrases, and clauses. Examine clause order, sentence length, parallel structure, inversions, or interruptions.","source":"Analyzing a Visual Text.pdf","topics":["Syntax"]}]},{"id":"devices","title":"Figures \u0026 Rhetorical Devices","category":"Language \u0026 Devices","description":"Distinguish the figurative devices on the review sheet.","cards":[{"id":"devices-01","front":"\"The city is a sleeping giant.\" What figurative device?","back":"Metaphor: direct comparison without \"like\" or \"as.\" Consider what the comparison suggests about the city.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-02","front":"\"The city stirred like a sleeping giant.\" What device?","back":"Simile: comparison using \"like\" or \"as\" to illuminate a quality of one subject through another.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-03","front":"\"I waited a thousand years for the bus.\" What device?","back":"Hyperbole: deliberate exaggeration for emphasis, emotion, or humor; not a literal factual claim.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-04","front":"\"The wind whispered its warning.\" What device?","back":"Personification: assigning a human action or trait to a nonhuman thing.","source":"Analyzing a Visual Text.pdf","topics":["Figurative language, including metaphor, simile, hyperbole, personification"]},{"id":"devices-05","front":"What makes an image in a text an example of imagery?","back":"Sensory detail invoking sight, sound, touch, taste, or smell; it may be literal or figurative.","source":"Analyzing a Visual Text.pdf","topics":["Imagery"]},{"id":"devices-06","front":"What is the central discrepancy behind irony?","back":"A gap between expectation and reality, a statement and intended meaning, or what an audience knows and what a character knows.","source":"Irony and Satire.pdf","topics":["Irony"]},{"id":"devices-07","front":"What is parallelism? Why might a speaker use it?","back":"Repeated grammatical structure across corresponding ideas; creates balance, emphasis, or an easy-to-follow pattern.","source":"Analyzing a Visual Text.pdf","topics":["Parallelism"]}]},{"id":"sentence-patterns","title":"Four Sentence Patterns","category":"Sentence Patterns","description":"The four constructions named on the review sheet.","cards":[{"id":"sentence-patterns-01","front":"\"The crowd cheered, raising banners and flooding the streets.\" Which pattern?","back":"Cumulative (loose): main independent clause appears early, followed by accumulating details.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-02","front":"\"Despite the rain and the delay, the crowd finally cheered.\" Which pattern?","back":"Periodic: the main independent clause is delayed until after qualifying introductory material.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-03","front":"\"Into the room rushed the students.\" Which pattern?","back":"Inverted: atypical word order, here verb before subject; instead of \"The students rushed into the room.\"","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]},{"id":"sentence-patterns-04","front":"\"The students—despite their exhaustion—finished the work.\" Which pattern?","back":"Interrupted: parenthetical material breaks the principal clause and adds a qualification or aside.","source":"Sentence Pattern Examples.docx","topics":["Sentence patterns: cumulative, periodic, inverted, interrupted"]}]},{"id":"analytical-writing","title":"Melton’s Analysis Rules","category":"Writing \u0026 MLA","description":"Writing constraints from actual Melton handouts.","cards":[{"id":"analytical-writing-01","front":"Name the problem with Melton’s banned phrase \"keeps the reader interested.\"","back":"It states a vague, unsupported effect. Replace it with a specific function linked to particular language, audience, and purpose.","source":"Major No-No's.pptx.txt","topics":["Major No-Nos"]},{"id":"analytical-writing-02","front":"What does specificity require in rhetorical analysis?","back":"Identify an exact choice, cite precise textual evidence, and explain its effect and connection to purpose. Do not stop at “uses pathos.”","source":"AP English Language \u0026 Composition Exam Rubric--Analysis.pdf","topics":["Specificity"]},{"id":"analytical-writing-03","front":"What elements belong in Melton’s Super Analysis Sentence?","back":"Author + fitting descriptive adjective + rhetorical term + strong verb + FUNCTION + two short textual examples. The adjective must match the function.","source":"How to Write a Super Analysis Sentence.pdf","topics":["Super Analysis Sentence"]}]},{"id":"mla-integrity","title":"MLA \u0026 Academic Integrity","category":"Writing \u0026 MLA","description":"Current MLA concepts, with teacher research-paper context.","cards":[{"id":"mla-integrity-01","front":"How is a Works Cited page organized, and what is its purpose?","back":"A separate, alphabetized, double-spaced list of full source entries, with hanging indents; entries correspond to sources cited in the paper. Use current MLA 9.","source":"50 Essays (4th edition), Documentation Guide, pages 477-481; current MLA 9 conventions","topics":["Works Cited format (MLA)"]},{"id":"mla-integrity-02","front":"Quote from Rivera page 42, author not named in prose. Give the MLA parenthetical citation.","back":"(Rivera 42) before final punctuation. If Rivera appears in the signal phrase, usually cite just (42). Never invent page numbers.","source":"50 Essays (4th edition), Documentation Guide, pages 477-481; current MLA 9 conventions","topics":["Parenthetical citation (MLA)"]},{"id":"mla-integrity-03","front":"When is paraphrasing plagiarism?","back":"When source ideas are presented without credit, or language is too closely copied without proper quotation and citation. Paraphrases still need attribution.","source":"Understanding Plagiarism with Some Help from Dr. Seuss.ppt","topics":["Plagiarism"]}]},{"id":"structure","title":"Sentence Types \u0026 Structures","category":"Sentence Structure","description":"Clause patterns and basic sentence functions.","cards":[{"id":"structure-01","front":"What makes a clause independent rather than dependent?","back":"An independent clause can stand as a complete sentence; a dependent clause cannot. Both may contain a subject and predicate.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-02","front":"Distinguish simple from compound sentence structure, using clauses.","back":"Simple: one independent clause (even with two verbs). Compound: two or more independent clauses, often joined with comma + coordinating conjunction.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-03","front":"Distinguish complex from compound-complex sentence structure.","back":"Complex: one independent clause plus a dependent clause. Compound-complex: at least two independent clauses plus a dependent clause.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]},{"id":"structure-04","front":"Name the four sentence functions and what each does.","back":"Declarative = statement; interrogative = question; imperative = command/request; exclamatory = strong feeling.","source":"Sentence Structure.ppt","topics":["Sentence types and Sentence structure"]}]},{"id":"modifiers","title":"Participles, Absolutes \u0026 Modifiers","category":"Grammar \u0026 Punctuation","description":"Identify grammatical function and modifier attachment.","cards":[{"id":"modifiers-01","front":"What is a participle? Give a past and present example.","back":"Verb form acting adjectivally: \"shattered\" in “shattered glass”; \"running\" in “running water.” Not every -ing word is a participle.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-02","front":"Identify the opening phrase in \"Hurrying to class, Maya dropped her notes.\"","back":"Participial phrase: “Hurrying to class,” modifying Maya. It contains a participle but has no separate expressed subject.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-03","front":"Identify the opening construction in \"Her hands shaking, Maya spoke.\"","back":"Absolute phrase: “Her hands shaking” has its own noun (“hands”) and participle; it adds background circumstances.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-04","front":"Gerund, participle, or verb: \"Reading conflicting sources takes patience\"?","back":"Gerund: “Reading conflicting sources” acts as the subject (a noun phrase). Compare “the reading student” (participle).","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-05","front":"Fix the dangling modifier: \"Reading the article, the argument became obvious.\"","back":"“Reading the article, I recognized the argument.” The actor of “reading” must logically be the modified subject.","source":"Describing with Grammatical Techniques(1).pptx","topics":["Participles and participial phrases, absolutes"]},{"id":"modifiers-06","front":"Which modifier needs NO commas: \"Students wearing red badges enter first\" or \"Maya, wearing a red badge, entered\"?","back":"First: “wearing red badges” identifies which students (restrictive); Maya’s modifier is nonessential and is set off by commas.","source":"Describing with Grammatical Techniques(1).pptx","topics":["--Punctuation of the above grammatical elements"]}]},{"id":"punctuation","title":"Comma \u0026 Semicolon Decisions","category":"Grammar \u0026 Punctuation","description":"Punctuation rules Melton named and illustrated.","cards":[{"id":"punctuation-01","front":"Punctuate an introductory participial phrase: \"Exhausted by rehearsal Maya sat down.\"","back":"“Exhausted by rehearsal, Maya sat down.” Place a comma after the introductory phrase.","source":"Grammar Posters.ppt","topics":["--Punctuation of the above grammatical elements"]},{"id":"punctuation-02","front":"Punctuate an introductory absolute: \"Her work completed Maya went home.\"","back":"“Her work completed, Maya went home.” The absolute is normally separated from the main clause by a comma.","source":"Grammar Posters.ppt","topics":["--Punctuation of the above grammatical elements"]},{"id":"punctuation-03","front":"Correct this comma splice: \"The evidence was convincing, the board voted yes.\"","back":"“The evidence was convincing; the board voted yes.” Or use a period or “, and”. Two independent clauses cannot be joined by just a comma.","source":"Grammar Posters.ppt","topics":["Commas"]},{"id":"punctuation-04","front":"When may a semicolon join two sentences?","back":"When both sides are independent clauses closely related in meaning; “however” often takes semicolon before and comma after.","source":"Grammar Posters.ppt","topics":["Semicolons"]},{"id":"punctuation-05","front":"Why use semicolons in \"Austin, Texas; Portland, Oregon; and Denver, Colorado\"?","back":"To separate complicated items that already contain commas, preventing ambiguity.","source":"Grammar Posters.ppt","topics":["Semicolons"]}]}]}</script>
   <script>
     const LANG_SET1_WORDS = [
       {
@@ -1270,7 +1163,7 @@
       catch { return defaultStats(); }
     }
     function saveStats() { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); renderStats(); }
-    function normalize(value) { return value.toLowerCase().trim().replace(/[’']/g, "'").replace(/[^a-z'\s-]/g, "").replace(/\s+/g, " "); }
+    function normalize(value) { return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim().replace(/[’']/g, "'").replace(/[^a-z'\s-]/g, "").replace(/\s+/g, " "); }
     function shuffle(items) {
       const arr = [...items];
       for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
@@ -6340,6 +6233,1475 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
   }
 ];
 
+    const LANG_SET9_WORDS = [
+  {
+    "word": "adjudicate",
+    "part": "verb",
+    "definition": "to hear and settle a case through a judicial procedure; to settle a dispute or quarrel",
+    "forms": [
+      {
+        "word": "adjudicate",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "adjudicates",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "adjudicated",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "adjudicating",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "adjudication",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "A judge was asked to adjudicate a case involving a restaurant's lack of facilities for handicapped persons.",
+    "cloze": "When neighboring homeowners could not resolve their property boundary disagreement, they asked a neutral arbitrator to ___ their dispute.",
+    "answer": [
+      "adjudicate"
+    ],
+    "options": [
+      "adjudicate",
+      "perjure",
+      "conjure",
+      "confide"
+    ]
+  },
+  {
+    "word": "affidavit",
+    "part": "noun",
+    "definition": "a written statement made under oath before an authorized official",
+    "forms": [
+      {
+        "word": "affidavit",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "affidavits",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "The woman signed a sworn affidavit stating that she had witnessed the traffic accident from her storefront window.",
+    "cloze": "Before issuing a search warrant, the magistrate required the detective to submit a signed ___ detailing the probable cause.",
+    "answer": [
+      "affidavit"
+    ],
+    "options": [
+      "affidavit",
+      "jurisprudence",
+      "fidelity",
+      "fealty"
+    ]
+  },
+  {
+    "word": "confidant",
+    "part": "noun",
+    "definition": "a person trusted with secrets or private matters",
+    "forms": [
+      {
+        "word": "confidant",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "confidants",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "confide",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "confides",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "confided",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "confiding",
+        "part": "verb",
+        "level": "packet"
+      }
+    ],
+    "example": "King Louis treated his wife as a respected confidant, regularly consulting with her on important state matters.",
+    "cloze": "The executive shared her confidential resignation plans only with her longtime ___, knowing her secrets were safe.",
+    "answer": [
+      "confidant"
+    ],
+    "options": [
+      "confidant",
+      "infidel",
+      "fiancé",
+      "conjurer"
+    ]
+  },
+  {
+    "word": "conjure",
+    "part": "verb",
+    "definition": "to produce or summon, as if by magic; to call to mind an image or a memory",
+    "forms": [
+      {
+        "word": "conjure",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "conjures",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "conjured",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "conjuring",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "conjurer",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "conjurers",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "The scent of freshly baked cinnamon cookies conjured up warm memories of my grandmother's holiday kitchen.",
+    "cloze": "With a dramatic wave of his silk cape, the theatrical magician seemed to ___ a flock of doves out of an empty metal cylinder.",
+    "answer": [
+      "conjure"
+    ],
+    "options": [
+      "conjure",
+      "adjudicate",
+      "perjure",
+      "confide"
+    ]
+  },
+  {
+    "word": "fealty",
+    "part": "noun",
+    "definition": "faithfulness; allegiance; loyalty owed by a vassal or subject to a lord or sovereign",
+    "forms": [
+      {
+        "word": "fealty",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "Fulfilling an ancient oath of fealty, the Japanese samurai fought loyally and valiantly for his feudal lord.",
+    "cloze": "In exchange for a generous grant of arable land, the medieval knight knelt and swore an oath of lifelong ___ to the crown.",
+    "answer": [
+      "fealty"
+    ],
+    "options": [
+      "fealty",
+      "fidelity",
+      "affidavit",
+      "jurisprudence"
+    ]
+  },
+  {
+    "word": "fiancé",
+    "part": "noun",
+    "definition": "a man to whom a woman is engaged to be married",
+    "forms": [
+      {
+        "word": "fiancé",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "fiancés",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "fiancée",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "fiancées",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "It is customary in many cultures for a fiancé to present a ring to his intended bride during their formal betrothal.",
+    "cloze": "At the celebratory dinner, Elena raised a joyful toast to her ___, who had proposed to her the previous evening.",
+    "answer": [
+      "fiancé",
+      "fiance"
+    ],
+    "options": [
+      "fiancé",
+      "confidant",
+      "infidel",
+      "conjurer"
+    ]
+  },
+  {
+    "word": "fidelity",
+    "part": "noun",
+    "definition": "faithfulness to obligations, duties, or vows; the degree to which a sound or image is accurately reproduced",
+    "forms": [
+      {
+        "word": "fidelity",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "fidelities",
+        "part": "noun",
+        "level": "extended"
+      }
+    ],
+    "example": "Studio sound monitors now reproduce orchestral concerts with extraordinary fidelity to the original instruments.",
+    "cloze": "Showing remarkable ___, the faithful retriever remained steadfastly beside its injured master until mountain rescuers arrived.",
+    "answer": [
+      "fidelity"
+    ],
+    "options": [
+      "fidelity",
+      "fealty",
+      "jurisprudence",
+      "adjudication"
+    ]
+  },
+  {
+    "word": "infidel",
+    "part": "noun",
+    "definition": "a person who does not accept a particular faith, religion, or doctrine",
+    "forms": [
+      {
+        "word": "infidel",
+        "part": "noun",
+        "level": "packet"
+      },
+      {
+        "word": "infidels",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "During the Crusades of the Middle Ages, warring armies frequently condemned each other as infidels.",
+    "cloze": "Because his speech was openly critical of their religious dogmas, the orthodox council denounced him as an ___.",
+    "answer": [
+      "infidel"
+    ],
+    "options": [
+      "infidel",
+      "confidant",
+      "conjurer",
+      "fiancé"
+    ]
+  },
+  {
+    "word": "jurisprudence",
+    "part": "noun",
+    "definition": "the philosophy and science of law; a division or system of law",
+    "forms": [
+      {
+        "word": "jurisprudence",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "The field of medical jurisprudence has expanded rapidly as modern criminal investigations rely on complex forensic laboratory analysis.",
+    "cloze": "First-year law students dedicate hundreds of hours to analyzing constitutional ___ to grasp how judicial principles develop.",
+    "answer": [
+      "jurisprudence"
+    ],
+    "options": [
+      "jurisprudence",
+      "adjudication",
+      "affidavit",
+      "fidelity"
+    ]
+  },
+  {
+    "word": "perjure",
+    "part": "verb",
+    "definition": "to deliberately lie or testify falsely under oath",
+    "forms": [
+      {
+        "word": "perjure",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "perjures",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "perjured",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "perjuring",
+        "part": "verb",
+        "level": "packet"
+      },
+      {
+        "word": "perjury",
+        "part": "noun",
+        "level": "packet"
+      }
+    ],
+    "example": "The trial judge warned the defense witness that anyone who willfully perjured himself on the stand would face felony indictment.",
+    "cloze": "Aware that giving false statements would terminate his legal career, the witness refused to ___ himself before the grand jury.",
+    "answer": [
+      "perjure"
+    ],
+    "options": [
+      "perjure",
+      "adjudicate",
+      "confide",
+      "conjure"
+    ]
+  }
+];
+
+const LANG_SET9_USAGE = [
+  {
+    "word": "adjudicate",
+    "statement": "A federal judge was asked to adjudicate a contentious lawsuit involving a commercial restaurant's failure to provide accessibility accommodations.",
+    "answer": true,
+    "why": "Adjudicate correctly means to hear and settle a case through a formal judicial procedure."
+  },
+  {
+    "word": "adjudicate",
+    "statement": "When two neighbors could not agree on where to build a shared boundary fence, they asked an arbitrator to adjudicate their quarrel.",
+    "answer": true,
+    "why": "Adjudicate correctly extends to settling general disputes, disagreements, or quarrels between individuals."
+  },
+  {
+    "word": "adjudicate",
+    "statement": "Judge Tyler adjudicates court cases involving sensitive family matters such as child custody and guardianship.",
+    "answer": true,
+    "why": "Adjudicates is the correct present-tense verb describing a judge presiding over and deciding legal cases."
+  },
+  {
+    "word": "adjudicate",
+    "statement": "The prolonged dispute between the neighboring farmers over irrigation rights is currently under adjudication in civil court.",
+    "answer": true,
+    "why": "Adjudication is the noun form correctly used in the phrase 'under adjudication', meaning pending judicial settlement."
+  },
+  {
+    "word": "affidavit",
+    "statement": "The eyewitness signed a sworn affidavit stating that she had observed the suspect fleeing the bank immediately after the alarm sounded.",
+    "answer": true,
+    "why": "An affidavit is a written statement confirmed by oath or affirmation before an authorized official."
+  },
+  {
+    "word": "affidavit",
+    "statement": "According to the signed affidavit submitted to the court, the accountant witnessed the defendant alter financial records.",
+    "answer": true,
+    "why": "Affidavit correctly designates a formal written statement sworn under oath and presented as evidence."
+  },
+  {
+    "word": "affidavit",
+    "statement": "Defense attorneys gathered sworn affidavits from three independent mechanics certifying that the vehicle's brakes were defective prior to the crash.",
+    "answer": true,
+    "why": "Affidavits is the plural noun for written statements made under oath before an authorized official."
+  },
+  {
+    "word": "confidant",
+    "statement": "King Louis treated his wife Eleanor as a respected confidant, regularly discussing confidential state affairs with her.",
+    "answer": true,
+    "why": "Confidant correctly designates a person trusted with secrets or private matters."
+  },
+  {
+    "word": "confidant",
+    "statement": "Because her sister never gossiped or broke promises, Elena considered her her closest confidant.",
+    "answer": true,
+    "why": "Confidant is a trusted person to whom one feels safe revealing private thoughts."
+  },
+  {
+    "word": "confidant",
+    "statement": "Counselors advise individuals experiencing severe stress to confide their feelings in a trusted mentor rather than suffering in silence.",
+    "answer": true,
+    "why": "Confide is the verb derivative meaning to share secrets or discuss private matters with someone trusted."
+  },
+  {
+    "word": "confidant",
+    "statement": "Before boarding the submarine for the secret deployment, the officer confided his misgivings only to his wife.",
+    "answer": true,
+    "why": "Confided is the past-tense verb meaning entrusted secrets or private thoughts to someone."
+  },
+  {
+    "word": "confidant",
+    "statement": "Any sensitive personal secret you confide in me will never be repeated to anyone outside this room.",
+    "answer": true,
+    "why": "Confide in is the established verb phrase meaning to entrust secrets to a person."
+  },
+  {
+    "word": "conjure",
+    "statement": "In the classic Arabian tale, Aladdin rubbed the enchanted oil lamp and conjured up a powerful genie who granted his wishes.",
+    "answer": true,
+    "why": "Conjure correctly means to produce or summon, as if by magic."
+  },
+  {
+    "word": "conjure",
+    "statement": "The warm scent of cinnamon and nutmeg conjured up nostalgic memories of holiday mornings in my grandmother's home.",
+    "answer": true,
+    "why": "Conjure correctly carries the alternate definition of calling to mind an image or a memory."
+  },
+  {
+    "word": "conjure",
+    "statement": "Reading historical accounts of medieval chivalry can conjure up dramatic images of knights, castles, and perilous tournaments.",
+    "answer": true,
+    "why": "Conjure up means to evoke or bring vivid mental pictures to mind."
+  },
+  {
+    "word": "conjure",
+    "statement": "With a swift flick of his wrist, the theatrical conjurer seemed to make a silver coin vanish into thin air.",
+    "answer": true,
+    "why": "Conjurer is the noun derivative designating a magician or illusionist who produces magical effects."
+  },
+  {
+    "word": "conjure",
+    "statement": "David Copperfield is internationally celebrated as one of the most inventive stage conjurers in the history of illusion.",
+    "answer": true,
+    "why": "Conjurers is the plural noun for magicians and illusionists."
+  },
+  {
+    "word": "fealty",
+    "statement": "In feudal Europe, a vassal knelt before his sovereign and swore a sacred oath of fealty, pledging military service and political loyalty.",
+    "answer": true,
+    "why": "Fealty correctly denotes faithfulness and allegiance owed by a vassal or subject to a lord or monarch."
+  },
+  {
+    "word": "fealty",
+    "statement": "Nicholas Chauvin was a legendary nineteenth-century French soldier famous for his fanatical fealty to Napoleon Bonaparte.",
+    "answer": true,
+    "why": "Fealty captures deep allegiance, loyalty, and devotion to a political or military leader."
+  },
+  {
+    "word": "fealty",
+    "statement": "Ethical reformers argue that civil servants must be appointed on the basis of professional competence rather than partisan fealty.",
+    "answer": true,
+    "why": "Fealty correctly describes political allegiance and partisan loyalty."
+  },
+  {
+    "word": "fiancé",
+    "statement": "At a romantic cliffside pavilion overlooking the Pacific Ocean, her fiancé presented her with a diamond ring and asked her to marry him.",
+    "answer": true,
+    "why": "Fiancé (masculine, with one 'e') correctly designates an engaged man pledged to be married."
+  },
+  {
+    "word": "fiancé",
+    "statement": "Marcus introduced his fiancé to his extended family at Thanksgiving dinner, sharing stories about how the two men first met.",
+    "answer": true,
+    "why": "Fiancé is the masculine noun for an engaged man."
+  },
+  {
+    "word": "fiancé",
+    "statement": "His fiancée spent the afternoon with her bridesmaids choosing the floral arrangements for their upcoming wedding ceremony.",
+    "answer": true,
+    "why": "Fiancée (feminine, with two 'e's) correctly designates an engaged woman pledged to be married."
+  },
+  {
+    "word": "fiancé",
+    "statement": "After their formal betrothal was announced in Paris, Eleanor became the fiancée of the French crown prince, the future Louis VII.",
+    "answer": true,
+    "why": "Fiancée correctly denotes an engaged woman."
+  },
+  {
+    "word": "fidelity",
+    "statement": "Corporate executives and board directors are bound by a legal oath of fidelity to protect the financial welfare of company shareholders.",
+    "answer": true,
+    "why": "Fidelity correctly means faithfulness to obligations, duties, or vows."
+  },
+  {
+    "word": "fidelity",
+    "statement": "Showing unwavering fidelity to its injured master, the rescue dog refused to abandon the hiker's side in the freezing forest.",
+    "answer": true,
+    "why": "Fidelity correctly signifies loyalty, allegiance, and devotion."
+  },
+  {
+    "word": "fidelity",
+    "statement": "The new digital audio monitors reproduce live symphony performances with remarkable acoustic fidelity to the original instruments.",
+    "answer": true,
+    "why": "Fidelity has the critical alternate meaning of the degree to which a sound or image is accurately reproduced."
+  },
+  {
+    "word": "fidelity",
+    "statement": "A marriage ceremony typically includes solemn vows where both partners pledge lifelong love and fidelity to each other.",
+    "answer": true,
+    "why": "Fidelity correctly refers to marital faithfulness and adherence to vows."
+  },
+  {
+    "word": "infidel",
+    "statement": "During the medieval Crusades, opposing Christian and Muslim warriors denounced one another as infidels because of religious differences.",
+    "answer": true,
+    "why": "Infidel correctly denotes a person who does not accept a particular faith, religion, or doctrine."
+  },
+  {
+    "word": "infidel",
+    "statement": "Although members of the dissenting sect disagreed with orthodox church dogmas, the town elders insisted that disagreement did not make them infidels.",
+    "answer": true,
+    "why": "Infidels is the plural noun naming those who reject or do not accept a specific religious doctrine."
+  },
+  {
+    "word": "jurisprudence",
+    "statement": "Law school students dedicate immense time to studying constitutional jurisprudence so they can understand how landmark precedents are formed.",
+    "answer": true,
+    "why": "Jurisprudence correctly refers to the philosophy and science of law."
+  },
+  {
+    "word": "jurisprudence",
+    "statement": "The specialized branch of medical jurisprudence has grown significantly as criminal courts increasingly evaluate DNA and toxicology data.",
+    "answer": true,
+    "why": "Jurisprudence correctly describes a specific division of law, such as medical jurisprudence."
+  },
+  {
+    "word": "jurisprudence",
+    "statement": "An attorney planning a career in corporate reorganizations must develop extensive expertise in federal bankruptcy jurisprudence.",
+    "answer": true,
+    "why": "Jurisprudence refers to a body or division of legal science and theory."
+  },
+  {
+    "word": "perjure",
+    "statement": "The witness perjured himself on the stand when he swore under oath that he had never spoken to the defendant before the robbery.",
+    "answer": true,
+    "why": "Perjured himself correctly uses the past-tense reflexive verb meaning to testify falsely under oath."
+  },
+  {
+    "word": "perjure",
+    "statement": "Because phone records directly proved that the businessman had committed perjury during the trial, he was indicted on felony charges.",
+    "answer": true,
+    "why": "Perjury is the noun naming the criminal offense of deliberately lying under oath."
+  },
+  {
+    "word": "perjure",
+    "statement": "Knowing that testifying falsely under oath carries serious prison sentences, the honest witness refused to perjure herself.",
+    "answer": true,
+    "why": "Perjure is the verb meaning to deliberately lie while under a sworn oath."
+  },
+  {
+    "word": "fiancé",
+    "statement": "His fiancé just picked out a gorgeous white satin gown and lace veil to wear down the aisle on her wedding day.",
+    "answer": false,
+    "why": "False swap: fiancée should replace fiancé. Fiancé (one 'e') refers to an engaged man; fiancée (two 'e's) refers to an engaged woman."
+  },
+  {
+    "word": "fiancé",
+    "statement": "Elena proudly introduced the handsome gentleman standing beside her as her fiancée, explaining that they planned to marry in June.",
+    "answer": false,
+    "why": "False swap: fiancé should replace fiancée. Fiancée (two 'e's) refers to an engaged woman; the engaged man is her fiancé."
+  },
+  {
+    "word": "perjure",
+    "statement": "Because the corrupt witness perjury himself during the grand jury proceedings, the magistrate ordered his immediate arrest.",
+    "answer": false,
+    "why": "False swap: perjured should replace perjury. Perjury is a noun naming the crime; grammar requires the past-tense reflexive verb perjured."
+  },
+  {
+    "word": "perjure",
+    "statement": "The notary public affixed her official seal to the signed perjury, verifying that the witness had given the statement willingly.",
+    "answer": false,
+    "why": "False swap: affidavit should replace perjury. Perjury is the crime of lying under oath; a written statement made under oath before an official is an affidavit."
+  },
+  {
+    "word": "affidavit",
+    "statement": "The defendant was sentenced to three years in prison after committing grand affidavit while testifying on the witness stand.",
+    "answer": false,
+    "why": "False swap: perjury should replace affidavit. An affidavit is a sworn written statement; the criminal act of testifying falsely under oath is perjury."
+  },
+  {
+    "word": "fidelity",
+    "statement": "Audiophiles praised the newly engineered studio speakers for their remarkable fealty to the acoustic guitars and violins.",
+    "answer": false,
+    "why": "False swap: fidelity should replace fealty. Fealty is feudal allegiance owed to a lord; the accurate reproduction of sound or image is fidelity."
+  },
+  {
+    "word": "fealty",
+    "statement": "In exchange for a generous parcel of land, the medieval knight knelt before the baron and swore an oath of lifelong fidelity.",
+    "answer": false,
+    "why": "False swap: fealty should replace fidelity. In feudal and political contexts, the sworn allegiance of a vassal to a lord is fealty."
+  },
+  {
+    "word": "confidant",
+    "statement": "Elena urged her stressed younger brother to confidant in her whenever school assignments felt overwhelming.",
+    "answer": false,
+    "why": "False swap: confide should replace confidant. Confidant is the noun naming the trusted person; the verb meaning to share secrets is confide."
+  },
+  {
+    "word": "confidant",
+    "statement": "King Louis consulted his queen on state secrets, treating her as a dependable and respected confide.",
+    "answer": false,
+    "why": "False swap: confidant should replace confide. Confide is an action verb; the noun naming a trusted person is confidant."
+  },
+  {
+    "word": "adjudicate",
+    "statement": "The Supreme Court was asked to jurisprudence a complex boundary dispute between two neighboring states over river water access.",
+    "answer": false,
+    "why": "False swap: adjudicate should replace jurisprudence. Jurisprudence is a noun naming the philosophy of law; the verb meaning to hear and settle a case is adjudicate."
+  },
+  {
+    "word": "conjure",
+    "statement": "Seeing the neighborhood children playing on the wooden swing set adjudicated up fond memories of my own early childhood.",
+    "answer": false,
+    "why": "False swap: conjured should replace adjudicated. Adjudicate means to hear and settle a dispute; calling to mind memories is conjuring."
+  },
+  {
+    "word": "conjure",
+    "statement": "Because the magician pulled a live rabbit from an empty top hat, the delighted audience applauded the skillful confidant.",
+    "answer": false,
+    "why": "False swap: conjurer should replace confidant. An entertainer who produces illusions or summons things as if by magic is a conjurer, not a confidant."
+  },
+  {
+    "word": "confidant",
+    "statement": "The prime minister entrusted his closest infidel with the secret diplomatic blueprints for the upcoming peace summit.",
+    "answer": false,
+    "why": "False swap: confidant should replace infidel. A person trusted with confidential matters is a confidant; an infidel is a religious nonbeliever."
+  },
+  {
+    "word": "adjudicate",
+    "statement": "The neutral mediator agreed to perjure the contract standoff between the nurses' union and the regional hospital network.",
+    "answer": false,
+    "why": "False swap: adjudicate should replace perjure. Perjure means to lie under oath; settling a dispute or hearing a grievance is adjudicating."
+  },
+  {
+    "word": "affidavit",
+    "statement": "The detective submitted a signed jurisprudence certifying under oath that the informant had observed stolen merchandise in the warehouse.",
+    "answer": false,
+    "why": "False swap: affidavit should replace jurisprudence. A sworn written statement submitted to obtain legal authorization is an affidavit."
+  },
+  {
+    "word": "fealty",
+    "statement": "The loyal samurai warrior swore an eternal oath of perjury to serve his provincial master until death.",
+    "answer": false,
+    "why": "False swap: fealty should replace perjury. Perjury is lying under oath; the feudal allegiance of a samurai to his lord is fealty."
+  },
+  {
+    "word": "fiancé",
+    "statement": "At the family dinner party, the infidel announced that he and his bride-to-be had selected a wedding venue.",
+    "answer": false,
+    "why": "False swap: fiancé should replace infidel. An engaged man is a fiancé; an infidel is a religious nonbeliever."
+  },
+  {
+    "word": "jurisprudence",
+    "statement": "First-year law students spend endless hours memorizing affidavits to understand the fundamental theories of constitutional rights.",
+    "answer": false,
+    "why": "False swap: jurisprudence should replace affidavits. The study and philosophy of legal theory and precedents is jurisprudence; an affidavit is an individual sworn document."
+  }
+];
+
+const LANG_SET9_FORM_QUESTIONS = [
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "Choose the verb: A federal judge was appointed to ___ the multi-million-dollar patent infringement lawsuit.",
+    "options": [
+      "adjudicate",
+      "adjudication",
+      "jurisprudence",
+      "affidavit"
+    ],
+    "correct": "adjudicate",
+    "why": "Adjudicate is the base verb meaning to hear and settle a case through judicial procedure."
+  },
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "Choose the noun: The bitter boundary quarrel between the two ranching families remains under ___ in county civil court.",
+    "options": [
+      "adjudication",
+      "adjudicate",
+      "adjudicated",
+      "jurisprudence"
+    ],
+    "correct": "adjudication",
+    "why": "Adjudication is the noun form naming the formal judicial procedure or settlement."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "Choose the noun naming a person: Queen Eleanor served as a trusted ___ to King Louis VII, advising him on domestic affairs.",
+    "options": [
+      "confidant",
+      "confide",
+      "confided",
+      "confiding"
+    ],
+    "correct": "confidant",
+    "why": "Confidant is the noun referring to a person trusted with private secrets."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "Choose the verb: Good therapists encourage patients to ___ their anxieties rather than suppressing them in silence.",
+    "options": [
+      "confide",
+      "confidant",
+      "confidants",
+      "fidelity"
+    ],
+    "correct": "confide",
+    "why": "Confide is the verb meaning to share or entrust secrets and private feelings."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "Choose the verb: The aroma of roasting coffee beans seemed to ___ up nostalgic memories of rainy mornings in Seattle.",
+    "options": [
+      "conjure",
+      "conjurer",
+      "adjudicate",
+      "fealty"
+    ],
+    "correct": "conjure",
+    "why": "Conjure is the verb meaning to call to mind an image or memory (or summon as if by magic)."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "Choose the noun naming a performer: The theatrical ___ amazed the crowd by seemingly pulling live doves from an empty silk cloth.",
+    "options": [
+      "conjurer",
+      "conjure",
+      "conjured",
+      "confidant"
+    ],
+    "correct": "conjurer",
+    "why": "Conjurer is the noun designating a magician or illusionist who summons things as if by magic."
+  },
+  {
+    "word": "fealty",
+    "tier": "core",
+    "prompt": "Choose the noun naming allegiance: The medieval vassal knelt before the king and swore an oath of eternal ___.",
+    "options": [
+      "fealty",
+      "fidelity",
+      "affidavit",
+      "jurisprudence"
+    ],
+    "correct": "fealty",
+    "why": "Fealty is the noun denoting faithfulness or allegiance owed to a feudal lord or political sovereign."
+  },
+  {
+    "word": "fiancé",
+    "tier": "core",
+    "prompt": "Choose the masculine noun: Elena's ___ presented her with an antique heirloom ring during their romantic engagement dinner.",
+    "options": [
+      "fiancé",
+      "fiancée",
+      "confidant",
+      "conjurer"
+    ],
+    "correct": "fiancé",
+    "why": "Fiancé (spelled with one 'e') is the masculine noun designating an engaged man."
+  },
+  {
+    "word": "fiancé",
+    "tier": "core",
+    "prompt": "Choose the feminine noun: Marcus accompanied his ___ to the bridal boutique where she selected her wedding gown.",
+    "options": [
+      "fiancée",
+      "fiancé",
+      "confidant",
+      "fidelity"
+    ],
+    "correct": "fiancée",
+    "why": "Fiancée (spelled with two 'e's) is the feminine noun designating an engaged woman."
+  },
+  {
+    "word": "fidelity",
+    "tier": "core",
+    "prompt": "Choose the noun naming reproduction accuracy: Audiophiles prize vinyl records for their warm acoustic ___ and tonal depth.",
+    "options": [
+      "fidelity",
+      "fealty",
+      "adjudication",
+      "affidavit"
+    ],
+    "correct": "fidelity",
+    "why": "Fidelity is the noun denoting the degree to which sound or images are accurately reproduced."
+  },
+  {
+    "word": "fidelity",
+    "tier": "core",
+    "prompt": "Choose the noun naming loyalty to duty: Corporate officers are bound by a legal oath of ___ to serve the best interests of shareholders.",
+    "options": [
+      "fidelity",
+      "fealty",
+      "perjury",
+      "jurisprudence"
+    ],
+    "correct": "fidelity",
+    "why": "Fidelity is faithfulness to obligations, duties, or vows."
+  },
+  {
+    "word": "infidel",
+    "tier": "core",
+    "prompt": "Choose the plural noun: During the medieval Crusades, opposing factions frequently condemned each other as ___.",
+    "options": [
+      "infidels",
+      "infidel",
+      "confidants",
+      "conjurers"
+    ],
+    "correct": "infidels",
+    "why": "Infidels is the plural noun naming people who do not accept a particular religion."
+  },
+  {
+    "word": "jurisprudence",
+    "tier": "core",
+    "prompt": "Choose the noun naming the study of law: University professors in the department of ___ debate the philosophical foundations of constitutional rights.",
+    "options": [
+      "jurisprudence",
+      "adjudicate",
+      "adjudication",
+      "perjury"
+    ],
+    "correct": "jurisprudence",
+    "why": "Jurisprudence is the noun naming the philosophy and science of law."
+  },
+  {
+    "word": "perjure",
+    "tier": "core",
+    "prompt": "Choose the verb: An ethical witness will never ___ himself by giving false statements under oath.",
+    "options": [
+      "perjure",
+      "perjury",
+      "perjured",
+      "affidavit"
+    ],
+    "correct": "perjure",
+    "why": "Perjure is the verb meaning to deliberately testify falsely under oath."
+  },
+  {
+    "word": "perjure",
+    "tier": "core",
+    "prompt": "Choose the noun naming the crime: The grand jury indicted the corrupt executive for ___, citing direct contradictions between his testimony and bank records.",
+    "options": [
+      "perjury",
+      "perjure",
+      "perjured",
+      "adjudication"
+    ],
+    "correct": "perjury",
+    "why": "Perjury is the noun naming the criminal act of lying under oath."
+  }
+];
+
+const LANG_SET9_TRANSFER_CONTEXTS = [
+  {
+    "word": "adjudicate",
+    "prompt": "When the two tech titans failed to reach a patent licensing agreement, they asked a neutral magistrate to ___ their dispute.",
+    "answer": "adjudicate"
+  },
+  {
+    "word": "adjudication",
+    "prompt": "The prolonged legal battle over mineral rights on tribal land is currently pending formal ___ in appellate court.",
+    "answer": "adjudication"
+  },
+  {
+    "word": "affidavit",
+    "prompt": "Before obtaining an emergency restraining order, the victim submitted a sworn ___ documenting each threatening incident.",
+    "answer": "affidavit"
+  },
+  {
+    "word": "confidant",
+    "prompt": "Throughout the tense diplomatic standoff, the ambassador relied solely on her longtime ___ for candid counsel.",
+    "answer": "confidant"
+  },
+  {
+    "word": "confide",
+    "prompt": "The troubled teenager decided to ___ his personal anxieties to the school counselor, knowing the discussion would remain confidential.",
+    "answer": "confide"
+  },
+  {
+    "word": "conjure",
+    "prompt": "The opening chords of the symphony seemed to ___ up vivid memories of childhood summers spent along the Atlantic coast.",
+    "answer": "conjure"
+  },
+  {
+    "word": "conjurer",
+    "prompt": "The illusionist acted as a master ___, astonishing the theater audience by pulling live white doves from an empty handkerchief.",
+    "answer": "conjurer"
+  },
+  {
+    "word": "fealty",
+    "prompt": "In feudal Japan, a samurai's sacred code demanded absolute ___ to his lord, even at the cost of his own life.",
+    "answer": "fealty"
+  },
+  {
+    "word": "fiancé",
+    "prompt": "At the engagement celebration, Sophia proudly introduced her ___, an architectural engineer she planned to marry in June.",
+    "answer": "fiancé"
+  },
+  {
+    "word": "fiancée",
+    "prompt": "Alexander and his ___ spent the weekend touring historic wedding venues across the countryside.",
+    "answer": "fiancée"
+  },
+  {
+    "word": "fidelity",
+    "prompt": "Sound engineers tested the new studio headphones to verify that they reproduced high-frequency violin solos with immaculate ___.",
+    "answer": "fidelity"
+  },
+  {
+    "word": "perjury",
+    "prompt": "Because bank statements proved the accountant had intentionally lied while testifying under oath, prosecutors charged him with felony ___.",
+    "answer": "perjury"
+  }
+];
+
+const LANG_SET9_CONFUSION_QUESTIONS = [
+  {
+    "word": "fiancée",
+    "category": "context",
+    "prompt": "Marcus proposed to Elena at dinner, and she accepted. When Marcus refers to Elena, is Elena his fiancé or his fiancée?",
+    "options": [
+      "his fiancée (engaged woman)",
+      "his fiancé (engaged man)"
+    ],
+    "answers": [
+      "his fiancée (engaged woman)"
+    ],
+    "why": "Fiancée (with two e's) is the feminine noun for an engaged woman; fiancé is the masculine form."
+  },
+  {
+    "word": "fiancé",
+    "category": "context",
+    "prompt": "When Elena refers to Marcus, is Marcus her fiancé or her fiancée?",
+    "options": [
+      "her fiancé (engaged man)",
+      "her fiancée (engaged woman)"
+    ],
+    "answers": [
+      "her fiancé (engaged man)"
+    ],
+    "why": "Fiancé (with one e) is the masculine noun for an engaged man."
+  },
+  {
+    "word": "fealty",
+    "category": "context",
+    "prompt": "A medieval vassal pledges military obedience and loyalty to his feudal lord. Is this solemn pledge fealty or fidelity?",
+    "options": [
+      "fealty (feudal/political allegiance to a sovereign)",
+      "fidelity (sound accuracy / adherence to vows)"
+    ],
+    "answers": [
+      "fealty (feudal/political allegiance to a sovereign)"
+    ],
+    "why": "Fealty specifically denotes feudal or political allegiance owed to a lord, monarch, or political master."
+  },
+  {
+    "word": "fidelity",
+    "category": "context",
+    "prompt": "An audiophile buys high-end studio speakers to ensure music is reproduced with crystal-clear accuracy. Is this quality fidelity or fealty?",
+    "options": [
+      "high fidelity",
+      "high fealty"
+    ],
+    "answers": [
+      "high fidelity"
+    ],
+    "why": "Fidelity denotes the accuracy with which sound or video is reproduced; fealty applies to feudal allegiance."
+  },
+  {
+    "word": "perjury",
+    "category": "context",
+    "prompt": "A defendant deliberately gives false testimony while under oath on the witness stand. Did the defendant commit perjury or did he commit perjure?",
+    "options": [
+      "commit perjury",
+      "commit perjure"
+    ],
+    "answers": [
+      "commit perjury"
+    ],
+    "why": "Perjury is the noun naming the criminal offense; perjure is the verb (e.g., 'he perjured himself')."
+  },
+  {
+    "word": "perjure",
+    "category": "context",
+    "prompt": "A corrupt witness deliberately tells lies on the witness stand. Which sentence uses the verb correctly?",
+    "options": [
+      "The witness perjured himself under oath.",
+      "The witness perjury himself under oath."
+    ],
+    "answers": [
+      "The witness perjured himself under oath."
+    ],
+    "why": "Perjure is the verb; in past tense it takes -ed: 'perjured himself'."
+  },
+  {
+    "word": "affidavit",
+    "category": "context",
+    "prompt": "A notary public signs a written statement sworn under oath by a witness before trial. Is this written legal document an affidavit or a perjury?",
+    "options": [
+      "an affidavit",
+      "a perjury"
+    ],
+    "answers": [
+      "an affidavit"
+    ],
+    "why": "An affidavit is a written statement made under oath before an authorized official; perjury is the crime of lying under oath."
+  },
+  {
+    "word": "confidant",
+    "category": "context",
+    "prompt": "Maya shares her most sensitive career plans with her sister because she knows her sister will keep them secret. Is her sister Maya's confidant or Maya's confide?",
+    "options": [
+      "confidant",
+      "confide"
+    ],
+    "answers": [
+      "confidant"
+    ],
+    "why": "A confidant is the person trusted with secrets; confide is the verb for the action of entrusting secrets."
+  },
+  {
+    "word": "confide",
+    "category": "context",
+    "prompt": "A patient decides to share private struggles with a licensed counselor. Is the patient confiding in the counselor or confidanting in the counselor?",
+    "options": [
+      "confiding in the counselor",
+      "confidanting in the counselor"
+    ],
+    "answers": [
+      "confiding in the counselor"
+    ],
+    "why": "Confide is the verb meaning to share secrets or private thoughts; the prepositional construction is 'confide in'."
+  },
+  {
+    "word": "adjudicate",
+    "category": "context",
+    "prompt": "A juvenile court judge sits on the bench to hear and settle a child custody dispute. Is the judge adjudicating the dispute or jurisprudencing the dispute?",
+    "options": [
+      "adjudicating the dispute",
+      "jurisprudencing the dispute"
+    ],
+    "answers": [
+      "adjudicating the dispute"
+    ],
+    "why": "Adjudicate is the verb meaning to hear and settle a case through judicial procedure; jurisprudence is a noun naming the science/study of law."
+  },
+  {
+    "word": "jurisprudence",
+    "category": "context",
+    "prompt": "A first-year law student takes a course analyzing the fundamental theories, history, and philosophy behind the legal system. Is the student studying jurisprudence or studying affidavit?",
+    "options": [
+      "jurisprudence",
+      "affidavit"
+    ],
+    "answers": [
+      "jurisprudence"
+    ],
+    "why": "Jurisprudence is the philosophy and science of law."
+  },
+  {
+    "word": "conjure",
+    "category": "context",
+    "prompt": "The smell of pine needles instantly calls to mind memories of childhood camping trips in the mountains. Does the aroma conjure memories or adjudicate memories?",
+    "options": [
+      "conjure memories",
+      "adjudicate memories"
+    ],
+    "answers": [
+      "conjure memories"
+    ],
+    "why": "Conjure means to call to mind an image or a memory (or produce as if by magic)."
+  },
+  {
+    "word": "conjurer",
+    "category": "context",
+    "prompt": "An entertainer pulls a live rabbit from a silk hat on stage. Is the performer a conjurer or a confidant?",
+    "options": [
+      "a conjurer",
+      "a confidant"
+    ],
+    "answers": [
+      "a conjurer"
+    ],
+    "why": "A conjurer is an illusionist or magician who produces effects as if by magic."
+  },
+  {
+    "word": "infidel",
+    "category": "context",
+    "prompt": "During historical religious conflicts, one faction referred to members of another faith as nonbelievers. Was that term infidels or confidants?",
+    "options": [
+      "infidels",
+      "confidants"
+    ],
+    "answers": [
+      "infidels"
+    ],
+    "why": "Infidel is a person who does not accept a particular faith or religion; a confidant is a trusted friend."
+  }
+];
+
+const LANG_SET9_DERIVATIVE_FILLINS = [
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "When the two business partners could not resolve their contract dispute privately, they hired a retired judge to ___ the disagreement.",
+    "answers": [
+      "adjudicate"
+    ],
+    "why": "The infinitive verb adjudicate is required after 'to', meaning to settle a dispute."
+  },
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "Judge Tyler ___ court cases involving family matters such as child custody.",
+    "answers": [
+      "adjudicates"
+    ],
+    "why": "The third-person singular present verb adjudicates is required to agree with Judge Tyler."
+  },
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "The case of food poisoning brought against the downtown restaurant will be ___ in municipal court next month.",
+    "answers": [
+      "adjudicated"
+    ],
+    "why": "The past participle adjudicated is required in the passive construction 'will be adjudicated'."
+  },
+  {
+    "word": "adjudicate",
+    "tier": "extended",
+    "prompt": "It seems as if my cousin is constantly ___ his young children's noisy quarrels in the living room.",
+    "answers": [
+      "adjudicating"
+    ],
+    "why": "The present participle adjudicating completes the progressive verb phrase 'is constantly adjudicating'."
+  },
+  {
+    "word": "adjudicate",
+    "tier": "core",
+    "prompt": "The two neighbors' dispute over land rights is still under ___ in the civil courts.",
+    "answers": [
+      "adjudication"
+    ],
+    "why": "The noun adjudication completes the prepositional phrase 'under adjudication'."
+  },
+  {
+    "word": "affidavit",
+    "tier": "core",
+    "prompt": "The eyewitness signed an ___ stating that she had clearly witnessed the vehicular accident.",
+    "answers": [
+      "affidavit"
+    ],
+    "why": "The noun affidavit refers to a written statement made under oath before an official."
+  },
+  {
+    "word": "affidavit",
+    "tier": "core",
+    "prompt": "Everything in your ___ suggests that you had no intention of paying my client for the building materials he provided.",
+    "answers": [
+      "affidavit"
+    ],
+    "why": "The noun affidavit designates the sworn written statement filed in the contract dispute."
+  },
+  {
+    "word": "affidavit",
+    "tier": "extended",
+    "prompt": "Defense attorneys collected sworn ___ from six alibi witnesses who placed the defendant miles away from the crime scene.",
+    "answers": [
+      "affidavits"
+    ],
+    "why": "The plural noun affidavits refers to multiple written statements made under oath."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "The only person who knew she planned to quit her corporate job was her closest ___.",
+    "answers": [
+      "confidant"
+    ],
+    "why": "The noun confidant names a trusted person with whom private secrets are shared."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "Husbands and wives, who are assumed to be close ___, cannot testify about each other in court.",
+    "answers": [
+      "confidants"
+    ],
+    "why": "The plural noun confidants refers to trusted individuals sharing private confidences."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "Any secret you ___ in me won't leave this room.",
+    "answers": [
+      "confide"
+    ],
+    "why": "The verb confide completes the idiom 'confide in', meaning to share private secrets."
+  },
+  {
+    "word": "confidant",
+    "tier": "extended",
+    "prompt": "School psychologists advise troubled teenagers not to ___ their innermost feelings to classmates who gossip.",
+    "answers": [
+      "confide"
+    ],
+    "why": "The base verb confide completes the infinitive construction 'not to confide'."
+  },
+  {
+    "word": "confidant",
+    "tier": "core",
+    "prompt": "Before departing on the dangerous expedition, the captain ___ his strategic misgivings to his first mate.",
+    "answers": [
+      "confided"
+    ],
+    "why": "The past-tense verb confided denotes having shared private secrets."
+  },
+  {
+    "word": "confidant",
+    "tier": "extended",
+    "prompt": "By ___ her anxiety about the upcoming board presentation to her mentor, Sophia gained valuable reassurance.",
+    "answers": [
+      "confiding"
+    ],
+    "why": "The gerund confiding functions as the object of the preposition 'by'."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "Do the Middle Ages ___ up images of timid or shy women?",
+    "answers": [
+      "conjure"
+    ],
+    "why": "The base verb conjure forms the interrogative phrase 'conjure up' (call to mind)."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "Seeing children play on the swing set ___ up fond memories of my childhood playground.",
+    "answers": [
+      "conjured"
+    ],
+    "why": "The past-tense verb conjured completes the phrase 'conjured up' meaning called to mind."
+  },
+  {
+    "word": "conjure",
+    "tier": "extended",
+    "prompt": "In an ancient Arabian tale, Aladdin ___ up a powerful genie by rubbing an enchanted oil lamp.",
+    "answers": [
+      "conjured"
+    ],
+    "why": "The past-tense verb conjured means summoned or produced as if by magic."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "How did that clever ___ pull a live white rabbit from an empty top hat?",
+    "answers": [
+      "conjurer"
+    ],
+    "why": "The noun conjurer designates a magician or illusionist."
+  },
+  {
+    "word": "conjure",
+    "tier": "core",
+    "prompt": "Some people say magician David Copperfield is one of the greatest ___ of all time.",
+    "answers": [
+      "conjurers"
+    ],
+    "why": "The plural noun conjurers designates magicians or illusionists."
+  },
+  {
+    "word": "fealty",
+    "tier": "core",
+    "prompt": "Fulfilling an oath of ___, the Japanese samurai fought loyally for his lord.",
+    "answers": [
+      "fealty"
+    ],
+    "why": "The noun fealty denotes faithfulness and allegiance to a feudal lord."
+  },
+  {
+    "word": "fealty",
+    "tier": "core",
+    "prompt": "Nicholas Chauvin was a legendary French soldier famous for his ___ to Napoleon.",
+    "answers": [
+      "fealty"
+    ],
+    "why": "The noun fealty names loyalty and allegiance to a leader."
+  },
+  {
+    "word": "fiancé",
+    "tier": "core",
+    "prompt": "My ___ proposed to me at a romantic restaurant overlooking the ocean.",
+    "answers": [
+      "fiancé",
+      "fiance"
+    ],
+    "why": "The masculine noun fiancé designates an engaged man who proposes marriage to his intended bride."
+  },
+  {
+    "word": "fiancé",
+    "tier": "core",
+    "prompt": "His ___ just picked out a gorgeous dress to wear on the day of their wedding.",
+    "answers": [
+      "fiancée",
+      "fiancee"
+    ],
+    "why": "The feminine noun fiancée designates an engaged woman who wears a wedding dress."
+  },
+  {
+    "word": "fidelity",
+    "tier": "core",
+    "prompt": "Showing great ___, the dog refused to abandon the side of its injured master.",
+    "answers": [
+      "fidelity"
+    ],
+    "why": "The noun fidelity names faithfulness and steadfast loyalty."
+  },
+  {
+    "word": "fidelity",
+    "tier": "core",
+    "prompt": "The sound quality and ___ of this compact disc makes me feel as if I were actually at the live concert.",
+    "answers": [
+      "fidelity"
+    ],
+    "why": "The noun fidelity denotes the degree of accuracy with which sound or images are reproduced."
+  },
+  {
+    "word": "infidel",
+    "tier": "core",
+    "prompt": "Because his speech was critical of their religious practices, the congregation denounced him as an ___.",
+    "answers": [
+      "infidel"
+    ],
+    "why": "The noun infidel refers to a person who does not accept a particular religion."
+  },
+  {
+    "word": "infidel",
+    "tier": "core",
+    "prompt": "That family may not agree with every part of the church's doctrine, but that hardly makes them ___.",
+    "answers": [
+      "infidels"
+    ],
+    "why": "The plural noun infidels designates people rejecting orthodox religious doctrine."
+  },
+  {
+    "word": "jurisprudence",
+    "tier": "core",
+    "prompt": "My knowledge of ___ is limited to cases involving civil rights.",
+    "answers": [
+      "jurisprudence"
+    ],
+    "why": "The noun jurisprudence denotes the philosophy or a specific division of law."
+  },
+  {
+    "word": "perjure",
+    "tier": "core",
+    "prompt": "Because the witness ___ himself, he now faces severe criminal charges.",
+    "answers": [
+      "perjured"
+    ],
+    "why": "The past-tense reflexive verb perjured means deliberately lied under oath."
+  },
+  {
+    "word": "perjure",
+    "tier": "core",
+    "prompt": "He had a running feud with the archbishop and accused him of an act equivalent to ___.",
+    "answers": [
+      "perjury"
+    ],
+    "why": "The noun perjury designates the criminal offense of deliberately lying under oath."
+  }
+];
+
+const LANG_SET9_SHORT_ANSWER_PAIRS = [
+  {
+    "words": [
+      "adjudicate",
+      "affidavit"
+    ],
+    "prompt": "Create one or more complete sentences using both adjudicate and affidavit, or appropriate derivatives.",
+    "model": "Before the magistrate agreed to adjudicate the commercial dispute, she carefully reviewed the contractor's sworn affidavit to determine whether fraud had occurred."
+  },
+  {
+    "words": [
+      "confidant",
+      "fidelity"
+    ],
+    "prompt": "Create one or more complete sentences using both confidant and fidelity, or appropriate derivatives.",
+    "model": "Elena considered her sister her closest confidant, trusting her unwavering fidelity whenever sensitive personal dilemmas required discrete counsel."
+  },
+  {
+    "words": [
+      "fiancé",
+      "fiancée"
+    ],
+    "prompt": "Create one or more complete sentences using both fiancé and fiancée, or appropriate derivatives.",
+    "model": "At the engagement celebration, the fiancé gave a touching toast honoring his fiancée, expressing his eagerness for their upcoming autumn wedding."
+  },
+  {
+    "words": [
+      "perjure",
+      "affidavit"
+    ],
+    "prompt": "Create one or more complete sentences using both perjure and affidavit, or appropriate derivatives.",
+    "model": "The prosecutor warned the suspect that signing a fraudulent affidavit would cause him to perjure himself and trigger immediate criminal charges."
+  },
+  {
+    "words": [
+      "fealty",
+      "fidelity"
+    ],
+    "prompt": "Create one or more complete sentences using both fealty and fidelity, or appropriate derivatives.",
+    "model": "Although medieval knights swore absolute fealty to their feudal sovereign, modern public servants owe their primary fidelity to the constitutional rule of law."
+  },
+  {
+    "words": [
+      "conjure",
+      "adjudicate"
+    ],
+    "prompt": "Create one or more complete sentences using both conjure and adjudicate, or appropriate derivatives.",
+    "model": "During the property trial, the attorney attempted to conjure up vivid memories of historical boundaries, but the judge insisted on adjudicating the case strictly on deed records."
+  },
+  {
+    "words": [
+      "jurisprudence",
+      "adjudicate"
+    ],
+    "prompt": "Create one or more complete sentences using both jurisprudence and adjudicate, or appropriate derivatives.",
+    "model": "Scholars of constitutional jurisprudence analyzed the landmark Supreme Court ruling to understand how the justices chose to adjudicate conflicting state and federal powers."
+  },
+  {
+    "words": [
+      "infidel",
+      "fealty"
+    ],
+    "prompt": "Create one or more complete sentences using both infidel and fealty, or appropriate derivatives.",
+    "model": "During the Holy Wars, crusaders branded their opponents as infidels, demanding absolute fealty to religious orthodoxy on pain of banishment."
+  }
+];
+
     const LANG_SETS = {
       1:{words:LANG_SET1_WORDS,usage:LANG_SET1_USAGE,formQuestions:LANG_SET1_FORM_QUESTIONS,transfer:LANG_SET1_TRANSFER_CONTEXTS,confusions:LANG_SET1_CONFUSION_QUESTIONS,derivatives:LANG_SET1_DERIVATIVE_FILLINS,pairs:LANG_SET1_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-1-progress-v3",legacyKeys:["flashcards-ap-lang-set-1-progress-v2","flashcards-ap-lang-set-1-progress-v1"],highRisk:["malapropism","portmanteau","neologism","appellation"]},
       2:{words:LANG_SET2_WORDS,usage:LANG_SET2_USAGE,formQuestions:LANG_SET2_FORM_QUESTIONS,transfer:LANG_SET2_TRANSFER_CONTEXTS,confusions:LANG_SET2_CONFUSION_QUESTIONS,derivatives:LANG_SET2_DERIVATIVE_FILLINS,pairs:LANG_SET2_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-2-progress-v1",legacyKeys:[],highRisk:["substantiate","indisputable","dissuade","apologist"]},
@@ -6349,7 +7711,8 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
 ,
       6:{words:LANG_SET6_WORDS,usage:LANG_SET6_USAGE,formQuestions:LANG_SET6_FORM_QUESTIONS,transfer:LANG_SET6_TRANSFER_CONTEXTS,confusions:LANG_SET6_CONFUSION_QUESTIONS,derivatives:LANG_SET6_DERIVATIVE_FILLINS,pairs:LANG_SET6_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-6-progress-v1",legacyKeys:[],highRisk:["complicity","complicit","explicate","explicable","inexplicable","implicate","implicit","supple","supplicant"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 23: The Root -pli-</h3><p>Root context (-pli-, -plic-, -ploy- from Latin <em>plicare</em>, "to fold"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>COMPLICITY</strong> (noun) = involvement as accomplice in crime<br><strong>COMPLICIT</strong> (adj) = involved in the wrongdoing</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICATE</strong> (verb) = explain or clarify meaning<br><strong>EXPLICABLE</strong> (adj) = capable of explanation<br><strong>INEXPLICABLE</strong> (adj) = impossible / difficult to explain</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>EXPLICIT</strong> = directly stated; readily observable<br><strong>IMPLICIT</strong> = unstated / understood; unquestioning trust</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>IMPLICATE</strong> = connect with wrongdoing; entail consequences<br><strong>IMPLICATION</strong> = consequence (from implicate) OR unstated hint (from implicit)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>REPLICA</strong> (noun) = the copy or reproduction<br><strong>REPLICATE</strong> (verb) = to reproduce or duplicate</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SUPPLE</strong> = flexible / limber; adaptable / compliant<br><strong>SUPPLICANT</strong> = person pleading or begging humbly</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DEPLOY</strong> = position strategically; put into use (troops, relief workers, equipment, resources, parachutes)</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>complicity</strong> (noun) → <strong>complicit</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>deploy</strong> (verb) → <strong>deployment</strong> / <strong>deployments</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>explicate</strong> (verb) → <strong>explication</strong> (noun), <strong>explicable</strong> (adj), <strong>inexplicable</strong> (neg adj)</p><p style="margin:4px 0; font-size:13px;"><strong>explicit</strong> (adj) → <strong>explicitly</strong> (adverb), <strong>explicitness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicate</strong> (verb) → <strong>implication</strong> / <strong>implications</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>implicit</strong> (adj) → <strong>implication</strong> (noun), <strong>implicitly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>inexplicable</strong> (adj) → <strong>inexplicably</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>replica</strong> (noun) → <strong>replicate</strong> (verb), <strong>replication</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supple</strong> (adj) → <strong>suppleness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>supplicant</strong> (noun) → <strong>supplicate</strong> (verb), <strong>supplication</strong> / <strong>supplications</strong> (noun)</p></div></div>`},
       7:{words:LANG_SET7_WORDS,usage:LANG_SET7_USAGE,formQuestions:LANG_SET7_FORM_QUESTIONS,transfer:LANG_SET7_TRANSFER_CONTEXTS,confusions:LANG_SET7_CONFUSION_QUESTIONS,derivatives:LANG_SET7_DERIVATIVE_FILLINS,pairs:LANG_SET7_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-7-progress-v1",legacyKeys:[],highRisk:["perspicuous","specious","auspices","auspicious","circumspect","introspective","specter","spectacle","spectrum","despicable"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 22: The Root -spec-</h3><p>Root context (-spec-, -spic- from Latin <em>specere</em>, "to look"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>PERSPICUOUS</strong> (adj) = clearly expressed; easy to understand<br><strong>SPECIOUS</strong> (adj) = seemingly true or convincing, but actually false</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AUSPICES</strong> (noun) = sponsorship, support, or protection ("under the auspices of")<br><strong>AUSPICIOUS</strong> (adj) = favorable; promising success / marked by prosperity</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INTROSPECTIVE</strong> (adj) = looking inward; reflecting on own thoughts and feelings<br><strong>CIRCUMSPECT</strong> (adj) = cautious, prudent, and mindful of consequences</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>SPECTACLE</strong> = impressive public display OR public scene of bad behavior<br><strong>SPECTER</strong> = ghost / spirit OR haunting threat/possibility (packet spelling)<br><strong>SPECTRUM</strong> = ordered band of wavelengths OR broad range of qualities/ideas</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>DESPICABLE</strong> (adj) = deserving scorn or contempt<br><strong>DESPISE</strong> (verb) = to feel contempt or scorn for</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>specious</strong> (adj) → <strong>speciousness</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>perspicuous</strong> (adj) → <strong>perspicuity</strong> (noun), <strong>perspicuously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>introspective</strong> (adj) → <strong>introspection</strong> (noun), <strong>introspect</strong> (verb)</p><p style="margin:4px 0; font-size:13px;"><strong>circumspect</strong> (adj) → <strong>circumspection</strong> (noun), <strong>circumspectly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>auspicious</strong> (adj) → <strong>inauspicious</strong> (negative adj), <strong>auspiciously</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>auspices</strong> (noun) → used in phrase "under the auspices of"</p><p style="margin:4px 0; font-size:13px;"><strong>despicable</strong> (adj) → <strong>despise</strong> (verb), <strong>despised</strong>, <strong>despises</strong></p><p style="margin:4px 0; font-size:13px;"><strong>specter</strong> (noun) → <strong>spectral</strong> (adj), <strong>specters</strong> (plural)</p><p style="margin:4px 0; font-size:13px;"><strong>spectrum</strong> (noun) → <strong>spectra</strong> OR <strong>spectrums</strong> (both plural accepted)</p><p style="margin:4px 0; font-size:13px;"><strong>spectacle</strong> (noun) → <strong>spectacles</strong> (plural displays), <strong>spectacular</strong> (adj)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master alternate meanings for spectacle, specter, spectrum</li><li>Drill perspicuous vs. specious precision trap</li><li>Contrast auspices (noun support) vs. auspicious (adj favorable)</li><li>Contrast introspective (inner thought) vs. circumspect (outer caution)</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Find the Example associations</li><li>Practice hard Melton True/False swaps</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final 10-point Part 3 simulation</li></ol></div></div>`},
-      8:{words:LANG_SET8_WORDS,usage:LANG_SET8_USAGE,formQuestions:LANG_SET8_FORM_QUESTIONS,transfer:LANG_SET8_TRANSFER_CONTEXTS,confusions:LANG_SET8_CONFUSION_QUESTIONS,derivatives:LANG_SET8_DERIVATIVE_FILLINS,pairs:LANG_SET8_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-8-progress-v1",legacyKeys:[],highRisk:["ambivalence","avail","countervailing","evaluate","evince","invaluable","prevail","valedictorian","valiant","vanquish"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 25: The Roots -val- and -vince-</h3><p>Root context (-val- from Latin <em>valere</em>, "to be strong/worthy/healthy"; -vince-/-vict- from Latin <em>vincere</em>, "to conquer/defeat"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EVALUATE</strong> (verb) = judge or assess value/quality/performance<br><strong>EVINCE</strong> (verb) = show or demonstrate clearly ("face evinced disgust")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>PREVAIL</strong> = (1) triumph/win out ("prevail over"); (2) be current/in effect ("custom prevails"); (3) persuade successfully ("prevail upon someone")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AVAIL</strong> = (verb) be of use/help; (noun) benefit/advantage<br>• <em>to no avail</em> = without success / uselessly<br>• <em>avail oneself of</em> = take advantage of / make use of</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INVALUABLE</strong> (adj) = priceless / value too great to measure<br>⚠️ <em>MAJOR TRAP:</em> Does NOT mean "not valuable" or worthless!</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VANQUISH</strong> (verb) = directly defeat, conquer, or subdue completely (literal opponent OR figurative fear/doubt)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>COUNTERVAILING</strong> (adj) = acting against something so as to cancel or offset its effect (NOT merely disagreeing)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AMBIVALENCE</strong> (noun) = conflicting feelings (proud yet sad) OR indecision ("I can\'t decide")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VALEDICTORIAN</strong> (noun) = highest-ranking student who speaks<br><strong>VALEDICTORY</strong> (adj/noun) = farewell speech/address</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>ambivalence</strong> (noun) ↔ <strong>ambivalent</strong> (adj) ↔ <strong>ambivalently</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>avail</strong> (verb/noun) ↔ <strong>availed</strong> (past), <strong>availing</strong> (pres), <strong>unavailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>countervailing</strong> (adj) ↔ <strong>countervail</strong> (verb), <strong>countervailed</strong> (past)</p><p style="margin:4px 0; font-size:13px;"><strong>evaluate</strong> (verb) ↔ <strong>evaluates</strong>, <strong>evaluated</strong>, <strong>evaluation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>evince</strong> (verb) ↔ <strong>evinces</strong>, <strong>evinced</strong> (past), <strong>evincing</strong> (part)</p><p style="margin:4px 0; font-size:13px;"><strong>invaluable</strong> (adj) ↔ <strong>invaluably</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>prevail</strong> (verb) ↔ <strong>prevails</strong>, <strong>prevailed</strong>, <strong>prevailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>valedictorian</strong> (person noun) ↔ <strong>valedictory</strong> (farewell speech adj/noun)</p><p style="margin:4px 0; font-size:13px;"><strong>valiant</strong> (adj) ↔ <strong>valiance</strong> (noun), <strong>valiantly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>vanquish</strong> (verb) ↔ <strong>vanquishes</strong>, <strong>vanquished</strong> (past), <strong>vanquishing</strong></p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master all 3 meanings of prevail (triumph, current/in effect, persuade upon)</li><li>Master avail patterns: "to no avail" and "avail oneself of"</li><li>Drill evaluate (judge) vs. evince (show/display) precision trap</li><li>Contrast valedictorian (person) vs. valedictory (farewell speech)</li><li>Distinguish valiant (adj), valiance (noun), and valiantly (adv)</li><li>Remember invaluable = priceless, never worthless</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Practice Melton True/False swaps (evaluated ↔ evinced, prevail ↔ vanquish, avail ↔ prevail)</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final Part 3 simulation (5 T/F + 3 derivatives + 1 sentence prompt)</li></ol></div></div>`}
+      8:{words:LANG_SET8_WORDS,usage:LANG_SET8_USAGE,formQuestions:LANG_SET8_FORM_QUESTIONS,transfer:LANG_SET8_TRANSFER_CONTEXTS,confusions:LANG_SET8_CONFUSION_QUESTIONS,derivatives:LANG_SET8_DERIVATIVE_FILLINS,pairs:LANG_SET8_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-8-progress-v1",legacyKeys:[],highRisk:["ambivalence","avail","countervailing","evaluate","evince","invaluable","prevail","valedictorian","valiant","vanquish"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 25: The Roots -val- and -vince-</h3><p>Root context (-val- from Latin <em>valere</em>, "to be strong/worthy/healthy"; -vince-/-vict- from Latin <em>vincere</em>, "to conquer/defeat"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>EVALUATE</strong> (verb) = judge or assess value/quality/performance<br><strong>EVINCE</strong> (verb) = show or demonstrate clearly ("face evinced disgust")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>PREVAIL</strong> = (1) triumph/win out ("prevail over"); (2) be current/in effect ("custom prevails"); (3) persuade successfully ("prevail upon someone")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AVAIL</strong> = (verb) be of use/help; (noun) benefit/advantage<br>• <em>to no avail</em> = without success / uselessly<br>• <em>avail oneself of</em> = take advantage of / make use of</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INVALUABLE</strong> (adj) = priceless / value too great to measure<br>⚠️ <em>MAJOR TRAP:</em> Does NOT mean "not valuable" or worthless!</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VANQUISH</strong> (verb) = directly defeat, conquer, or subdue completely (literal opponent OR figurative fear/doubt)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>COUNTERVAILING</strong> (adj) = acting against something so as to cancel or offset its effect (NOT merely disagreeing)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AMBIVALENCE</strong> (noun) = conflicting feelings (proud yet sad) OR indecision ("I can\'t decide")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>VALEDICTORIAN</strong> (noun) = highest-ranking student who speaks<br><strong>VALEDICTORY</strong> (adj/noun) = farewell speech/address</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>ambivalence</strong> (noun) ↔ <strong>ambivalent</strong> (adj) ↔ <strong>ambivalently</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>avail</strong> (verb/noun) ↔ <strong>availed</strong> (past), <strong>availing</strong> (pres), <strong>unavailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>countervailing</strong> (adj) ↔ <strong>countervail</strong> (verb), <strong>countervailed</strong> (past)</p><p style="margin:4px 0; font-size:13px;"><strong>evaluate</strong> (verb) ↔ <strong>evaluates</strong>, <strong>evaluated</strong>, <strong>evaluation</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>evince</strong> (verb) ↔ <strong>evinces</strong>, <strong>evinced</strong> (past), <strong>evincing</strong> (part)</p><p style="margin:4px 0; font-size:13px;"><strong>invaluable</strong> (adj) ↔ <strong>invaluably</strong> (adv)</p><p style="margin:4px 0; font-size:13px;"><strong>prevail</strong> (verb) ↔ <strong>prevails</strong>, <strong>prevailed</strong>, <strong>prevailing</strong> (adj)</p><p style="margin:4px 0; font-size:13px;"><strong>valedictorian</strong> (person noun) ↔ <strong>valedictory</strong> (farewell speech adj/noun)</p><p style="margin:4px 0; font-size:13px;"><strong>valiant</strong> (adj) ↔ <strong>valiance</strong> (noun), <strong>valiantly</strong> (adverb)</p><p style="margin:4px 0; font-size:13px;"><strong>vanquish</strong> (verb) ↔ <strong>vanquishes</strong>, <strong>vanquished</strong> (past), <strong>vanquishing</strong></p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Master all 3 meanings of prevail (triumph, current/in effect, persuade upon)</li><li>Master avail patterns: "to no avail" and "avail oneself of"</li><li>Drill evaluate (judge) vs. evince (show/display) precision trap</li><li>Contrast valedictorian (person) vs. valedictory (farewell speech)</li><li>Distinguish valiant (adj), valiance (noun), and valiantly (adv)</li><li>Remember invaluable = priceless, never worthless</li><li>Complete the Sentence packet contexts</li><li>Write the Derivative with no word bank</li><li>Practice Melton True/False swaps (evaluated ↔ evinced, prevail ↔ vanquish, avail ↔ prevail)</li><li>Master 2-word original sentence pairs with contextual proof</li><li>Run final Part 3 simulation (5 T/F + 3 derivatives + 1 sentence prompt)</li></ol></div></div>`},
+      9:{words:LANG_SET9_WORDS,usage:LANG_SET9_USAGE,formQuestions:LANG_SET9_FORM_QUESTIONS,transfer:LANG_SET9_TRANSFER_CONTEXTS,confusions:LANG_SET9_CONFUSION_QUESTIONS,derivatives:LANG_SET9_DERIVATIVE_FILLINS,pairs:LANG_SET9_SHORT_ANSWER_PAIRS,storageKey:"flashcards-ap-lang-set-9-progress-v1",legacyKeys:[],highRisk:["adjudication","confide","conjurer","fiancée","perjured","perjury","adjudicate","fidelity","conjure"],precisionGuide:`<div class="section-head"><div><h3>Precision &amp; Grammar Quick Reference · Lesson 24: The Roots -fid- and -jur-</h3><p>Root context (-fid- from Latin <em>fidelis/fidus</em>, "faith/trust"; -jur- from Latin <em>jurare</em>, "to take an oath / law / judge"), high-yield core contrasts, and derivative traps.</p></div><span class="status-badge">Part 3 Core</span></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:14px;"><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">High-Priority Meaning Traps</strong><p style="margin:4px 0; font-size:13px;"><strong>FIANCÉ</strong> (masculine noun) = engaged man (1 'e' + accent)<br><strong>FIANCÉE</strong> (feminine noun) = engaged woman (2 'e's + accent)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>FEALTY</strong> (noun) = feudal/political allegiance or loyalty to a lord/sovereign<br><strong>FIDELITY</strong> (noun) = faithfulness to vows/duties OR accurate reproduction of sound/images</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>PERJURY</strong> (noun) = criminal offense of deliberately lying under oath<br><strong>PERJURE</strong> (verb) = to commit perjury / testify falsely under oath ("perjured himself")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>CONFIDANT</strong> (noun) = trusted person to whom secrets are entrusted<br><strong>CONFIDE</strong> (verb) = to share secrets or private thoughts ("confide in")</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>ADJUDICATE</strong> (verb) = (1) hear &amp; settle legal case via judicial procedure; (2) settle a general dispute or quarrel<br><strong>ADJUDICATION</strong> (noun) = the formal judicial settlement or process</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>JURISPRUDENCE</strong> (noun) = philosophy/science of law or system/division of laws (e.g., medical jurisprudence)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>CONJURE</strong> = (1) summon/produce as if by magic; (2) call to mind a memory/image ("conjure up")<br><strong>CONJURER</strong> (noun) = magician or illusionist</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>AFFIDAVIT</strong> (noun) = written statement confirmed by oath before an official</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><p style="margin:4px 0; font-size:13px;"><strong>INFIDEL</strong> (noun) = person who does not accept a particular religion/faith</p></div><div style="background:var(--paper); padding:12px 14px; border-radius:12px; border:1px solid var(--line);"><strong style="color:var(--navy); display:block; margin-bottom:6px;">Grammar &amp; Derivative Shifts</strong><p style="margin:4px 0; font-size:13px;"><strong>adjudicate</strong> (verb) ↔ <strong>adjudicates</strong>, <strong>adjudicated</strong>, <strong>adjudicating</strong>, <strong>adjudication</strong> (noun)</p><p style="margin:4px 0; font-size:13px;"><strong>affidavit</strong> (noun) ↔ <strong>affidavits</strong> (plural noun)</p><p style="margin:4px 0; font-size:13px;"><strong>confidant</strong> (noun) ↔ <strong>confide</strong> (verb), <strong>confides</strong>, <strong>confided</strong>, <strong>confiding</strong></p><p style="margin:4px 0; font-size:13px;"><strong>conjure</strong> (verb) ↔ <strong>conjures</strong>, <strong>conjured</strong>, <strong>conjuring</strong>, <strong>conjurer</strong> / <strong>conjurers</strong> (agent noun)</p><p style="margin:4px 0; font-size:13px;"><strong>fealty</strong> (noun) ↔ feudal allegiance / loyalty</p><p style="margin:4px 0; font-size:13px;"><strong>fiancé</strong> (masculine noun) ↔ <strong>fiancée</strong> (feminine noun) ↔ <strong>fiancés</strong> / <strong>fiancées</strong></p><p style="margin:4px 0; font-size:13px;"><strong>fidelity</strong> (noun) ↔ <strong>fidelities</strong> (faithfulness or audio/video reproduction)</p><p style="margin:4px 0; font-size:13px;"><strong>infidel</strong> (noun) ↔ <strong>infidels</strong> (plural noun)</p><p style="margin:4px 0; font-size:13px;"><strong>jurisprudence</strong> (noun) ↔ philosophy and science of law</p><p style="margin:4px 0; font-size:13px;"><strong>perjure</strong> (verb) ↔ <strong>perjures</strong>, <strong>perjured</strong> (past), <strong>perjuring</strong>, <strong>perjury</strong> (crime noun)</p><hr style="border:0; border-top:1px solid var(--line); margin:6px 0;"><strong style="color:var(--navy); display:block; margin-bottom:4px; font-size:13px;">Recommended Study Order</strong><ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.45; color:var(--ink);"><li>Learn definition → word for all 10 words</li><li>Distinguish masculine fiancé (one e) vs. feminine fiancée (two e's)</li><li>Master both meanings of conjure: summon by magic vs. call to mind memory</li><li>Master both meanings of fidelity: allegiance/duty vs. sound/image reproduction</li><li>Master both senses of adjudicate: formal court trial vs. general dispute/quarrel</li><li>Contrast fealty (feudal/political allegiance) vs. fidelity (vows/obligations/recording accuracy)</li><li>Differentiate perjury (the crime/noun) from perjure (the action/verb)</li><li>Contrast confidant (trusted person) vs. confide (action of sharing secrets)</li><li>Complete the Sentence packet contexts (Aladdin, Eleanor, samurai, David Copperfield)</li><li>Write the Derivative with no word bank (adjudicates, conjurers, confide, fiancée, perjured, perjury)</li><li>Practice Melton True/False swaps (fiancé ↔ fiancée, perjury ↔ affidavit, fealty ↔ fidelity, adjudicate ↔ jurisprudence)</li><li>Run final Part 3 simulation (5 T/F + 3 derivatives + 1 sentence prompt)</li></ol></div></div>`}
     };
     let activeLangSet = Number(localStorage.getItem("flashcards-ap-lang-last-set") || 1);
     if(!LANG_SETS[activeLangSet]) activeLangSet=1;
@@ -6388,7 +7751,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(appStats));
       renderAllStats();
     }
-    function normalizeAnswer(value) { return String(value || "").toLowerCase().trim().replace(/[’']/g,"'").replace(/[^a-z'\s-]/g,"").replace(/\s+/g," "); }
+    function normalizeAnswer(value) { return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim().replace(/[’']/g,"'").replace(/[^a-z'\s-]/g,"").replace(/\s+/g," "); }
     function shuffleList(items) { const a=[...items]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
     function getWord(name) { return WORDS.find(w=>w.word===name || w.forms.some(f=>f.word===name)); }
     function pluralForm(form) { if(form.endsWith("s")) return form; if(/[^aeiou]y$/.test(form)) return form.slice(0,-1)+"ies"; return form+"s"; }
@@ -6453,11 +7816,11 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
     function updateCourseNav(course) {
       document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
       const brand=document.getElementById("brandCourse");
-      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="langmidterm"?"AP Lang · Midterm Exam Prep":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
+      if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
     }
     function showView(id) {
       const langViews=["home","learn","practice","cram","review","progress"];
-      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="langmidterm"?"langmidterm":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
+      const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course==="langsets"?"lang":course==="apushsets"?"apush":course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
@@ -6465,7 +7828,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       if(id==="learn"){renderFlashcardV2();renderWordBankV2();}
       if(id==="practice") renderSentenceLab();
       if(id==="review") {
-        if(activeLangSet === 8) {
+        if(activeLangSet === 8 || activeLangSet === 9) {
           const stdWrap = document.getElementById("standardReviewWrapper");
           const drillWrap = document.getElementById("defDrillWrapper");
           if(stdWrap) stdWrap.hidden = true;
@@ -6486,7 +7849,6 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       if(id==="progress") renderProgress();
       if(id==="physics2") renderPhysicsCard();
       if(id==="apush") renderApushCard();
-      if(id==="langmidterm") renderMidtermLanding();
       window.scrollTo({top:0,behavior:"smooth"});
     }
     function openCourse(course){ showView(course==="lang"?"langsets":course==="physics2"?"physics2":"apushsets"); }
@@ -6505,7 +7867,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       const precBox=document.getElementById("cramPrecisionBox");
       if(precBox){ if(next.precisionGuide){ precBox.innerHTML=next.precisionGuide; precBox.hidden=false; } else precBox.hidden=true; }
 
-      const isSet8 = activeLangSet === 8;
+      const isSet8 = activeLangSet === 8 || activeLangSet === 9;
       const modeCardReviewIcon = document.getElementById("modeCardReviewIcon");
       const modeCardReviewTitle = document.getElementById("modeCardReviewTitle");
       const modeCardReviewDesc = document.getElementById("modeCardReviewDesc");
@@ -6606,6 +7968,16 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       if(w.word === "valedictorian") why = "Correct spelling: valedictorian (top-ranking graduating student; suffix -ian). Note: the farewell speech is valedictory.";
       if(w.word === "valiant") why = "Correct spelling: valiant (brave, courageous; root -val-). Noun: valiance; adverb: valiantly.";
       if(w.word === "vanquish") why = "Correct spelling: vanquish (to defeat or conquer completely; root -vince-). Note spelling -quish.";
+      if(w.word === "adjudicate") why = "Correct spelling: adjudicate (to hear and settle a case or dispute; root -jur-). Noun form is adjudication.";
+      if(w.word === "affidavit") why = "Correct spelling: affidavit (a written statement made under oath; root -fid-). Note the -davit ending.";
+      if(w.word === "confidant") why = "Correct spelling: confidant (a trusted person; noun ends in -ant; root -fid-). Verb form is confide.";
+      if(w.word === "conjure") why = "Correct spelling: conjure (to summon by magic or call to mind; root -jur-). Agent noun is conjurer.";
+      if(w.word === "fealty") why = "Correct spelling: fealty (allegiance or faithfulness; root -fid-). Note spelling f-e-a-l-t-y.";
+      if(w.word === "fiancé") why = "Correct spelling: fiancé (a man engaged to be married; masculine form has one 'e' with acute accent; root -fid-). Feminine form is fiancée.";
+      if(w.word === "fidelity") why = "Correct spelling: fidelity (faithfulness to duties/vows, or audio/visual reproduction accuracy; root -fid-).";
+      if(w.word === "infidel") why = "Correct spelling: infidel (a person who does not accept a particular religion; root -fid-). In- (not) + -fid- (faith).";
+      if(w.word === "jurisprudence") why = "Correct spelling: jurisprudence (philosophy/science of law; root -jur-). Note spelling -prudence.";
+      if(w.word === "perjure") why = "Correct spelling: perjure (to deliberately lie under oath; root -jur-). Noun form is perjury.";
       return {category:"spelling",word:w.word,label:"Part 1 · Dictation & spelling",prompt:"Type the word exactly as you hear it.",response:"audio",answers:[w.word],why};
     });}
     function definitionQuestions(restrict=null){return WORDS.filter(w=>!restrict||restrict.includes(w.word)).map(w=>({category:"definition",word:w.word,label:"Part 2 · Choose the definition",prompt:w.word,response:"choice",options:shuffleList([w.definition,...definitionDistractors(w.word)]),answers:[w.definition],why:w.definition}));}
@@ -6892,7 +8264,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
     let defDrillQueue = [], defDrillIndex = 0, defDrillScore = 0, defDrillStreak = 0, defDrillMissed = [], defDrillSubmitted = false, defDrillStarted = false, defDrillQuestionStarted = 0;
 
     function startDefDrill(wordsToUse) {
-      const sourceList = wordsToUse || (activeLangSet === 8 ? LANG_SET8_WORDS : WORDS);
+      const sourceList = wordsToUse || (activeLangSet === 8 ? LANG_SET8_WORDS : (activeLangSet === 9 ? LANG_SET9_WORDS : WORDS));
       defDrillQueue = shuffleList(sourceList);
       defDrillIndex = 0;
       defDrillScore = 0;
@@ -6927,7 +8299,7 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
           <span class="quiz-count">Question ${defDrillIndex + 1} of ${total}</span>
           <span class="quiz-score">Score: ${defDrillScore} / ${total} · Best Streak: ${appStats.bestStreak}</span>
         </div>
-        <span class="question-type">Module 8 · Definition Recall</span>
+        <span class="question-type">Set ${activeLangSet} · Definition Recall</span>
         <div style="margin: 10px 0 4px;">
           <span class="part">${escapeHtml(w.part)}</span>
         </div>
@@ -6993,7 +8365,9 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       let formNote = "";
 
       if (!isSkipped) {
-        if (normInput === normTarget || strippedInput === normTarget) {
+        if (w.word === "fiancé" && (normInput === "fiancee" || strippedInput === "fiancee")) {
+          isCorrect = false;
+        } else if (normInput === normTarget || strippedInput === normTarget) {
           isCorrect = true;
         } else if (forms.includes(normInput) || forms.includes(strippedInput)) {
           isCorrect = true;
@@ -7728,202 +9102,11 @@ const LANG_SET8_SHORT_ANSWER_PAIRS = [
       });
     }
 
-    /* AP Lang Fall 2026 midterm — isolated self-contained review module. */
-    const MIDTERM_DATA = JSON.parse(document.getElementById('midtermContentData').textContent);
-    const MIDTERM_STORAGE = 'flashcards-ap-lang-midterm-fall-2026-v1';
-    const MIDTERM_INTERVALS = [0, 1, 3, 7, 14, 30, 60, 90];
-    const midtermDecks = MIDTERM_DATA.decks;
-    const midtermCards = midtermDecks.flatMap(d => d.cards);
-    const midtermById = new Map(midtermCards.map(c => [c.id, c]));
-    let midtermStats = loadMidtermStats();
-    let midtermQueue = [];
-    let midtermPos = 0;
-    let midtermSessionName = '';
-    let midtermSessionResults = {known:0, again:0};
-    const midtermEl = id => document.getElementById(id);
-    function loadMidtermStats() {
-      try {
-        const data = JSON.parse(localStorage.getItem(MIDTERM_STORAGE) || '{}');
-        return data && typeof data === 'object' && data.ratings && typeof data.ratings === 'object'
-          ? {ratings:data.ratings} : {ratings:{}};
-      } catch { return {ratings:{}}; }
-    }
-    function saveMidtermStats() {
-      try { localStorage.setItem(MIDTERM_STORAGE, JSON.stringify(midtermStats)); }
-      catch { midtermEl('midtermStorageNotice').hidden = false; }
-    }
-    function midtermEscape(value) {
-      return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
-    function midtermRatings(cardId) { return midtermStats.ratings[cardId] || {}; }
-    function midtermKnown(cardId) { return midtermRatings(cardId).last === 'good'; }
-    function midtermDue(cardId) {
-      const r=midtermRatings(cardId);
-      return r.seen && r.last === 'good' && (!r.due || r.due <= Date.now());
-    }
-    function renderMidtermLanding() {
-      if(!midtermEl('langmidterm')?.classList.contains('active')) return;
-      const all=midtermCards;
-      const known=all.filter(c=>midtermKnown(c.id)).length;
-      const missed=all.filter(c=>midtermRatings(c.id).last==='again').length;
-      const due=all.filter(c=>midtermDue(c.id)).length;
-      const studied=all.filter(c=>midtermRatings(c.id).seen).length;
-      midtermEl('midtermStats').innerHTML = `
-        <div class="stat-box"><strong>${studied} / ${all.length}</strong><span>attempted</span></div>
-        <div class="stat-box"><strong>${known}</strong><span>last recalled</span></div>
-        <div class="stat-box"><strong>${missed}</strong><span>need another look</span></div>
-        <div class="stat-box"><strong>${due}</strong><span>due to review</span></div>`;
-      midtermEl('midtermDueBtn').disabled=due===0;
-      midtermEl('midtermMissedBtn').disabled=missed===0;
-      const pct=Math.round(known/all.length*100);
-      midtermEl('midtermOverallFill').style.width=pct+'%';
-      midtermEl('midtermOverallLabel').textContent=`${pct}% last recalled correctly · progress stored on this device`;
-      midtermEl('midtermCategoryGrid').innerHTML = MIDTERM_DATA.categories.map(cat=>{
-        const decks=midtermDecks.filter(d=>d.category===cat);
-        const group=decks.flatMap(d=>d.cards);
-        const groupKnown=group.filter(c=>midtermKnown(c.id)).length;
-        const cards=decks.map(d=>{
-          const good=d.cards.filter(c=>midtermKnown(c.id)).length;
-          const misses=d.cards.filter(c=>midtermRatings(c.id).last==='again').length;
-          return `<button type="button" class="midterm-deck" data-midterm-deck="${midtermEscape(d.id)}">
-            <strong>${midtermEscape(d.title)}</strong>
-            <span class="midterm-deck-description">${midtermEscape(d.description)}</span>
-            <span class="midterm-deck-count">${good}/${d.cards.length} recalled${misses ? ` · ${misses} to retry` : ''}</span>
-            <span class="midterm-deck-track"><span style="width:${Math.round(good/d.cards.length*100)}%"></span></span>
-          </button>`;
-        }).join('');
-        return `<section class="midterm-category" aria-label="${midtermEscape(cat)}">
-          <div class="midterm-category-heading"><h3>${midtermEscape(cat)}</h3><span>${groupKnown}/${group.length} recalled</span></div>
-          <div class="midterm-decks">${cards}</div>
-        </section>`;
-      }).join('');
-      midtermEl('midtermOverview').hidden=false;
-      midtermEl('midtermStudy').hidden=true;
-      midtermEl('midtermSummary').hidden=true;
-    }
-    function startMidtermSession(ids,title) {
-      const filtered=ids.filter(id=>midtermById.has(id));
-      if (!filtered.length) return;
-      midtermQueue=filtered;
-      midtermPos=0;
-      midtermSessionName=title;
-      midtermSessionResults={known:0,again:0};
-      midtermEl('midtermOverview').hidden=true;
-      midtermEl('midtermStudy').hidden=false;
-      midtermEl('midtermSummary').hidden=true;
-      midtermEl('midtermDeckTitle').textContent=title;
-      renderMidtermCard();
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-    function renderMidtermCard() {
-      if(midtermPos >= midtermQueue.length) { finishMidtermSession(); return; }
-      const c=midtermById.get(midtermQueue[midtermPos]);
-      midtermEl('midtermCard').classList.remove('flipped');
-      midtermEl('midtermCardIndex').textContent=`Card ${midtermPos+1} of ${midtermQueue.length}`;
-      midtermEl('midtermCardCategory').textContent=c.term?'Vocabulary':midtermDecks.find(d=>d.cards.some(x=>x.id===c.id))?.category||'Concept';
-      midtermEl('midtermCardPrompt').textContent=c.front;
-      midtermEl('midtermCardAnswer').textContent=c.back;
-      midtermEl('midtermCardSource').textContent=`Source: ${c.source}`;
-      midtermEl('midtermCounter').textContent=`${midtermPos+1} / ${midtermQueue.length}`;
-      midtermEl('midtermReviewProgress').style.width=`${Math.round(midtermPos/midtermQueue.length*100)}%`;
-      midtermEl('midtermAgainBtn').disabled=true;
-      midtermEl('midtermGoodBtn').disabled=true;
-      midtermEl('midtermPrevBtn').disabled=midtermPos===0;
-      midtermEl('midtermNextBtn').textContent=midtermPos===midtermQueue.length-1?'Finish section':'Next →';
-    }
-    function flipMidtermCard() {
-      const card=midtermEl('midtermCard');
-      card.classList.toggle('flipped');
-      const revealed=card.classList.contains('flipped');
-      midtermEl('midtermAgainBtn').disabled=!revealed;
-      midtermEl('midtermGoodBtn').disabled=!revealed;
-    }
-    function moveMidtermCard(delta) {
-      const next=midtermPos+delta;
-      if(next<0) return;
-      midtermPos=next;
-      renderMidtermCard();
-    }
-    function rateMidtermCard(good) {
-      if(!midtermEl('midtermCard').classList.contains('flipped')) return;
-      const id=midtermQueue[midtermPos];
-      const prev=midtermRatings(id);
-      const nextStage=good?Math.min((prev.last==='good'?prev.stage||0:0)+1,7):0;
-      const days=MIDTERM_INTERVALS[nextStage];
-      midtermStats.ratings[id]={
-        seen:(prev.seen||0)+1,
-        good:(prev.good||0)+(good?1:0),
-        wrong:(prev.wrong||0)+(good?0:1),
-        last:good?'good':'again',
-        stage:nextStage,
-        due:good?Date.now()+days*86400000:0,
-      };
-      midtermSessionResults[good?'known':'again']++;
-      saveMidtermStats();
-      moveMidtermCard(1);
-    }
-    function finishMidtermSession() {
-      midtermEl('midtermStudy').hidden=true;
-      midtermEl('midtermSummary').hidden=false;
-      const count=midtermQueue.length;
-      const graded=midtermSessionResults.known+midtermSessionResults.again;
-      midtermEl('midtermSummaryTitle').textContent=`${midtermSessionName} complete`;
-      midtermEl('midtermSummaryStats').textContent=`${midtermSessionResults.known} recalled · ${midtermSessionResults.again} need review${graded<count?` · ${count-graded} skipped`:''}.`;
-      const pending=midtermQueue.filter(id=>midtermStats.ratings[id]?.last==='again');
-      const retry=midtermEl('midtermRetryBtn');
-      retry.hidden=pending.length===0;
-      retry.onclick=()=>startMidtermSession(pending,`${midtermSessionName} · retry`);
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-    // All card buttons use dedicated listeners to avoid altering the other courses.
-    midtermEl('midtermCategoryGrid').addEventListener('click',event=>{
-      const button=event.target.closest('[data-midterm-deck]');
-      if(!button) return;
-      const d=midtermDecks.find(x=>x.id===button.dataset.midtermDeck);
-      if(d) startMidtermSession(d.cards.map(c=>c.id),d.title);
-    });
-    document.querySelectorAll('[data-midterm-home]').forEach(b=>b.addEventListener('click',renderMidtermLanding));
-    midtermEl('midtermMissedBtn').addEventListener('click',()=>startMidtermSession(midtermCards.filter(c=>midtermRatings(c.id).last==='again').map(c=>c.id),'Review missed cards'));
-    midtermEl('midtermDueBtn').addEventListener('click',()=>startMidtermSession(midtermCards.filter(c=>midtermDue(c.id)).map(c=>c.id),'Due review'));
-    midtermEl('midtermShuffleBtn').addEventListener('click',()=>{
-      // A new shuffle begins at card 1, preserving stored mastery.
-      for(let i=midtermQueue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[midtermQueue[i],midtermQueue[j]]=[midtermQueue[j],midtermQueue[i]];}
-      midtermPos=0;
-      midtermSessionResults={known:0,again:0};
-      renderMidtermCard();
-    });
-    midtermEl('midtermCard').addEventListener('click',flipMidtermCard);
-    midtermEl('midtermCard').addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();flipMidtermCard();}
-    });
-    midtermEl('midtermFlipBtn').addEventListener('click',flipMidtermCard);
-    midtermEl('midtermAgainBtn').addEventListener('click',()=>rateMidtermCard(false));
-    midtermEl('midtermGoodBtn').addEventListener('click',()=>rateMidtermCard(true));
-    midtermEl('midtermPrevBtn').addEventListener('click',()=>moveMidtermCard(-1));
-    midtermEl('midtermNextBtn').addEventListener('click',()=>moveMidtermCard(1));
-    midtermEl('midtermResetBtn').addEventListener('click',()=>{
-      if(!confirm('Reset only AP Lang Midterm Exam Prep progress on this browser? Existing courses will not be changed.'))return;
-      midtermStats={ratings:{}};
-      saveMidtermStats();
-      renderMidtermLanding();
-    });
-    document.querySelectorAll('[data-midterm-open]').forEach(b=>b.addEventListener('click',()=>showView('langmidterm')));
-    document.addEventListener('keydown',e=>{
-      if(!midtermEl('langmidterm').classList.contains('active')||midtermEl('midtermStudy').hidden)return;
-      if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes(document.activeElement.tagName))return;
-      if(e.key==='ArrowLeft')moveMidtermCard(-1);
-      if(e.key==='ArrowRight')moveMidtermCard(1);
-      if(e.key===' '){e.preventDefault();flipMidtermCard();}
-      if(e.key==='1')rateMidtermCard(false);
-      if(e.key==='2')rateMidtermCard(true);
-    });
-
     setActiveLangSet(activeLangSet);
     renderPhysicsCard();
     renderApushCard();
     const lastCourse=localStorage.getItem("flashcards-last-course") || "classes";
-    if(lastCourse==="langmidterm"){showView("langmidterm");}
-    else if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
+    if(lastCourse==="lang"){setActiveLangSet(activeLangSet);showView("home");}
     else if(lastCourse==="apush"){setActiveApushSet(activeApushSet);showView("apush");}
     else if(lastCourse==="physics2") openCourse("physics2");
     else showView("classes");
