@@ -536,7 +536,8 @@
       <nav aria-label="Main navigation">
         <button class="nav-btn active" data-view="classes">Classes</button>
         <button class="nav-btn" data-course-nav="lang" data-view="home" hidden>Home</button>
-        <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Learn</button>
+        <button class="nav-btn" data-course-nav="lang" data-view="learn" hidden>Flashcards</button>
+        <button id="navGuidedLearn" class="nav-btn" data-course-nav="lang" data-view="definitionlearn" hidden>Learn</button>
         <button class="nav-btn" data-course-nav="lang" data-view="practice" hidden>Practice</button>
         <button class="nav-btn" data-course-nav="lang" data-view="cram" hidden>Cram</button>
         <button class="nav-btn" data-course-nav="lang" data-view="review" id="navReviewBtn" hidden>Review</button>
@@ -631,6 +632,10 @@
       </div>
     </section>
 
+    <section id="definitionlearn" class="view" aria-labelledby="guidedLearnTitle">
+      <div class="page-intro"><span class="eyebrow">Set 9 · Definitions</span><h2 id="guidedLearnTitle">Learn</h2><p class="lede">Type with guidance, try it without guidance, then revisit the word later.</p></div>
+      <div id="definitionLearnPanel" class="panel quiz-card" style="max-width:760px;margin:0 auto 24px"></div>
+    </section>
     <section id="learn" class="view" aria-labelledby="learn-title">
       <div class="page-intro">
         <span class="eyebrow">Recognize + recall</span>
@@ -7814,17 +7819,18 @@ const LANG_SET9_SHORT_ANSWER_PAIRS = [
     function stageLabel(s) { return ["New","1-day","3-day","7-day","14-day","30-day","60-day","90-day"][Math.min(s,7)]; }
 
     function updateCourseNav(course) {
-      document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course; });
+      document.querySelectorAll("[data-course-nav]").forEach(b=>{ b.hidden = b.dataset.courseNav !== course || (b.id==="navGuidedLearn" && activeLangSet!==9); });
       const brand=document.getElementById("brandCourse");
       if(brand) brand.textContent=course==="lang"?`AP English Language and Composition · Set ${activeLangSet}`:course==="langsets"?"AP English Language and Composition":course==="physics2"?"AP Physics 2: Algebra-Based":course==="apush"?`AP United States History · EPTLs ${(activeApushSet-1)*50+1}–${activeApushSet*50}`:course==="apushsets"?"AP United States History":"Classes";
     }
     function showView(id) {
-      const langViews=["home","learn","practice","cram","review","progress"];
+      const langViews=["home","learn","definitionlearn","practice","cram","review","progress"];
       const course=langViews.includes(id)?"lang":id==="langsets"?"langsets":id==="physics2"?"physics2":id==="apush"?"apush":id==="apushsets"?"apushsets":null;
       updateCourseNav(course);
       if(course) localStorage.setItem("flashcards-last-course",course==="langsets"?"lang":course==="apushsets"?"apush":course);
       document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
       document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
+      if(id==="definitionlearn")startDefinitionLearn();
       if(id==="learn"){renderFlashcardV2();renderWordBankV2();}
       if(id==="practice") renderSentenceLab();
       if(id==="review") {
@@ -8260,10 +8266,73 @@ const LANG_SET9_SHORT_ANSWER_PAIRS = [
     function endReview(){if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("reviewPlay").hidden=true;document.getElementById("reviewSetup").hidden=false;renderReviewSetup();}
     document.getElementById("endReviewBtn").addEventListener("click",endReview);
 
+
+    // Guided introduction -> immediate unaided check -> looping recall.
+    let definitionLesson=null;
+    const definitionLearnKey="flashcards-set9-definition-learn-v2";
+    function saveDefinitionLesson(){try{localStorage.setItem(definitionLearnKey,JSON.stringify(definitionLesson));}catch(e){}}
+    function freshDefinitionLesson(){return {version:2,words:LANG_SET9_WORDS.map(w=>w.word),seen:[],wins:Array(10).fill(0),flags:Array(10).fill(false),due:Array(10).fill(0),history:[],turn:0,current:null,phase:"guided",kind:"new",hinted:false};}
+    function learnedDefinition(i){return definitionLesson.wins[i]>=(definitionLesson.flags[i]?3:2);}
+    function startDefinitionLearn(){
+      if(!definitionLesson){try{definitionLesson=JSON.parse(localStorage.getItem(definitionLearnKey));}catch(e){}
+        const d=definitionLesson;if(!d || d.version!==2 || JSON.stringify(d.words)!==JSON.stringify(LANG_SET9_WORDS.map(w=>w.word)))definitionLesson=freshDefinitionLesson();}
+      if(definitionLesson.current===null)pickDefinitionWord();else renderDefinitionLearn();
+    }
+    function pickDefinitionWord(){
+      const d=definitionLesson;
+      if(d.wins.every((_,i)=>learnedDefinition(i))){d.current=null;saveDefinitionLesson();renderDefinitionLearn();return;}
+      let i=d.seen.filter(i=>!learnedDefinition(i) && d.due[i]<=d.turn && d.history.at(-1)!==i).sort((a,b)=>Number(d.flags[b])-Number(d.flags[a]) || d.due[a]-d.due[b])[0];
+      if(i===undefined){const next=LANG_SET9_WORDS.findIndex((_,i)=>!d.seen.includes(i));if(next>=0)i=next;}
+      if(i===undefined){const recent=d.history.slice(-2);i=d.seen.filter(i=>!recent.includes(i)).sort((a,b)=>Number(learnedDefinition(a))-Number(learnedDefinition(b)) || d.due[a]-d.due[b])[0];}
+      d.current=i;d.kind=d.seen.includes(i)?"review":"new";d.phase=d.kind==="new"?"guided":"check";d.hinted=false;
+      if(!d.seen.includes(i))d.seen.push(i);saveDefinitionLesson();renderDefinitionLearn();
+    }
+    function renderDefinitionLearn(){
+      const d=definitionLesson,el=document.getElementById("definitionLearnPanel"),count=d.wins.filter((_,i)=>learnedDefinition(i)).length;
+      if(d.current===null){el.innerHTML=`<span class="question-type">Set 9 · Learn complete</span><h3>All 10 words learned</h3><p>You recalled every word without guidance, including extra checks for flagged words.</p><div class="quiz-actions"><button class="btn btn-dark" id="learnGoTest">Test definitions</button><button class="btn btn-light" id="learnReset">Start over</button></div>`;document.getElementById("learnGoTest").onclick=()=>showView("review");document.getElementById("learnReset").onclick=resetDefinitionLearn;return;}
+      const i=d.current,w=LANG_SET9_WORDS[i],guided=d.phase==="guided";
+      el.innerHTML=`<div class="quiz-top"><span>${count} / 10 learned</span><span>${d.seen.length} / 10 introduced</span></div><div class="progress-track"><div class="progress-fill" style="width:${count*10}%"></div></div>
+        <p class="question-type">${guided?"Learn this word":d.kind==="new"?"Now try without guidance":"Recall"}</p>
+        <h3 style="font-family:Georgia,serif;font-size:clamp(22px,4vw,30px);line-height:1.45;overflow-wrap:anywhere">${escapeHtml(w.definition)}</h3>
+        ${guided?`<p style="font-size:20px">The word is <strong>${escapeHtml(w.word)}</strong>.</p>`:""}
+        <p class="key-help">${guided?"Type the word once. Then try it again without guidance.":"Type the word that matches this definition."}</p>
+        <form id="learnForm"><label for="learnAnswer" class="sr-only">Vocabulary word</label><input id="learnAnswer" class="answer-input" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go" placeholder="Type the word">
+        <div id="learnFeedback" aria-live="polite" style="margin:14px 0">${d.hinted?`Hint: starts with <strong>${escapeHtml(w.word.slice(0,2))}</strong>`:""}</div>
+        <div class="quiz-actions"><button class="btn btn-dark" type="submit">Check</button>${!guided?'<button type="button" id="learnHint" class="btn btn-light">Hint</button><button type="button" id="learnReveal" class="btn btn-light">Show word</button>':""}</div></form>
+        <label style="display:flex;align-items:center;gap:10px;min-height:48px;margin-top:18px"><input id="learnFlag" type="checkbox" ${d.flags[i]?"checked":""}> Flag for extra practice</label>
+        <p class="key-help">Flagged words return sooner and get an extra recall check.</p>
+        <button class="btn btn-light btn-small" id="learnReset">Restart Learn</button>`;
+      document.getElementById("learnForm").onsubmit=e=>{e.preventDefault();gradeDefinitionLearn(false);};
+      document.getElementById("learnFlag").onchange=e=>{d.flags[i]=e.target.checked;saveDefinitionLesson();};
+      document.getElementById("learnReset").onclick=resetDefinitionLearn;
+      document.getElementById("learnHint")?.addEventListener("click",()=>{d.hinted=true;d.wins[i]=0;saveDefinitionLesson();document.getElementById("learnFeedback").innerHTML=`Starts with <strong>${escapeHtml(w.word.slice(0,2))}</strong>`;document.getElementById("learnAnswer").focus();});
+      document.getElementById("learnReveal")?.addEventListener("click",()=>gradeDefinitionLearn(true));
+      document.getElementById("learnAnswer").focus();
+    }
+    function gradeDefinitionLearn(reveal){
+      const d=definitionLesson,i=d.current,w=LANG_SET9_WORDS[i],input=document.getElementById("learnAnswer"),feedback=document.getElementById("learnFeedback");
+      if(!reveal && !input.value.trim()){feedback.textContent="Type the word first.";input.focus();return;}
+      const right=!reveal && normalizeAnswer(input.value)===normalizeAnswer(w.word);
+      if(!right){
+        if(d.phase==="guided"){feedback.textContent="Not quite. Type the word shown above.";input.focus();return;}
+        d.wins[i]=0;d.phase="guided";d.kind="new";d.hinted=false;saveDefinitionLesson();renderDefinitionLearn();document.getElementById("learnFeedback").textContent="Let's practice this pair again.";return;
+      }
+      if(d.phase==="guided"){
+        d.phase="check";d.hinted=false;saveDefinitionLesson();renderDefinitionLearn();return;
+      }
+      if(d.kind==="review" && !d.hinted)d.wins[i]++;
+      d.history.push(i);d.turn++;d.due[i]=d.turn+(d.flags[i]?1:2);d.current=null;saveDefinitionLesson();pickDefinitionWord();
+    }
+    function resetDefinitionLearn(){definitionLesson=freshDefinitionLesson();pickDefinitionWord();}
+
     // AP Lang Module 8: Interactive Definition Drill (replaces Retain)
     let defDrillQueue = [], defDrillIndex = 0, defDrillScore = 0, defDrillStreak = 0, defDrillMissed = [], defDrillSubmitted = false, defDrillStarted = false, defDrillQuestionStarted = 0;
 
     function startDefDrill(wordsToUse) {
+      document.querySelector("#defDrillWrapper .eyebrow").textContent=`Set ${activeLangSet} · Definitions`;
+      document.getElementById("defDrillTitle").textContent="Definition Recall Drill";
+      document.getElementById("defDrillHomeSideBtn").textContent=`← Set ${activeLangSet} Home`;
+
       const sourceList = wordsToUse || (activeLangSet === 8 ? LANG_SET8_WORDS : (activeLangSet === 9 ? LANG_SET9_WORDS : WORDS));
       defDrillQueue = shuffleList(sourceList);
       defDrillIndex = 0;
@@ -8477,10 +8546,10 @@ const LANG_SET9_SHORT_ANSWER_PAIRS = [
 
       cardEl.innerHTML = `
         <div class="summary">
-          <span class="question-type">Module 8 · Definition Recall Drill Complete</span>
+          <span class="question-type">Set ${activeLangSet} · Definition Recall Drill Complete</span>
           <div class="summary-score">${defDrillScore} / ${total}</div>
           <h3 style="font-size: 24px; margin: 12px 0 6px; color: var(--navy);">
-            ${p === 100 ? "Flawless! All 10 definitions mastered!" : p >= 80 ? "Great job! Strong recall of Module 8." : "Keep practicing to master all 10 words."}
+            ${p === 100 ? "Flawless! All 10 definitions mastered!" : p >= 80 ? "Great job! Strong recall of this set." : "Keep practicing to master all 10 words."}
           </h3>
           <p class="lede" style="margin: 0 auto 22px;">
             ${defDrillScore} correct, ${missed.length} missed · <strong>${p}%</strong> accuracy
