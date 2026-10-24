@@ -2,12 +2,292 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Vocabulary practice</title>
 <style>
-:root{--bg:#f7f8fa;--paper:#fff;--ink:#19232f;--muted:#626c7a;--line:#e0e5ec;--accent:#284d73;--soft:#edf3f9;--green:#16624b;--greenbg:#eef8f3;--red:#9d3434;--redbg:#fff2f1;--radius:14px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}button,input,select,summary{touch-action:manipulation}button{min-height:44px;border:1px solid var(--line);border-radius:9px;background:var(--paper);color:var(--ink);padding:10px 16px;font-weight:600;line-height:1.3}button:hover{border-color:var(--accent);background:var(--soft)}button:disabled{opacity:.48;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #609acb;outline-offset:3px}.primary{background:var(--accent);border-color:var(--accent);color:white}.primary:hover{background:#1d3c5c;color:white}.textbtn{border-color:transparent;background:transparent;color:var(--accent)}[hidden]{display:none!important}header{background:white;border-bottom:1px solid var(--line)}.bar{max-width:1240px;margin:auto;padding:16px 24px;display:flex;align-items:center;gap:24px}.brand{border:0;background:none;padding:0;white-space:nowrap;font-size:17px;letter-spacing:-.4px}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav button{padding:8px 12px;font-size:14px;min-height:40px;border-color:transparent;color:var(--muted);font-weight:500}.nav button[aria-current=page]{color:var(--accent);background:var(--soft)}main{max-width:1192px;margin:0 auto;padding:34px 24px 80px}h1{font-size:clamp(27px,4vw,36px);line-height:1.2;letter-spacing:-1px;margin:4px 0 10px}h2{font-size:22px;line-height:1.3;margin:0 0 8px;letter-spacing:-.35px}h3{font-size:18px;line-height:1.4;margin:0 0 8px}p{margin:8px 0 16px}.muted{color:var(--muted)}.small{font-size:14px}.eyebrow{font-size:13px;color:var(--muted);margin:0 0 8px}.intro{margin-bottom:26px}.intro p{max-width:720px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.courses{grid-template-columns:repeat(2,minmax(0,1fr));max-width:800px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px}.tile{min-height:210px;display:flex;flex-direction:column;align-items:flex-start}.tile p{font-size:15px;color:var(--muted)}.tile .actions{margin-top:auto;padding-top:12px}.course{padding:30px;text-align:left;min-height:110px;font-size:20px;line-height:1.4}.setgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.setgrid button{text-align:left;padding:20px;font-size:17px}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.between{display:flex;justify-content:space-between;gap:16px;align-items:center}.back{margin-bottom:18px}.study{max-width:780px;margin:auto}.studyhead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:22px}.prompt{font-size:clamp(23px,4vw,31px);line-height:1.48;letter-spacing:-.4px;overflow-wrap:anywhere;margin:14px 0 24px}.word{font-size:clamp(30px,5vw,43px);font-weight:650;line-height:1.25;overflow-wrap:anywhere}.definition{font-size:20px;line-height:1.55;overflow-wrap:anywhere}.answer{width:100%;font-size:18px;border:1px solid #bfc9d5;border-radius:9px;padding:13px 14px;min-height:52px;background:white;color:var(--ink)}label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}.checkline{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:400;margin:0}.checkline input{width:18px;height:18px;accent-color:var(--accent)}.formrow{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0}.field{min-width:160px;flex:1}select,input[type=search]{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink)}.notice{padding:14px 16px;border-radius:10px;margin:18px 0;background:var(--soft);color:var(--accent);font-size:15px}.good{background:var(--greenbg);color:var(--green)}.bad{background:var(--redbg);color:var(--red)}.pill{display:inline-block;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:3px 10px;font-size:12px;margin:2px 4px 2px 0}.flash{width:100%;display:flex;min-height:290px;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px;background:white;border-radius:14px;border:1px solid var(--line);font-weight:400;gap:16px}.flash:hover{background:white}.flash .muted{font-size:14px}.notes{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}.notes p{font-size:15px;color:var(--muted)}details.guidelines{border-top:1px solid var(--line);margin-top:34px;padding-top:16px;max-width:900px;color:var(--muted);font-size:14px}summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:600;color:var(--ink)}.guidelines ul{padding-left:20px}.guidelines li{margin:8px 0}.mapcontrols{display:grid;grid-template-columns:1fr 210px;gap:12px;margin-bottom:22px}.maplayout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px;align-items:start}.eras{display:flex;flex-direction:column;gap:5px;position:sticky;top:20px}.eras button{text-align:left;border-color:transparent;background:transparent;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:8px}.eras .selected{background:var(--soft);color:var(--accent);border-color:#d8e5f0}.branchhead{padding:20px 24px;background:var(--soft);border:1px solid #d8e5f0;border-radius:12px;position:relative;margin-bottom:30px}.branchhead:after{content:"";position:absolute;width:1px;height:30px;background:#b9cddd;left:50%;bottom:-31px}.branchhead p{font-size:14px;margin-bottom:0;color:var(--muted)}.mapgroups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px;position:relative;padding-top:20px}.mapgroups:before{content:"";position:absolute;height:1px;top:0;background:#b9cddd;left:24%;right:24%}.branch{background:white;border:1px solid var(--line);border-radius:12px;padding:18px;position:relative;min-width:0}.branch:before{content:"";position:absolute;width:1px;height:20px;background:#b9cddd;left:50%;top:-21px}.branch h3{font-size:17px}.branch p{font-size:13px;color:var(--muted);margin-bottom:12px}.branch .actions button{font-size:13px;padding:8px 10px;min-height:40px}.termleaves{border-left:1px solid #cfdae4;margin:18px 0 0 5px;padding-left:14px}.leaf{display:block;position:relative;text-align:left;background:transparent;border:0;font-weight:400;padding:7px 0;min-height:36px;width:100%;font-size:13px;overflow-wrap:anywhere}.leaf:before{content:"";height:1px;width:10px;left:-14px;top:18px;background:#cfdae4;position:absolute}.leaf:hover{background:transparent;color:var(--accent);text-decoration:underline}.leaf small{color:var(--muted);margin-right:4px}.termrow{border-bottom:1px solid var(--line);padding:17px 0}.termrow summary{padding:0}.termrow p{margin:10px 0}.categorylabel{font-size:12px;color:var(--muted);margin-bottom:5px}.empty{padding:32px 0;color:var(--muted)}.footeractions{margin-top:22px}.scope{font-size:14px;color:var(--muted);margin-bottom:20px}.choice{flex:1;min-width:100px;min-height:52px}.sr-only{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}.quizblank{letter-spacing:2px}.banklist .termrow p{font-size:15px}footer{max-width:1192px;margin:auto;border-top:1px solid var(--line);padding:18px 24px;color:var(--muted);font-size:12px}dialog{border:1px solid var(--line);border-radius:14px;max-width:650px;width:calc(100% - 32px);padding:28px;color:var(--ink);max-height:85vh;overflow:auto}dialog::backdrop{background:#14233366}.dialogtop{display:flex;justify-content:space-between;gap:16px;align-items:center}dialog .definition{margin-top:18px}.loading{padding:50px;color:var(--muted)}
-@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.maplayout{grid-template-columns:180px 1fr;gap:18px}.mapgroups{grid-template-columns:1fr}.mapgroups:before{left:50%;right:50%}.setgrid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:620px){.bar{display:block;padding:12px 16px}.brand{margin-bottom:8px}.nav{flex-wrap:nowrap;overflow:auto;gap:3px;scrollbar-width:thin}.nav button{white-space:nowrap;flex-shrink:0}main{padding:24px 16px 54px}.cards,.courses{grid-template-columns:1fr}.tile{min-height:165px;padding:21px}.setgrid{grid-template-columns:1fr 1fr;gap:10px}.panel{padding:20px}.maplayout{display:block}.eras{position:static;display:flex;flex-direction:row;overflow:auto;flex-wrap:nowrap;margin:0 -16px 22px;padding:0 16px 8px;gap:6px}.eras button{flex-shrink:0;max-width:210px;border:1px solid var(--line);background:white}.mapcontrols{grid-template-columns:1fr}.branchhead{padding:18px}.mapgroups{padding-left:14px;border-left:1px solid #b9cddd;gap:16px}.mapgroups:before{display:none}.branchhead:after{left:0}.branch:before{height:1px;width:14px;left:-15px;top:28px}.branch p{font-size:14px}.termleaves{margin-top:12px}.leaf{font-size:14px;min-height:44px}.flash{padding:24px 18px;min-height:270px}.flash .definition{font-size:18px}.studyhead{align-items:flex-start}.between{align-items:flex-start}.actions{gap:8px}.actions button{flex-grow:1}.prompt{margin-top:14px;margin-bottom:20px}.field{min-width:140px}.scope{font-size:13px}.branchhead h2{font-size:20px}footer{padding:16px}.nav button{font-size:13px}dialog{padding:22px}.choice{min-height:54px}}
-@media(prefers-reduced-motion:no-preference){button{transition:background .12s,border-color .12s}.panel,.branch{animation:appear .16s ease-out}@keyframes appear{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}}
+:root{
+--lang:#4f46e5;--lang2:#4338ca;--lang-soft:#eef0fe;--lang-line:#d7dafc;
+--apush:#b45309;--apush2:#92400e;--apush-soft:#fdf3e6;--apush-line:#f1d6b3;
+--accent:var(--lang);--accent2:var(--lang2);--soft:var(--lang-soft);--softline:var(--lang-line);--onaccent:#fff;
+--bg:#f7f6f3;--bg2:#efede8;--paper:#fff;--ink:#181b24;--ink2:#383d4a;--muted:#676d7c;--line:#e8e5de;--line2:#d9d5cc;
+--green:#137a45;--greenbg:#ebf8f1;--greenline:#bde5cd;--red:#b42318;--redbg:#fdf1ef;--redline:#f4c7c1;
+--tintL:95%;--tintS:75%;--dotL:50%;--eyeL:36%;--mark:hsl(48 100% 68% / .6);
+--shadow-sm:0 1px 2px rgba(24,27,36,.06);
+--shadow:0 1px 2px rgba(24,27,36,.04),0 6px 20px -8px rgba(24,27,36,.14);
+--shadow-lg:0 2px 6px rgba(24,27,36,.05),0 22px 50px -18px rgba(24,27,36,.28);
+--r:20px;--hh:65px;--th:120px;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",system-ui,Roboto,"Helvetica Neue",sans-serif}
+body[data-course=apush]{--accent:var(--apush);--accent2:var(--apush2);--soft:var(--apush-soft);--softline:var(--apush-line)}
+@media(prefers-color-scheme:dark){:root{--lang:#8f8aff;--lang2:#aaa6ff;--lang-soft:#23223f;--lang-line:#36346a;--apush:#f2a65a;--apush2:#f7bd80;--apush-soft:#2f2212;--apush-line:#57401f;--onaccent:#15141c;--bg:#111217;--bg2:#1c1d25;--paper:#1b1d25;--ink:#eceef4;--ink2:#c8cbd6;--muted:#989eac;--line:#2a2d38;--line2:#3a3e4b;--green:#5cd197;--greenbg:#13271d;--greenline:#24523a;--red:#ff8c82;--redbg:#2c1615;--redline:#5b2a25;--tintL:17%;--tintS:35%;--dotL:62%;--eyeL:72%;--mark:hsl(48 90% 50% / .35);--shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -10px rgba(0,0,0,.6);--shadow-lg:0 2px 6px rgba(0,0,0,.3),0 24px 50px -18px rgba(0,0,0,.7)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hh) + 16px)}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:560px;background:radial-gradient(900px 420px at 85% -140px,var(--soft),transparent 70%),radial-gradient(700px 360px at -5% -180px,var(--soft),transparent 70%);pointer-events:none;z-index:-1}
+button,input,select{font:inherit;color:inherit}
+button,input,select,summary{touch-action:manipulation}
+button{cursor:pointer;min-height:44px;border:1px solid var(--line2);border-radius:12px;background:var(--paper);color:var(--ink);padding:10px 16px;font-weight:600;line-height:1.3;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--shadow-sm);transition:background .15s,border-color .15s,color .15s,transform .15s,box-shadow .2s}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button:active{transform:translateY(1px)}
+button:disabled{opacity:.5;cursor:default;transform:none}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.primary{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
+.primary:hover{background:var(--accent2);border-color:var(--accent2);color:var(--onaccent)}
+.ghost,.textbtn{background:transparent;border-color:transparent;box-shadow:none;color:var(--accent)}
+.ghost:hover,.textbtn:hover{background:var(--soft);border-color:transparent}
+button.small{min-height:38px;padding:7px 13px;font-size:13.5px;border-radius:10px}
+.iconbtn{width:44px;padding:0}
+.linkbtn{min-height:0;padding:0;border:0;background:none;box-shadow:none;color:var(--accent);text-decoration:underline;text-underline-offset:3px;font-weight:650;display:inline}
+.linkbtn:hover{background:none}
+.ic{flex-shrink:0;transition:transform .2s}
+[hidden]{display:none!important}
+kbd{font:600 11px/1 var(--sans);padding:3px 6px;border:1px solid var(--line2);border-bottom-width:2px;border-radius:6px;background:var(--paper);color:var(--muted)}
+.sr-only{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+/* Header */
+header{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar{max-width:1240px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{border:0;background:none;box-shadow:none;padding:0;gap:10px;font-size:16.5px;font-weight:720;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.brand:hover{color:var(--ink);background:none}
+.logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--onaccent);background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 6px 14px -6px var(--accent)}
+.nav{display:flex;gap:3px;padding:4px;background:var(--bg2);border:1px solid var(--line);border-radius:14px}
+.nav button{min-height:36px;padding:6px 14px;font-size:14px;border:0;box-shadow:none;background:transparent;color:var(--muted);font-weight:600;border-radius:10px;white-space:nowrap}
+.nav button:hover{color:var(--ink);background:transparent}
+.nav button[aria-current=page]{background:var(--paper);color:var(--accent);box-shadow:var(--shadow-sm)}
+/* Layout + type */
+main{flex:1;width:100%;max-width:1192px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:clamp(30px,4.6vw,44px);line-height:1.1;letter-spacing:-.03em;font-weight:760;margin:0 0 12px}
+.h-sm{font-size:24px;letter-spacing:-.02em;margin:0;line-height:1.2}
+h2{font-size:21px;line-height:1.3;margin:0 0 6px;letter-spacing:-.02em;font-weight:700}
+h3{font-size:17px;line-height:1.35;margin:0;letter-spacing:-.01em;font-weight:680}
+p{margin:8px 0 16px}
+.muted{color:var(--muted)}.small{font-size:14px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.intro{margin-bottom:28px}.intro p.muted{max-width:680px;font-size:17px;margin:0}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px;flex-wrap:wrap}.pagehead .intro{margin:0}
+.headaside{display:flex;gap:8px;align-items:center}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.between{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.back{margin-bottom:20px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.count{font-size:12px;font-weight:650;color:var(--muted);background:var(--bg2);border-radius:99px;padding:2px 9px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dot{width:10px;height:10px;border-radius:50%;background:hsl(var(--h,220) 65% var(--dotL));flex-shrink:0;display:inline-block}
+/* Home */
+.hero{padding:20px 0 8px;margin-bottom:30px}
+.hero h1{font-size:clamp(34px,5.4vw,54px);max-width:760px}
+.lead{font-size:18px;max-width:600px;margin:0}
+.courses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.course{--c:var(--lang);--cs:var(--lang-soft);flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:28px;border-radius:24px;min-height:290px;gap:10px;border-color:var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;font-weight:400}
+.course.c-apush{--c:var(--apush);--cs:var(--apush-soft)}
+.course:hover{border-color:var(--c);color:var(--ink);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.course:after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:var(--cs);z-index:0;transition:transform .5s}
+.course:hover:after{transform:scale(1.18)}
+.course>*{position:relative;z-index:1}
+.cicon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:var(--onaccent);margin-bottom:10px;box-shadow:0 10px 22px -10px var(--c)}
+.ctitle{font-size:23px;font-weight:720;letter-spacing:-.02em;line-height:1.25}
+.cdesc{color:var(--muted);font-size:15.5px;line-height:1.5;max-width:430px}
+.cstats{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.cstats span{font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--bg2);border-radius:99px;padding:4px 10px}
+.cgo{margin-top:auto;padding-top:14px;display:inline-flex;align-items:center;gap:6px;font-weight:650;color:var(--c,var(--accent));font-size:15px}
+.course:hover .cgo .ic,.modecard:hover .cgo .ic{transform:translateX(4px)}
+/* AP Lang sets */
+.setgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.setcard{flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:18px 20px 20px;border-radius:18px;border-color:var(--line);box-shadow:var(--shadow-sm);gap:2px;min-height:172px;font-weight:400}
+.setcard:hover{transform:translateY(-2px);box-shadow:var(--shadow);color:var(--ink)}
+.setcard.current{border-color:var(--softline);background:linear-gradient(180deg,var(--soft),var(--paper) 75%)}
+.setrow{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:24px}
+.setlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.badge{font-size:11px;font-weight:700;color:var(--accent);background:var(--soft);border:1px solid var(--softline);border-radius:99px;padding:2px 8px}
+.setnum{font-size:44px;font-weight:780;letter-spacing:-.04em;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums}
+.setmeta{font-size:13px;font-weight:600;color:var(--ink2);margin-top:2px}
+.setwords{font-size:13px;color:var(--muted);margin-top:auto;padding-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45}
+/* Set home tiles */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;min-height:250px;gap:4px}
+.ticon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--soft);color:var(--accent);margin-bottom:12px;border:1px solid var(--softline)}
+.tile p{font-size:15px;color:var(--muted);margin:0 0 6px}
+.tile .actions{margin-top:auto;padding-top:14px}
+.switcher{display:flex;gap:8px;align-items:center}
+.wordsec{margin-top:40px}
+.secthead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.wordcloud{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:36px;padding:6px 14px;border-radius:99px;font-size:14px;font-weight:550;box-shadow:none;border-color:var(--line)}
+.chip:hover{background:var(--soft)}
+.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:840px;margin-bottom:22px}
+.modecard{flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:26px;border-radius:20px;min-height:230px;gap:6px;font-weight:400;border-color:var(--line);box-shadow:var(--shadow)}
+.modecard:hover{color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.mtitle{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.mdesc{color:var(--muted);font-size:15px;line-height:1.5}
+/* Study screens */
+.study{max-width:760px;margin:0 auto}
+.studytop{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
+.studytop .eyebrow{margin-bottom:4px}
+.studymeta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;min-height:38px}
+.counter{font-size:13.5px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.progress{height:6px;background:var(--bg2);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s cubic-bezier(.3,.7,.2,1)}
+.qpanel{padding:32px}
+.mode{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--soft);border-radius:99px;padding:5px 12px;margin:0}
+.prompt{font-family:var(--serif);font-size:clamp(22px,3.4vw,29px);line-height:1.45;font-weight:500;letter-spacing:-.005em;overflow-wrap:anywhere;margin:16px 0 26px}
+.reveal{font-size:17px;background:var(--soft);border:1px dashed var(--softline);border-radius:14px;padding:14px 18px;margin:-8px 0 22px}
+.reveal strong{font-family:var(--serif);font-size:23px;color:var(--accent);font-weight:600}
+.word{font-family:var(--serif);font-size:clamp(32px,5.4vw,50px);font-weight:600;line-height:1.15;letter-spacing:-.01em;overflow-wrap:anywhere}
+.definition{font-size:20px;line-height:1.55;overflow-wrap:anywhere}
+label{display:block;font-size:13.5px;font-weight:650;margin-bottom:8px;color:var(--ink2)}
+.answer{width:100%;font-size:19px;border:1.5px solid var(--line2);border-radius:14px;padding:14px 16px;min-height:56px;background:var(--bg);color:var(--ink);transition:border-color .15s,box-shadow .15s,background .15s}
+.answer:focus{outline:none;border-color:var(--accent);background:var(--paper);box-shadow:0 0 0 4px var(--soft)}
+.answer.right{border-color:var(--green);background:var(--greenbg)}.answer.wrong{border-color:var(--red);background:var(--redbg)}
+.hinttext{min-height:6px;font-size:14px;color:var(--muted);margin-top:8px}
+.msg{font-size:14px;color:var(--red);margin:4px 0 14px;min-height:4px}
+.choice{flex:1;min-width:120px;min-height:64px;font-size:17px;border-radius:16px}
+.choice.isright{opacity:1;background:var(--greenbg);border-color:var(--green);color:var(--green)}
+.choice.iswrong{opacity:1;background:var(--redbg);border-color:var(--red);color:var(--red)}
+.notice{display:flex;gap:12px;align-items:flex-start;padding:15px 18px;border-radius:14px;margin:0 0 18px;background:var(--soft);color:var(--ink);border:1px solid var(--softline);font-size:15px}
+#questionFeedback .notice{margin:22px 0 4px}
+.notice .ic{margin-top:2px}.notice p{margin:4px 0 0;color:var(--ink2)}
+.notice.good{background:var(--greenbg);border-color:var(--greenline)}.notice.good .nt,.notice.good>.ic{color:var(--green)}
+.notice.bad{background:var(--redbg);border-color:var(--redline)}.notice.bad .nt,.notice.bad>.ic{color:var(--red)}
+.footeractions{margin-top:20px}
+.notes{margin-top:26px;border-top:1px solid var(--line);padding-top:16px}
+.notes p{font-size:14px;color:var(--muted);margin:2px 0 8px}
+.checkline{display:flex;align-items:center;gap:10px;min-height:40px;font-weight:600;margin:0;cursor:pointer;font-size:15px;color:var(--ink)}
+.checkline input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.seg{display:inline-flex;padding:4px;gap:3px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;flex-wrap:wrap}
+.seg button{min-height:36px;padding:6px 14px;font-size:14px;border:0;background:transparent;box-shadow:none;color:var(--muted);border-radius:10px;font-weight:600}
+.seg button:hover{color:var(--ink);background:transparent}
+.seg button.on{background:var(--paper);color:var(--accent);box-shadow:var(--shadow-sm)}
+.formrow{display:flex;gap:22px;flex-wrap:wrap;margin:22px 0 26px}
+.flabel{display:block;font-size:13px;font-weight:650;color:var(--ink2);margin-bottom:8px}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+.stats span{font-size:13px;font-weight:600;color:var(--ink2);background:var(--bg2);border-radius:99px;padding:4px 11px}
+.result{text-align:center;padding:40px 28px}
+.ring{--p:0;width:148px;height:148px;border-radius:50%;margin:0 auto 20px;background:conic-gradient(var(--accent) calc(var(--p) * 1%),var(--bg2) 0);display:grid;place-items:center}
+.ring span{width:118px;height:118px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-size:32px;font-weight:780;letter-spacing:-.03em}
+.result .actions{justify-content:center}
+.result p{max-width:460px;margin:6px auto 0}
+/* Flashcards */
+.flashwrap{perspective:1800px}
+button.flash{display:grid;width:100%;padding:0;border:0;background:transparent;box-shadow:none;border-radius:26px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.75,.25,1);font-weight:400;color:var(--ink);text-align:center}
+button.flash:hover{background:transparent;color:var(--ink)}
+button.flash:active{transform:none}
+button.flash.flipped{transform:rotateY(180deg)}
+button.flash:focus-visible{outline:none}
+button.flash:focus-visible .face{outline:3px solid var(--accent);outline-offset:3px}
+.face{grid-area:1/1;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:52px 40px;border-radius:26px;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow-lg);-webkit-backface-visibility:hidden;backface-visibility:hidden;position:relative;transition:border-color .2s}
+.face.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--soft),var(--paper) 65%)}
+.flash:hover .face{border-color:var(--softline)}
+.facetag{position:absolute;top:18px;left:22px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hint{position:absolute;bottom:16px;left:0;right:0;font-size:12.5px;color:var(--muted)}
+.cardnav{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:10px;margin-top:20px}
+.cardnav button{min-height:52px;font-size:15.5px}
+.cardextra{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap}
+.kbdhint{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.scope{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin:0 0 14px;flex-wrap:wrap}
+.scope .sep{opacity:.5}
+.cue{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:22px 0 0}
+.cue .ic{color:var(--accent);margin-top:2px}
+summary{cursor:pointer;list-style:none;font-weight:650;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+details[open]>summary .chev{transform:rotate(90deg)}
+.formsbox{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:0 18px}
+.formsbox summary{display:flex;justify-content:space-between;align-items:center;min-height:52px}
+.formsbox .inner{padding:0 0 16px}
+.formsbox p{font-size:15px;color:var(--muted);margin:8px 0}
+.pill{display:inline-block;color:var(--ink2);background:var(--bg2);border-radius:99px;padding:4px 11px;font-size:13px;font-weight:550;margin:3px 6px 3px 0}
+details.guidelines{margin-top:52px;border:1px solid var(--line);border-radius:16px;padding:0 20px;color:var(--muted);font-size:14px;background:var(--paper)}
+.guidelines>summary{display:flex;justify-content:space-between;align-items:center;min-height:54px;color:var(--ink2)}
+.guidelines ul{padding:0 0 14px 20px;margin:0}.guidelines li{margin:8px 0}
+.banklist{margin-top:28px}
+.qrow{border-top:1px solid var(--line)}
+.qrow summary{display:flex;gap:12px;padding:14px 0;font-weight:500;font-size:15px;color:var(--ink);align-items:flex-start}
+.qrow summary .num{margin-top:1px}
+.qrow p{font-size:15px;color:var(--ink2);margin:0 0 16px 62px}
+/* APUSH map */
+.toolbar{margin:0 0 22px;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+@media(min-width:901px){.toolbar{position:sticky;top:calc(var(--hh) + 10px);z-index:10}}
+.searchbox{position:relative}
+.searchbox>.ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.searchbox input{width:100%;min-height:52px;padding:12px 48px 12px 46px;font-size:16.5px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);transition:border-color .15s,box-shadow .15s,background .15s}
+.searchbox input:focus{outline:none;border-color:var(--accent);background:var(--paper);box-shadow:0 0 0 4px var(--soft)}
+.searchbox kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none}
+.searchbox input:not(:placeholder-shown)~kbd,.searchbox input:focus~kbd{display:none}
+.setbar{display:flex;align-items:center;gap:12px;min-width:0}
+.setbarlabel{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-left:4px}
+.setchips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px;min-width:0;flex:1}
+.setchips::-webkit-scrollbar{display:none}
+.setchip{min-height:36px;padding:6px 13px;font-size:13.5px;border-radius:99px;white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums;box-shadow:none;border-color:var(--line);font-weight:600;color:var(--ink2);gap:6px}
+.setchip:hover{background:var(--soft)}
+.setchip.on,.setchip.on:hover{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
+.setchip .n{font-size:11.5px;font-weight:700;background:var(--bg2);color:var(--muted);border-radius:99px;padding:1px 7px}
+.setchip.on .n{background:rgba(255,255,255,.25);color:inherit}
+.setchip.zero{opacity:.5}
+.scopebar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;margin-bottom:18px;background:var(--soft);border:1px solid var(--softline);border-radius:16px;font-size:15px}
+.scopebar .eyebrow{margin:0 0 2px}
+.maplayout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:start}
+.eras{display:flex;flex-direction:column;gap:3px;position:sticky;top:calc(var(--hh) + var(--th) + 24px);max-height:calc(100vh - var(--hh) - var(--th) - 40px);overflow:auto;padding:2px}
+.sidelabel{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:4px 12px 8px}
+.eras button{justify-content:flex-start;text-align:left;border-color:transparent;background:transparent;box-shadow:none;font-size:14px;font-weight:560;color:var(--ink2);padding:9px 12px;gap:10px;min-height:44px;border-radius:12px}
+.eras button:hover{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.eras .selected,.eras .selected:hover{background:var(--paper);border-color:var(--line);box-shadow:var(--shadow-sm);color:var(--ink);font-weight:680}
+.eras .etitle{flex:1;line-height:1.3}
+.eras .selected .dot{box-shadow:0 0 0 4px hsl(var(--h) 65% var(--dotL) / .22)}
+.branchhead{position:relative;padding:28px 28px 24px 32px;border-radius:22px;background:linear-gradient(135deg,hsl(var(--h) var(--tintS) var(--tintL)),var(--paper) 78%);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+.branchhead:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:hsl(var(--h) 65% var(--dotL))}
+.branchhead .eyebrow{color:hsl(var(--h) 55% var(--eyeL))}
+.branchhead h2{font-size:28px;letter-spacing:-.025em}
+.branchhead p{color:var(--ink2);max-width:640px;margin:6px 0 18px}
+.mapgroups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.branch{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 20px 18px;box-shadow:var(--shadow-sm);min-width:0;position:relative;overflow:hidden;transition:box-shadow .2s}
+.branch:before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:hsl(var(--h) 65% var(--dotL))}
+.branch:hover{box-shadow:var(--shadow)}
+.bhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.branch>p{font-size:14px;color:var(--muted);margin:0}
+.leafbox summary{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;color:var(--accent);min-height:36px;font-weight:650}
+.leaves{display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 6px}
+.leaf{min-height:32px;padding:5px 10px;font-size:13px;font-weight:520;border-radius:9px;box-shadow:none;border-color:var(--line);background:var(--bg);text-align:left;justify-content:flex-start;gap:6px;line-height:1.3}
+.leaf small{color:var(--muted);font-weight:650;font-size:11.5px;font-variant-numeric:tabular-nums}
+.leaf:hover{background:var(--soft)}
+.branch .actions{margin-top:auto;padding-top:6px;gap:8px}
+.listgroup{margin-bottom:16px;padding:22px}
+.listgroup>p{margin:4px 0 14px}
+.termlist{display:flex;flex-direction:column;gap:8px}
+details.termrow{background:var(--paper);border:1px solid var(--line);border-radius:14px;transition:border-color .15s,box-shadow .2s}
+details.termrow[open]{border-color:var(--softline);box-shadow:var(--shadow)}
+.termrow summary{display:flex;align-items:center;gap:14px;padding:12px 16px;min-height:58px;font-weight:400}
+.termrow summary>.chev{color:var(--muted);margin-left:auto}
+.num{flex-shrink:0;font-size:12px;font-weight:700;color:var(--accent);background:var(--soft);border-radius:8px;padding:4px 0;width:50px;text-align:center;font-variant-numeric:tabular-nums;display:inline-block}
+.tmain{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.tterm{font-weight:650;color:var(--ink);overflow-wrap:anywhere}
+.tcat{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin:0}
+.tcat .dot{width:7px;height:7px}
+.tdef{font-size:13.5px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.termrow[open] .tdef{display:none}
+.tbody{padding:0 16px 16px 80px}
+.tbody p{margin:0 0 12px;font-size:15.5px;color:var(--ink2)}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+.empty{padding:48px 20px;text-align:center;color:var(--muted);border:1.5px dashed var(--line2);border-radius:18px}
+.apsets{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.apset{display:flex;flex-direction:column;gap:8px;padding:22px}
+.aphead{display:flex;justify-content:space-between;align-items:center}
+.apset h3{font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.apspan{font-size:13.5px;color:var(--muted);margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink2);background:var(--bg2);border-radius:99px;padding:3px 10px 3px 8px}
+.tag .dot{width:7px;height:7px}
+.apset .actions{margin-top:auto;padding-top:8px}.apset .actions button{flex:1}
+dialog{border:1px solid var(--line);border-radius:24px;max-width:620px;width:calc(100% - 32px);padding:0;color:var(--ink);background:var(--paper);box-shadow:var(--shadow-lg);max-height:85vh;overflow:auto}
+dialog::backdrop{background:rgba(12,14,22,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.dlg{padding:24px 28px 28px}
+.dialogtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+dialog h2{font-size:30px;font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+dialog .definition{font-size:18.5px;margin:14px 0 4px}
+footer{max-width:1192px;width:100%;margin:0 auto;padding:22px 24px 28px;color:var(--muted);font-size:12.5px;text-align:center;border-top:1px solid var(--line)}
+.loading{padding:60px;text-align:center;color:var(--muted)}
+@media(max-width:980px){.cards{grid-template-columns:1fr 1fr}.maplayout{grid-template-columns:220px minmax(0,1fr);gap:20px}.mapgroups{grid-template-columns:1fr}}
+@media(max-width:900px){.eras{top:calc(var(--hh) + 16px);max-height:calc(100vh - var(--hh) - 32px)}}
+@media(max-width:720px){.bar{flex-wrap:wrap;gap:10px;padding:10px 16px}.nav{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav button{flex-shrink:0}main{padding:24px 16px 56px}.courses,.cards,.modegrid{grid-template-columns:1fr}.course{min-height:0;padding:24px}.tile{min-height:0}.setgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.setcard{min-height:150px;padding:16px}.setnum{font-size:36px}.panel,.qpanel{padding:22px}.maplayout{display:block}.eras{position:static;flex-direction:row;overflow-x:auto;max-height:none;margin:0 -16px 16px;padding:2px 16px 8px;gap:6px;scrollbar-width:none}.eras::-webkit-scrollbar{display:none}.sidelabel{display:none}.eras button{flex-shrink:0;border-color:var(--line);background:var(--paper);white-space:nowrap}.eras .etitle{flex:none}.branchhead{padding:22px 20px 20px 24px}.branchhead h2{font-size:23px}.toolbar{padding:12px;border-radius:16px}.setbar{flex-direction:column;align-items:stretch;gap:6px}.setchips{margin:0 -12px;padding:2px 12px}.face{min-height:300px;padding:48px 22px}.definition{font-size:18px}.kbdhint{display:none}.tbody{padding:0 16px 16px}.qrow p{margin-left:0}.studytop{align-items:center}.actions button{flex-grow:1}.dlg{padding:20px 22px 24px}dialog h2{font-size:25px}.hero h1{font-size:34px}}
+@media(max-width:440px){.cardnav .lbl{display:none}.cardnav{grid-template-columns:1fr 1.6fr 1fr}}
+@media(prefers-reduced-motion:no-preference){.enter>*{animation:rise .38s cubic-bezier(.2,.7,.2,1) both}.enter>*:nth-child(2){animation-delay:.05s}.enter>*:nth-child(3){animation-delay:.1s}.enter>*:nth-child(n+4){animation-delay:.14s}dialog[open]{animation:pop .22s cubic-bezier(.3,.7,.2,1)}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -15,7 +295,7 @@
 AP LANG: source definitions and alternate meanings from the supplied packet. Derivatives must be packet-supported or obvious natural inflections. The lesson homepage has Flashcards, one Definitions box (Learn + Definition drill), and Part 3 Practice. Practice consists ONLY of the supplied contextual True/False and no-bank typed word/derivative bank; no dictation, matching, word bank, or base-word hints. Integrate precision/grammar explanations in learning feedback and bank explanations. Learn: one guided new word, immediate unguided check, cumulative review of all introduced words, no consecutive new introductions, no fixed small-group mastery gates. Wrong recalls advance and return later without automatic re-teaching. Flags/hints are optional. Do not add Cram or cumulative performance dashboards.
 APUSH: preserve every numbered EPTL and its supplied definition. Organize all terms into explicit historical/topic branches, show connections as memory cues, and allow category/range/search-based flashcard study. Numbered duplicate terms remain distinct. Categorization is an organizational aid, not a rewrite of packet facts. No unrelated course content.
 -->
-<header><div class="bar"><button class="brand" data-nav="courses">Vocabulary practice</button><nav id="nav" class="nav" aria-label="Main navigation"></nav></div></header>
+<header id="siteHeader"><div class="bar"><button class="brand" data-nav="courses"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/></svg></span><span>Vocabulary practice</span></button><nav id="nav" class="nav" aria-label="Main navigation"></nav></div></header>
 <main id="app" tabindex="-1"><p class="loading">Loading vocabulary…</p></main>
 <dialog id="termDialog" aria-labelledby="termDialogTitle"></dialog>
 <footer>Vocabulary practice · Works offline after download · No accounts</footer>
@@ -28,47 +308,100 @@ const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f;}catch{retu
 const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 const shuffle=xs=>{let a=[...xs];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 const groupIndex=new Map(),termGroup=new Map();ERAS.forEach(e=>e.groups.forEach(g=>{groupIndex.set(g.id,{...g,era:e});g.numbers.forEach(n=>termGroup.set(n,g.id));}));
+const SETCOUNT=Math.ceil(TERMS.length/50),HAY=new Map(TERMS.map(c=>[c,norm(c.term+' '+c.definition+' '+c.number)]));
 let set=Number(read('flashcards-ap-lang-last-set',10));if(!SETS[set])set=10;
 let view='courses',course='',deck=[],cardPos=0,cardBack=false,deckLabel='',deckReturn='langhome',lesson=null,session=null;
-let mapEra=read('vocab-map-era',ERAS[0].id),mapRange='all',mapSearch='',mapMode='map';if(!ERAS.some(e=>e.id===mapEra))mapEra=ERAS[0].id;
+let mapEra=read('vocab-map-era',ERAS[0].id),mapRange=String(read('vocab-map-range','all')),mapSearch='',mapMode='map';if(!ERAS.some(e=>e.id===mapEra))mapEra=ERAS[0].id;
+if(mapRange!=='all'&&!(Number(mapRange)>=1&&Number(mapRange)<=SETCOUNT))mapRange='all';
 let practiceType='all',practiceOrder='ordered';
+
+/* ---------- UI helpers ---------- */
+const IC={
+ left:'<path d="M15 18l-6-6 6-6"/>',right:'<path d="M9 18l6-6-6-6"/>',
+ back:'<path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>',arrow:'<path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>',
+ flip:'<path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/><path d="M21 3v5h-5"/>',
+ shuffle:'<path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/>',
+ search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',x:'<path d="M18 6L6 18"/><path d="M6 6l12 12"/>',
+ cards:'<rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/>',
+ bulb:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/>',
+ pencil:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+ book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+ landmark:'<path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M12 2l9 5H3z"/>',
+ map:'<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5L6.8 17M12 11.5l5.2 5.5"/>',
+ list:'<path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',check:'<path d="M20 6L9 17l-5-5"/>',
+ grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+ eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ redo:'<path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/>',play:'<path d="M7 4l13 8-13 8z"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/>'
+};
+const ic=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]||''}</svg>`;
+const chev=()=>`<svg class="ic chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC.right}</svg>`;
+const HUES=[212,28,158,272,350,190,42,318,128,245];
+const hue=e=>HUES[Math.max(0,ERAS.indexOf(e))%HUES.length];
+const rangeLabel=r=>{r=Number(r);return `${(r-1)*50+1}–${Math.min(r*50,TERMS.length)}`;};
+function hl(t,q){t=String(t??'');q=String(q||'').trim();if(!q)return esc(t);const re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');let out='',last=0;t.replace(re,(m,off)=>{if(m){out+=esc(t.slice(last,off))+'<mark>'+esc(m)+'</mark>';last=off+m.length;}return m;});return out+esc(t.slice(last));}
 function words(){return SETS[set].words;}
 function button(label,action,value='',cls=''){return `<button class="${cls}" data-action="${action}" data-value="${esc(value)}">${label}</button>`;}
+function progress(pct){return `<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pct)}"><i style="width:${Math.max(0,Math.min(100,pct))}%"></i></div>`;}
+function studyTop(label,title,back){return `<div class="studytop"><div><p class="eyebrow">${esc(label)}</p><h1 class="h-sm">${esc(title)}</h1></div>${back||''}</div>`;}
+function measure(){const h=$('siteHeader'),t=$('mapToolbar'),r=document.documentElement.style;if(h)r.setProperty('--hh',h.offsetHeight+'px');if(t)r.setProperty('--th',t.offsetHeight+'px');}
+window.addEventListener('resize',measure);
+
 function nav(){
- const items=course==='lang'?[['courses','Courses'],['langsets','Sets'],['langhome','Set '+set],['definitions','Definitions'],['practice','Practice']]:course==='apush'?[['courses','Courses'],['apush','Mind map'],['apushsets','EPTL sets']]:[['courses','Courses']];
+ const items=course==='lang'?[['courses','Courses'],['langsets','Sets'],['langhome','Set '+set],['definitions','Definitions'],['practice','Practice']]:course==='apush'?[['courses','Courses'],['apush','Mind map'],['apushsets','EPTL sets']]:[];
+ $('nav').hidden=!items.length;
  $('nav').innerHTML=items.map(([id,title])=>`<button data-nav="${id}" ${view===id?'aria-current="page"':''}>${title}</button>`).join('');
 }
+let enterTimer;
 function go(id){
  if(['langsets','langhome','definitions','learn','drill','practice','quiz','langcards'].includes(id))course='lang';
  if(['apush','apushsets','apushcards'].includes(id))course='apush';
- if(id==='courses')course='';view=id;nav();render();window.scrollTo({top:0,behavior:'instant'});
+ if(id==='courses')course='';view=id;document.body.dataset.course=course;nav();
+ const app=$('app');app.classList.remove('enter');void app.offsetWidth;app.classList.add('enter');clearTimeout(enterTimer);enterTimer=setTimeout(()=>app.classList.remove('enter'),600);
+ render();window.scrollTo({top:0,behavior:'instant'});measure();
 }
-function guidelines(){return `<details class="guidelines"><summary>Study guidelines</summary><ul><li><strong>AP Lang:</strong> Learn and drill share the Definitions section. Learn adds one word at a time and keeps earlier words in the pool. Missed recall moves on and returns later. Practice uses contextual T/F and typed blanks from the lesson’s question bank, without a word bank or base-word hint. Definitions, alternate meanings, and derivatives stay close to the packet.</li><li><strong>APUSH:</strong> Use historical branches and topic categories to connect EPTLs before reviewing definitions. Study an entire category or filter by numbered set. All original term numbers and definitions are retained.</li><li>Practice only: no Cram tools or cumulative performance dashboards.</li></ul></details>`;}
-function heading(label,title,desc=''){return `<div class="intro"><p class="eyebrow">${esc(label)}</p><h1>${esc(title)}</h1>${desc?`<p class="muted">${esc(desc)}</p>`:''}</div>`;}
+function guidelines(){return `<details class="guidelines"><summary><span style="display:flex;align-items:center;gap:8px">${ic('info')} Study guidelines</span>${chev()}</summary><ul><li><strong>AP Lang:</strong> Learn and drill share the Definitions section. Learn adds one word at a time and keeps earlier words in the pool. Missed recall moves on and returns later. Practice uses contextual T/F and typed blanks from the lesson’s question bank, without a word bank or base-word hint. Definitions, alternate meanings, and derivatives stay close to the packet.</li><li><strong>APUSH:</strong> Use historical branches and topic categories to connect EPTLs before reviewing definitions. Study an entire category or filter by numbered set. All original term numbers and definitions are retained.</li><li>Practice only: no Cram tools or cumulative performance dashboards.</li></ul></details>`;}
+function heading(label,title,desc=''){return `<div class="intro">${label?`<p class="eyebrow">${esc(label)}</p>`:''}<h1>${esc(title)}</h1>${desc?`<p class="muted">${esc(desc)}</p>`:''}</div>`;}
+function pagehead(label,title,desc,aside=''){return `<div class="pagehead">${heading(label,title,desc)}${aside?`<div class="headaside">${aside}</div>`:''}</div>`;}
+
+/* ---------- Views ---------- */
 function render(){
  const app=$('app');
- if(view==='courses'){app.innerHTML=heading('','Vocabulary practice')+`<div class="cards courses"><button class="course" data-action="langsets">AP English Language and Composition</button><button class="course" data-action="apush">AP United States History</button></div>`+guidelines();return;}
- if(view==='langsets'){app.innerHTML=heading('AP English Language and Composition','Vocabulary sets')+`<div class="setgrid">${Object.keys(SETS).map(n=>button('Set '+n,'set',n)).join('')}</div>`+guidelines();return;}
+ if(view==='courses'){
+  const total=Object.values(SETS).reduce((a,s)=>a+s.words.length,0);
+  app.innerHTML=`<section class="hero"><p class="eyebrow">Vocabulary practice</p><h1>What are we studying today?</h1><p class="muted lead">Pick a course to review flashcards, learn definitions, and practice terms in context.</p></section><div class="courses"><button class="course c-lang" data-action="langsets"><span class="cicon">${ic('book',26)}</span><span class="ctitle">AP English Language and Composition</span><span class="cdesc">Vocabulary sets with flashcards, guided Learn, definition drills, and Part 3 practice.</span><span class="cstats"><span>${Object.keys(SETS).length} sets</span><span>${total} words</span><span>Last opened: Set ${set}</span></span><span class="cgo">Open course ${ic('arrow')}</span></button><button class="course c-apush" data-action="apush"><span class="cicon">${ic('landmark',26)}</span><span class="ctitle">AP United States History</span><span class="cdesc">Every numbered EPTL organized into historical branches and topic categories, with search and set-based flashcards.</span><span class="cstats"><span>${TERMS.length} EPTLs</span><span>${ERAS.length} branches</span><span>${SETCOUNT} numbered sets</span></span><span class="cgo">Open course ${ic('arrow')}</span></button></div>`+guidelines();return;}
+ if(view==='langsets'){app.innerHTML=heading('AP English Language and Composition','Vocabulary sets','Choose a set to open its flashcards, definitions, and Part 3 practice.')+`<div class="setgrid">${Object.keys(SETS).map(n=>{const ws=SETS[n].words,cur=Number(n)===set;return `<button class="setcard${cur?' current':''}" data-action="set" data-value="${n}"><span class="setrow"><span class="setlabel">Set</span>${cur?'<span class="badge">Last opened</span>':''}</span><span class="setnum">${esc(n)}</span><span class="setmeta">${ws.length} words</span><span class="setwords">${esc(ws.slice(0,5).map(w=>w.word).join(' · '))}${ws.length>5?' …':''}</span></button>`;}).join('')}</div>`+guidelines();return;}
  if(view==='langhome'){
-  app.innerHTML=heading('AP English Language and Composition · Set '+set,'Vocabulary practice')+`<div class="cards"><div class="panel tile"><h2>Flashcards</h2><p>Words, definitions, and packet-supported forms.</p><div class="actions">${button('Open flashcards','langcards','','primary')}</div></div><div class="panel tile" id="definitionsBox"><h2>Definitions</h2><p>Learn the words progressively or test definition-to-word recall.</p><div class="actions">${button('Learn','learn','','primary')}${button('Definition drill','drill')}</div></div><div class="panel tile"><h2>Part 3 Practice</h2><p>Contextual T/F and typed word or derivative blanks.</p><div class="actions">${button('Practice','practice','','primary')}</div></div></div>`+guidelines();return;
+  const keys=Object.keys(SETS).map(Number),i=keys.indexOf(set),prev=keys[i-1],next=keys[i+1];
+  const sw=`<div class="switcher" role="group" aria-label="Switch set">${prev!==undefined?`<button class="iconbtn" data-action="set" data-value="${prev}" aria-label="Previous set (Set ${prev})" title="Set ${prev}">${ic('left')}</button>`:`<button class="iconbtn" disabled aria-label="No previous set">${ic('left')}</button>`}${button(ic('grid')+' All sets','langsets')}${next!==undefined?`<button class="iconbtn" data-action="set" data-value="${next}" aria-label="Next set (Set ${next})" title="Set ${next}">${ic('right')}</button>`:`<button class="iconbtn" disabled aria-label="No next set">${ic('right')}</button>`}</div>`;
+  app.innerHTML=pagehead('AP English Language and Composition','Set '+set,words().length+' words · Review the cards, learn the definitions, then practice in context.',sw)+`<div class="cards"><div class="panel tile"><span class="ticon">${ic('cards',22)}</span><h2>Flashcards</h2><p>Words, definitions, and packet-supported forms.</p><div class="actions">${button('Open flashcards','langcards','','primary')}</div></div><div class="panel tile" id="definitionsBox"><span class="ticon">${ic('bulb',22)}</span><h2>Definitions</h2><p>Learn the words progressively or test definition-to-word recall.</p><div class="actions">${button('Learn','learn','','primary')}${button('Definition drill','drill')}</div></div><div class="panel tile"><span class="ticon">${ic('pencil',22)}</span><h2>Part 3 Practice</h2><p>Contextual T/F and typed word or derivative blanks.</p><div class="actions">${button('Practice','practice','','primary')}</div></div></div><section class="wordsec"><div class="secthead"><h2>Words in this set</h2><span class="muted small">Tap a word to jump to its flashcard</span></div><div class="wordcloud">${words().map((w,i)=>`<button class="chip" data-action="langcardat" data-value="${i}">${esc(w.word)}</button>`).join('')}</div></section>`+guidelines();return;
  }
- if(view==='definitions'){app.innerHTML=heading('Set '+set,'Definitions')+`<div class="panel study"><h2>Choose a mode</h2><p class="muted">Learn builds a growing pool of words. Definition drill tests the entire set without guidance.</p><div class="actions">${button('Learn','learn','','primary')}${button('Definition drill','drill')}</div></div>`;return;}
+ if(view==='definitions'){app.innerHTML=heading('Set '+set,'Definitions','Learn builds a growing pool of words. Definition drill tests the entire set without guidance.')+`<div class="modegrid"><button class="modecard" data-action="learn"><span class="ticon">${ic('bulb',22)}</span><span class="mtitle">Learn</span><span class="mdesc">One new word at a time, an immediate unguided check, then cumulative review of every word introduced so far.</span><span class="cgo">Start Learn ${ic('arrow')}</span></button><button class="modecard" data-action="drill"><span class="ticon">${ic('target',22)}</span><span class="mtitle">Definition drill</span><span class="mdesc">Every definition in the set, shuffled. Type the matching word with no guidance.</span><span class="cgo">Start drill ${ic('arrow')}</span></button></div><div class="actions">${button(ic('back')+' Back to set','langhome','','ghost')}</div>`;return;}
  if(view==='learn'){renderLearn();return;}
  if(view==='drill'||view==='quiz'){renderQuestion();return;}
  if(view==='practice'){renderPracticeSetup();return;}
  if(view==='langcards'||view==='apushcards'){renderCards();return;}
  if(view==='apush'){renderMap();return;}
- if(view==='apushsets'){app.innerHTML=heading('AP United States History','EPTL sets','Study the original numbered batches, or use the mind map to study by topic.')+`<div class="actions back">${button('Mind map','apush','','primary')}</div><div class="setgrid">${Array.from({length:Math.ceil(TERMS.length/50)},(_,i)=>button(`${i*50+1}–${Math.min((i+1)*50,TERMS.length)}`,'apushset',i+1)).join('')}</div>`+guidelines();}
+ if(view==='apushsets'){
+  app.innerHTML=pagehead('AP United States History','EPTL sets','Study the original numbered batches as flashcards, or browse a batch inside the mind map.',button(ic('map')+' Mind map','apush'))+`<div class="apsets">${Array.from({length:SETCOUNT},(_,i)=>{const r=i+1,ts=TERMS.filter(c=>Math.ceil(c.number/50)===r),eraCounts=new Map();ts.forEach(c=>{const e=groupIndex.get(termGroup.get(c.number))?.era;if(e)eraCounts.set(e,(eraCounts.get(e)||0)+1);});const top=[...eraCounts].sort((a,b)=>b[1]-a[1]).slice(0,3);return `<article class="panel apset"><div class="aphead"><span class="setlabel">Set ${r}</span><span class="count">${ts.length} terms</span></div><h3>EPTLs ${rangeLabel(r)}</h3><p class="apspan">${ts.length?esc(ts[0].term)+' → '+esc(ts[ts.length-1].term):''}</p><div class="tags">${top.map(([e])=>`<span class="tag" style="--h:${hue(e)}"><span class="dot"></span>${esc(e.title)}</span>`).join('')}</div><div class="actions">${button(ic('cards')+' Flashcards','apushset',r,'primary')}${button(ic('map')+' Browse','browseset',r)}</div></article>`;}).join('')}</div>`+guidelines();}
 }
 function selectSet(n){set=Number(n);lesson=null;session=null;practiceType='all';practiceOrder='ordered';write('flashcards-ap-lang-last-set',set);go('langhome');}
-function openLangCards(){deck=words().map((w,i)=>({term:w.word,definition:w.definition,word:w,index:i}));deckLabel='Set '+set;cardPos=0;cardBack=false;deckReturn='langhome';go('langcards');}
-function openApushCards(numbers,label='APUSH EPTLs',start){deck=numbers.map(n=>TERMS[n-1]).filter(Boolean);if(!deck.length)return;deckLabel=label;cardPos=start?Math.max(0,deck.findIndex(c=>c.number===Number(start))):0;cardBack=false;deckReturn='apush';go('apushcards');}
+function openLangCards(start){deck=words().map((w,i)=>({term:w.word,definition:w.definition,word:w,index:i}));deckLabel='Set '+set;cardPos=Math.min(deck.length-1,Math.max(0,Number(start)||0));cardBack=false;deckReturn='langhome';go('langcards');}
+function openApushCards(numbers,label='APUSH EPTLs',start,ret='apush'){deck=numbers.map(n=>TERMS[n-1]).filter(Boolean);if(!deck.length)return;deckLabel=label;cardPos=start?Math.max(0,deck.findIndex(c=>c.number===Number(start))):0;cardBack=false;deckReturn=ret;go('apushcards');}
+
+/* ---------- Flashcards ---------- */
 function renderCards(){
- const c=deck[cardPos];if(!c){$('app').innerHTML='<p>No cards in this selection.</p>';return;}
+ const c=deck[cardPos];if(!c){$('app').innerHTML='<p class="empty">No cards in this selection.</p>';return;}
  const g=c.number?groupIndex.get(termGroup.get(c.number)):null;
- $('app').innerHTML=`<div class="study">${heading(deckLabel,'Flashcards')}<div class="studyhead"><span class="muted small">${cardPos+1} / ${deck.length}${c.number?' · EPTL '+c.number:''}</span>${button('Shuffle','shufflecards')}</div>${g?`<p class="scope">${esc(g.era.title)} / ${esc(g.title)}</p>`:''}<button class="flash" data-action="flip" aria-label="${cardBack?'Definition shown. Show term':'Show definition'}"><span class="${cardBack?'definition':'word'}">${esc(cardBack?c.definition:c.term)}</span><span class="muted">${cardBack?'Tap to show term':'Tap to show definition'}</span></button><div class="actions footeractions">${button('Previous','prevcard')}${button(cardBack?'Term':'Definition','flip','','primary')}${button('Next','nextcard')}</div><div class="actions footeractions">${button('Again later','againcard')}${button('Back','backcards')}</div>${c.word?`<details class="notes"><summary>Forms & usage</summary><p>${esc(c.word.part)}</p><div>${[...new Set([c.term,...(c.word.forms||[]).map(f=>f.word)])].map(f=>`<span class="pill">${esc(f)}</span>`).join('')}</div>${c.word.example?`<p>${esc(c.word.example)}</p>`:''}${c.word.note?`<p>${esc(c.word.note)}</p>`:''}</details>`:`<p class="small muted" style="margin-top:22px">${esc(g?.cue||'')}</p>`}</div>`;
+ const backLabel=deckReturn==='langhome'?'Set '+set:deckReturn==='apushsets'?'EPTL sets':'Mind map';
+ $('app').innerHTML=`<div class="study">${studyTop(deckLabel,'Flashcards',button(ic('back')+' '+esc(backLabel),'backcards','','ghost small'))}<div class="studymeta"><span class="counter">${cardPos+1} / ${deck.length}${c.number?' · EPTL '+c.number:''}</span>${button(ic('shuffle',16)+' Shuffle','shufflecards','','ghost small')}</div>${progress((cardPos+1)/deck.length*100)}${g?`<p class="scope" style="--h:${hue(g.era)}"><span class="dot"></span>${esc(g.era.title)} <span class="sep">/</span> ${esc(g.title)}</p>`:''}<div class="flashwrap"><button id="flash" class="flash${cardBack?' flipped':''}" data-action="flip"><span class="face front" aria-hidden="${cardBack}"><span class="facetag">${c.number?'EPTL '+c.number:'Term'}</span><span class="word">${esc(c.term)}</span><span class="hint">Tap to show definition</span></span><span class="face back" aria-hidden="${!cardBack}"><span class="facetag">Definition</span><span class="definition">${esc(c.definition)}</span><span class="hint">Tap to show term</span></span></button></div><div class="cardnav">${button(ic('left')+'<span class="lbl">Previous</span>','prevcard')}${button(ic('flip')+'<span id="flipLabel">'+(cardBack?'Term':'Definition')+'</span>','flip','','primary')}${button('<span class="lbl">Next</span>'+ic('right'),'nextcard')}</div><div class="cardextra">${button(ic('clock',16)+' Again later','againcard','','ghost small')}<span class="kbdhint"><kbd>←</kbd><kbd>→</kbd> move <span style="opacity:.5">·</span> <kbd>Space</kbd> flip</span></div>${c.word?`<details class="formsbox"><summary>Forms &amp; usage ${chev()}</summary><div class="inner"><p>${esc(c.word.part)}</p><div>${[...new Set([c.term,...(c.word.forms||[]).map(f=>f.word)])].map(f=>`<span class="pill">${esc(f)}</span>`).join('')}</div>${c.word.example?`<p>${esc(c.word.example)}</p>`:''}${c.word.note?`<p>${esc(c.word.note)}</p>`:''}</div></details>`:(g?.cue?`<p class="cue">${ic('bulb')}<span>${esc(g.cue)}</span></p>`:'')}</div>`;
 }
+function setFlip(){const f=$('flash');if(!f){renderCards();return;}f.classList.toggle('flipped',cardBack);f.querySelector('.front').setAttribute('aria-hidden',String(cardBack));f.querySelector('.back').setAttribute('aria-hidden',String(!cardBack));const l=$('flipLabel');if(l)l.textContent=cardBack?'Term':'Definition';}
 function moveCard(d){cardPos=(cardPos+d+deck.length)%deck.length;cardBack=false;renderCards();}
+
+/* ---------- Learn (logic unchanged) ---------- */
 // Learn deliberately retains the same per-set v2 key and word ordering used by prior versions.
 function lessonKey(){return `flashcards-set${set}-definition-learn-v2`;}
 function saveLesson(){write(lessonKey(),lesson);}
@@ -89,9 +422,10 @@ function pickLearn(){
 let learnNote='';
 function renderLearn(){
  const d=lesson;if(!d){beginLearn();return;}
- if(d.current===null){$('app').innerHTML=`<div class="study">${heading('Set '+set,'Learn complete')}<div class="panel"><h2>All words recalled</h2><p>Every word has passed its recall checks, including extra checks for flagged words.</p><div class="actions">${button('Definition drill','drill','','primary')}${button('Start over','resetlearn')}${button('Back to set','langhome')}</div></div></div>`;return;}
+ const backBtn=button(ic('back')+' Back to set','langhome','','ghost small');
+ if(d.current===null){$('app').innerHTML=`<div class="study">${studyTop('Set '+set,'Learn complete',backBtn)}<div class="panel result"><div class="ring" style="--p:100"><span>${ic('check',40)}</span></div><h2>All words recalled</h2><p class="muted">Every word has passed its recall checks, including extra checks for flagged words.</p><div class="actions footeractions">${button('Definition drill','drill','','primary')}${button(ic('redo',16)+' Start over','resetlearn')}${button('Back to set','langhome')}</div></div></div>`;return;}
  const i=d.current,w=words()[i],guided=d.phase==='guided';
- $('app').innerHTML=`<div class="study">${heading('Set '+set,'Learn')}<div class="panel"><div class="studyhead"><span class="muted small">${d.seen.length} / ${words().length} words introduced</span>${button('Back to set','langhome')}</div>${learnNote?`<p class="notice" role="status">${esc(learnNote)}</p>`:''}<p class="eyebrow">${guided?'New word':d.kind==='new'?'Try it without guidance':'Recall'}</p><h2 class="prompt">${esc(w.definition)}</h2>${guided?`<p class="definition">The word is <strong>${esc(w.word)}</strong>.</p>`:''}<form id="learnForm"><label for="learnAnswer">Type the word</label><input class="answer" id="learnAnswer" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><div id="learnHintText" class="small muted" aria-live="polite">${d.hinted?'Hint used. Recall it unaided next time.':''}</div><p id="learnMessage" class="small" aria-live="polite"></p><div class="actions"><button class="primary" type="submit">Check</button>${!guided?button('Hint','learnhint')+button('Show word','learnshow'):''}</div></form><div class="notes"><label class="checkline"><input type="checkbox" id="learnFlag" ${d.flags[i]?'checked':''}> Flag for extra practice</label><p>Flagged words stay in rotation and need an extra unaided check.</p>${button('Restart Learn','resetlearn','','textbtn')}</div></div></div>`;
+ $('app').innerHTML=`<div class="study">${studyTop('Set '+set,'Learn',backBtn)}<div class="studymeta"><span class="counter">${d.seen.length} / ${words().length} words introduced</span></div>${progress(d.seen.length/words().length*100)}<div class="panel qpanel">${learnNote?`<p class="notice" role="status">${ic('info')}<span>${esc(learnNote)}</span></p>`:''}<p class="mode">${ic(guided?'bulb':d.kind==='new'?'pencil':'redo',14)} ${guided?'New word':d.kind==='new'?'Try it without guidance':'Recall'}</p><h2 class="prompt">${esc(w.definition)}</h2>${guided?`<p class="reveal">The word is <strong>${esc(w.word)}</strong>.</p>`:''}<form id="learnForm"><label for="learnAnswer">Type the word</label><input class="answer" id="learnAnswer" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><div id="learnHintText" class="hinttext" aria-live="polite">${d.hinted?'Hint used. Recall it unaided next time.':''}</div><p id="learnMessage" class="msg" aria-live="polite"></p><div class="actions"><button class="primary" type="submit">${ic('check')} Check</button>${!guided?button(ic('bulb',16)+' Hint','learnhint')+button(ic('eye',16)+' Show word','learnshow'):''}</div></form><div class="notes"><label class="checkline"><input type="checkbox" id="learnFlag" ${d.flags[i]?'checked':''}> Flag for extra practice</label><p>Flagged words stay in rotation and need an extra unaided check.</p>${button(ic('redo',16)+' Restart Learn','resetlearn','','textbtn small')}</div></div></div>`;
  $('learnForm').onsubmit=e=>{e.preventDefault();submitLearn();};$('learnFlag').onchange=e=>{d.flags[i]=e.target.checked;saveLesson();};$('learnAnswer').focus();
 }
 function submitLearn(){
@@ -103,63 +437,92 @@ function submitLearn(){
  if(d.kind==='review')d.reviewsSinceNew=(d.reviewsSinceNew||0)+1;d.history.push(i);d.turn++;d.current=null;saveLesson();pickLearn();renderLearn();
 }
 function learnHint(show){const w=words()[lesson.current];lesson.hinted=true;lesson.wins[lesson.current]=0;saveLesson();$('learnHintText').textContent=show?'The word is '+w.word+'.':'Starts with '+w.word.slice(0,2)+' · '+w.word.length+' letters';$('learnAnswer').focus();}
+
+/* ---------- Practice & drill (logic unchanged) ---------- */
 function bank(){return [...SETS[set].usage.map((q,i)=>({...q,type:'tf',id:'tf-'+i,number:i+1})),...SETS[set].derivatives.map((q,i)=>({...q,type:'blank',id:'blank-'+i,number:SETS[set].usage.length+i+1}))];}
 function priorityQuestion(q){return set===10&&q.type==='blank'&&q.answers.some(a=>['abrogation','inquisitiveness','interrogations','perquisites','sagacious','conquistadors','presaged'].includes(a));}
 function renderPracticeSetup(){
  const qs=bank(),filtered=qs.filter(q=>practiceType==='all'||practiceType===q.type||practiceType==='priority'&&priorityQuestion(q));
- $('app').innerHTML=heading('Set '+set,'Part 3 Practice','Contextual usage and typed word or derivative questions. No word bank.')+`<div class="panel study"><h2>Question bank</h2><p class="muted small">${SETS[set].usage.length} T/F · ${SETS[set].derivatives.length} typed blanks${set===10?' · Your supplied 30 questions':''}</p><div class="formrow"><div class="field"><label for="practiceType">Question type</label><select id="practiceType"><option value="all">T/F + typed blanks</option><option value="tf">T/F only</option><option value="blank">Typed blanks only</option>${set===10?'<option value="priority">Priority derivative forms</option>':''}</select></div><div class="field"><label for="practiceOrder">Order</label><select id="practiceOrder"><option value="ordered">Bank order</option><option value="shuffle">Shuffle</option></select></div></div><div class="actions">${button('Start practice ('+filtered.length+')','startpractice','','primary')}${button('Back to set','langhome')}</div></div><details class="guidelines banklist"><summary>Browse questions & explanations</summary>${filtered.map(q=>`<details class="termrow"><summary>${q.number}. ${esc(q.type==='tf'?q.statement:q.prompt.replace(/_{3,}/g,'__________'))}</summary><p><strong>${q.type==='tf'?(q.answer?'True':'False'):esc(q.answers.join(' / '))}</strong> — ${esc(q.why)}</p></details>`).join('')}</details>`;
- $('practiceType').value=practiceType;$('practiceOrder').value=practiceOrder;$('practiceType').onchange=e=>{practiceType=e.target.value;renderPracticeSetup();};$('practiceOrder').onchange=e=>{practiceOrder=e.target.value;};
+ const types=[['all','T/F + typed blanks'],['tf','T/F only'],['blank','Typed blanks only'],...(set===10?[['priority','Priority derivative forms']]:[])],orders=[['ordered','Bank order'],['shuffle','Shuffle']];
+ const seg=(opts,cur,act,lbl)=>`<div class="seg" role="radiogroup" aria-label="${lbl}">${opts.map(([v,l])=>`<button role="radio" aria-checked="${cur===v}" class="${cur===v?'on':''}" data-action="${act}" data-value="${v}">${l}</button>`).join('')}</div>`;
+ $('app').innerHTML=`<div class="study">${heading('Set '+set,'Part 3 Practice','Contextual usage and typed word or derivative questions. No word bank.')}<div class="panel"><h2>Question bank</h2><div class="stats"><span>${SETS[set].usage.length} T/F</span><span>${SETS[set].derivatives.length} typed blanks</span>${set===10?'<span>Your supplied 30 questions</span>':''}</div><div class="formrow"><div><span class="flabel">Question type</span>${seg(types,practiceType,'ptype','Question type')}</div><div><span class="flabel">Order</span>${seg(orders,practiceOrder,'porder','Order')}</div></div><div class="actions">${button(ic('play',16)+' Start practice ('+filtered.length+')','startpractice','','primary')}${button('Back to set','langhome','','ghost')}</div></div><details class="guidelines banklist"><summary><span>Browse questions &amp; explanations <span class="count">${filtered.length}</span></span>${chev()}</summary>${filtered.map(q=>`<details class="qrow"><summary><span class="num">${q.number}</span><span>${esc(q.type==='tf'?q.statement:q.prompt.replace(/_{3,}/g,'__________'))}</span></summary><p><strong>${q.type==='tf'?(q.answer?'True':'False'):esc(q.answers.join(' / '))}</strong> — ${esc(q.why)}</p></details>`).join('')}</details></div>`;
 }
 function startPractice(){let qs=bank().filter(q=>practiceType==='all'||practiceType===q.type||practiceType==='priority'&&priorityQuestion(q));if(practiceOrder==='shuffle')qs=shuffle(qs);session={kind:'practice',queue:qs,pos:0,missed:[],submitted:false,score:0};go('quiz');}
 function startDrill(){session={kind:'drill',queue:shuffle(words().map(w=>({type:'blank',prompt:w.definition,answers:[w.word],why:w.note||w.definition,word:w.word}))),pos:0,missed:[],submitted:false,score:0};go('drill');}
 function renderQuestion(){
  if(!session){if(view==='drill')startDrill();else go('practice');return;}
- const s=session;if(s.pos>=s.queue.length){$('app').innerHTML=`<div class="study">${heading('Set '+set,s.kind==='drill'?'Definition drill complete':'Practice complete')}<div class="panel"><h2>${s.score} / ${s.queue.length} correct this round</h2><div class="actions footeractions">${s.missed.length?button('Retry missed ('+s.missed.length+')','retry','','primary'):''}${button('New round',s.kind==='drill'?'drill':'startpractice')}${button('Back to set','langhome')}</div></div></div>`;return;}
+ const s=session,title=s.kind==='drill'?'Definition drill':'Part 3 Practice';
+ if(s.pos>=s.queue.length){const pct=s.queue.length?Math.round(s.score/s.queue.length*100):0;$('app').innerHTML=`<div class="study">${studyTop('Set '+set,s.kind==='drill'?'Definition drill complete':'Practice complete',button(ic('back')+' Back to set','langhome','','ghost small'))}<div class="panel result"><div class="ring" style="--p:${pct}"><span>${pct}%</span></div><h2>${s.score} / ${s.queue.length} correct this round</h2><div class="actions footeractions">${s.missed.length?button(ic('redo',16)+' Retry missed ('+s.missed.length+')','retry','','primary'):''}${button('New round',s.kind==='drill'?'drill':'startpractice')}${button('Back to set','langhome')}</div></div></div>`;return;}
  const q=s.queue[s.pos];s.submitted=false;
- $('app').innerHTML=`<div class="study">${heading('Set '+set,s.kind==='drill'?'Definition drill':'Part 3 Practice')}<div class="panel"><div class="studyhead"><span class="muted small">${s.pos+1} / ${s.queue.length}${s.kind==='practice'?' · Bank #'+q.number:''}</span>${button('End round',s.kind==='drill'?'definitions':'practice')}</div><p class="eyebrow">${q.type==='tf'?'True or false usage':s.kind==='drill'?'Definition → word':'Write the word or derivative'}</p><h2 class="prompt">${esc(q.type==='tf'?q.statement:q.prompt.replace(/_{3,}/g,'__________'))}</h2><form id="questionForm">${q.type==='tf'?`<div class="actions">${button('True','grade','true','choice')}${button('False','grade','false','choice')}</div>`:`<label for="questionAnswer">Your answer</label><input id="questionAnswer" class="answer" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><div class="actions footeractions"><button type="submit" class="primary">Check</button>${button('Skip','skip')}</div>`}</form><div id="questionFeedback" aria-live="polite"></div><div id="questionNext" class="actions footeractions"></div></div></div>`;
+ $('app').innerHTML=`<div class="study">${studyTop('Set '+set,title,button(ic('x',16)+' End round',s.kind==='drill'?'definitions':'practice','','ghost small'))}<div class="studymeta"><span class="counter">${s.pos+1} / ${s.queue.length}${s.kind==='practice'?' · Bank #'+q.number:''}</span></div>${progress(s.pos/s.queue.length*100)}<div class="panel qpanel"><p class="mode">${ic(q.type==='tf'?'check':s.kind==='drill'?'target':'pencil',14)} ${q.type==='tf'?'True or false usage':s.kind==='drill'?'Definition → word':'Write the word or derivative'}</p><h2 class="prompt">${esc(q.type==='tf'?q.statement:q.prompt.replace(/_{3,}/g,'__________'))}</h2><form id="questionForm">${q.type==='tf'?`<div class="actions">${button(ic('check')+' True','grade','true','choice')}${button(ic('x')+' False','grade','false','choice')}</div>`:`<label for="questionAnswer">Your answer</label><input id="questionAnswer" class="answer" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><div class="actions footeractions"><button type="submit" class="primary">${ic('check')} Check</button>${button('Skip','skip','','ghost')}</div>`}</form><div id="questionFeedback" aria-live="polite"></div><div id="questionNext" class="actions footeractions"></div></div></div>`;
  $('questionForm').onsubmit=e=>{e.preventDefault();if(q.type==='blank')gradeQuestion($('questionAnswer').value);};if(q.type==='blank')$('questionAnswer').focus();
 }
 function gradeQuestion(value,skip=false){
- const s=session;if(s.submitted)return;const q=s.queue[s.pos];if(!skip&&q.type==='blank'&&!String(value).trim()){$('questionFeedback').textContent='Type an answer first.';return;}
+ const s=session;if(s.submitted)return;const q=s.queue[s.pos];if(!skip&&q.type==='blank'&&!String(value).trim()){$('questionFeedback').innerHTML='<p class="msg">Type an answer first.</p>';return;}
  s.submitted=true;const right=!skip&&(q.type==='tf'?q.answer===(value===true||value==='true'):q.answers.some(a=>norm(a)===norm(value)));
  if(right)s.score++;else s.missed.push(q);$('questionForm').querySelectorAll('input,button').forEach(e=>e.disabled=true);
+ if(q.type==='tf')$('questionForm').querySelectorAll('[data-action=grade]').forEach(b=>{if((b.dataset.value==='true')===q.answer)b.classList.add('isright');else if(!skip&&b.dataset.value===String(value))b.classList.add('iswrong');});
+ else if(!skip)$('questionAnswer')?.classList.add(right?'right':'wrong');
  const answer=q.type==='tf'?(q.answer?'True':'False'):q.answers.join(' / ');
- $('questionFeedback').innerHTML=`<div class="notice ${right?'good':'bad'}"><strong>${right?'Correct':'Answer: '+esc(answer)}</strong><p style="margin:6px 0 0">${esc(q.why||'')}</p></div>`;
- $('questionNext').innerHTML=button(s.pos===s.queue.length-1?'Finish round':'Next','nextquestion','','primary');$('questionNext').querySelector('button').focus();
+ $('questionFeedback').innerHTML=`<div class="notice ${right?'good':'bad'}">${ic(right?'check':'info',20)}<div><strong class="nt">${right?'Correct':'Answer: '+esc(answer)}</strong><p>${esc(q.why||'')}</p></div></div>`;
+ $('questionNext').innerHTML=button((s.pos===s.queue.length-1?'Finish round':'Next')+' '+ic('arrow',16),'nextquestion','','primary');$('questionNext').querySelector('button').focus();
 }
+
+/* ---------- APUSH mind map ---------- */
 function rangeMatches(n){return mapRange==='all'||Math.ceil(n/50)===Number(mapRange);}
-function termMatches(c){return rangeMatches(c.number)&&(!mapSearch||norm(c.term+' '+c.definition+' '+c.number).includes(norm(mapSearch)));}
+function searchMatches(c){return !mapSearch||HAY.get(c).includes(norm(mapSearch));}
+function termMatches(c){return rangeMatches(c.number)&&searchMatches(c);}
 function inGroup(g){return g.numbers.filter(n=>termMatches(TERMS[n-1]));}
 function renderMap(){
- $('app').innerHTML=heading('AP United States History','EPTL mind map','Study terms through their historical connections, then review a category’s definitions.')+`<div class="mapcontrols"><div><label for="mapSearch">Search all EPTLs</label><input type="search" id="mapSearch" placeholder="Term, definition, or EPTL number" value="${esc(mapSearch)}"></div><div><label for="mapRange">Numbered set</label><select id="mapRange"><option value="all">All 500 EPTLs</option>${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i*50+1}–${(i+1)*50}</option>`).join('')}</select></div></div><div id="mapBody"></div>`+guidelines();
- $('mapRange').value=mapRange;$('mapSearch').oninput=e=>{mapSearch=e.target.value;renderMapBody();};$('mapRange').onchange=e=>{mapRange=e.target.value;renderMapBody();};renderMapBody();
+ $('app').innerHTML=pagehead('AP United States History','EPTL mind map','Study terms through their historical connections, then review a category’s definitions.',button(ic('grid')+' EPTL sets','apushsets'))+`<div class="toolbar" id="mapToolbar"><div class="searchbox">${ic('search',20)}<label for="mapSearch" class="sr-only">Search all EPTLs</label><input type="search" id="mapSearch" placeholder="Search terms, definitions, or EPTL number" value="${esc(mapSearch)}" autocomplete="off" spellcheck="false" enterkeyhint="search"><kbd>/</kbd></div><div class="setbar"><span class="setbarlabel" id="setChipsLabel">Numbered set</span><div class="setchips" id="setChips" role="group" aria-labelledby="setChipsLabel"></div></div></div><div id="mapBody"></div>`+guidelines();
+ $('mapSearch').oninput=e=>{mapSearch=e.target.value;renderMapBody();};
+ $('mapSearch').onkeydown=e=>{if(e.key==='Escape'&&mapSearch){e.preventDefault();actions.clearsearch();}};
+ renderMapBody(true);measure();
 }
-function renderMapBody(){
- const found=TERMS.filter(termMatches);
- if(mapSearch.trim()){
-  $('mapBody').innerHTML=`<div class="between"><p class="muted small">${found.length} matching EPTLs</p><div class="actions">${button('Study results','studyresults','','primary')}${button('Clear search','clearsearch')}</div></div>${found.length?found.map(c=>termRow(c)).join(''):'<p class="empty">No matching terms. Try another search or numbered set.</p>'}`;return;
+function renderChips(scrollActive){
+ const el=$('setChips');if(!el)return;const q=mapSearch.trim(),nq=norm(q);
+ const cnt=r=>TERMS.filter(c=>(r==='all'||Math.ceil(c.number/50)===r)&&HAY.get(c).includes(nq)).length;
+ el.innerHTML=['all',...Array.from({length:SETCOUNT},(_,i)=>i+1)].map(r=>{const on=String(mapRange)===String(r),n=q?cnt(r):null;return `<button class="setchip${on?' on':''}${n===0?' zero':''}" data-action="range" data-value="${r}" aria-pressed="${on}">${r==='all'?`All ${TERMS.length}`:rangeLabel(r)}${n!==null?`<span class="n">${n}</span>`:''}</button>`;}).join('');
+ if(scrollActive){const a=el.querySelector('.on');if(a)el.scrollLeft=a.offsetLeft-el.clientWidth/2+a.offsetWidth/2;}
+}
+function renderMapBody(scrollChip){
+ renderChips(scrollChip);
+ const found=TERMS.filter(termMatches),q=mapSearch.trim(),scoped=mapRange!=='all';
+ if(q){
+  const sorted=/^\d+$/.test(q)?[...found].sort((a,b)=>(b.number===Number(q))-(a.number===Number(q))):found;
+  $('mapBody').innerHTML=`<div class="scopebar"><div><strong>${found.length}</strong> matching EPTL${found.length===1?'':'s'}${scoped?` in set ${rangeLabel(mapRange)} · <button class="linkbtn" data-action="range" data-value="all">Search all ${TERMS.length}</button>`:''}</div><div class="actions">${found.length?button(ic('cards',16)+' Study results','studyresults','','primary small'):''}${button(ic('x',16)+' Clear search','clearsearch','','small')}</div></div>${found.length?`<div class="termlist">${sorted.map(c=>termRow(c,q)).join('')}</div>`:`<p class="empty">No matching terms${scoped?` in EPTLs ${rangeLabel(mapRange)}`:''}. Try another search${scoped?' or switch to All':''}.</p>`}`;return;
  }
  const validEras=ERAS.filter(e=>e.groups.some(g=>inGroup(g).length));if(!validEras.length){$('mapBody').innerHTML='<p class="empty">No terms in this selection.</p>';return;}
  if(!validEras.some(e=>e.id===mapEra))mapEra=validEras[0].id;
- const e=ERAS.find(e=>e.id===mapEra),groups=e.groups.filter(g=>inGroup(g).length),numbers=groups.flatMap(inGroup);
- $('mapBody').innerHTML=`<div class="maplayout"><aside class="eras" aria-label="Historical branches">${validEras.map(x=>`<button data-action="era" data-value="${x.id}" class="${x.id===mapEra?'selected':''}" ${x.id===mapEra?'aria-current="true"':''}><span>${esc(x.title)}</span><span class="muted">${x.groups.flatMap(inGroup).length}</span></button>`).join('')}</aside><div><div class="branchhead"><p class="eyebrow">APUSH EPTLs → ${esc(e.title)}</p><h2>${esc(e.title)}</h2><p>${esc(e.cue)}</p><div class="actions footeractions">${button('Study branch ('+numbers.length+')','studyera',e.id,'primary')}${button(mapMode==='map'?'List view':'Map view','togglemap')}</div></div>${mapMode==='map'?`<div class="mapgroups" aria-label="Topic branches">${groups.map(g=>{const ns=inGroup(g);return `<section class="branch"><h3>${esc(g.title)}</h3><p>${esc(g.cue)}</p><div class="actions">${button('Study category ('+ns.length+')','studygroup',g.id)}${button('View terms','category',g.id)}</div><details><summary class="small">${ns.length} connected terms</summary><div class="termleaves">${ns.map(n=>`<button class="leaf" data-action="term" data-value="${n}"><small>#${n}</small> ${esc(TERMS[n-1].term)}</button>`).join('')}</div></details></section>`;}).join('')}</div>`:groups.map(g=>`<section class="panel" style="margin-bottom:16px"><div class="between"><h3>${esc(g.title)}</h3>${button('Study','studygroup',g.id)}</div><p class="muted small">${esc(g.cue)}</p>${inGroup(g).map(n=>termRow(TERMS[n-1])).join('')}</section>`).join('')}</div></div>`;
+ const e=ERAS.find(e=>e.id===mapEra),groups=e.groups.filter(g=>inGroup(g).length),numbers=groups.flatMap(inGroup),h=hue(e);
+ const banner=scoped?`<div class="scopebar"><div><p class="eyebrow">Numbered set ${mapRange}</p><strong>EPTLs ${rangeLabel(mapRange)}</strong> <span class="muted">· ${found.length} terms across ${validEras.length} branch${validEras.length===1?'':'es'}</span></div><div class="actions">${button(ic('cards',16)+` Study all ${found.length}`,'studyrange','','primary small')}${button('Show all '+TERMS.length,'range','all','small')}</div></div>`:'';
+ const modeSeg=`<div class="seg" role="radiogroup" aria-label="View">${[['map','map','Map'],['list','list','List']].map(([v,i,l])=>`<button role="radio" aria-checked="${mapMode===v}" class="${mapMode===v?'on':''}" data-action="mapmode" data-value="${v}">${ic(i,16)} ${l}</button>`).join('')}</div>`;
+ $('mapBody').innerHTML=`${banner}<div class="maplayout"><aside class="eras" aria-label="Historical branches"><p class="sidelabel">Historical branches</p>${validEras.map(x=>`<button data-action="era" data-value="${x.id}" class="${x.id===mapEra?'selected':''}" ${x.id===mapEra?'aria-current="true"':''} style="--h:${hue(x)}"><span class="dot"></span><span class="etitle">${esc(x.title)}</span><span class="count">${x.groups.flatMap(inGroup).length}</span></button>`).join('')}</aside><div id="branchMain"><div class="branchhead" style="--h:${h}"><p class="eyebrow">Branch ${ERAS.indexOf(e)+1} of ${ERAS.length}${scoped?' · EPTLs '+rangeLabel(mapRange):''}</p><h2>${esc(e.title)}</h2><p>${esc(e.cue)}</p><div class="between">${button(ic('cards')+' Study branch ('+numbers.length+')','studyera',e.id,'primary')}${modeSeg}</div></div>${mapMode==='map'?`<div class="mapgroups" aria-label="Topic branches">${groups.map(g=>{const ns=inGroup(g);return `<section class="branch" style="--h:${h}"><div class="bhead"><h3>${esc(g.title)}</h3><span class="count">${ns.length}</span></div><p>${esc(g.cue)}</p><details class="leafbox"><summary>${chev()} ${ns.length} connected term${ns.length===1?'':'s'}</summary><div class="leaves">${ns.map(n=>`<button class="leaf" data-action="term" data-value="${n}"><small>#${n}</small>${esc(TERMS[n-1].term)}</button>`).join('')}</div></details><div class="actions">${button(ic('cards',16)+' Study ('+ns.length+')','studygroup',g.id,'small')}${button('View terms','category',g.id,'small ghost')}</div></section>`;}).join('')}</div>`:groups.map(g=>`<section class="panel listgroup"><div class="between"><h3>${esc(g.title)}</h3>${button(ic('cards',16)+' Study','studygroup',g.id,'small')}</div><p class="muted small">${esc(g.cue)}</p><div class="termlist">${inGroup(g).map(n=>termRow(TERMS[n-1])).join('')}</div></section>`).join('')}</div></div>`;
 }
-function termRow(c){const g=groupIndex.get(termGroup.get(c.number));return `<details class="termrow"><summary><div class="categorylabel">${esc(g.era.title)} / ${esc(g.title)}</div><span class="muted small">#${c.number}</span> ${esc(c.term)}</summary><p>${esc(c.definition)}</p><div class="actions">${button('Open card','termcard',c.number)}${button('Study category','studygroup',g.id)}</div></details>`;}
-function openCategory(id){const g=groupIndex.get(id),ns=inGroup(g);$('app').innerHTML=heading('APUSH · '+g.era.title,g.title,g.cue)+`<div class="actions back">${button('Mind map','apush')}${button('Study category ('+ns.length+')','studygroup',id,'primary')}</div>${ns.map(n=>termRow(TERMS[n-1])).join('')}`;}
-function showTerm(n){const c=TERMS[Number(n)-1],g=groupIndex.get(termGroup.get(c.number));$('termDialog').innerHTML=`<div class="dialogtop"><p class="eyebrow">EPTL ${c.number}</p>${button('Close','closedialog')}</div><h2 id="termDialogTitle">${esc(c.term)}</h2><p class="categorylabel">${esc(g.era.title)} / ${esc(g.title)}</p><p class="definition">${esc(c.definition)}</p><div class="notes"><p class="muted small">${esc(g.cue)}</p><div class="actions">${button('Study this category','dialogstudy',g.id,'primary')}${button('Open flashcard','dialogcard',c.number)}</div></div>`;$('termDialog').showModal();}
+function termRow(c,q=''){const g=groupIndex.get(termGroup.get(c.number));return `<details class="termrow"><summary><span class="num">#${c.number}</span><span class="tmain"><span class="tterm">${hl(c.term,q)}</span>${q?`<span class="tdef">${hl(c.definition,q)}</span>`:''}<span class="tcat" style="--h:${hue(g.era)}"><span class="dot"></span>${esc(g.era.title)} / ${esc(g.title)}</span></span>${chev()}</summary><div class="tbody"><p>${hl(c.definition,q)}</p><div class="actions">${button(ic('cards',16)+' Open card','termcard',c.number,'small')}${button('Study category','studygroup',g.id,'small ghost')}</div></div></details>`;}
+function openCategory(id){const g=groupIndex.get(id),ns=inGroup(g);$('app').innerHTML=`<div class="pagehead"><div class="intro"><p class="eyebrow" style="--h:${hue(g.era)}"><span class="dot"></span>APUSH · ${esc(g.era.title)}</p><h1>${esc(g.title)}</h1><p class="muted">${esc(g.cue)}</p></div></div><div class="actions back">${button(ic('back')+' Mind map','apush')}${button(ic('cards')+' Study category ('+ns.length+')','studygroup',id,'primary')}</div><div class="termlist">${ns.map(n=>termRow(TERMS[n-1],mapSearch)).join('')}</div>`;window.scrollTo({top:0,behavior:'instant'});}
+function showTerm(n){const c=TERMS[Number(n)-1],g=groupIndex.get(termGroup.get(c.number));$('termDialog').innerHTML=`<div class="dlg"><div class="dialogtop"><span class="num" style="width:auto;padding:4px 10px">EPTL ${c.number}</span><button class="iconbtn ghost" data-action="closedialog" aria-label="Close">${ic('x')}</button></div><h2 id="termDialogTitle">${esc(c.term)}</h2><p class="tcat" style="--h:${hue(g.era)}"><span class="dot"></span>${esc(g.era.title)} / ${esc(g.title)}</p><p class="definition">${esc(c.definition)}</p><p class="cue">${ic('bulb')}<span>${esc(g.cue)}</span></p><div class="actions footeractions">${button(ic('cards',16)+' Study this category','dialogstudy',g.id,'primary')}${button('Open flashcard','dialogcard',c.number)}</div></div>`;$('termDialog').showModal();}
+$('termDialog').addEventListener('click',e=>{if(e.target===$('termDialog'))$('termDialog').close();});
+
 const actions={
- langsets:()=>go('langsets'),apush:()=>go('apush'),set:selectSet,langhome:()=>go('langhome'),langcards:openLangCards,
+ langsets:()=>go('langsets'),apush:()=>go('apush'),set:selectSet,langhome:()=>go('langhome'),langcards:openLangCards,langcardat:i=>openLangCards(i),
  learn:()=>{learnNote='';beginLearn();},definitions:()=>go('definitions'),drill:startDrill,practice:()=>go('practice'),startpractice:startPractice,
+ ptype:v=>{practiceType=v;renderPracticeSetup();},porder:v=>{practiceOrder=v;renderPracticeSetup();},
  resetlearn:()=>{lesson=freshLesson();learnNote='';pickLearn();go('learn');},learnhint:()=>learnHint(false),learnshow:()=>learnHint(true),
- flip:()=>{cardBack=!cardBack;renderCards();},prevcard:()=>moveCard(-1),nextcard:()=>moveCard(1),shufflecards:()=>{deck=shuffle(deck);cardPos=0;cardBack=false;renderCards();},againcard:()=>{deck.splice(Math.min(deck.length,cardPos+3),0,deck[cardPos]);moveCard(1);},backcards:()=>go(deckReturn),
+ flip:()=>{cardBack=!cardBack;setFlip();},prevcard:()=>moveCard(-1),nextcard:()=>moveCard(1),shufflecards:()=>{deck=shuffle(deck);cardPos=0;cardBack=false;renderCards();},againcard:()=>{deck.splice(Math.min(deck.length,cardPos+3),0,deck[cardPos]);moveCard(1);},backcards:()=>go(deckReturn),
  grade:v=>gradeQuestion(v),skip:()=>gradeQuestion('',true),nextquestion:()=>{session.pos++;renderQuestion();},retry:()=>{session={...session,queue:shuffle(session.missed),pos:0,missed:[],score:0,submitted:false};renderQuestion();},
- era:id=>{mapEra=id;write('vocab-map-era',id);renderMapBody();},togglemap:()=>{mapMode=mapMode==='map'?'list':'map';renderMapBody();},clearsearch:()=>{mapSearch='';$('mapSearch').value='';renderMapBody();},
+ era:id=>{mapEra=id;write('vocab-map-era',id);renderMapBody();const b=$('branchMain');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView({behavior:'smooth',block:'start'});},
+ togglemap:()=>{mapMode=mapMode==='map'?'list':'map';renderMapBody();},mapmode:v=>{mapMode=v;renderMapBody();},
+ range:v=>{mapRange=v==='all'?'all':String(Number(v));write('vocab-map-range',mapRange);renderMapBody(true);},
+ clearsearch:()=>{mapSearch='';if($('mapSearch')){$('mapSearch').value='';$('mapSearch').focus();}renderMapBody();},
  category:openCategory,studygroup:id=>{const g=groupIndex.get(id);openApushCards(inGroup(g),g.title);},'studyera':id=>{const e=ERAS.find(e=>e.id===id);openApushCards(e.groups.flatMap(inGroup),e.title);},studyresults:()=>openApushCards(TERMS.filter(termMatches).map(c=>c.number),'Search results'),
+ studyrange:()=>openApushCards(TERMS.filter(termMatches).map(c=>c.number),'EPTLs '+rangeLabel(mapRange)),
  term:showTerm,termcard:n=>{const g=groupIndex.get(termGroup.get(Number(n)));openApushCards(inGroup(g),g.title,n);},closedialog:()=>$('termDialog').close(),dialogstudy:id=>{$('termDialog').close();actions.studygroup(id);},dialogcard:n=>{$('termDialog').close();actions.termcard(n);},
- apushset:n=>openApushCards(TERMS.filter(c=>Math.ceil(c.number/50)===Number(n)).map(c=>c.number),'EPTLs '+((Number(n)-1)*50+1)+'–'+Number(n)*50)
+ apushset:n=>openApushCards(TERMS.filter(c=>Math.ceil(c.number/50)===Number(n)).map(c=>c.number),'EPTLs '+((Number(n)-1)*50+1)+'–'+Number(n)*50,undefined,'apushsets'),
+ browseset:n=>{mapRange=String(Number(n));write('vocab-map-range',mapRange);mapSearch='';go('apush');}
 };
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;if(b.dataset.nav){const id=b.dataset.nav;if(id==='definitions')go('definitions');else go(id);return;}if(b.dataset.action){e.preventDefault();actions[b.dataset.action]?.(b.dataset.value);}});
-document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;if((view==='langcards'||view==='apushcards')&&!$('termDialog').open){if(e.key==='ArrowRight'){e.preventDefault();moveCard(1);}if(e.key==='ArrowLeft'){e.preventDefault();moveCard(-1);}if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();actions.flip();}}});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;if(b.dataset.nav){go(b.dataset.nav);return;}if(b.dataset.action){e.preventDefault();actions[b.dataset.action]?.(b.dataset.value);}});
+document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;if(e.key==='/'&&view==='apush'&&$('mapSearch')&&!$('termDialog').open){e.preventDefault();$('mapSearch').focus();$('mapSearch').select();return;}if((view==='langcards'||view==='apushcards')&&!$('termDialog').open){if(e.key==='ArrowRight'){e.preventDefault();moveCard(1);}if(e.key==='ArrowLeft'){e.preventDefault();moveCard(-1);}if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();actions.flip();}}});
 // Old stored statistics are left untouched; the interface uses practice sessions only.
 go('courses');
 
